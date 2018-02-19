@@ -1,5 +1,5 @@
 :notitle:
-== Meeting 2017-09-29
+== Meeting 2018-09-29
 
 === Attendees
 
@@ -14,36 +14,34 @@ Minute Taker: rzimmerm
 . Administrative tasks
 . Where to start
 . Date and time for the next meeting
-    - 2017-02-26, 09:00 in SFFs office
+    - 2018-02-26, 09:00 in SFFs office
 
 == Discussions / Decisions
 
-. administrative tasks
-  * All documentation artifacts will be published on the project website
-  * We will use Jira for project planning
-  * We will decide later, which continous integration tools we use
-  ** The decision must allow the INS to take over the project after the BA
-  ** reasons for the decision must be documented
+. Administrative tasks
+  * All documentation artifacts will be published on the project website.
+  * We will use JIRA for project planning.
+  * We will decide later, which continous integration tools we use.
+  ** The decision must allow the INS to take over the project after the BA.
+  ** reasons for the decision must be documented.
   * Decisions on the programming language and frameworks are made later.
-  ** Our experience and productivity in a given eco system must be considered as well
+  ** Our experience and productivity in a given eco system must be considered as well.
 . Where to start
-    * Read the draft https://datatracker.ietf.org/doc/draft-ietf-mile-xmpp-grid/[XMPP for Security Information Exchange]
-    * Learn more about XMPP (Read the specs and the mentioned XEPs)
-    * IODEF payloads are not the main focus of this project
+    * Read the draft https://datatracker.ietf.org/doc/draft-ietf-mile-xmpp-grid/[XMPP for Security Information Exchange].
+    * Learn more about XMPP (Read the specs and the mentioned XEPs).
+    * IODEF payloads are not the main focus of this project.
     * It would be nice if a first draft is ready for the IETF Hackathon, starting on March 17.
     * Main goals of the project:
-    ** Design a solid architecture (Openfire plugin or standalone?)
+    ** Design a solid architecture (Openfire plugin or standalone?).
     ** Implement the requirements according to the IETF Draft:
-    *** Vanilla XMPP with Discovery und Publish/Subsctribe XEPs
-    *** Define Topics/Nodes and manage permissions
+    *** Vanilla XMPP with Discovery und Publish/Subscribe XEPs.
+    *** Define Topics/Nodes and manage permissions.
     *** Administrative utilities such as purge, list topics, show number of items, identifier etc.
-    ** Most is already implemented in the form of a proof of concept
-. Date and time for the next meeting
-    * 2017-02-26, 09:00 in SFFs office
+    ** Most is already implemented in the form of a proof of concept.
+. Date and time for the next meeting:
+    * 2018-02-26, 09:00 in SFFs office
 
 == Upcoming absences
 
 _no upcoming absences_
-
-
 
