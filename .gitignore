@@ -1,9 +1,12 @@
 documents/meeting-minutes/*.pdf
+documents/final-submission-document/final-submission-document.pdf
+documents/project-plan/project-plan.pdf
 documents/development-guide.pdf
 out/
 export/
 
 .vscode/
+xmpp-grid-broker.zip
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
