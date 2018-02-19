@@ -2,7 +2,7 @@
 set -eu
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-TARGET_DIRECTORY="$SCRIPT_PATH/out"
+TARGET_DIRECTORY="$SCRIPT_PATH/export"
 
 function is_in_path {
   set +e
