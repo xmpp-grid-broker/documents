@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/simple.css" id="theme">
+    <link rel="stylesheet" href="css/github.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>Study project XMPP-Grid Broker</h2>
+                <h3>Interim Presentation</h3>
+                <small>Raphael Zimmermann</small>
+                <small>Fabian Hauser</small>
+            </section>
+            <section>
+                <h2>Slide 1</h2>
+                <pre><code class="cs">
+        using System.IO.Compression;
+        namespace MyApplication
+        {
+            [Obsolete(&quot;...&quot;)]
+            class Program : IInterface
+            {
+                public static List&lt;int&gt; JustDoIt(int count)
+                {
+                    Console.WriteLine($&quot;Hello {Name}!&quot;);
+                    return new List&lt;int&gt;(new int[] { 1, 2, 3 })
+                }
+            }
+        }
+    </code></pre>
+
+            </section>
+            <section>
+                <h2>Slide $$e=mc^2$$</h2>
+            </section>
+            <section>
+                <section>Vertical Slide 1</section>
+                <section>
+                    Vertical Slide 2
+                </section>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+    <script src="js/head.load.min.js" charset="utf-8"></script>
+    <script>
+        Reveal.initialize({
+            controls: false,
+            slideNumber: true,
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+            dependencies: [
+                { src: 'js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+                { src: 'js/plugin/math/math.js', async: true },
+            ],
+        });
+    </script>
+
+</body>
+
+</html>
