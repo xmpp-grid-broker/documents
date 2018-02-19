@@ -55,21 +55,20 @@ The goal of the bachelor thesis is to build a broker application and graphical u
 
 
 \chapter{Project Organization}
-
 All team members have the same strategic rights and duties. Prof. Dr. Andreas Steffen is our project advisor.
 
 \section{Roles}
-
 Due to the small team size, most roles are performed by both team members.
 
 \begin{description}
-    \item[Raphael Zimmermann] project management, software engineering, quality assurance.
-    \item[Fabian Hauser] infrastructure management, software engineering, quality assurance.
+    \item[Raphael Zimmermann] \hfill \\
+        project management, software engineering, quality assurance.
+    \item[Fabian Hauser] \hfill \\
+        infrastructure management, software engineering, quality assurance.
 \end{description}
 
 \chapter{Project Management}
 \section{Components}
-
 For a better overview and to allow us a sophisticated time assessment, we decided to group tasks into categories, i.e. JIRA components. Components represent processes, documents and products which are to be released.
 
 Currently, tasks are separated into following components:
@@ -86,18 +85,17 @@ Currently, tasks are separated into following components:
 \end{multicols}
 
 \section{Time Budget}
-
 The project started with the Kickoff Meeting on 19.02.2018 and will be completed after 16 weeks by 15.06.2018.
-The two team members are available for 360 hours each during the semester which corresponds to a weekly time budget of 20 hour per person and two weeks with a weekly time budget of 40 hours per person.
+The two team members are available for 360 hours each during the semester which corresponds to a weekly time budget of 20 hours per person and two weeks with a weekly time budget of 40 hours per person.
 
-Apart from the statutory holidays, there are no further absences planned. Statutory holidays do not affect the weekly time budget. %TODO: Osterwoche?
+Apart from the statutory holidays, there are no further absences planned.
 
 \section{Schedule}
 The project schedule is an iterative process based on elements of SCRUM.
 
-Due to the explorative nature of the project, we decided on a sprint duration of one week. %TODO
-\subsection{Iterations \& Milestones}
+We decided on a sprint duration of approximately week, but allow deviations in working hours depending on statutory holidays. %TODO: Is this true?
 
+\subsection{Iterations \& Milestones}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\linewidth]{resources/overview}
@@ -118,7 +116,6 @@ The goals and milestones resulting from each sprint are shown in Figure \ref{fig
 
 
 \subsection{Meetings}
-
 The team works every Tuesday (08:00 - 17:00) together in the study room, every Wednesday (13:00-17:00) and Friday (08:00 - 17:00) remotely. Wednesday and Friday begin with a daily stand-up meeting taking no longer than 15 minutes. Sprint planning meetings are carried out on Tuesday at 10:00. Table \ref{meeting-time-budget} shows an overview of the total meeting time budget.
 
 \begin{table}[]
@@ -141,10 +138,9 @@ Regular meetings with the project advisor take usually place on Friday in Prof. 
 Raphael Zimmermann will take meeting notes for every meeting. Meeting minutes are published on the project website afterwards.
 
 \chapter{Risk Management}
-
 An assessment of the project-specific risks is carried out in Table \ref{tbl:project-risks} as time loss during the whole project. The risk matrix in Table \ref{tbl:risk-matrix} provides an overview of the risk weighting.
 
-To account for these risks, we reduce our weekly sprint time by the total weighted risk applicable to the planned task topics (on average approximately 20\%). We also review the risk assessment after every sprint, adapt it and take measures if necessary.
+To account for these risks, we reduce our weekly sprint time by the total weighted risk applicable to the planned task topics (on average approximately 13.5\%). We also review the risk assessment after every sprint, adapt it and take measures if necessary.
 
 
 \begin{table}[h] %TODO: Redefine Risks
@@ -211,21 +207,16 @@ To account for these risks, we reduce our weekly sprint time by the total weight
 
 
 \chapter{Infrastructure}
-
-
 \section{Project Management and Development}
+For project management we utilise the corresponding products by Atlassian (JIRA and Crowd)\cite{atlassian-opensource}. As document/code storage, git repositories on Github are used, the continuous integration/deployment will be defined in the course of the project. %TODO: Add CI/CD tools when defined
 
-For project management, document/code storage and continuous integration/deployment we utilise the corresponding products by Atlassian (JIRA, BitBucket, Bamboo, Crowd)\cite{atlassian-opensource}.
-
-These applications are hosted on our HSR project server (\textit{sinv-56017.edu.hsr.ch}), which runs a standard Ubuntu Linux 17.10.
+These applications are hosted on our HSR project server, which runs a standard Ubuntu Linux 17.10.
 
 
 \subsection{Development Tools}
-
-%TODO
+The development tools will be defined in the course of the project. %TODO: Add development tools when defined
 
 \section{Backup and Data Safety}
-
 An incremental backup of the project server including the source code and documentation is created on an independent system every night.
 
 As our documents and code is stored in a git repository, they are also distributed on all development systems.
@@ -246,7 +237,7 @@ To maintain a high standard of quality, we take the following measures:
 \end{multicols}
 
 \section{Documentation}
-The official documents such as the final submission document, meeting minutes as well as this project plan are written in \LaTeX respectively ASCIIDoc and published on the project website \footnote{\url{https://xgb.redbackup.org}} as website containing all PDF documents.
+The official documents such as the final submission document, meeting minutes as well as this project plan are written in \LaTeX~respectively ASCIIDoc and published on the project website \footnote{\url{https://xgb.redbackup.org}} containing all PDF documents.
 
 The sources are in both cases kept under version control in the same repository, which allows us to use the same tools and processes for documentation and code. The continuous integration server builds and publishes the website whenever new changes are pushed to the repository.
 
