@@ -17,7 +17,7 @@
 \vspace*{.06\textheight}
 
 \HRule \\[0.4cm] % Horizontal line
-{\huge \bfseries Redbackup: Project Plan\par}\vspace{0.4cm} % Thesis title
+{\huge \bfseries XMPP-Grid Broker: Project Plan\par}\vspace{0.4cm} % Thesis title
 \HRule \\[1.5cm] % Horizontal line
 
 \begin{minipage}[t]{0.4\textwidth}
@@ -35,7 +35,7 @@
 
 \vfill
 
-{\large Autumn Term 2017}\\[4cm] % Date
+{\large Spring Term 2018}\\[4cm] % Date
 \includegraphics{resources/logo_hsr} % University/department logo - uncomment to place it
 
 \vfill
@@ -51,19 +51,12 @@
 
 \mainmatter
 \chapter{Project Overview}
-The goal of the study project is to provide a theoretical description of an append-only, distributed peer-to-peer data storage as well as a working prototype as described in the problem statement \cite{problemstatement}.
+The goal of the bachelor thesis is to build a broker application and graphical user interface to administer XMPP-Grids according to draft-ietf-mile-xmpp-grid, as described in the task description \cite{taskdescription}.
 
 
 \chapter{Project Organization}
 
-All team members have the same strategic rights and duties. Prof. Dr. Farhad Mehta is our project advisor as visible in Figure \ref{fig:organigram}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\linewidth]{resources/organigram}
-	\caption[Organigram]{Project organization chart}
-	\label{fig:organigram}
-\end{figure}
+All team members have the same strategic rights and duties. Prof. Dr. Andreas Steffen is our project advisor.
 
 \section{Roles}
 
@@ -82,80 +75,68 @@ For a better overview and to allow us a sophisticated time assessment, we decide
 Currently, tasks are separated into following components:
 
 \begin{multicols}{2}
-	\begin{itemize}
-		\item Final Submission Document
-		\item Concept Paper
-		\item Management
-		\item Poster
-		\item Presentation
-		\item Project Plan
-		\item Prototype
-	\end{itemize}
+    \begin{itemize}
+        \item Application
+        \item Final Submission Document
+        \item Management
+        \item Poster
+        \item Presentation
+        \item Project Plan
+    \end{itemize}
 \end{multicols}
 
 \section{Time Budget}
 
-The project started with the Kickoff Meeting on 18.09.2017 and will be completed after 14 weeks by 22.12.2017.
-The two team members are available for 240 hours each during this period which corresponds to a weekly time budget of 17.15 hour per person.
+The project started with the Kickoff Meeting on 19.02.2018 and will be completed after 16 weeks by 15.06.2018.
+The two team members are available for 360 hours each during the semester which corresponds to a weekly time budget of 20 hour per person and two weeks with a weekly time budget of 40 hours per person.
 
-Apart from the statutory holidays, there are no further absences planned. Statutory holidays do not affect the weekly time budget.
+Apart from the statutory holidays, there are no further absences planned. Statutory holidays do not affect the weekly time budget. %TODO: Osterwoche?
 
 \section{Schedule}
-The project schedule is an iterative process based on elements of SCRUM. 
+The project schedule is an iterative process based on elements of SCRUM.
 
-Due to the explorative nature of the project, we decided on a sprint duration of one week.
+Due to the explorative nature of the project, we decided on a sprint duration of one week. %TODO
 \subsection{Iterations \& Milestones}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\linewidth]{resources/overview}
-	\caption{Overview of the 14 iterations}
+	\caption{Overview of the 16 iterations}
 	\label{fig:overview}
 \end{figure}
 
 The goals and milestones resulting from each sprint are shown in Figure \ref{fig:sprint-details}.
 
-\subsection{Deviations from Original Schedule}
-
-The tasks and milestones were continuously updated during the project course, as is evident from Figure \ref{fig:sprint-details}. The most notable additions and exclusions are noted hereafter.
-
-\begin{description}
-    \item[Research Report] After the underlying research at the project start, we decided to not further research and summarise possible data distribution mechanisms, as it would not have been possible to finish the report and project in time otherwise.
-    \item[Rust Programming Language] As we settled for the Rust programming language in the language evaluation, we introduced the additional task to get familiar with rust an its network stack.
-    \item[Retrospective 2] During the last standup meeting in sprint 6, we decided to not hold the retrospective meeting 2, as we both had no open topics to discuss.
-    \item[Presentation] We decided to not create a presentation during the project course as this is no mandatory part of the study project.
-\end{description}
-
 \begin{figure}[h]
 	\begin{sideways}
-	\includegraphics[scale=0.75]{resources/sprint_details_updated}
+	\includegraphics[scale=0.75]{resources/sprint_details}
 	\end{sideways}
 	\centering
-	\caption{Detailed overview with tasks and milestones of all 14 sprints. \textit{Italic} and \sout{struck out} text mark deviations from the original project plan that occurred during the projects course.}
+	\caption{Detailed overview with tasks and milestones of all 16 sprints.}
 	\label{fig:sprint-details}
 \end{figure}
 
 
 \subsection{Meetings}
 
-The team works every Tuesday (10:00 - 17:00) together in the study project room and every Monday (08:00 - 17:00) remotely. Both days begin with a daily stand-up meeting taking no longer than 15 minutes. Sprint planning meetings are carried out on Tuesday at 10:00. Table \ref{meeting-time-budget} shows an overview of the total meeting time budget.
+The team works every Tuesday (08:00 - 17:00) together in the study room, every Wednesday (13:00-17:00) and Friday (08:00 - 17:00) remotely. Wednesday and Friday begin with a daily stand-up meeting taking no longer than 15 minutes. Sprint planning meetings are carried out on Tuesday at 10:00. Table \ref{meeting-time-budget} shows an overview of the total meeting time budget.
 
-\begin{table}[h]
+\begin{table}[]
 	\centering
 	\caption{Meeting Time Budget}
 	\label{meeting-time-budget}
 	\begin{tabular}{lll}
 		\hline
 		\textbf{Meeting Type}             & \textbf{Total Duration per Person} & \textbf{Total Duration for the Team} \\ \hline
-		\textbf{Supervision Meetings}     & 10 hours                           & 20 hours                             \\
-		\textbf{Standup Meetings}         & 7 hours                            & 14 hours                             \\
-		\textbf{Sprint Planning Meetings} & 16 hours                           & 32 hours                             \\
-		\textbf{Retrospective}            & 3 hours                            & 6 hours                              \\ \hline
-		\textbf{Total}                    & 36 hours                           & 72 hours
+		\textbf{Supervision Meetings}     & 12 hours                           & 24 hours                             \\
+		\textbf{Standup Meetings}         & 9 hours                            & 18 hours                             \\
+		\textbf{Sprint Planning Meetings} & 18 hours                           & 36 hours                             \\
+		\textbf{Retrospective}            & 4 hours                            & 8 hours                              \\ \hline
+		\textbf{Total}                    & 43 hours                           & 86 hours
 	\end{tabular}
 \end{table}
 
-Regular meetings with the project advisor take usually place on Friday in Prof. Dr. Mehta's office. The agenda must be sent via email to all participants at least 24 hours prior the meeting.
+Regular meetings with the project advisor take usually place on Friday in Prof. Dr. Steffen's office. The agenda must be sent via email to all participants at least 24 hours prior the meeting.
 
 Raphael Zimmermann will take meeting notes for every meeting. Meeting minutes are published on the project website afterwards.
 
@@ -166,7 +147,7 @@ An assessment of the project-specific risks is carried out in Table \ref{tbl:pro
 To account for these risks, we reduce our weekly sprint time by the total weighted risk applicable to the planned task topics (on average approximately 20\%). We also review the risk assessment after every sprint, adapt it and take measures if necessary.
 
 
-\begin{table}[h]
+\begin{table}[h] %TODO: Redefine Risks
 	\centering
 	\begin{tabu}{|l|c|c|c|}
 		\hline
@@ -246,16 +227,16 @@ To account for these risks, we reduce our weekly sprint time by the total weight
 
 For project management, document/code storage and continuous integration/deployment we utilise the corresponding products by Atlassian (JIRA, BitBucket, Bamboo, Crowd)\cite{atlassian-opensource}.
 
-These applications are hosted on our HSR project server (\textit{sinv-56017.edu.hsr.ch}), which runs a standard Ubuntu Linux 17.04.
+These applications are hosted on our HSR project server (\textit{sinv-56017.edu.hsr.ch}), which runs a standard Ubuntu Linux 17.10.
 
 
 \subsection{Development Tools}
 
-Since most development tools depend on the chosen technology and might change in the future, they are maintained separately on the project website \footnote{\url{https://www.redbackup.org/development/}}.
+%TODO
 
 \section{Backup and Data Safety}
 
-An incremental backup of the project server including the source code and documentation is created on an independent system (\textit{pin1262031.hsr.ch}) every night.
+An incremental backup of the project server including the source code and documentation is created on an independent system every night.
 
 As our documents and code is stored in a git repository, they are also distributed on all development systems.
 
@@ -275,7 +256,7 @@ To maintain a high standard of quality, we take the following measures:
 \end{multicols}
 
 \section{Documentation}
-The official documents such as the final submission document, the theoretical concept as well as this project plan are written in \LaTeX and published on the project website \footnote{\url{https://www.redbackup.org}} as PDF documents. All other documents such as meeting minutes are written in Markdown and made available in HTML on the website as well.
+The official documents such as the final submission document, meeting minutes as well as this project plan are written in \LaTeX respectively ASCIIDoc and published on the project website \footnote{\url{https://xgb.redbackup.org}} as website containing all PDF documents.
 
 The sources are in both cases kept under version control in the same repository, which allows us to use the same tools and processes for documentation and code. The continuous integration server builds and publishes the website whenever new changes are pushed to the repository.
 
@@ -286,28 +267,25 @@ Because the project plan allows for an iterative process, we use JIRA with its S
 Each sprint is mapped to JIRA, which allows the project advisor to trace the project progress. Sprints are represented as boards on which the current state and assignee of any issue is easily visible ("To Do", "In Progress", "Review", "Done").
 
 
-\subsection{Definition of Done / Review of Pull Requests}
+\subsection{Definition of Done}
 An issue may be closed if \emph{all} of the following conditions are met:
 
 \begin{itemize}
-    \item All functionality conforms to the specification. Any deviations must be discussed and decided by the team.
-    \item A review is performed and accepted in a pull request.
-        \begin{itemize}
-            \item The source code is reasonably documented.
-            \item No code is commented out.
-            \item No warnings and errors by the compiler or any other quality tool.
-            \item Reasonable unit and integration tests exist and pass.
-            \item All documentations are up to date including the project website.
-            \item The complete continuous integration pipeline works.
-            \item The code is formatted according to the guidlines (i.e. according to RustFmt)
-        \end{itemize}
-    \item The corresponding branch is merged into the stable branch (e.g. master).
-    \item All time is logged.
+	\item All functionality conforms to the specification. Any deviations must be discussed and decided by the team.
+	\item The source code is reasonably documented.
+	\item No code is commented out.
+	\item No warnings and errors by the compiler or any other quality tool.
+	\item A review is performed and accepted in a pull request.
+	\item The corresponding branch is merged into the stable branch (e.g. master).
+	\item All documents are up to date including the project website.
+	\item Reasonable unit and integration tests exist and pass.
+	\item The complete continuous integration pipeline works.
+	\item All time is logged.
 \end{itemize}
 
 \section{Development}
 
-Since we are in a very early and agile stage we decided to use GitHub Flow\cite{github-flow}, a straightforward development workflow.
+We decided to use GitHub Flow\cite{github-flow}, a straightforward development workflow.
 
 \begin{figure}[H]
 	\centering
