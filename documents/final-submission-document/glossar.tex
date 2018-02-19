@@ -1,0 +1,164 @@
+\newglossaryentry{administrator}
+{
+    name={administrator},
+    description={A person that is in charge of managing the system (e.g. add / remove nodes).}
+}
+\newglossaryentry{user}
+{
+    name={user},
+    description={A registered user with valid credentials who wants to back up and restore its data. Has a client installed on his local computer.}
+}
+\newglossaryentry{node}
+{
+    name={node},
+    description={A core participant in the system that manages \glspl{chunk} (See \fullref{sec:component-node}).}
+}
+\newglossaryentry{designated-node}
+{
+    name={designated node},
+    description={A \gls{node} that is selected by a \gls{client} to send backup data to or restore data from.}
+}
+\newglossaryentry{new-node}
+{
+    name={new node},
+    description={A \gls{node} scheduled to be integrated into the system, that was not part of that or any other system before.}
+}
+\newglossaryentry{leaving-node}
+{
+    name={leaving node},
+    description={A \gls{node} that is scheduled to leave the system permanently.}
+}
+\newglossaryentry{sending-node}
+{
+    name={sending node},
+    description={A \gls{node} that is sending data to a client or another node.}
+}
+\newglossaryentry{node-identifier}
+{
+    name={node identifier},
+    description={A unique identifier assigned to any node to distinguish it from other \glspl{node}.}
+}
+\newglossaryentry{location}
+{
+    name={location},
+    description={Multiple \glspl{node} can be associated with a (physical) location to ensure redundancy is met over multiple physical locations.}
+}
+\newglossaryentry{node-metadata}
+{
+    name={node metadata},
+    description={A set of data that describes a \gls{node} (e.g. its state, storage capacity). The set of data differs depending on the context.}
+}
+\newglossaryentry{storage}
+{
+    name={storage},
+    description={Component in charge of persisting data (see \fullref{sec:component-storage}).}
+}
+\newglossaryentry{serialised-chunk-index}
+{
+    name={serialised chunk index},
+    description={A serialised version of the \gls{chunk-index}, that might be split into multiple chunks, created on backup and used for restore.}
+}
+\newglossaryentry{chunk-content}
+{
+    name={chunk content},
+    description={The binary data a chunk represents.}
+}
+\newglossaryentry{chunk}
+{
+    name={chunk},
+    description={A piece of data in the system, consisting of binary data (\gls{chunk-content}), a unique identifier (\gls{chunk-identifier}) and an \gls{expiration-date}.}
+}
+\newglossaryentry{root-handle}
+{
+    name={root handle},
+    description={A flag to mark (the first part of) a \gls{serialised-chunk-index} to find all chunks associated with a backup for a restore.}
+}
+
+\newglossaryentry{chunk-identifier}
+{
+    name={chunk identifier},
+    description={A unique identifier of a \gls{chunk} that is derived from the corresponding \gls{chunk-content}, e.g. using hash functions.}
+}
+\newglossaryentry{chunk-index}
+{
+    name={chunk index},
+    description={A \gls{client}-side data structure that stores file attributes, folders and the file to \glspl{chunk} mapping.}
+}
+\newglossaryentry{chunk-table}
+{
+    name={chunk table},
+    description={A data structure on a \gls{node} containing all \gls{chunk-identifier} and \glspl{expiration-date} of all \glspl{chunk} managed by this \gls{node}.}
+}
+\newglossaryentry{file}
+{
+    name={file},
+    description={A document on a client system that shall be backed up. A file is represented in the system by one or more \glspl{chunk}.}
+}
+\newglossaryentry{expiration-date}
+{
+    name={expiration date},
+    description={Date, until which a given \gls{chunk} must be kept in the system.}
+}
+
+\newglossaryentry{client}
+{
+    name={client},
+    description={A piece of software that runs on a users computer, in charge of creating and restoring backups (see \fullref{sec:component-client}).}
+}
+
+\newglossaryentry{management}
+{
+    name={management},
+    description={A component that orchestrates the configuration of the system (see \fullref{sec:component-management}).}
+}
+
+\newglossaryentry{system}
+{
+    name={system},
+    description={The whole redbackup system as described in \fullref{sec:specification}.}
+}
+
+\newglossaryentry{node-cache}
+{
+    name={node-cache},
+    description={A list of contact information of nodes in the system that each client buffers in case the management is unavailable.}
+}
+
+\newglossaryentry{node-state}
+{
+    name={node state},
+    description={The intrinsic or extrinsic state of any node (see \fullref{sec:component-node}).}
+}
+
+\newglossaryentry{medium}
+{
+    name={medium},
+    description={Particular form of storage for files, e.g. hard disks or magnetic tape.}
+}
+
+\newglossaryentry{message}
+{
+    name={message},
+    description={A unit of communication between two parties (see \fullref{sec:messages}).}
+}
+
+\newglossaryentry{message-payload}
+{
+    name={message payload},
+    description={Actual data of a \gls{message} (see \fullref{sec:messages}).}
+}
+\newglossaryentry{message-header}
+{
+    name={message header},
+    description={Meta information of a \gls{message} that define operating parameters, consisting of multiple \glspl{header-field}.}
+}
+\newglossaryentry{header-field}
+{
+    name={header field},
+    description={One piece of meta information that is part of a \gls{message-header}, consisting of a key and value.}
+}
+\newglossaryentry{client-m-replication}
+{
+    name={client m-replication},
+    description={The \gls{client} defines a custom degree of redundancy from 1 to the number of \glspl{node} in the system. See \fullref{sec:fundamental-design-decisions}.}
+}

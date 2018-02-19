@@ -1,0 +1,25 @@
+:notitle:
+== Meeting 2017-09-26
+
+=== Attendees
+
+* Fabian Hauser, fhauser
+* Raphael Zimmermann, rzimmerm
+* Prof. Dr. Andreas Steffen, SFF
+
+Minute Taker: rzimmerm
+
+
+== Agenda
+
+. Datum mündliche Prüfung.
+. Date and time for the next meeting
+
+
+== Discussions / Decisions
+
+. Date and time for the next meeting
+
+== Upcoming absences
+
+_no upcoming absences_

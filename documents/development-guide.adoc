@@ -1,0 +1,34 @@
+= Development Guide
+
+== Tools
+
+- Git >= 2.0 for version control
+
+== Writing Guidelines
+
+In order to have a consistent style of writing, we defined the following guidelines. These guidelines apply to all documents related to the redbackup project.
+
+* Keep it brief, clear and objective
+* Write short and straightforward sentences
+* Do not use synonyms for concepts etc. (always use the same wording, e.g. 'client' or 'node')
+* Abbreviations must be introduced the first time they occur in the text (except well-known ones)
+* Prevent ambiguity in sentences
+* Use personal style ("we") whenever appropriate; usually for the description of our work.
+* When a gender-specific pronoun is required, use "he/she".
+* Use present tense except for the description of (our) completed work.
+
+== Definition of Done
+
+To maintain our high quality needs, we determined following definition of done guidelines:
+
+* All functionality conforms to the specification. Any deviations must be discussed and decided by the team.
+* A review is performed and accepted in a pull request.
+** The source code is reasonably documented.
+** No code is commented out.
+** No warnings and errors by the compiler or any other quality tool.
+** Reasonable unit and integration tests exist and pass.
+** All documentations are up to date including the project website.
+** The complete continuous integration pipeline works.
+** The code is formatted according to the guidlines (i.e. according to RustFmt)
+* The corresponding branch is merged into the stable branch (e.g. master).
+* All time is logged.

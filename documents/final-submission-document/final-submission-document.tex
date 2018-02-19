@@ -1,0 +1,276 @@
+% !TeX spellcheck = en_GB
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Masters/Doctoral Thesis 
+% LaTeX Template
+% Version 2.5 (27/8/17)
+%
+% This template was downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Version 2.x major modifications by:
+% Vel (vel@latextemplates.com)
+%
+% This template is based on a template by:
+% Steve Gunn (http://users.ecs.soton.ac.uk/srg/softwaretools/document/templates/)
+% Sunil Patel (http://www.sunilpatel.co.uk/thesis-template/)
+%
+% Template license:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{./latex_template}
+\loadglsentries{glossar}
+
+\begin{document}
+
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+\begin{center}
+
+\vspace*{.06\textheight}
+{\scshape\LARGE \univname\par} % University name
+
+{\scshape\large Department of Computer Science\par}\vspace{1.2cm} % University name
+\textsc{\Large Study Project}\\[0.5cm] % Thesis type
+
+\HRule \\[0.4cm] % Horizontal line
+{\huge \bfseries \ttitle\par}\vspace{0.4cm} % Thesis title
+\HRule \\[1.5cm] % Horizontal line
+ 
+\begin{minipage}[t]{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Authors:}\\
+\authorname % Author name - remove the \href bracket to remove the link
+\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{0.4\textwidth}
+\begin{flushright} \large
+\emph{Advisor:} \\
+\supname \\[1cm]
+\end{flushright}
+\end{minipage}\\[3cm]
+ 
+\vfill
+
+{\large Autumn Term 2017}\\[4cm] % Date
+\includegraphics{resources/logo_hsr} % University/department logo - uncomment to place it
+ 
+\vfill
+\end{center}
+\end{titlepage}
+%----------------------------------------------------------------------------------------
+%	License / information PAGE
+%------------------------------------------
+
+\vspace*{\fill}
+
+\noindent \textcopyright  Copyright 2017 by Fabian Hauser and Raphael Zimmermann\\
+
+\noindent This documentation is available under the GNU FDL License. \\
+
+\noindent The Redbackup software is licensed under the AGPL-License. This does not apply to third-party libraries.
+
+\pagebreak
+
+%----------------------------------------------------------------------------------------
+%	QUOTATION PAGE
+%----------------------------------------------------------------------------------------
+
+\vspace*{0.1\textheight}
+
+{\noindent\huge\textit{DON`T PANIC}\par\vspace{10pt}}
+
+\noindent\enquote{\itshape It looked insanely complicated, and this was one of the reasons why the snug plastic cover it fitted into had the words DON`T PANIC printed on it in large friendly letters.}\bigbreak
+
+\hfill The Hitchhiker`s Guide to the Galaxy
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{abstract}
+\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
+% Wie haben wir es gelöst (ganz kurz)
+% Hints for writing the abstract:
+% 
+% - Abstract = decision aid.
+% - No References allowed!
+% - Written in present Tense
+% - discuss the main Idea
+% - Brief description of what is done
+% - Brief description of the results
+% - Aus HSR-Modul RKI:
+%   - 100-200 Wörter
+%   - Ist in sich geschlossene und aussagekräftige Zusammenfassung
+%   - Enthält die Schlüsselbegriffe
+%   - Eigenständiger Text
+%   - Für SA: Informierende Abstracts, also Thema, Problem, Ziele, Vorgehen, Ergebnisse
+% - Siehe auch: Chapter 2.3 in https://wiki.hsr.ch/FarhadMehta/files/Writing_Scientific_Papers.pdf
+Today, most individuals and small companies have a limited choice with regards to how and where they back up their data.
+
+One possibility is via local storage media, for instance using external hard disk drives. This requires manual effort and may lead to a single point of failure, since location redundancy requires extra effort. A second possibility is via some publicly provided cloud service. This may lead to issues of privacy and a high dependency on third party providers. 
+
+No easy to use, distributed backup systems with private data storage is available on the market today.\\
+\vspace*{1ex}
+
+\noindent We propose a redundant distributed backup system to address this issue.\\
+\vspace*{1ex}
+
+\noindent The architecture of this system consists of backup nodes which exchange data using a peer-to-peer protocol, as well as a client application that creates and restores backups. A management system is introduced to allow users to manage multiple backup nodes.\\
+\vspace*{1ex}
+
+\noindent As a proof of concept, a prototype of the proposed client and node applications with a reduced feature set has been implemented in the Rust programming language. 
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	MANAGEMENT SUMMARY
+%----------------------------------------------------------------------------------------
+
+\chapter{Management Summary}
+\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
+%The Thesis Management Summary is written here (and usually kept to just this page).
+% Das Management Summary richtet sich in der Praxis an die "Chefs des Chefs",
+%  d.h. an die Vorgesetzten des Auftraggebers (diese sind in der Regel keine Fachspezialisten).
+%  Die Sprache soll knapp, klar und stark untergliedert sein. Zu verwenden ist folgenden Gliederung:
+% - Ausgangslage
+% - Vorgehen, Technologien
+% - Ergebnisse
+% - Ausblick (optional)
+
+\section*{Motivation} % Auch Ausgangslage
+Today, most individuals and small to medium enterprises make backups on cloud environments or local storage media as e.g. hard disk drives or network attached storage systems (NAS).
+
+These solutions require either high personal efforts to maintain local storage media or a high level of trust in a third party storage provider.
+
+Currently, there are no backup systems available on the market which are both easy to use and provide the user with a high level of data security and privacy.
+
+\section*{Project Goals, Approach and Technology}
+A backup system which solves this issues must not only provide a secure and reliable application to create and store backups, but also permit users without further domain knowledge to install and configure the application.
+
+To meet this requirements, we further analysed and created a comprehensive architectural design.
+
+The subsequent implementation of an architecture prototype took place in the \emph{Rust} system programming language\footnote{For more information, see \url{https://www.rust-lang.org/}}, which we learned during the course of this project. Rust enabled us to create a very stable yet efficient backup prototype.
+
+\section*{Results}
+The architecture consists of backup nodes, which store and distribute data directly over a network connection and a client application that creates and restores backups to or from nodes. Lastly, a management system is introduced to allow users to manage multiple backup nodes.
+
+The presented prototype demonstrates the viability of our proposed architecture, introducing a reduced feature set. The prototype can create, distribute and restore unencrypted backups.
+
+\section*{Prospects}
+
+To extend the prototype into a fully functional backup system, there are multiple functionalities and improvements that may be implemented. The main missing parts are backup encryption, splitting of backup data, advanced data distribution strategies and the management application.
+
+With our prototype, we demonstrate the viability of the architecture and pave the way for further implementations.
+
+% prototype demonstrates feasability
+% further conceptual refinement needed
+% implemenetation is complex - but doable.
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+
+\begin{acknowledgements}
+\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
+We would like to thank our advisor, Prof.~Dr.~Farhad~Mehta, for his continuous support and helpful comments.
+
+Furthermore, we would like to thank Andrea~Jurt~Massey for her feedback regarding writing and language use.
+
+\end{acknowledgements}
+
+%----------------------------------------------------------------------------------------
+%	LIST OF CONTENTS PAGES
+%----------------------------------------------------------------------------------------
+
+\setcounter{tocdepth}{2}
+\tableofcontents % Prints the main table of contents
+
+%----------------------------------------------------------------------------------------
+%	DEDICATION
+%----------------------------------------------------------------------------------------
+
+%TODO
+%\dedicatory{For/Dedicated to/To my\ldots}
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - CHAPTERS
+%----------------------------------------------------------------------------------------
+
+\mainmatter % Begin numeric (1,2,3...) page numbering
+
+\pagestyle{thesis} % Return the page headers back to the "thesis" style
+
+\include{chapters/1_introduction}
+
+\subsubsection*{} %This is needed, so that not the next page is referenced.
+\label{lastpage} %TODO: This label should be positioned below above the last paragraph
+
+\cleardoublepage
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+\backmatter
+\pagenumbering{Roman}
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+
+%----------------------------------------------------------------------------------------
+%	LIST OF FIGURES/TABLES PAGES
+%----------------------------------------------------------------------------------------
+
+\listoffigures % Prints the list of figures
+
+\listoftables % Prints the list of tables
+
+%----------------------------------------------------------------------------------------
+%	GLOSSARY
+%----------------------------------------------------------------------------------------
+
+\glsaddall
+\printglossary
+
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - APPENDICES
+%----------------------------------------------------------------------------------------
+
+
+\appendix % Cue to tell LaTeX that the following "chapters" are Appendices
+\chapter{Appendices}
+\setcounter{secnumdepth}{3}
+\renewcommand{\thechapter}{A}
+\section{Task Description}\label{sec:task-description}
+\includepdf[pages=-,scale=.9,frame]{../task-description-signed.pdf}
+\section{Project Plan}\label{sec:project-plan}
+\includepdf[pages=-,scale=.9,frame]{../project-plan/project-plan.pdf}
+
+%----------------------------------------------------------------------------------------
+%	DECLARATION PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{declaration}
+\addchaptertocentry{\authorshipname} % Add the declaration to the table of contents
+\noindent We, \authorname, declare that this thesis and the work presented in it are our own, original work.  All the sources we consulted and cited are clearly attributed. We have acknowledged all main sources of help. \\
+
+\noindent Fabian Hauser\\[2em]
+\rule[0.5em]{25em}{0.5pt}\\ % This prints a line for the signature
+\noindent Raphael Zimmermann\\[2em]
+\rule[0.5em]{25em}{0.5pt}\\ % This prints a line for the signature 
+\noindent Rapperswil, \today
+\end{declaration}
+
+\cleardoublepage
+
+
+%----------------------------------------------------------------------------------------
+
+\end{document}  
