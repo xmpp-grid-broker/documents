@@ -43,7 +43,7 @@
 \end{titlepage}
 
 %----------------------------------------------------------------------------------------
-%	LIST OF CONTENTS PAGES
+%    LIST OF CONTENTS PAGES
 %----------------------------------------------------------------------------------------
 
 \tableofcontents % Prints the main table of contents
@@ -63,8 +63,8 @@ All team members have the same strategic rights and duties. Prof. Dr. Andreas St
 Due to the small team size, most roles are performed by both team members.
 
 \begin{description}
-	\item[Raphael Zimmermann] project management, software engineering, quality assurance.
-	\item[Fabian Hauser] infrastructure management, software engineering, quality assurance.
+    \item[Raphael Zimmermann] project management, software engineering, quality assurance.
+    \item[Fabian Hauser] infrastructure management, software engineering, quality assurance.
 \end{description}
 
 \chapter{Project Management}
@@ -99,21 +99,21 @@ Due to the explorative nature of the project, we decided on a sprint duration of
 \subsection{Iterations \& Milestones}
 
 \begin{figure}[h!]
-	\centering
-	\includegraphics[width=1\linewidth]{resources/overview}
-	\caption{Overview of the 16 iterations}
-	\label{fig:overview}
+    \centering
+    \includegraphics[width=1\linewidth]{resources/overview}
+    \caption{Overview of the 16 iterations}
+    \label{fig:overview}
 \end{figure}
 
 The goals and milestones resulting from each sprint are shown in Figure \ref{fig:sprint-details}.
 
 \begin{figure}[h]
-	\begin{sideways}
-	\includegraphics[scale=0.75]{resources/sprint_details}
-	\end{sideways}
-	\centering
-	\caption{Detailed overview with tasks and milestones of all 16 sprints.}
-	\label{fig:sprint-details}
+    \begin{sideways}
+    \includegraphics[scale=0.75]{resources/sprint_details}
+    \end{sideways}
+    \centering
+    \caption{Detailed overview with tasks and milestones of all 16 sprints.}
+    \label{fig:sprint-details}
 \end{figure}
 
 
@@ -122,18 +122,18 @@ The goals and milestones resulting from each sprint are shown in Figure \ref{fig
 The team works every Tuesday (08:00 - 17:00) together in the study room, every Wednesday (13:00-17:00) and Friday (08:00 - 17:00) remotely. Wednesday and Friday begin with a daily stand-up meeting taking no longer than 15 minutes. Sprint planning meetings are carried out on Tuesday at 10:00. Table \ref{meeting-time-budget} shows an overview of the total meeting time budget.
 
 \begin{table}[]
-	\centering
-	\caption{Meeting Time Budget}
-	\label{meeting-time-budget}
-	\begin{tabular}{lll}
-		\hline
-		\textbf{Meeting Type}             & \textbf{Total Duration per Person} & \textbf{Total Duration for the Team} \\ \hline
-		\textbf{Supervision Meetings}     & 12 hours                           & 24 hours                             \\
-		\textbf{Standup Meetings}         & 9 hours                            & 18 hours                             \\
-		\textbf{Sprint Planning Meetings} & 18 hours                           & 36 hours                             \\
-		\textbf{Retrospective}            & 4 hours                            & 8 hours                              \\ \hline
-		\textbf{Total}                    & 43 hours                           & 86 hours
-	\end{tabular}
+    \centering
+    \caption{Meeting Time Budget}
+    \label{meeting-time-budget}
+    \begin{tabular}{lll}
+        \hline
+        \textbf{Meeting Type}             & \textbf{Total Duration per Person} & \textbf{Total Duration for the Team} \\ \hline
+        \textbf{Supervision Meetings}     & 12 hours                           & 24 hours                             \\
+        \textbf{Standup Meetings}         & 9 hours                            & 18 hours                             \\
+        \textbf{Sprint Planning Meetings} & 18 hours                           & 36 hours                             \\
+        \textbf{Retrospective}            & 4 hours                            & 8 hours                              \\ \hline
+        \textbf{Total}                    & 43 hours                           & 86 hours
+    \end{tabular}
 \end{table}
 
 Regular meetings with the project advisor take usually place on Friday in Prof. Dr. Steffen's office. The agenda must be sent via email to all participants at least 24 hours prior the meeting.
@@ -148,75 +148,65 @@ To account for these risks, we reduce our weekly sprint time by the total weight
 
 
 \begin{table}[h] %TODO: Redefine Risks
-	\centering
-	\begin{tabu}{|l|c|c|c|}
-		\hline
-		\diagbox[width=9em,height=2.5em]{Probability}{Severity}
-		  & High ($\geq 5d$) & Medium (2-5$d$) & Low ($\leq 2d$) \\ \hline
-		High ($\geq 60\%$)
-	      & 1 & 2 & \\ \hline
-		Medium (30-60\%)
-		  & 8 & 3, 4 &  \\ \hline
-		Low ($\leq 30\%$)
-		  & & 5, 6, 7 & \\ \hline
-	\end{tabu}
-	\caption[Risk matrix]{The risk matrix. Numbers reference to the risk assessment Table \ref{tbl:project-risks}}
-	\label{tbl:risk-matrix}
+    \centering
+    \begin{tabu}{|l|c|c|c|}
+        \hline
+        \diagbox[width=9em,height=2.5em]{Probability}{Severity}
+          & High ($\geq 5d$) & Medium (2-5$d$) & Low ($\leq 2d$) \\ \hline
+        High ($\geq 60\%$)
+          & 1 & & \\ \hline
+        Medium (30-60\%)
+          & 6 & &  \\ \hline
+        Low ($\leq 30\%$)
+          & & 3, 4, 5 & \\ \hline
+    \end{tabu}
+    \caption[Risk matrix]{The risk matrix. Numbers reference to the risk assessment Table \ref{tbl:project-risks}}
+    \label{tbl:risk-matrix}
 \end{table}
 
 
 \begin{sidewaystable}
-	\centering
-	\caption[Risk assessment]{Risk assessment table. Time in hours over the total project duration.}
-	\label{tbl:project-risks}
-	\begin{tabu}{r l X X r r r}
-		\hline
-		\# & Title & Description & Prevention / Reaction & Risk [h] & Probability & = [h] \\ \hline
+    \centering
+    \caption[Risk assessment]{Risk assessment table. Time in hours over the total project duration.}
+    \label{tbl:project-risks}
+    \begin{tabu}{r l X X r r r}
+        \hline
+        \# & Title & Description & Prevention / Reaction & Risk [h] & Probability & = [h] \\ \hline
 
-		1 & Problems with technology stack
-		  & Parts of the selected technology stack are not well suited, incomplete or immature.
-		  & Reflect the suitability of the chosen technology during the architecture draft.
-		  & 60 & 60\% & 36\\
+        1 & Incomplete Reference Documentation
+          & The Reference Documentation / Standards are incomplete or difficult to comprehend.
+          & Discuss missing parts with project advisor
+          & 60 & 60\% & 36\\
 
-		2 & Missing aspects in concept paper
-		  & The concept paper does not fully cover all necessary aspects of the prototype.
-		  & Invest an adequate amount of time in architecture design.
-		  & 30 & 60\% & 18\\
+        2 & Communication errors
+          & Errors due to miscommunication or misapprehension.
+          & Maintain a high level of interaction, precise specification of tasks responsibilities, conduct meetings if ambiguities exist.
+          & 30 & 50\% & 15\\
 
-		3 & The architecture/concept does not scale.
-		  & The chosen architecture/concept does not scale to the expected data volume or node size
-		  & Invest an adequate amount of time in architecture design.
-		  & 30 & 40\% & 12\\
+        3 & Problems with project infrastructure
+          & The used project infrastructure is not or only partially available, or data loss occurs within management software.
+          & Clean setup and self-hosting of the tools to prevent third-party dependencies.
+          & 45 & 30\% & 13.5 \\
 
-		4 & Communication errors
-		  & Errors due to miscommunication or misapprehension.
-		  & Maintain a high level of interaction, precise specification of tasks responsibilities, conduct meetings if ambiguities exist.
-		  & 20 & 50\% & 10\\
+        4 & Scope creep
+          & The project's scope is extended over the project course.
+          & Define the project scope and limitations precisely. Discuss changes with the project advisor.
+          & 45 & 30\% & 13.5\\
 
-		5 & Problems with project infrastructure
-		  & The used project infrastructure is not or only partially available, or data loss occurs within management software.
-		  & Clean setup and self-hosting of the tools to prevent third-party dependencies.
-		  & 30 & 30\% & 9 \\
+        5 & Dependency errors
+          & There are errors/bugs in third-party dependencies, i.e. libraries.
+          & Carefully select libraries and limit thid-party dependency to a minimum.
+          & 30 & 30\% & 9\\
 
-		6 & Scope creep
-		  & The project's scope is extended over the project course.
-		  & Define the project scope and limitations precisely. Discuss changes with the project advisor.
-		  & 30 & 30\% & 9\\
+        6 & Missing dependency documentation
+          & Selected libraries are lacking proper documentation
+          & The documentation quality of a library should be a selection criterion.
+          & 30 & 40\% & 12\\
 
-		7 & Dependency errors
-		  & There are errors/bugs in third-party dependencies, i.e. libraries.
-		  & Carefully select libraries and limit thid-party dependency to a minimum.
-		  & 20 & 30\% & 6\\
-
-		8 & Missing dependency documentation
-		  & Selected libraries are lacking proper documentation
-		  & The documentation quality of a library should be a selection criterion.
-		  & 15 & 40\% & 6\\
-
-		 \hline
-		& Total weighted risk & & & & & 106\\
-		\hline
-	\end{tabu}
+         \hline
+        & Total weighted risk & & & & & 99\\
+        \hline
+    \end{tabu}
 \end{sidewaystable}
 
 
@@ -245,14 +235,14 @@ As our documents and code is stored in a git repository, they are also distribut
 To maintain a high standard of quality, we take the following measures:
 
 \begin{multicols}{2}
-	\begin{itemize}
-	    \item short sprint reviews
-	    \item three extended retrospectives
-	    \item code reviews
-	    \item automated unit and integration testing
-	    \item publish all documentation on the project website using continuous integration/delivery.
-	    \item using continuous integration for source code
-	\end{itemize}
+    \begin{itemize}
+        \item short sprint reviews
+        \item three extended retrospectives
+        \item code reviews
+        \item automated unit and integration testing
+        \item publish all documentation on the project website using continuous integration/delivery.
+        \item using continuous integration for source code
+    \end{itemize}
 \end{multicols}
 
 \section{Documentation}
@@ -271,16 +261,16 @@ Each sprint is mapped to JIRA, which allows the project advisor to trace the pro
 An issue may be closed if \emph{all} of the following conditions are met:
 
 \begin{itemize}
-	\item All functionality conforms to the specification. Any deviations must be discussed and decided by the team.
-	\item The source code is reasonably documented.
-	\item No code is commented out.
-	\item No warnings and errors by the compiler or any other quality tool.
-	\item A review is performed and accepted in a pull request.
-	\item The corresponding branch is merged into the stable branch (e.g. master).
-	\item All documents are up to date including the project website.
-	\item Reasonable unit and integration tests exist and pass.
-	\item The complete continuous integration pipeline works.
-	\item All time is logged.
+    \item All functionality conforms to the specification. Any deviations must be discussed and decided by the team.
+    \item The source code is reasonably documented.
+    \item No code is commented out.
+    \item No warnings and errors by the compiler or any other quality tool.
+    \item A review is performed and accepted in a pull request.
+    \item The corresponding branch is merged into the stable branch (e.g. master).
+    \item All documents are up to date including the project website.
+    \item Reasonable unit and integration tests exist and pass.
+    \item The complete continuous integration pipeline works.
+    \item All time is logged.
 \end{itemize}
 
 \section{Development}
@@ -288,10 +278,10 @@ An issue may be closed if \emph{all} of the following conditions are met:
 We decided to use GitHub Flow\cite{github-flow}, a straightforward development workflow.
 
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.85\linewidth]{resources/github_flow}
-	\caption[Organigram]{GitHub Flow illustrated ( Source \cite{github-flow})}
-	\label{fig:organigram}
+    \centering
+    \includegraphics[width=0.85\linewidth]{resources/github_flow}
+    \caption[Organigram]{GitHub Flow illustrated ( Source \cite{github-flow})}
+    \label{fig:organigram}
 \end{figure}
 
 
@@ -311,7 +301,7 @@ A minimal performance analysis will be carried out at the end of the project.
 
 %\cleardoublepage
 %----------------------------------------------------------------------------------------
-%	BIBLIOGRAPHY
+%    BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
 \backmatter
 \pagenumbering{Roman}
@@ -322,7 +312,7 @@ A minimal performance analysis will be carried out at the end of the project.
 
 
 %----------------------------------------------------------------------------------------
-%	LIST OF FIGURES/TABLES PAGES
+%    LIST OF FIGURES/TABLES PAGES
 %----------------------------------------------------------------------------------------
 
 \listoffigures % Prints the list of figures
@@ -330,7 +320,7 @@ A minimal performance analysis will be carried out at the end of the project.
 \listoftables % Prints the list of tables
 
 %----------------------------------------------------------------------------------------
-%	ABBREVIATIONS
+%    ABBREVIATIONS
 %----------------------------------------------------------------------------------------
 
 \begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
