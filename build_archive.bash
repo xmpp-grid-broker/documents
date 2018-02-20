@@ -15,12 +15,14 @@ function is_in_path {
 }
 
 function build_tex {
-  docker run -ti --rm -u $(id -u) -v $(pwd):/tectonic:z fabianhauser/tectonic:0.1.6-2 "documents/$1/$1.tex"
+  tectonic="docker run -ti --rm --user $(id -u) --volume $(pwd):/tectonic:z fabianhauser/tectonic:0.1.6-2"
+  $tectonic "documents/$1/$1.tex"
   cp "documents/$1/$1.pdf" "$TARGET_DIRECTORY/documents/$1.pdf"
 }
 
 function build_adoc {
-  docker run -ti --rm --user $(id -u) --volume $(pwd):/documents:z asciidoctor/docker-asciidoctor asciidoctor-pdf "$1.adoc"
+  asciidoctor_pdf="docker run -ti --rm --user $(id -u) --volume $(pwd):/documents:z asciidoctor/docker-asciidoctor asciidoctor-pdf"
+  $asciidoctor_pdf "$1.adoc"
   cp "$1.pdf" "$TARGET_DIRECTORY/$1.pdf"
 }
 
