@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu
+set -eux
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 TARGET_DIRECTORY="$SCRIPT_PATH/export"
@@ -15,7 +15,7 @@ function is_in_path {
 }
 
 function build_tex {
-  docker run -ti --rm -u $(id -u) -v $(pwd):/tectonic:z -v "$HOME/.cache/docker-tectonic":/home/tectonic/.cache/docker-tectonic/:z fabianhauser/tectonic:0.1.6-2 "documents/$1/$1.tex"
+  docker run -ti --rm -u $(id -u) -v $(pwd):/tectonic:z fabianhauser/tectonic:0.1.6-2 "documents/$1/$1.tex"
   cp "documents/$1/$1.pdf" "$TARGET_DIRECTORY/documents/$1.pdf"
 }
 
