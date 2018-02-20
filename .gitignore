@@ -5,6 +5,7 @@ documents/development-guide.pdf
 out/
 export/
 .cache/
+README.html
 
 .vscode/
 xmpp-grid-broker.zip
