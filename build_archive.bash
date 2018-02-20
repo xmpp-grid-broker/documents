@@ -67,3 +67,5 @@ copy "presentations"
 echo "creating archive..."
 cd "$TARGET_DIRECTORY"
 zip -r "../xmpp-grid-broker.zip" "./"
+
+touch "$TARGET_DIRECTORY/.nojekyll" #bypass github pages...
