@@ -1,6 +1,9 @@
 sudo: required
 services:
   - docker
+cache:
+  directories:
+    - .cache
 script:
   - ./build_archive.bash
 deploy:

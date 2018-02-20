@@ -4,6 +4,7 @@ documents/project-plan/project-plan.pdf
 documents/development-guide.pdf
 out/
 export/
+.cache/
 
 .vscode/
 xmpp-grid-broker.zip
