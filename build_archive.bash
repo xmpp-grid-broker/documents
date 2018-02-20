@@ -46,7 +46,7 @@ echo "Building PDFs..."
 build_tex "project-plan"
 build_tex "final-submission-document"
 
-for f in "documents/meeting-minutes/"*; do
+for f in documents/meeting-minutes/*.adoc; do
   build_adoc "${f%%.*}"
 done	
 
