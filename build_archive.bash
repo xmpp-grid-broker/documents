@@ -15,7 +15,7 @@ function is_in_path {
 }
 
 function build_tex {
-  tectonic="docker run -ti --rm --user $(id -u) --volume $(pwd):/tectonic:z fabianhauser/tectonic:0.1.6-2"
+  tectonic="docker run -ti --rm --user $(id -u) --env=HOME=/tectonic --volume $(pwd):/tectonic:z fabianhauser/tectonic:0.1.6-2"
   $tectonic "documents/$1/$1.tex"
   cp "documents/$1/$1.pdf" "$TARGET_DIRECTORY/documents/$1.pdf"
 }
