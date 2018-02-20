@@ -9,5 +9,6 @@ deploy:
   skip-cleanup: true
   repo: xmpp-grid-broker/xmpp-grid-broker.github.io
   github-token: $GITHUB_TOKEN
+  target-branch: master
   on:
     branch: master
