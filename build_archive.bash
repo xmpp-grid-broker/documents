@@ -16,14 +16,16 @@ function is_in_path {
 
 function build_tex {
   tectonic="docker run -ti --rm --user $(id -u) --env=HOME=/tectonic --volume $(pwd):/tectonic:z fabianhauser/tectonic:0.1.6-2"
-  $tectonic "documents/$1/$1.tex"
-  cp "documents/$1/$1.pdf" "$TARGET_DIRECTORY/documents/$1.pdf"
+  $tectonic "$1"
 }
 
-function build_adoc {
+function build_adoc_pdf {
   asciidoctor_pdf="docker run -ti --rm --user $(id -u) --volume $(pwd):/documents:z asciidoctor/docker-asciidoctor asciidoctor-pdf"
-  $asciidoctor_pdf "$1.adoc"
-  cp "$1.pdf" "$TARGET_DIRECTORY/$1.pdf"
+  $asciidoctor_pdf "$1"
+}
+function build_adoc_html {
+  asciidoctor="docker run -ti --rm --user $(id -u) --volume $(pwd):/documents:z asciidoctor/docker-asciidoctor asciidoctor"
+  $asciidoctor "$1"
 }
 
 function copy {
@@ -40,26 +42,24 @@ fi
 echo "bootstrapping directories..."
 mkdir "$TARGET_DIRECTORY"
 mkdir "$TARGET_DIRECTORY/documents"
-mkdir "$TARGET_DIRECTORY/documents/meeting-minutes/"
 
 echo "Building PDFs..."
-build_tex "project-plan"
-build_tex "final-submission-document"
 
-for f in documents/meeting-minutes/*.adoc; do
-  build_adoc "${f%%.*}"
-done	
+build_adoc_pdf "documents/meeting-minutes/meeting-minutes.adoc"
+build_adoc_pdf "documents/development-guide.adoc"
 
-build_adoc "documents/development-guide"
+build_tex "documents/project-plan/project-plan.tex"
+build_tex "documents/final-submission-document/final-submission-document.tex"
 
-echo "Copy existing pdfs..."
-copy "documents/task-description-signed.pdf"
+build_adoc_html README.adoc
+
+echo "Copy existing files..."
+copy "README.html"
 copy "documents/usage-rights.pdf"
-copy "documents/time-accounting.pdf"
 copy "documents/poster.pdf"
+cp -r "documents/final-submission-document/final-submission-document.pdf" "$TARGET_DIRECTORY/documents/"
 copy "project-management"
 copy "presentations"
-
 
 # TODO: Clone the source code repos (when it exists)
 # git clone git@github.com:xmpp-grid-broker/<REPO-NAME-HERE>.git "$TARGET_DIRECTORY/sources"

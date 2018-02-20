@@ -1,4 +1,3 @@
-:notitle:
 == Meeting 2018-09-26
 
 === Attendees
@@ -10,17 +9,17 @@
 Minute Taker: rzimmerm
 
 
-== Agenda
+=== Agenda
 
 . Date for oral exam
 . Is there a presentation during the semester?
 . Date and time for the next meeting
 
 
-== Discussions / Decisions
+=== Discussions / Decisions
 
 . Date and time for the next meeting
 
-== Upcoming absences
+=== Upcoming absences
 
 _no upcoming absences_

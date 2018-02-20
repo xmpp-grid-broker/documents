@@ -13,5 +13,6 @@ deploy:
   repo: xmpp-grid-broker/xmpp-grid-broker.github.io
   github-token: $GITHUB_TOKEN
   target-branch: master
+  keep-history: true
   on:
     branch: master

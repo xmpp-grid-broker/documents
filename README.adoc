@@ -1,9 +1,9 @@
 = Bachelor Thesis XMPP-Grid Broker 
 
-This archive/CD/repository contains all project data of the bachelor project `XMPP-Grid Broker` conducted in the spring semester 2018 by Fabian Hauser and Raphael Zimmermann.
+This archive/website contains all project data of the bachelor project `XMPP-Grid Broker` conducted in the spring semester 2018 by Fabian Hauser and Raphael Zimmermann.
 
-The directory `project-management` contains a HTML Report exported from the issue tracker used during the study project.
-
-All other project artefacts including the final submission document, poster, meeting minutes and time accounting can be found in the `documents` directory.
-
-The source code is stored in in git-repositories in the `sources`-directory.
+* link:./documents/final-submission-document.pdf[Final Submission Document]
+* link:./documents/poster.pdf[Poster]
+* link:./documents/usage-rights.pdf[Signed Usage Rights]
+* link:./presentations/final.html[Final Presentation]
+* link:./project-management/jira-export.html[Project Management]
