@@ -116,7 +116,7 @@ The goals and milestones resulting from each sprint are shown in Figure \ref{fig
 
 
 \subsection{Meetings}
-The team works every Tuesday (08:00 - 17:00) together in the study room, every Wednesday (13:00-17:00) and Friday (08:00 - 17:00) remotely. Wednesday and Friday begin with a daily stand-up meeting taking no longer than 15 minutes. Sprint planning meetings are carried out on Tuesday at 10:00. Table \ref{meeting-time-budget} shows an overview of the total meeting time budget.
+The team works every Monday (08:00 - 12:00) and Tuesday (08:00 - 17:00) together in the study room and remotely Fridays (08:00 - 17:00). Wednesday and Friday begin with a daily stand-up meeting taking no longer than 15 minutes. Sprint planning meetings are carried out on Tuesday at 10:00. Table \ref{meeting-time-budget} shows an overview of the total meeting time budget.
 
 \begin{table}[]
     \centering
@@ -126,14 +126,14 @@ The team works every Tuesday (08:00 - 17:00) together in the study room, every W
         \hline
         \textbf{Meeting Type}             & \textbf{Total Duration per Person} & \textbf{Total Duration for the Team} \\ \hline
         \textbf{Supervision Meetings}     & 12 hours                           & 24 hours                             \\
-        \textbf{Standup Meetings}         & 9 hours                            & 18 hours                             \\
+        \textbf{Standup Meetings}         & 16 hours                            & 32 hours                             \\
         \textbf{Sprint Planning Meetings} & 18 hours                           & 36 hours                             \\
         \textbf{Retrospective}            & 4 hours                            & 8 hours                              \\ \hline
-        \textbf{Total}                    & 43 hours                           & 86 hours
+        \textbf{Total}                    & 50 hours                           & 100 hours
     \end{tabular}
 \end{table}
 
-Regular meetings with the project advisor take usually place on Friday in Prof. Dr. Steffen's office. The agenda must be sent via email to all participants at least 24 hours prior the meeting.
+Regular meetings with the project advisor take usually place on Monday in Prof. Dr. Steffen's office.
 
 Raphael Zimmermann will take meeting notes for every meeting. Meeting minutes are published on the project website afterwards.
 
@@ -169,8 +169,8 @@ To account for these risks, we reduce our weekly sprint time by the total weight
         \hline
         \# & Title & Description & Prevention / Reaction & Risk [h] & Probability & = [h] \\ \hline
 
-        1 & Incomplete Reference Documentation
-          & The Reference Documentation / Standards are incomplete or difficult to comprehend.
+        1 & Incomplete reference documentation
+          & The reference documentation / standards are incomplete or difficult to comprehend.
           & Discuss missing parts with project advisor
           & 60 & 60\% & 36\\
 
@@ -208,7 +208,7 @@ To account for these risks, we reduce our weekly sprint time by the total weight
 
 \chapter{Infrastructure}
 \section{Project Management and Development}
-For project management we utilise the corresponding products by Atlassian (JIRA and Crowd)\cite{atlassian-opensource}. As document/code storage, git repositories on Github are used, the continuous integration/deployment will be defined in the course of the project. %TODO: Add CI/CD tools when defined
+For project management we utilise JIRA\cite{atlassian-opensource}. As document/code storage, git repositories on Github are used, the continuous integration/deployment will be defined in the course of the project. %TODO: Add CI/CD tools when defined
 
 These applications are hosted on our HSR project server, which runs a standard Ubuntu Linux 17.10.
 
@@ -228,7 +228,7 @@ To maintain a high standard of quality, we take the following measures:
 \begin{multicols}{2}
     \begin{itemize}
         \item short sprint reviews
-        \item three extended retrospectives
+        \item four extended retrospectives
         \item code reviews
         \item automated unit and integration testing
         \item publish all documentation on the project website using continuous integration/delivery.
@@ -242,7 +242,7 @@ The official documents such as the final submission document, meeting minutes as
 The sources are in both cases kept under version control in the same repository, which allows us to use the same tools and processes for documentation and code. The continuous integration server builds and publishes the website whenever new changes are pushed to the repository.
 
 \section{Project Management}
-Because the project plan allows for an iterative process, we use JIRA with its SCRUM-Features (such as sprint creation or boards) for project management.
+Because the project plan allows for an iterative process, we use JIRA with its SCRUM-features (such as sprint creation or boards) for project management.
 
 \subsection{Sprint Planning}
 Each sprint is mapped to JIRA, which allows the project advisor to trace the project progress. Sprints are represented as boards on which the current state and assignee of any issue is easily visible ("To Do", "In Progress", "Review", "Done").
