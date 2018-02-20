@@ -12,7 +12,8 @@ Minute Taker: rzimmerm
 
 == Agenda
 
-. Datum mündliche Prüfung.
+. Date for oral exam
+. Is there a presentation during the semester?
 . Date and time for the next meeting
 
 
