@@ -8,6 +8,9 @@ export/
 .vscode/
 xmpp-grid-broker.zip
 
+
+*.ods#
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
