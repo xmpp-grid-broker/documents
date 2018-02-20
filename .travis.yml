@@ -1,0 +1,13 @@
+sudo: required
+services:
+  - docker
+script:
+  - ./build_archive.bash
+deploy:
+  provider: pages
+  local-dir: export/
+  skip-cleanup: true
+  repo: xmpp-grid-broker/xmpp-grid-broker.github.io
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master

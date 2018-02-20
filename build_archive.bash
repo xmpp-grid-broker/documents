@@ -15,12 +15,12 @@ function is_in_path {
 }
 
 function build_tex {
-  tectonic "documents/$1/$1.tex"
+  docker run -ti --rm -u $(id -u) -v $(pwd):/tectonic:z -v "$HOME/.cache/docker-tectonic":/home/tectonic/.cache/docker-tectonic/:z fabianhauser/tectonic:0.1.6-2 "documents/$1/$1.tex"
   cp "documents/$1/$1.pdf" "$TARGET_DIRECTORY/documents/$1.pdf"
 }
 
 function build_adoc {
-  asciidoctor -r asciidoctor-pdf -b pdf "$1.adoc"
+  docker run -ti --rm --user $(id -u) --volume $(pwd):/documents:z asciidoctor/docker-asciidoctor asciidoctor-pdf "$1.adoc"
   cp "$1.pdf" "$TARGET_DIRECTORY/$1.pdf"
 }
 
@@ -29,8 +29,6 @@ function copy {
 }
 
 is_in_path zip
-is_in_path tectonic
-is_in_path asciidoctor
 
 if [ -d "$TARGET_DIRECTORY" ]; then
   echo "cleaning up..."
