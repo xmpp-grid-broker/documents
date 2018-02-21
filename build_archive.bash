@@ -54,7 +54,7 @@ build_tex "documents/final-submission-document/final-submission-document.tex"
 build_adoc_html README.adoc
 
 echo "Copy existing files..."
-copy "README.html"
+cp "README.html" "$TARGET_DIRECTORY/index.html"
 copy "documents/usage-rights.pdf"
 copy "documents/poster.pdf"
 cp -r "documents/final-submission-document/final-submission-document.pdf" "$TARGET_DIRECTORY/documents/"
@@ -67,5 +67,3 @@ copy "presentations"
 echo "creating archive..."
 cd "$TARGET_DIRECTORY"
 zip -r "../xmpp-grid-broker.zip" "./"
-
-touch "$TARGET_DIRECTORY/.nojekyll" #bypass github pages...
