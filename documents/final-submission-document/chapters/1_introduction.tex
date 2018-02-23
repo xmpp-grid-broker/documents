@@ -8,6 +8,7 @@ In this section, we legitimate this work and explain the value and applicability
 \section{Background}
 
 % TODO: Write introduction: We work with \cite{ietf-mile-xmpp-grid-05}, which is (as the name suggetss) heavily based on XMPP and some XEPs.
+% TODO: Which terminology do we use? If we use the sacm terminology, we should also use these terms in the xmpp introduction.
 
 \subsection{XMPP (eXtensible Messaging and Presence Protocol)}
 The Extensible Messaging and Presence Protocol (in short XMPP) is an open protocol that enables the near-real-time exchange of small data between any network endpoints\cite{rfc6120}. While it was originally designed for Instant Messaging (IM), it can be an is used for a wide range of data exchange applications \cite{ieee-xplore-stream-xml-xmpp}.
@@ -49,6 +50,12 @@ Nodes, also known as topics and exchanges, are the communication hubs. Entities 
 
 The protocol defines a hierarchy of six affiliations of which only two, `owner` and `none`, and are required. The remaining four affiliations are recommended. An owner of a node can manage the subscriptions as well as affiliations of other entities associated with a given node. % TODO (in Sprint 2): Discuss if this is problematic...
 
-% TODO: This might be extended depending on the further contents of this document
+To make the creation of node simpler for clients, PubSub defines five node access models: open, presence, roaster, authorize and whitelist.
+The open model allows uncontrolled access while presence and roaster are specific for IM. Using the authorize model, the owner has to approve all subscription requests. The whitelist model enables the owner to maintain a list of entities that are allowed to subscribe. 
+% TODO: Who is allowed to create a node? Anyone? is this an issue?
+
 \subsection{IETF Internet-Draft: Using XMPP for Security Information Exchange}
-TODO \cite{ietf-mile-xmpp-grid-05}
+
+This IETF Internet draft describes how the XMPP protocol enhanced with the previously discussed XEPs, most notably the PubSub extension, can be used for the exchange and distribution of security-relevant information between network devices. One of the primary motivation for using XMPP for this task is the fast propagation of such security-relevant data. Using XMPP for such a task also comes with its downsides. Because the XMPP server (Broker/Controller) is the central configuration component in charge of managing access permission, its compromisation has serious consequences. The draft describes the trust model, thread model as well as specific countermeasures, e.g. to use at least TLS 1.2. These countermeasures also define restrictions of the XMPP protocol and its extensions, e.g. by limiting the node access models of PubSub to whitelist and authorize only.\cite{ietf-mile-xmpp-grid-05}
+
+% "In order to ease the deployment burden, subscription approvals and whitelist management can be automated (e.g, the Topic "owner" can be a policy server). " Is this one of the main tasks of this BA?
