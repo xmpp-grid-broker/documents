@@ -3,7 +3,7 @@
 \label{sec:introduction}
 
 \section{Motivation}
-In this section, we legitimate this work and explain the value and applicability of our proposed solution.
+In this section, we legitimate this thesis and explain the value and applicability of our proposed solution.
 
 \section{Background}
 
@@ -11,19 +11,19 @@ In this section, we legitimate this work and explain the value and applicability
 % TODO: Which terminology do we use? If we use the sacm terminology, we should also use these terms in the xmpp introduction.
 
 \subsection{XMPP (eXtensible Messaging and Presence Protocol)}
-The Extensible Messaging and Presence Protocol (in short XMPP) is an open protocol that enables the near-real-time exchange of small data between any network endpoints\cite{rfc6120}. While it was originally designed for Instant Messaging (IM), it can be an is used for a wide range of data exchange applications \cite{ieee-xplore-stream-xml-xmpp}.
+The Extensible Messaging and Presence Protocol (in short XMPP) is an open protocol that enables the near-real-time exchange of small data between any network endpoints~\cite{rfc6120}. While it was originally designed for Instant Messaging (IM), it can be an is used for a wide range of data exchange applications~\cite{ieee-xplore-stream-xml-xmpp}.
 
 % Should we add concrete examples here? Google Talk, Facebook Chat, Collecta Search Engine (http://collecta.com/) and t IEEE Draft ... (sourcE: proffessional xmpp programming)
 
-XMPP is made of small building blocks defined in the core protocol\cite{rfc6120} and numerous extensions called XEPs \cite{xep-0001}. The core comprises of functionality for setup and encryption of communication channels, XML Streams error handling and more. Addition functionality such as service discovery\cite{xep-0030}, Publish-Subscribe\cite{xep-0060} are defined in additional extensions.
+XMPP is made of small building blocks defined in the core protocol\cite{rfc6120} and numerous extensions called XEPs~\cite{xep-0001}. The core comprises of functionality for setup and encryption of communication channels, XML Streams error handling and more. Addition functionality such as service discovery~\cite{xep-0030}, Publish-Subscribe~\cite{xep-0060} are defined in additional extensions.
 
-Although XMPP supports peer-to-peer communication it is mostly used in a traditional client-server architecture. A client can send data to any addressable (using Jabber IDs, JIDs) entity. The receiver is not present in the same domain (server), the server negotiates a server-to-server stream and forwards the data to it.\cite{rfc6120}
+Although XMPP supports peer-to-peer communication it is mostly used in a traditional client-server architecture. A client can send data to any addressable (using Jabber IDs, JIDs) entity. The receiver is not present in the same domain (server), the server negotiates a server-to-server stream and forwards the data to it~\cite{rfc6120}.
 
-The data exchanged over XMPP is XML which makes structured as well as extensible. XMPP uses XML in the of unidirectional data streams which are basically long-lived TCP-Connections. The client opens a connection to the server, and the server opens one back (i.e. `<stream>`. In both streams, an XML element is opened after the connection is established. During the conversation, an arbitrary amount of Stanzas (specified XML child elements) written in the stream. Before the connection is closed, the root element is closed (i.e. `</stream>') and the two streams form two valid XML documents.\cite{rfc6120}\cite{professional-xmpp}
+The data exchanged over XMPP is XML which makes structured as well as extensible. XMPP uses XML in the of unidirectional data streams which are basically long-lived TCP-Connections. The client opens a connection to the server, and the server opens one back (i.e. `<stream>`. In both streams, an XML element is opened after the connection is established. During the conversation, an arbitrary amount of Stanzas (specified XML child elements) written in the stream. Before the connection is closed, the root element is closed (i.e. `</stream>') and the two streams form two valid XML documents~\cite{rfc6120}\cite{professional-xmpp}.
 
-The core Stanza types are messages (`<message/>`), presence (`<presence/>`) and Info/Query (`<iq/>'). Messages can contain arbitrary data similar to email but optimised for immediate delivery. Presence deals with network availability and the propagation of presence. An Info-Query consists of a request and a response (similar to the GET and POST HTTP methods), which is used for example for feature negotiation and configuration. Because of these coarse semantics, XMPP provides a generalized communication layer. \cite{rfc6120} \cite{ieee-xplore-stream-xml-xmpp}
+The core Stanza types are messages (`<message/>`), presence (`<presence/>`) and Info/Query (`<iq/>'). Messages can contain arbitrary data similar to email but optimised for immediate delivery. Presence deals with network availability and the propagation of presence. An Info-Query consists of a request and a response (similar to the GET and POST HTTP methods), which is used for example for feature negotiation and configuration. Because of these coarse semantics, XMPP provides a generalized communication layer~\cite{rfc6120}\cite{ieee-xplore-stream-xml-xmpp}.
 
-Figure \fullref{fig:xmpp-overview} illustrates an example setup with two servers and three clients.
+Figure~\fullref{fig:xmpp-overview} illustrates an example setup with two servers and three clients.
 
 \begin{figure}[h]
 	\centering
@@ -34,28 +34,26 @@ Figure \fullref{fig:xmpp-overview} illustrates an example setup with two servers
 
 \subsection{Relevant XMPP Extensions}
 
-The XMPP grid draft\cite{ietf-mile-xmpp-grid-05} makes heavy use of multiple XEPs, most notably publish-subscribe. The following XEPs are relevant as well:
+The XMPP grid draft~\cite{ietf-mile-xmpp-grid-05} makes heavy use of multiple XEPs, most notably publish-subscribe. The following XEPs are relevant as well:
 
-\paragraph{XEP-0004: Data Forms} is a flexible protocol that can be used in workflows such as service configuration as well as for application-specific data description and reporting. The protocol provides forms processing, common field types as well as extensibility mechanisms. \cite{xep-0004} 
+\paragraph{XEP-0004: Data Forms} is a flexible protocol that can be used in workflows such as service configuration as well as for application-specific data description and reporting. The protocol provides forms processing, common field types as well as extensibility mechanisms~\cite{xep-0004}.
 
-\paragraph{XEP-0030: Service Discovery} enables applications to discover information about the identity and capabilities of an entity, e.g. is it a server, as well as items associated with an entity, e.g. a list of publish-subscribe nodes. \cite{xep-0030}
+\paragraph{XEP-0030: Service Discovery} enables applications to discover information about the identity and capabilities of an entity, e.g. is it a server, as well as items associated with an entity, e.g. a list of publish-subscribe nodes~\cite{xep-0030}.
 
-\paragraph{XEP-0059: Result Set Management} allows entities to manage the receipt of large result sets, e.g. by paging through the result or limiting the number of results. Result Management is often desired when dealing with large dynamic result sets from service discovery or publish-subscribe and time or other resources are limited. \cite{xep-0059} 
+\paragraph{XEP-0059: Result Set Management} allows entities to manage the receipt of large result sets, e.g. by paging through the result or limiting the number of results. Result Management is often desired when dealing with large dynamic result sets from service discovery or publish-subscribe and time or other resources are limited~\cite{xep-0059}.
 
 \subsubsection{XEP-0060: Publish-Subscribe}
-
-The Publish-Subscribe Extension, hereafter called PubSub, enables XMPP entities broadcast information via nodes to subscribed entities. \cite{xep-0060}
+The Publish-Subscribe Extension, hereafter called PubSub, enables XMPP entities broadcast information via nodes to subscribed entities~\cite{xep-0060}.
 
 Nodes, also known as topics and exchanges, are the communication hubs. Entities can create nodes and configure them, e.g. set up subscription timeouts, limit publish and subscription rights. The configuration mechanism is based on data forms (XEP-0004).
 
 The protocol defines a hierarchy of six affiliations of which only two, `owner` and `none`, and are required. The remaining four affiliations are recommended. An owner of a node can manage the subscriptions as well as affiliations of other entities associated with a given node. % TODO (in Sprint 2): Discuss if this is problematic...
 
 To make the creation of node simpler for clients, PubSub defines five node access models: open, presence, roaster, authorize and whitelist.
-The open model allows uncontrolled access while presence and roaster are specific for IM. Using the authorize model, the owner has to approve all subscription requests. The whitelist model enables the owner to maintain a list of entities that are allowed to subscribe. 
+The open model allows uncontrolled access while presence and roaster are specific for IM. Using the authorize model, the owner has to approve all subscription requests. The whitelist model enables the owner to maintain a list of entities that are allowed to subscribe.
 % TODO: Who is allowed to create a node? Anyone? is this an issue?
 
 \subsection{IETF Internet-Draft: Using XMPP for Security Information Exchange}
-
-This IETF Internet draft describes how the XMPP protocol enhanced with the previously discussed XEPs, most notably the PubSub extension, can be used for the exchange and distribution of security-relevant information between network devices. One of the primary motivation for using XMPP for this task is the fast propagation of such security-relevant data. Using XMPP for such a task also comes with its downsides. Because the XMPP server (Broker/Controller) is the central configuration component in charge of managing access permission, its compromisation has serious consequences. The draft describes the trust model, thread model as well as specific countermeasures, e.g. to use at least TLS 1.2. These countermeasures also define restrictions of the XMPP protocol and its extensions, e.g. by limiting the node access models of PubSub to whitelist and authorize only.\cite{ietf-mile-xmpp-grid-05}
+This IETF Internet draft describes how the XMPP protocol enhanced with the previously discussed XEPs, most notably the PubSub extension, can be used for the exchange and distribution of security-relevant information between network devices. One of the primary motivation for using XMPP for this task is the fast propagation of such security-relevant data. Using XMPP for such a task also comes with its downsides. Because the XMPP server (Broker/Controller) is the central configuration component in charge of managing access permission, its compromisation has serious consequences. The draft describes the trust model, thread model as well as specific countermeasures, e.g. to use at least TLS 1.2. These countermeasures also define restrictions of the XMPP protocol and its extensions, e.g. by limiting the node access models of PubSub to whitelist and authorize only~\cite{ietf-mile-xmpp-grid-05}.
 
 % "In order to ease the deployment burden, subscription approvals and whitelist management can be automated (e.g, the Topic "owner" can be a policy server). " Is this one of the main tasks of this BA?
