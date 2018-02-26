@@ -32,14 +32,14 @@ Minute Taker: rzimmerm
     ** Recommended features can be checked queried using service discovery. We can also check for undesired configurations (e.g. everyone can publish)
     ** Ensure that the libraries support all required functionality, especially authentication!
     ** Assess the performance and usability of the libraries
-    * It is desirable if the service runs is "always on", e.g. to answer subscription requests. However, this is according to SFF not strictly required.
-    * Any kind of Interface is conceivable, a web interface, however, is very flexible. The core functionality must not be made available separately.
+    * It is desirable if the service runs is "always on", e.g. to answer subscription requests. However, this is not strictly required according to SFF.
+    * Any kind of Interface is conceivable, a web interface, however, is very flexible. The core functionality does not have to be available separately.
     * The scope of the website is fine according to SFF.
 . License
     * GNU-FDL for the documentation is fine
-    * The license for the code will AGPL but might change depending on the frameworks we use
+    * The license for the code will be AGPL but might change depending on the frameworks we use
 . Is there a presentation during the semester?
-    * An Interim with the internal co-examiner will be carried out.
+    * An interim with the internal co-examiner will be carried out.
     * The primary purpose of this presentation is to get familiar with the requirements of the co-examiner (testing, documentation, protocols etc.)
     * Should be carried out if a small demo is ready
 . Date for oral exam
