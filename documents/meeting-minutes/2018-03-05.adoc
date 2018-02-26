@@ -11,11 +11,11 @@ Minute Taker: rzimmerm
 
 === Agenda
 
+. Current State of the Task Description
 . Date and time for the next meeting
 
 === Discussions / Decisions
 
-. Date and time for the next meeting
 
 === Upcoming absences
 
