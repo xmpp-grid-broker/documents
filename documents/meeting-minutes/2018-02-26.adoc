@@ -1,4 +1,4 @@
-== Meeting 2018-09-26
+== Meeting 2018-02-26
 
 === Attendees
 
@@ -11,13 +11,40 @@ Minute Taker: rzimmerm
 
 === Agenda
 
+. Open questions regarding the task
 . Date for oral exam
 . Is there a presentation during the semester?
 . Date and time for the next meeting
 
-
 === Discussions / Decisions
 
+. Open questions regarding the task
+    * Some requirements can influence the chosen architecture fundamentally (e.g. to write a "bot", a component or a plugin)
+    ** a "normal" user (in the "bot" or the component variant) might have limited access to some node. According to SFF, this issue can be ignored because, in a real-world application, such behaviour should be limited by strict policies.
+    ** SFF emphasises that the authentication mechanisms use must be robust and certificate based.
+    * Next steps:
+    ** Write User stories
+    ** Draw basic architecture in C4-Diagrams
+    ** Risk analysis (e.g. abuse cases)
+    ** Evaluation of XMPP servers and libraries. SFF notes that we should not spend too much time evaluating the server and assume that OpenFire fulfils most requirements.
+    * Issues to address in the XMPP servers and library evaluation:
+    ** Can an administrator restrict users to create new topics
+    ** Recommended features can be checked queried using service discovery. We can also check for undesired configurations (e.g. everyone can publish)
+    ** Ensure that the libraries support all required functionality, especially authentication!
+    ** Assess the performance and usability of the libraries
+    * It is desirable if the service runs is "always on", e.g. to answer subscription requests. However, this is according to SFF not strictly required.
+    * Any kind of Interface is conceivable, a web interface, however, is very flexible. The core functionality must not be made available separately.
+    * The scope of the website is fine according to SFF.
+. License
+    * GNU-FDL for the documentation is fine
+    * The license for the code will AGPL but might change depending on the frameworks we use
+. Is there a presentation during the semester?
+    * An Interim with the internal co-examiner will be carried out.
+    * The primary purpose of this presentation is to get familiar with the requirements of the co-examiner (testing, documentation, protocols etc.)
+    * Should be carried out if a small demo is ready
+. Date for oral exam
+    * If possible, the oral exam will be carried out in early July.
+    * We will continuously complete parts of the document to reduce the examination efforts
 . Date and time for the next meeting
 
 === Upcoming absences
