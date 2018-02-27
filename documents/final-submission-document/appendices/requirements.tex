@@ -2,7 +2,7 @@
 
 \section{Requirements}\label{sec:requirements}
 
-The following sections describe the primary requirements in the form of quality user stories.
+The following sections describe the primary requirements in the form of (quality) user stories.
 Figure \ref{fig:requirements-overview} shows an overview of the primary use cases.
 
 \begin{figure}[h]
@@ -12,6 +12,10 @@ Figure \ref{fig:requirements-overview} shows an overview of the primary use case
     \label{fig:requirements-overview}
 \end{figure}
 
+
+% TODO: Search for more requirements in the ISO standard
+% TODO: Spellcheck
+% TODO: Vocabulary: Subscriber / Consumer
 
 \subsection{01: Login}
 
@@ -62,31 +66,83 @@ to terminate a session.
 
 \subsection{03: List available topics}
 
+As an Administrator,\\
+I would like to see a list of all topics on the controller\\
+so that I can quickly assimilate \\
+\begin{itemize}
+    \item which topics exist
+    \item if topics exist to which I have limited access for troubleshooting and debugging purposes
+\end{itemize}
+
 \subsection{04: Create a new topic}
+
+As an Administrator,\\
+I would like to create a new topic and optionally
+
+\begin{itemize} % TODO: I guess these 2 should be smaller sub-stories...
+    \item override the default configuration (eg. subscription model) 
+    \item specify an initial set of consumers and providers
+\end{itemize}
 
 \subsection{05: Delete an existing topic}
 
+As an Administrator,\\
+I would like to delete an existing topic
+to clean during development or get rid of obsolete topics.
+
+To achieve this goal, I expect the following qualities (in descending order of priority):
+\begin{itemize}
+    \item prevent me from deleting the wrong topic (e.g. require me to enter the name of the topic manually)
+\end{itemize}
+
+
 \subsection{06: Manage topic subscriptions}
+
+% TODO: Sub-Stories:
+% 0. List all subscribed JIDs
+% 1. show detailed subscription config
+% 2. (partially) update the detailed subscription config
+% 3. Unsubscribe subscribed JIDs
+% 4. subscribe unsubscribed JIDs
 
 \subsection{07: Manage topic affiliations}
 
+% TODO: Sub-Stories:
+% 1. ls all affiliated JIDs and their current role
+% 2. Modify the role of the affiliated JIDs
+%    (Allow to modify the JID of the admin - but warn me!)
+% If we are not "owner" of a topic so, show a meaningful error message 
+
 \subsection{08: Manage pending subscription requests}
+
+As an Administrator,\\
+I would like list pending subscription requests and approve or reject them\\
+- given that this is feature supported by the target XMPP server -
+to enable more dynamic access models than maintaining a blacklist and whitelist.
 
 \subsection{09: Delete persisted Item in a Topic}
 
+As an Administrator,\\
+I would like to delete a specific persisted item in a topic\\
+- given that this feature is supported by the target XMPP server -
+to clean up test messages or remove obsolete or corrupt messages.
+
 \subsection{10: Purge persisted Items in a Topic}
+
+As an Administrator,\\
+I would like to purge persisted items in a topic\\
+- given that this feature is supported by the target XMPP server -
+to clean up test messages or remove obsolete or corrupt messages.
 
 \subsection{11: Validate controller configuration}
 
-
-
-
-
-% (Disco checks)
+As an Administrator,\\
+I would like to query the configuration and enabled extensions (XEPs) of the XMPP server\\
+so that potential incompatibilities or suboptional configurations can simply be detected.
 
 % \subsection{01: Login}
 
-% As a [role],\\
+% As an Administrator,\\
 % I would like to [goal]\\
 % so that [effect (business value, impact)].\\
 % To achieve this goal, I expect the following qualities (in descending order of priority):
