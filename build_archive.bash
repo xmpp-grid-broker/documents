@@ -15,8 +15,17 @@ function is_in_path {
 }
 
 function build_tex {
-  tectonic="docker run -ti --rm --user $(id -u) --env=HOME=/tectonic --volume $(pwd):/tectonic:z fabianhauser/tectonic:0.1.6-2"
-  $tectonic "$1"
+  _tectonic_base="docker run -ti --rm --user $(id -u) --env=HOME=/tectonic"
+  _tectonic_image="fabianhauser/tectonic:0.1.6-2"
+  tectonic="$_tectonic_base --volume $(pwd):/tectonic:z $_tectonic_image"
+  if [ "$#" -lt 2 ]; then
+    $tectonic "$1"
+  else
+    # For documents with a glossary..
+    $tectonic --keep-intermediates "$1"
+    $_tectonic_base --entrypoint=/home/tectonic/bin/makeglossaries --volume $(pwd)/$2:/tectonic:z $_tectonic_image "$3"
+    $tectonic  "$1"
+  fi
 }
 
 function build_adoc_pdf {
@@ -49,7 +58,7 @@ build_adoc_pdf "documents/meeting-minutes/meeting-minutes.adoc"
 build_adoc_pdf "documents/development-guide.adoc"
 
 build_tex "documents/project-plan/project-plan.tex"
-build_tex "documents/final-submission-document/final-submission-document.tex"
+build_tex "documents/final-submission-document/final-submission-document.tex" "documents/final-submission-document/" "final-submission-document"
 
 build_adoc_html README.adoc
 
