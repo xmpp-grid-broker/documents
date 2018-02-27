@@ -11,7 +11,8 @@ Minute Taker: rzimmerm
 
 === Agenda
 
-. Current State of the Task Description
+. Current state of the Task Description
+. Clarify Requirements
 . Date and time for the next meeting
 
 === Discussions / Decisions
