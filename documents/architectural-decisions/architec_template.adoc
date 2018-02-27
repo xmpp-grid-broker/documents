@@ -1,4 +1,4 @@
-=== short title of solved problem and solution
+== short title of solved problem and solution
 
 User Story: [number/issue-number] _(optional)_
 
@@ -6,14 +6,14 @@ User Story: [number/issue-number] _(optional)_
 
 [decision drivers | forces | facing] _(optional)_
 
-==== Considered Options
+=== Considered Options
 
 * [option 1]
 * [option 2]
 * [option 3]
 * ...
 
-==== Decision Outcome
+=== Decision Outcome
 
 Chosen option: [option 1], because [justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force force | ... | comes out best (see below)].
 
@@ -25,23 +25,23 @@ Negative consequences: _(optional)_
   - [e.g., compromising quality attribute, follow-up decisions required, ...]
   - ...
 
-==== Pros and Cons of the Options _(optional)_
+=== Pros and Cons of the Options _(optional)_
 
-===== [option 1]
-
-* Good, because [argument a]
-* Good, because [argument b]
-* Bad, because [argument c]
-* ... 
-
-===== [option 2]
+==== [option 1]
 
 * Good, because [argument a]
 * Good, because [argument b]
 * Bad, because [argument c]
 * ... 
 
-===== [option 3]
+==== [option 2]
+
+* Good, because [argument a]
+* Good, because [argument b]
+* Bad, because [argument c]
+* ... 
+
+==== [option 3]
 
 * Good, because [argument a]
 * Good, because [argument b]

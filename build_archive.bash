@@ -56,6 +56,7 @@ echo "Building PDFs..."
 
 build_adoc_pdf "documents/meeting-minutes/meeting-minutes.adoc"
 build_adoc_pdf "documents/development-guide.adoc"
+build_adoc_pdf "documents/architectural-decisions/architectural-decisions.adoc"
 
 build_tex "documents/project-plan/project-plan.tex"
 build_tex "documents/final-submission-document/final-submission-document.tex" "documents/final-submission-document/" "final-submission-document"

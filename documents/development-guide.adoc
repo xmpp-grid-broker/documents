@@ -32,7 +32,3 @@ To maintain our high quality needs, we determined following definition of done g
 ** The code is formatted according to the guidlines (i.e. according to RustFmt)
 * The corresponding branch is merged into the stable branch (e.g. master).
 * All time is logged.
-
-== Architectural Decisions
-
-include::architectural-decisions/architec_template.adoc[]

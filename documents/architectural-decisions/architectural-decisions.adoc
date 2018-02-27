@@ -1,0 +1,5 @@
+= Architectural Decisions
+:doctype: book
+:pdf-page-size: A4
+
+include::architec_template.adoc[]

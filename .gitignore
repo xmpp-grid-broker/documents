@@ -1,5 +1,6 @@
 documents/meeting-minutes/*.pdf
 documents/final-submission-document/final-submission-document.pdf
+documents/architectural-decisions/*.pdf
 documents/project-plan/project-plan.pdf
 documents/development-guide.pdf
 out/
