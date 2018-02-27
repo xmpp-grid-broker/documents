@@ -5,7 +5,7 @@
 
 \section{Terminology}
 
-Taking into account, that the intended audience for this thesis are developers and operators of security reporting systems, 
+Taking into account that the intended audience for this thesis are developers and operators of security reporting systems, 
 we mostly use the  Security Automation and Continuous Monitoring (SACM) terminology~\cite{ietf-sacm-terminology-14}
 and thereby follow the same guidelines as the XMPP grid draft~\cite{ietf-mile-xmpp-grid-05}.
 
@@ -27,13 +27,14 @@ The client opens a channel to the server over this connection, and the server op
 During the conversation, an arbitrary amount of \glspl{stanza} (specified XML child elements) are written to the stream.
 Before a connection may be terminated, the root element is closed (i.e. \code{</stream>}) and both streams form valid XML documents~\cite{rfc6120}\cite{professional-xmpp}.
 
-The core \gls{stanza} types are \glspl{message}~(\code{<message/>}), \gls{presence}~(\code{<presence/>}) and \gls{info-query}~(\code{<iq/>}).
+The core \gls{stanza} types are \glspl{message}~(\code{<message/>}), \gls{presence}~(\code{<presence/>}) and\\
+\gls{info-query}~(\code{<iq/>}).
 \Glspl{message} can contain arbitrary data similar to email but are optimised for immediate delivery.
 \Gls{presence} \glspl{stanza} deal with network availability and the propagation of user presence information.
 An \gls{info-query} \gls{stanza} consists of a request and response (similar to the GET and POST HTTP methods), which is used for feature negotiation, configuration and general information exchange.
 Because of these coarse semantics, XMPP provides a generalized communication layer~\cite{rfc6120}\cite{ieee-xplore-stream-xml-xmpp}.
 
-Figure~\fullref{fig:xmpp-overview} illustrates an example setup with two servers and three clients.
+Figure~\ref{fig:xmpp-overview} illustrates an example setup with two servers and three clients.
 
 \begin{figure}[h]
 	\centering
@@ -44,20 +45,20 @@ Figure~\fullref{fig:xmpp-overview} illustrates an example setup with two servers
 
 \subsection{Relevant XMPP Extensions}
 
-The XMPP grid draft~\cite{ietf-mile-xmpp-grid-05} makes heavy use of multiple XEPs, most notably \gls{publish-subscribe}. The following XEPs are relevant as well:
+The XMPP grid draft~\cite{ietf-mile-xmpp-grid-05} is based on multiple \glspl{xep}, most notably \gls{publish-subscribe}. In this section, we give an overview of the most relevant used \glspl{xep}.
 
-\paragraph{XEP-0004: \gls{data-forms}} is a flexible protocol that can be used in workflows such as service configuration as well as for application-specific data description and reporting. The protocol provides forms processing, common field types as well as extensibility mechanisms~\cite{xep-0004}.
+\paragraph{XEP-0004: \gls{data-forms}} is a flexible protocol that can be used in workflows such as service configuration as well as for application-specific data description and reporting. The protocol provides form processing, common field types and extensibility mechanisms~\cite{xep-0004}.
 
-\paragraph{XEP-0030: \gls{service-discovery}} enables applications to discover information about the identity and capabilities of an entity, e.g. whether the it is a server or not, as well as items associated with an entity, e.g. a list of \gls{publish-subscribe} nodes~\cite{xep-0030}.
+\paragraph{XEP-0030: \gls{service-discovery}} enables entities to discover information about the identity and capabilities of other entities, e.g. whether the entity is a server or not, or items associated with an entity, e.g. a list of \gls{publish-subscribe} nodes~\cite{xep-0030}.
 
-\paragraph{XEP-0059: \Gls{result-set-management}} allows entities to manage the receipt of large result sets, e.g. by paging through the result or limiting the number of results. Result Management is often desired when dealing with large dynamic result sets from service discovery or publish-subscribe and time or other resources are limited~\cite{xep-0059}.
+\paragraph{XEP-0059: \Gls{result-set-management}} allows entities to manage the receipt of large result sets, e.g. by paging through the result or limiting the number of results. \gls{result-set-management} is often desired when dealing with large dynamic result sets, as from service discovery or publish-subscribe, and time or other resources are limited~\cite{xep-0059}.
 
 \subsubsection{XEP-0060: \Gls{publish-subscribe}}
-The \gls{publish-subscribe} Extension, hereafter refered to as \gls{pubsub} or \gls{broker}, enables XMPP entities (\gls{provider}) to broadcast information via \glspl{topic} to subscribed entities(\gls{consumer})~\cite{xep-0060}.
+The \gls{publish-subscribe} Extension, hereafter refered to as \gls{pubsub} or \gls{broker}, enables XMPP entities (\gls{provider}) to broadcast information via \glspl{topic} to subscribed entities (\gls{consumer})~\cite{xep-0060}.
 
-Nodes, hereafter refered to as \glspl{topic}, are the communication hubs. Entities can create topics and configure them, e.g. set up subscription timeouts, limit publish and subscription rights. The configuration mechanism is based on data forms (XEP-0004).
+Nodes, hereafter refered to as \glspl{topic}, are the communication hubs. Entities can create topics and configure them, e.g. set up subscription timeouts, limit publish and subscription rights. The configuration mechanism is based on data forms (XEP\babelhyphen{nobreak}0004).
 
-The protocol defines a hierarchy of six affiliations of which only `owner` and `none` are required. The remaining four affiliations are recommended. An owner of a topic can manage the subscriptions as well as affiliations of other entities associated with a given topic.
+The protocol defines a hierarchy of six affiliations of which only the implementation of `owner` and `none` is required. The implementation of the remaining four affiliations is recommended. An owner of a topic can manage the subscriptions and affiliations of other entities associated with a given topic.
 
 To make the creation of topics simpler for clients, \gls{pubsub} defines five topic access models ("node access models"): open, presence, roaster, authorize and whitelist.
 
@@ -67,9 +68,9 @@ The open model allows uncontrolled access while presence and roaster are specifi
 This IETF Internet draft describes how the XMPP protocol enhanced with the previously discussed XEPs, most notably the \gls{pubsub} extension, can be used for the exchange and distribution of security-relevant information between network devices.
 
 One of the primary motivation for using XMPP for this task is the fast propagation of such security-relevant data.
-Using XMPP for such a task also comes with its downsides. Because the XMPP server (Broker/Controller) is the central configuration component in charge of managing access permission, its compromisation has serious consequences.
+Using XMPP for such a task also comes with its downsides. Most notably, because the XMPP server (\gls{broker}/\gls{controller}) is the central configuration component in charge of managing access permission, its compromisation has serious consequences.
 
-The draft describes the trust model, thread model as well as specific countermeasures, e.g. to use at least TLS 1.2. These countermeasures also define restrictions of the XMPP protocol and its extensions, e.g. by limiting the topic access models of \gls{pubsub} to whitelist and authorized only~\cite{ietf-mile-xmpp-grid-05}.
+The draft describes a trust model, thread model as well as specific countermeasures, e.g. to use at least TLS 1.2. These countermeasures also define restrictions of the XMPP protocol and its extensions, e.g. by limiting the topic access models of \gls{pubsub} to whitelist and authorized only~\cite{ietf-mile-xmpp-grid-05}.
 
 \section{Motivation}
 In this section, we legitimate this thesis and explain the value and applicability of our proposed solution.
