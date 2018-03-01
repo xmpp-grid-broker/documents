@@ -59,11 +59,13 @@ The XMPP grid draft~\cite{ietf-mile-xmpp-grid-05} is based on multiple \glspl{xe
 \subsubsection{XEP-0060: \Gls{publish-subscribe}}
 The \gls{publish-subscribe} Extension, hereafter referred to as \gls{pubsub} or \gls{broker}, enables XMPP entities (\gls{provider}) to broadcast information via \glspl{topic} to subscribed entities (\gls{consumer})~\cite{xep-0060}.
 
-Nodes, hereafter referred to as \glspl{topic}, are the communication hubs. Entities can create topics and configure them, e.g. set up subscription timeouts, limit publish and subscription rights. The configuration mechanism is based on data forms (XEP\babelhyphen{nobreak}0004).
+Nodes, hereafter referred to as \glspl{topic}, are the communication hubs. Entities can create topics and configure them, e.g. set up subscription timeouts, limit publish and subscription rights. The configuration mechanism is based on data forms (XEP\babelhyphen{nobreak}0004). Limiting of node creation rights of entities \emph{may} be implemented by a XMPP-Server, which means that possibly not every XMPP-Server that supports \gls{publish-subscribe} also implements this feature \cite{rfc2119}.
 
-The protocol defines a hierarchy of six affiliations of which only the implementation of `owner` and `none` is required. The implementation of the remaining four affiliations is recommended. An owner of a topic can manage the subscriptions and affiliations of other entities associated with a given topic.
+The protocol defines a hierarchy of six affiliations of which only the implementation of `owner` and `none` is \emph{required}.
+The implementation of the remaining four affiliations is \emph{recommended}.
+An owner of a topic can manage the subscriptions and affiliations of other entities associated with a given topic.
 
-To make the creation of topics simpler for clients, \gls{pubsub} defines five topic access models ("node access models"): open, presence, roaster, authorize and whitelist.
+To make the creation of topics simpler for clients, \gls{pubsub} defines five topic access models ("node access models") that \emph{should} be available: open, presence, roaster, authorize and whitelist.
 
 The open model allows uncontrolled access while presence and roaster are specific for IM. Using the authorize model, the owner has to approve all subscription requests. The whitelist model enables the owner to maintain a list of entities that are allowed to subscribe.
 
