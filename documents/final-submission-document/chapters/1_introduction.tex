@@ -3,13 +3,16 @@
 \chapter{Introduction}
 \label{sec:introduction}
 
-\section{Terminology}
+In this chapter, we introduce the terminology and background of our thesis task, to conclude in the motivation and legitimisation of our thesis.
 
+\section{Terminology}
 Taking into account that the intended audience for this thesis are developers and operators of security reporting systems, 
 we mostly use the  Security Automation and Continuous Monitoring (SACM) terminology~\cite{ietf-sacm-terminology-14}
 and thereby follow the same guidelines as the XMPP grid draft~\cite{ietf-mile-xmpp-grid-05}.
 
 \section{Background}
+
+The following sections introduce the underlying XMPP protocol and the relevant extensions (\glspl{xep}) of the XMPP grid draft as well as a summary of it and the corresponding XMPP terminology.
 
 \subsection{XMPP (eXtensible Messaging and Presence Protocol)}
 The Extensible Messaging and Presence Protocol (in short \gls{xmpp}) is an open protocol that enables the near-real-time exchange of small data between any network endpoints, hereafter called \glspl{platform}~\cite{rfc6120}.
@@ -54,9 +57,9 @@ The XMPP grid draft~\cite{ietf-mile-xmpp-grid-05} is based on multiple \glspl{xe
 \paragraph{XEP-0059: \Gls{result-set-management}} allows entities to manage the receipt of large result sets, e.g. by paging through the result or limiting the number of results. \gls{result-set-management} is often desired when dealing with large dynamic result sets, as from service discovery or publish-subscribe, and time or other resources are limited~\cite{xep-0059}.
 
 \subsubsection{XEP-0060: \Gls{publish-subscribe}}
-The \gls{publish-subscribe} Extension, hereafter refered to as \gls{pubsub} or \gls{broker}, enables XMPP entities (\gls{provider}) to broadcast information via \glspl{topic} to subscribed entities (\gls{consumer})~\cite{xep-0060}.
+The \gls{publish-subscribe} Extension, hereafter referred to as \gls{pubsub} or \gls{broker}, enables XMPP entities (\gls{provider}) to broadcast information via \glspl{topic} to subscribed entities (\gls{consumer})~\cite{xep-0060}.
 
-Nodes, hereafter refered to as \glspl{topic}, are the communication hubs. Entities can create topics and configure them, e.g. set up subscription timeouts, limit publish and subscription rights. The configuration mechanism is based on data forms (XEP\babelhyphen{nobreak}0004).
+Nodes, hereafter referred to as \glspl{topic}, are the communication hubs. Entities can create topics and configure them, e.g. set up subscription timeouts, limit publish and subscription rights. The configuration mechanism is based on data forms (XEP\babelhyphen{nobreak}0004).
 
 The protocol defines a hierarchy of six affiliations of which only the implementation of `owner` and `none` is required. The implementation of the remaining four affiliations is recommended. An owner of a topic can manage the subscriptions and affiliations of other entities associated with a given topic.
 
@@ -64,7 +67,7 @@ To make the creation of topics simpler for clients, \gls{pubsub} defines five to
 
 The open model allows uncontrolled access while presence and roaster are specific for IM. Using the authorize model, the owner has to approve all subscription requests. The whitelist model enables the owner to maintain a list of entities that are allowed to subscribe.
 
-\subsection{IETF Internet-Draft: Using XMPP for Security Information Exchange}
+\subsection{IETF Internet-Draft: Using XMPP for Security Information Exchange}\label{sec:ietf-internet-draft-using-xmpp-for-security-information-exchange}
 This IETF Internet draft describes how the XMPP protocol enhanced with the previously discussed XEPs, most notably the \gls{pubsub} extension, can be used for the exchange and distribution of security-relevant information between network devices.
 
 One of the primary motivation for using XMPP for this task is the fast propagation of such security-relevant data.
@@ -74,4 +77,16 @@ The draft describes a trust model, thread model as well as specific countermeasu
 
 \section{Motivation}
 In this section, we legitimate this thesis and explain the value and applicability of our proposed solution.
-% TODO: From AVT - use and introduce the term "Broker" \gls{broker}
+
+\subsection{Present situation}
+The IETF standard draft \emph{Using \gls{xmpp} for Security Information Exchange} \cite{ietf-mile-xmpp-grid-05} as summarised in section \ref{sec:ietf-internet-draft-using-xmpp-for-security-information-exchange} defines a protocol to exchange security-relevant information between endpoints.
+The draft was created by the Managed Incident Lightweight Exchange (MILE) Working Group to support computer and network security incident management.
+
+To demonstrate the viability of the draft a rapid prototype was developed in November~2017~\cite{xmpp-grid-prototype}.
+
+\subsection{Problem and Solution}
+Currently, there exists no implementation of the \gls{xmpp} grid draft management functionality which is ready for production use regarding usability and security.
+
+To solve this problem, a graphical interface with bindings to a suitable \gls{broker} must be proposed and implemented.
+The interface should permit network administrators to manage and review \glspl{topic}, persisted items and \glspl{platform}.
+Additionally, subscription and publishing permissions of \glspl{topic} and \glspl{platform} must be manageable.
