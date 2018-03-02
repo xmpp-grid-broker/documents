@@ -2,50 +2,46 @@
 
 \section{Requirements}\label{sec:requirements}
 
-The following sections describe the primary requirements in the form of (quality) user stories.
-Figure \ref{fig:requirements-overview} shows an overview of the primary use cases.
+The following sections describe the primary requirements in the form of user stories \cite{agile-alliance-user-stories}.
+Figure \ref{fig:requirements-overview} shows an overview of the primary use stories.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\linewidth]{resources/requirements_overview}
-    \caption{UML Use Case Diagram presenting an overview of the primary component.}
+    \caption{UML Use Case Diagram presenting an overview of the primary user stories.}
     \label{fig:requirements-overview}
 \end{figure}
 
 
-% TODO: Search for more requirements in the ISO standard
-% TODO: Spellcheck
-% TODO: Vocabulary: Subscriber / Consumer
+% TODO: Search for more requirements in the ISO standard (NFRs)
 
-\subsection{01: Login}
+\subsection{Authentication}
+\subsubsection{Login}
 
 As an Administrator,\\
-I would like to log in\\
-so that only I can inspect and manage topics.\\
-To achieve this goal, I expect the following qualities (in descending order of priority):
+I want to log in\\
+so that only I can inspect and manage Topics.\\
+
+\noindent\textcolor{red}{To be clarified}
 
 \begin{itemize}
-    \item The authentication time must on average not take 50\% longer than a regular XMPP-login from the client.
+    \item It would be convenient to not maintain a separate user database by using the same credentials for authentication
+            as for the XMPP server and just forward them. This is from a security/usability perspective not best practice.
+            Are there any specific requirements/wishes?
 \end{itemize}
 
-\noindent To be clarified:
 
-\begin{itemize}
-    \item It would be convenient to not maintain a separate user database and to use the same credentials for authentication
-            as for the XMPP server and just forward them. This is from a security perspective usually not a great idea. Are there any
-            specific requirements?
-\end{itemize}
+\subsubsection{Secure XMPP Connection}
+% TODO: Make multiple stories out of this one...
+As an Administrator concerned with security requirements,\\
+I want to use either SASL EXTERNAL or SASL SCRAM mechanism for authentication -
 
-\subsection{01a: Secure XMPP Connection}
-
-As an administrator concerned with security requirements,\\
-I would like to use either SASL EXTERNAL or SASL SCRAM mechanism for authentication - \\
 \begin{itemize}
     \item preferably the SCRAM-SHA-256-PLUS variant and
     \item preferably using mutual certificate-based authentication including revocation status checking
 \end{itemize}
 
-\noindent - so that the controller benefits from:
+\noindent - so that the Controller benefits from:
 
 \begin{itemize}
     \item full accordance with the XMPP grid draft~\cite{ietf-mile-xmpp-grid-05}
@@ -58,99 +54,159 @@ I would like to use either SASL EXTERNAL or SASL SCRAM mechanism for authenticat
     \item limited compatibility of supported XMPP servers
 \end{itemize}
 
-\subsection{02: Logout}
+\subsubsection{Logout}
 
 As an Administrator,\\
-I would like to log out\\
-to terminate a session.
+I want to log out\\
+so that I can terminate a session.
 
-\subsection{03: List available topics}
+\subsection{List Topics}
+
+\subsubsection{List All Topics}
+As an Administrator,\\
+I want to see a list of all Topics of the associated Controller\\
+so that I can quickly assimilate which Topics exist.
+
+\subsubsection{List Available Topics With Limited Access}
 
 As an Administrator,\\
-I would like to see a list of all topics on the controller\\
-so that I can quickly assimilate \\
-\begin{itemize}
-    \item which topics exist
-    \item if topics exist to which I have limited access for troubleshooting and debugging purposes
-\end{itemize}
+I want to see a list of all Topics of the associated Controller to which I have limited access to,\\
+to simplify troubleshooting and to debug.
 
-\subsection{04: Create a new topic}
+\subsection{Create a New Topic}
 
 As an Administrator,\\
-I would like to create a new topic and optionally
+I want to create a new Topic on the associated Controller\\
+so that I and not tied to a fixed set of Topics.
 
-\begin{itemize} % TODO: I guess these 2 should be smaller sub-stories...
-    \item override the default configuration (eg. subscription model) 
-    \item specify an initial set of consumers and providers
-\end{itemize}
+\subsubsection{Override Default Topic Configuration}
 
-\subsection{05: Delete an existing topic}
+As an Administrator in the process of creating a new Topic,\\
+I want to override the default configuration (e.g. the subscription model) \\
+so that I can restrict access and provide reasonable defaults.
 
-As an Administrator,\\
-I would like to delete an existing topic
-to clean during development or get rid of obsolete topics.
+\subsubsection{Initial Topic Consumers and Providers}
 
-To achieve this goal, I expect the following qualities (in descending order of priority):
-\begin{itemize}
-    \item prevent me from deleting the wrong topic (e.g. require me to enter the name of the topic manually)
-\end{itemize}
+As an Administrator in the process of creating a new Topic,\\
+I want to specify an initial set of Consumers and Providers \\
+so that I can restrict access to that Topic and provide reasonable defaults.
 
-
-\subsection{06: Manage topic subscriptions}
-
-% TODO: Sub-Stories:
-% 0. List all subscribed JIDs
-% 1. show detailed subscription config
-% 2. (partially) update the detailed subscription config
-% 3. Unsubscribe subscribed JIDs
-% 4. subscribe unsubscribed JIDs
-
-\subsection{07: Manage topic affiliations}
-
-% TODO: Sub-Stories:
-% 1. ls all affiliated JIDs and their current role
-% 2. Modify the role of the affiliated JIDs
-%    (Allow to modify the JID of the admin - but warn me!)
-% If we are not "owner" of a topic so, show a meaningful error message 
-
-\subsection{08: Manage pending subscription requests}
+\subsection{Delete an Existing Topic}
 
 As an Administrator,\\
-I would like list pending subscription requests and approve or reject them\\
-- given that this is feature supported by the target XMPP server -
-to enable more dynamic access models than maintaining a blacklist and whitelist.
+I want to delete an existing Topic on the associated Controller\\
+so that I can get rid of obsolete Topics.
 
-\subsection{09: Delete persisted Item in a Topic}
+\subsubsection{Fault Prevention On Delete}
+
+As an Administrator in the process of deleting a Topic, \\
+I want a mechanism to prevent me from deleting the wrong Topic on the associated Controller\\
+(e.g. require me to enter the name of the Topic manually).
+
+\subsection{Manage Topic Subscriptions}
+
+\subsubsection{List Consumers}
+
+As an Administrator, \\
+I want to list all Consumers (including their JIDs) of a given Topic on the associated Controller, \\
+so that I can verify that specific Consumers are subscribed, and others are not.
+
+\subsubsection{Inspect Detailed Subscription Configuration}
+
+As an Administrator, \\
+I want to inspect the detailed Topic subscription configuration of a given Consumer, \\
+so that I can reproduce and reason about the receipt of data on that Consumer
+and find potential misconfiguration.
+
+\subsubsection{Partially Modify Subscription Configuration}
+
+As an Administrator, \\
+I want to modify parts of the Topic subscription configuration of a given Consumers, \\
+so that I can fix misconfiguration.
+
+\subsubsection{Unsubscribe Consumer}
+
+As an Administrator, \\
+I want to manually unsubscribe a specific Consumer from a particular Topic on the associated Controller, \\
+so that I can remove obsolete or undesired subscriptions.
+
+\subsubsection{Subscribe Consumer}
+
+As an Administrator, \\
+I want to manually subscribe a specific Consumer on a particular Topic on the associated Controller, \\
+so that I can faster setup and manage Consumers.
+
+\subsection{Manage Topic Affiliations}
+\subsubsection{Inspect Affiliations}
 
 As an Administrator,\\
-I would like to delete a specific persisted item in a topic\\
-- given that this feature is supported by the target XMPP server -
-to clean up test messages or remove obsolete or corrupt messages.
+I want to list all Affiliations (JID and "Role") for a particular Topic on the associated Controller \\
+so that I can find potential misconfiguration.
 
-\subsection{10: Purge persisted Items in a Topic}
-
-As an Administrator,\\
-I would like to purge persisted items in a topic\\
-- given that this feature is supported by the target XMPP server -
-to clean up test messages or remove obsolete or corrupt messages.
-
-\subsection{11: Validate controller configuration}
+\subsubsection{Modify Affiliations}
 
 As an Administrator,\\
-I would like to query the configuration and enabled extensions (XEPs) of the XMPP server\\
-so that potential incompatibilities or suboptional configurations can simply be detected.
+I want to modify the Affiliation ("Role") of a given JID for a particular Topic on the associated Controller \\
+so that I fix potential misconfiguration.
 
-% \subsection{01: Login}
+\subsubsection{Fault Prevention When Modifying My Affiliation}
 
-% As an Administrator,\\
-% I would like to [goal]\\
-% so that [effect (business value, impact)].\\
-% To achieve this goal, I expect the following qualities (in descending order of priority):
+As an Administrator in the process of modifying my Affiliation for a particular Topic on the associated Controller,\\
+I want a mechanism to prevent me from accidentally downgrading my rights.
 
-% \begin{itemize}
-%     \item measurable usability quality property, e.g. input steps required to complete story
-%     \item measurable performance quality, e.g. average and worst case story response time
-%     \item other verifiable quality goal if measurements are considered too risky/costly
-% \end{itemize}
+\subsubsection{Meaningful Error For Topics With Limited Access}
 
+As an Administrator,\\
+I want to receive a meaningful error message when inspecting a node to which I have limited access to \\
+so that I can quickly comprehend why the configuration options are limited.
+
+\subsection{Manage Subscription Requests}
+
+\subsubsection{List Subscription Request}
+As an Administrator,\\
+I want to list pending subscription requests for a given Topic\\
+- given that this feature is supported by the associated Controller -\\
+so that I can quickly assimilate pending requests.
+
+\subsubsection{Accept Subscription Request}
+
+As an Administrator,\\
+I want to accept a pending subscription request for a given Topic\\
+- given that this feature is supported by the associated Controller -\\
+to enable more dynamic access models than just maintaining a black- or whitelist.
+
+\subsubsection{Reject Subscription Request}
+
+As an Administrator,\\
+I want to reject a pending subscription request for a given Topic\\
+- given that this feature is supported by the associated Controller -\\
+so that I can deny user access in accordance with the XMPP standards.
+
+\subsection{Delete Persisted Items From a Topic}
+
+\subsubsection{Delete a Persisted Item From a Topic}
+
+As an Administrator,\\
+I want to delete a particular persisted item from a specific Topic\\
+- given that this feature is supported by the associated Controller -\\
+so that I can clean up test items and remove obsolete or corrupted items.
+
+\subsubsection{Purge All Persisted Items From a Topic}
+
+As an Administrator,\\
+I want to purge persisted items from a specific Topic\\
+- given that this feature is supported by the associated Controller -\\
+so that I can clean up test items and remove obsolete or corrupted items.
+
+\subsection{Validate Controller Configuration}
+
+\subsubsection{Validate Supported XEPs Configurations}
+As an Administrator,\\
+I want to validate that a minimum set of XEPs are supported by the associated Controller\\
+so that I can quickly identify incompatibilities.
+
+\subsubsection{Validate Optional XEP Implementations}
+As an Administrator,\\
+I want to validate that the required features that are marked as optional or recommended in the XEPs are implemented by the associated Controller\\
+so that I can quickly identify incompatibilities.
 
