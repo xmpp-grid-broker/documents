@@ -12,8 +12,12 @@ Figure \ref{fig:requirements-overview} shows an overview of the primary use stor
     \label{fig:requirements-overview}
 \end{figure}
 
+\noindent\textcolor{red}{To be clarified}
 
-% TODO: Search for more requirements in the ISO standard (NFRs)
+\begin{itemize}
+    \item Non Functional Requirements
+\end{itemize}
+
 
 \subsection{Authentication}
 \subsubsection{Login}
@@ -30,9 +34,8 @@ so that only I can inspect and manage Topics.\\
             Are there any specific requirements/wishes?
 \end{itemize}
 
-
 \subsubsection{Secure XMPP Connection}
-% TODO: Make multiple stories out of this one...
+
 As an Administrator concerned with security requirements,\\
 I want to use either SASL EXTERNAL or SASL SCRAM mechanism for authentication -
 
@@ -41,12 +44,7 @@ I want to use either SASL EXTERNAL or SASL SCRAM mechanism for authentication -
     \item preferably using mutual certificate-based authentication including revocation status checking
 \end{itemize}
 
-\noindent - so that the Controller benefits from:
-
-\begin{itemize}
-    \item full accordance with the XMPP grid draft~\cite{ietf-mile-xmpp-grid-05}
-    \item maximal security standards
-\end{itemize}
+\noindent - so that the Controller is fully compatible with the XMPP grid draft~\cite{ietf-mile-xmpp-grid-05}.
 
 \noindent To achieve this goal, I am willing to accept:
 \begin{itemize}
@@ -66,6 +64,13 @@ so that I can terminate a session.
 As an Administrator,\\
 I want to see a list of all Topics of the associated Controller\\
 so that I can quickly assimilate which Topics exist.
+
+\noindent\textcolor{red}{To be clarified}
+
+\begin{itemize}
+    \item How many topics are realistic? 1-10, 10-100, 100-1000, > 1000? (search required?)
+\end{itemize}
+
 
 \subsubsection{List Available Topics With Limited Access}
 
@@ -111,6 +116,13 @@ As an Administrator, \\
 I want to list all Consumers (including their JIDs) of a given Topic on the associated Controller, \\
 so that I can verify that specific Consumers are subscribed, and others are not.
 
+\noindent\textcolor{red}{To be clarified}
+
+\begin{itemize}
+    \item How many Consumers are realistic? 1-10, 10-100, 100-1000, > 1000? (search required?)
+\end{itemize}
+
+
 \subsubsection{Inspect Detailed Subscription Configuration}
 
 As an Administrator, \\
@@ -142,6 +154,13 @@ so that I can faster setup and manage Consumers.
 As an Administrator,\\
 I want to list all Affiliations (JID and "Role") for a particular Topic on the associated Controller \\
 so that I can find potential misconfiguration.
+
+\noindent\textcolor{red}{To be clarified}
+
+\begin{itemize}
+    \item How many Consumers/Publishers are realistic?
+\end{itemize}
+
 
 \subsubsection{Modify Affiliations}
 
