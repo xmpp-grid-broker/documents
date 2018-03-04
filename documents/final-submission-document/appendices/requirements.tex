@@ -2,7 +2,7 @@
 
 \section{Requirements}\label{sec:requirements}
 
-The following sections describe the primary requirements in the form of user stories \cite{agile-alliance-user-stories}.
+The following sections describe the primary requirements in the form of user stories~\cite{agile-alliance-user-stories}.
 Figure \ref{fig:requirements-overview} shows an overview of the primary use stories.
 
 \begin{figure}[h]
@@ -76,13 +76,20 @@ so that I can quickly assimilate which Topics exist.
 
 As an Administrator,\\
 I want to see a list of all Topics of the associated Controller to which I have limited access to,\\
-to simplify troubleshooting and to debug.
+to simplify troubleshooting and locate errors.
+
+\noindent\textcolor{red}{\\To be clarified}
+
+\begin{itemize}
+    \item Is this a relevant scenario?
+\end{itemize}
+
 
 \subsection{Create a New Topic}
 
 As an Administrator,\\
 I want to create a new Topic on the associated Controller\\
-so that I and not tied to a fixed set of Topics.
+so that I am not tied to a fixed set of Topics.
 
 \subsubsection{Override Default Topic Configuration}
 
@@ -166,7 +173,7 @@ so that I can find potential misconfiguration.
 
 As an Administrator,\\
 I want to modify the Affiliation ("Role") of a given JID for a particular Topic on the associated Controller \\
-so that I fix potential misconfiguration.
+so that I can fix potential misconfiguration.
 
 \subsubsection{Fault Prevention When Modifying My Affiliation}
 
@@ -176,7 +183,7 @@ I want a mechanism to prevent me from accidentally downgrading my rights.
 \subsubsection{Meaningful Error For Topics With Limited Access}
 
 As an Administrator,\\
-I want to receive a meaningful error message when inspecting a node to which I have limited access to \\
+I want to receive a meaningful error message when inspecting a node to which I have limited access \\
 so that I can quickly comprehend why the configuration options are limited.
 
 \subsection{Manage Subscription Requests}
