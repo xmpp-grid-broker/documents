@@ -2,4 +2,4 @@
 :doctype: book
 :pdf-page-size: A4
 
-include::architec_template.adoc[]
+include::implementation-style.adoc[]
