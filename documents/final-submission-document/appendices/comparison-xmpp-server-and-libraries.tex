@@ -1,0 +1,112 @@
+% !TeX spellcheck = en_GB
+\section{Comparison of XMPP Server and Libraries}\label{sec:comparison-of-xmpp-server-and-libraries}
+
+
+\subsection{Server}
+\begin{sidewaystable}
+	\centering
+	\caption{Comparison of XMPP Servers which might be used as Controller}
+	\label{tbl:server-comparison}
+	\begin{tabu}{X|X X X}
+		\hline
+		\diagbox[width=9em,height=2.5em]{Name}{Features}
+		& Prog. Language
+        & Plugin Architecture
+        & Req. XEPs
+        & Authentication options
+        \\ \hline
+
+        Openfire
+        & Java
+        & Java jar\footnote{\url{http://download.igniterealtime.org/openfire/docs/latest/documentation/plugin-dev-guide.html}}
+        & All fully supported
+        & ?
+        \\
+
+        Prosody
+        & Lua
+        & Luascript\footnote{\url{https://prosody.im/doc/developers/modules}}
+        & XEP-0059 not supported\footnote{\url{https://prosody.im/doc/xeplist}}
+        \\
+
+        ejabberd
+        & Erlang
+        & Erlang/Elixir\footnote{\url{https://docs.ejabberd.im/developer/extending-ejabberd/modules/}}
+        & Limited SASL\footnote{\url{https://www.process-one.net/en/ejabberd/protocols/}}
+        \\
+
+	\end{tabu}
+\end{sidewaystable}
+
+
+\subsection{Libraries}
+
+\begin{sidewaystable}
+	\centering
+    \caption{Comparison of XMPP Client Libraries}
+	\label{language-comparison-ds}
+	\begin{tabu}{X|X X X}
+		\hline
+		\diagbox[width=9em,height=2.5em]{Name}{Features}
+		& Prog. Language
+        & Plugin Architecture
+        & Req. XEPs
+        & Authentication options
+        \\ \hline
+
+        SleekXMPP
+        & Python 2
+        & Yes\footnote{\url{http://sleekxmpp.com/create_plugin.html}}
+        & XEP-0060 client only\footnote{\url{http://sleekxmpp.com/xeps.html}}
+        & ?
+        \\
+
+        SliXMPP
+        & Python 3
+        & Yes\footnote{\url{https://github.com/poezio/slixmpp/blob/master/docs/create_plugin.rst}}
+        & XEP-0060 client only\footnote{\url{https://github.com/poezio/slixmpp/blob/master/docs/xeps.rst}}
+        & ?
+        \\
+
+        aioxmpp
+        & Python 3.4
+        & Yes\footnote{\url{https://docs.zombofant.net/aioxmpp/devel/api/public/index.html#apis-mainly-relevant-for-extension-developers}}
+        & Yes\footnote{\url{https://docs.zombofant.net/aioxmpp/devel/#from-xmpp-extension-proposals-xeps}}
+        & ?
+        \\
+
+        Smack
+        & Java
+        & Yes\footnote{\url{https://github.com/igniterealtime/Smack/tree/master/documentation}
+        & Yes\footnote{\url{https://download.igniterealtime.org/smack/docs/latest/documentation/extensions/index.html}}
+        & ?
+        \\
+
+        Babbler
+        & Java
+        & Yes\footnote{\url{https://sco0ter.bitbucket.io/babbler/customextensions.html}}
+        & Yes\footnote{\url{https://sco0ter.bitbucket.io/babbler/xeps.html}}
+        \\
+
+        Stroke
+        & Java
+        & ?
+        & ?
+        & ?
+        \\
+
+        matrix-js
+        & TypScript (Browser)
+        & ?
+        & ?
+        & ?
+        \\
+
+        XMPP-FTW
+        & Javascript (Browser)
+        & Yes\footnote{\url{http://docs.xmpp-ftw.org/}}
+        & Yes\footnote{\url{http://docs.xmpp-ftw.org/manual/}}
+        & ?
+        \\
+	\end{tabu}
+\end{sidewaystable}
