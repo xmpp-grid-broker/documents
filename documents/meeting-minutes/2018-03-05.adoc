@@ -12,10 +12,52 @@ Minute Taker: rzimmerm
 === Agenda
 
 . Current state of the Task Description
-. Clarify Requirements
+. Discuss and clarify Requirements/Wireframes
+. Current State of the Task Description
 . Date and time for the next meeting
 
 === Discussions / Decisions
+
+. Discuss Requirements / Wireframes
+  * Environment: Development only or (potentially) production?!
+  ** Idee ist schon, dass es poduktiv eingesetzt werden kann! (Das kann auch das Skript!)
+  ** Im extremfall kann jedes IoT gerät etwas senden - das ist potentiell SEHR VIEL!
+  ** Eine Suchfunktion / Paging etc. - Subtopics & Purged Items
+  ** Sonst nicht so viele hohe Anforderungen (Zeit Constraints)
+  ** Security: Persisted Items (!) Dort könnte was passieren! Mit paging und livedaten...
+  * Standalone - eher kein Plugin (Tiefe kopplung)
+  * Frontend: Django/Java mit Spring Boot / Play...wären Angular / Vue auch eine möglichkeit
+  * TLS auch noch als NFR (siehe) -> Welche Anforderungen gelten hier?!
+  ** Eine JID mit mit mehreren Zertifikaten wäre ideal gemäss SFF
+  ** Entkoppelter user (Vorschlag Fabian!)
+  ** OFFENER PUNKT: SASL ist sehr komplex! Braucht es wirklich beides (Mutual Auth & SCRAM?!)
+  * Broker müsste wissen, wer registrierte user sind.
+  * Mehrere Admins mit vollen rechten (also auch Owners!)
+  ** Mehrere Varianten prüfen (mind 2 Admins!)
+  * Anz Topics hängt vom Use case ab (ca. 4 bei Hackatons..) - in praxis je nach setup... ca 100 Anpeilen
+  ** SUBNODES ALS ANFORDERUNG (Bsp. je nach Device!) ca. 1000++ - mit Filtering!
+  *** Aber nicht zwingend für Top-Level-Topics
+  ** Hierarchien in Wireframes ergänzen! (Openfire hat eine..)
+  **** Auditierbarkeit berücksichtigen!
+  * Sehr viele producer (>10000) - eher weniger consumer (ca. 100)
+  * Rollenkonzept?! in plain XMPP?! GroupChat (XEP-0144)
+  * Subscription Requests: Sind eher unwichtig also tiefer prio (nice to have)
+  ** Purge: Filtern und alle gefilterten löschen
+  * Topic als persistent oder nicht persistent markieren (in config?!)
+  * Validation ist nice to have (resp. eher löschen!) - sonst einfach minimal requirements angeben.
+  ** Lieber direkt handeln!
+  * Wireframes:
+  ** Figure 4: Hierarchiestufen a la Tree (evtl. beide Varianten) oder linear
+  ** Figure 5: Select liste "subscriber" ist falsch & GRUPPEN!
+  ** Neues Topic: Wie angeben, welches das child ist.
+  *** Wie verschieben?! (Bsp. TopLevelNode ändern...in Config?!)
+  * Technologie
+  ** Django
+  ** SPA auch OK
+  ** Wichtig: Wartbar über Jahre! Keine 3rd Party Libs, die uns etwas zeit sparen aber dann kaputt gehen..
+. Current State of the Task Description
+  * SFF schreibt diese auf Basis der User Stories
+. Date and time for the next meeting
 
 
 === Upcoming absences
