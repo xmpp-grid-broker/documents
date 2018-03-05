@@ -1,25 +1,20 @@
-== Implementation Style of Application
+== Architecture Style
 
-The desired XMPP grid management application, described by the Use Cases and thesis task description, might be implemented in three different styles: As XMPP-server plugin, XMPP component or XMPP bot.
+There are three common variants to participate in XMPP communication and manage server configurations: As XMPP-server plugin, XMPP component or an XMPP Client/Bot.
 
-The implementation has a profounding impact on the implementation language and approch, and must therefore be considered very carefully as a high risk factor is involved.
+The implementation style fundamentally restricts the set of implementation languages and has a profound impact on the fundamental architecture. 
 
-To decide, which architecture style is most suited, various aspects must be taken into account:
-* All required features should be supported
-* Portability (e.g. to other XMPP-Servers)
-* Implementation difficulty
+The following aspects must be taken into account to find the most suitable architecture style:
 
-
-
-[context and problem statement]
-
-[decision drivers | forces | facing] _(optional)_
+* All required management functionality must be supported over the available APIs and protocols.
+* Compatibility with most XMPP servers
+* Keep the implementation complexity as low as possible
 
 === Considered Options
 
-* As plugin for a XMPP server, e.g. a http://download.igniterealtime.org/openfire/docs/latest/documentation/plugin-dev-guide.html[Openfire Plugin].
-* As XMPP component (https://xmpp.org/extensions/xep-0114.html[XEP-0114]).
-* As XMPP bot (i.e., a daemon logged into a XMPP server as a normal user).
+* XMPP server plugin, e.g. for http://download.igniterealtime.org/openfire/docs/latest/documentation/plugin-dev-guide.html[Openfire Plugin].
+* XMPP Component (https://xmpp.org/extensions/xep-0114.html[XEP-0114]).
+* XMPP Client/Bot
 
 === Decision Outcome
 
@@ -35,23 +30,25 @@ Negative consequences: _(optional)_
 
 === Pros and Cons of the Options
 
-==== Plugin
+==== Server Plugin
 
 * Good, because all features could be implemented directly on the XMPP server.
-* Good, because there is no additional protocol overhead and abstraction.
-* Bad, because a very high coupling to a specific XMPP server is required.
+* Good, because there is minimal protocol overhead and abstraction.
+* Bad, because a very high coupling to a specific XMPP server is required and compatibility/interoperability is therefore limited
+* Bad, because the high coupling to a specific XMPP server usually limits the possible implementation language.
 
-==== Component
+==== XMPP Component
 
-* Good, because the application type fits very well in the Components model.
+* Good, because the application style fits very well in the Components model.
 * ????, because supported FEATURES?
 * Bad, because the specification of Components is marked as _Historical_ and might therefore not be implemented by many XMPP Servers.
-** Note: openfire supports Components
-* Bad, because possibly not all XMPP client libraries implement this feature (???)
+** Note: Openfire supports Components
+* Bad, because some XMPP client libraries might support Components.
+* Bad, because the authentication mechanisms might not suffice the required standards of the ietf draft.
 
-==== Bot
+==== XMPP Client/Bot
 
 * Good, because a Bot is basically a normal XMPP client, which is supported by every XMPP server
 * Good, because all XMPP client libraries implement this feature.
-* Bad, because the application is not a normal XMPP-client but rather a Component.
+* Bad, because the application is conceptually not a normal XMPP-Client.
 * ????, because supported FEATURES?
