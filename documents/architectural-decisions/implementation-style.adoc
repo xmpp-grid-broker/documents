@@ -18,15 +18,13 @@ The following aspects must be taken into account to find the most suitable archi
 
 === Decision Outcome
 
-Chosen option: [option 1], because [justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force force | ... | comes out best (see below)].
+Chosen option: XMPP Client/bot, because it is not coupled to a specific XMPP server as the Server Plugin and supports strong authentication, in contrast to the XMPP Component.
 
-Positive Consequences: _(optional)_
-  - [e.g., improvement of quality attribute satisfaction, follow-up decisions required, ...]
-  - ...
+Positive Consequences:
+  - A normal XMPP client library can be used to implement the application.
 
-Negative consequences: _(optional)_
-  - [e.g., compromising quality attribute, follow-up decisions required, ...]
-  - ...
+Negative consequences:
+  - The application must run in a daemon, which must handle concurrent XMPP communication.
 
 === Pros and Cons of the Options
 
@@ -40,15 +38,15 @@ Negative consequences: _(optional)_
 ==== XMPP Component
 
 * Good, because the application style fits very well in the Components model.
-* ????, because supported FEATURES?
 * Bad, because the specification of Components is marked as _Historical_ and might therefore not be implemented by many XMPP Servers.
 ** Note: Openfire supports Components
 * Bad, because some XMPP client libraries might support Components.
 * Bad, because the authentication mechanisms might not suffice the required standards of the ietf draft.
+* Bad, because it uses a own handshake based digest authentication message.
 
 ==== XMPP Client/Bot
 
 * Good, because a Bot is basically a normal XMPP client, which is supported by every XMPP server
 * Good, because all XMPP client libraries implement this feature.
+* Good, because secure connections to the XMPP server are supported (SASL).
 * Bad, because the application is conceptually not a normal XMPP-Client.
-* ????, because supported FEATURES?
