@@ -4,13 +4,13 @@
 
 \subsection{Server}
 \begin{sidewaystable}
-	\centering
-	\caption{Comparison of XMPP Servers which might be used as Controller}
-	\label{tbl:server-comparison}
-	\begin{tabu}{X|X X X}
-		\hline
-		\diagbox[width=9em,height=2.5em]{Name}{Features}
-		& Prog. Language
+    \centering
+    \caption{Comparison of XMPP Servers which might be used as Controller}
+    \label{tbl:server-comparison}
+    \begin{tabu}{X|X X X X}
+        \hline
+        \diagbox[width=9em,height=2.5em]{Name}{Features}
+        & Prog. Language
         & Plugin Architecture
         & Req. XEPs
         & Authentication options
@@ -27,28 +27,29 @@
         & Lua
         & Luascript\footnote{\url{https://prosody.im/doc/developers/modules}}
         & XEP-0059 not supported\footnote{\url{https://prosody.im/doc/xeplist}}
+        & ?
         \\
 
         ejabberd
         & Erlang
         & Erlang/Elixir\footnote{\url{https://docs.ejabberd.im/developer/extending-ejabberd/modules/}}
         & Limited SASL\footnote{\url{https://www.process-one.net/en/ejabberd/protocols/}}
+        & ?
         \\
-
-	\end{tabu}
+    \end{tabu}
 \end{sidewaystable}
 
 
 \subsection{Libraries}
 
 \begin{sidewaystable}
-	\centering
+    \centering
     \caption{Comparison of XMPP Client Libraries}
-	\label{language-comparison-ds}
-	\begin{tabu}{X|X X X}
-		\hline
-		\diagbox[width=9em,height=2.5em]{Name}{Features}
-		& Prog. Language
+    \label{tbl:language-comparison-ds}
+    \begin{tabu}{X|X X X X}
+        \hline
+        \diagbox[width=9em,height=2.5em]{Name}{Features}
+        & Prog. Language
         & Plugin Architecture
         & Req. XEPs
         & Authentication options
@@ -70,14 +71,14 @@
 
         aioxmpp
         & Python 3.4
-        & Yes\footnote{\url{https://docs.zombofant.net/aioxmpp/devel/api/public/index.html#apis-mainly-relevant-for-extension-developers}}
-        & Yes\footnote{\url{https://docs.zombofant.net/aioxmpp/devel/#from-xmpp-extension-proposals-xeps}}
+        & Yes\footnote{\url{https://docs.zombofant.net/aioxmpp/devel/api/public/index.html\#apis-mainly-relevant-for-extension-developers}}
+        & Yes\footnote{\url{https://docs.zombofant.net/aioxmpp/devel/\#from-xmpp-extension-proposals-xeps}}
         & ?
         \\
 
         Smack
         & Java
-        & Yes\footnote{\url{https://github.com/igniterealtime/Smack/tree/master/documentation}
+        & Yes\footnote{\url{https://github.com/igniterealtime/Smack/tree/master/documentation}}
         & Yes\footnote{\url{https://download.igniterealtime.org/smack/docs/latest/documentation/extensions/index.html}}
         & ?
         \\
@@ -86,6 +87,7 @@
         & Java
         & Yes\footnote{\url{https://sco0ter.bitbucket.io/babbler/customextensions.html}}
         & Yes\footnote{\url{https://sco0ter.bitbucket.io/babbler/xeps.html}}
+        & ?
         \\
 
         Stroke
@@ -108,5 +110,5 @@
         & Yes\footnote{\url{http://docs.xmpp-ftw.org/manual/}}
         & ?
         \\
-	\end{tabu}
+    \end{tabu}
 \end{sidewaystable}
