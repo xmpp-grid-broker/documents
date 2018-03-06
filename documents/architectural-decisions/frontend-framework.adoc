@@ -1,0 +1,75 @@
+== Frontend Framework
+
+To create a user interface for the web-application frontend, a framework shall be used.
+
+The frontend framework fundamentally restricts the set of implementation languages and has a profound impact on the web interface architecture.
+
+The following aspects must be taken into account to find the most suitable architecture style:
+
+* The effort to learn and master the frameworks best practices must be reasonable.
+* The framework must be scalable because the web application is not trivial.
+* The number of third party libraries must be kept to a minimum to prevent cost-intense maintenance work in the future.
+
+
+=== Considered Options
+
+* SPA mit Angular
+* SPA mit React
+* SPA mit Vue.js
+* Django App
+
+=== Decision Outcome
+
+Chosen option: TODO
+
+=== Pros and Cons of the Options
+
+==== SPA mit Angular
+
+* Good, because it scales well.
+* Good, because the performance is automatically optimised for production builds.
+* Good, because it comes with all tools required for building a sophisticated SPA: components, modules, dependency injection and more.
+* Bad, because it is heavyweight and hard to learn/understand.
+* Good, because it is very popular, especially in (modern) enterprise applications.
+* Good, because it has a large community and is built by Google.
+* Bad, because API migrations in the past were costly and hard.
+* Good, because it uses TypeScript that brings additional safety.
+* Bad, because it uses TypeScript which brings indirections and cannot be eliminated
+* Neutral: It is a tool for everything and cannot be used partially.
+
+==== SPA mit React
+
+* Good, because it scales well.
+* Good, because it is lightweight
+* Good, because it provides components
+* Good, because it uses modern JavaScript features (ES6)
+* Bad, because its "lightweightness" leads to lots of third-party dependencies.
+* Bad, because it is not trivial to learn (e.g. "pseudo" inline HTML requires custom attributes `className`)
+* Bad, because it only defines a minimal core and many standard problems must be solved manually.
+* Good, because it has a large community and is built by Facebook.
+* Neutral: Uses JS for everything which is a matter of taste.
+* Neutral: Can be used partially 
+
+==== SPA mit Vue.js
+
+* Good, because it scales well.
+* Good, because it is lightweight
+* Good, because it provides components
+* Good, because it makes no assumptions about the JavaScript version used
+* Good, because it elegantly separates template (HTML), styling (CSS) and logic (JS)
+* Good, because the core team also maintains important additional such as routing and state management.
+* Good, because it has a large and active community
+* Bad, because its "lightweightness" leads to lots of third-party dependencies.
+* Bad, because it only defines a relatively small core and some standard problems must be solved manually.
+* Bad, because there is no standard way for non-trivial setups (complex spa, automated testing, etc.)
+* Neutral: Can be used partially 
+
+==== Django App
+
+* Good, because Django has excellent documentation.
+* Good, because Django has a (mostly) stable API.
+* Good, because Django is used in other projects in the INS.
+* Good, because Django has a very active community.
+* Bad, because multiple languages (Python and JavaScript) are required in the frontend.
+* Bad, complex client logic (e.g. paging) must still be implemented in JavaScript and might require an additional framework.
+* Bad, because it is very heavyweight (includes ORM, migrations and much more) with lots of features that we do not need.
