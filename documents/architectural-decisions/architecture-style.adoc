@@ -20,14 +20,6 @@ The following aspects must be taken into account to find the most suitable archi
 
 Chosen option: XMPP Client/bot, because it is not coupled to a specific XMPP server as the Server Plugin and, in contrast to the XMPP Component, supports strong authentication.
 
-Positive Consequences:
-
-* A standard XMPP client library can be used to implement the application.
-
-Negative consequences:
-
-* The application must run in a daemon, which must handle concurrent XMPP communication.
-
 === Pros and Cons of the Options
 
 ==== Server Plugin
