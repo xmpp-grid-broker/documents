@@ -24,17 +24,10 @@ Figure \ref{fig:requirements-overview} shows an overview of the primary use stor
 
 As an Administrator,\\
 I want to log in\\
+- preferably using an existing client TLS certificate - \\
 so that only I can inspect and manage Topics.\\
 
-\noindent\textcolor{red}{To be clarified}
-
-\begin{itemize}
-    \item It would be convenient to not maintain a separate user database by using the same credentials for authentication
-            as for the XMPP server and just forward them. This is from a security/usability perspective not best practice.
-            Are there any specific requirements/wishes?
-\end{itemize}
-
-\subsubsection{Secure XMPP Connection}
+\subsubsection{Secure XMPP Authentication}
 
 As an Administrator concerned with security requirements,\\
 I want to use either SASL EXTERNAL or SASL SCRAM mechanism for authentication -
@@ -51,6 +44,31 @@ I want to use either SASL EXTERNAL or SASL SCRAM mechanism for authentication -
     \item More costly and less user friendly authentication
     \item limited compatibility of supported XMPP servers
 \end{itemize}
+
+\subsubsection{Secure XMPP Connection}
+
+As an Administrator concerned with security requirements,\\
+I want to use minimally TLS 1.2 [RFC5246] to communicate with the XMPP server at all times\\
+to achieve maximal security and compatibility with the XMPP grid draft~\cite{ietf-mile-xmpp-grid-05}.
+
+\subsubsection{Secure Connection}
+
+As an Administrator concerned with security requirements,\\
+I want to use minimally TLS 1.2 [RFC5246] to communicate with the Broker\\
+to achieve maximal security.
+
+\subsubsection{Multiple Administrations}
+
+As an Administrator,\\
+I want to grant access to administrators \\
+so that they can also manage the application.
+
+\subsubsection{Audit Trail}
+
+As an Administrator concerned with security requirements,\\
+I want to be able to access an audit log\\
+- preferably using existing XMPP mechanisms - \\
+so that I can reconstruct what other Administrations did on the Controller.
 
 \subsubsection{Logout}
 
