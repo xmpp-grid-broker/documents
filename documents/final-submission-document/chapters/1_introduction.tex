@@ -16,7 +16,7 @@ The following sections introduce the underlying XMPP protocol and the relevant e
 
 \subsection{XMPP (eXtensible Messaging and Presence Protocol)}
 The Extensible Messaging and Presence Protocol (in short \gls{xmpp}) is an open protocol that enables the near-real-time exchange of small data between any network endpoints, hereafter called \glspl{platform}~\cite{rfc6120}.
-While originally designed as an Instant Messaging (IM) protocol, it can be used for a wide range of data exchange applications~\cite{ieee-xplore-stream-xml-xmpp}.
+While originally designed as an Instant Messaging (IM) protocol, XMPP can be used for a wide range of data exchange applications~\cite{ieee-xplore-stream-xml-xmpp}.
 
 XMPP is made of small building blocks defined in the core protocol~\cite{rfc6120} and numerous extensions called \glspl{xep}~\cite{xep-0001}.
 The core is comprised of functionality for setup and encryption of communication channels, \gls{xml} streams, error handling and more. Additional functionality such as \gls{service-discovery}~\cite{xep-0030} and \gls{publish-subscribe}~\cite{xep-0060} are defined in separate extensions.
@@ -59,13 +59,13 @@ The XMPP grid draft~\cite{ietf-mile-xmpp-grid-05} is based on multiple \glspl{xe
 \subsubsection{XEP-0060: \Gls{publish-subscribe}}
 The \gls{publish-subscribe} Extension, hereafter referred to as \gls{pubsub} or \gls{broker}, enables XMPP entities (\gls{provider}) to broadcast information via \glspl{topic} to subscribed entities (\gls{consumer})~\cite{xep-0060}.
 
-Nodes, hereafter referred to as \glspl{topic}, are the communication hubs. Entities can create topics and configure them, e.g. set up subscription timeouts, limit publish and subscription rights. The configuration mechanism is based on data forms (XEP\babelhyphen{nobreak}0004). Limiting of node creation rights of entities \emph{may} be implemented by a XMPP-Server, which means that possibly not every XMPP-Server that supports \gls{publish-subscribe} also implements this feature \cite{rfc2119}.
+Nodes, hereafter referred to as \glspl{topic}, are the communication hubs. Entities can create topics and configure them, e.g. set up subscription timeouts or limit publishing and subscription rights. The configuration mechanism is based on data forms (XEP\babelhyphen{nobreak}0004). An XMPP-Server \emph{may} restrict node creation to certain entities, which means that possibly not every XMPP-Server that supports \gls{publish-subscribe} also implements this feature \cite{rfc2119}.
 
 The protocol defines a hierarchy of six affiliations of which only the implementation of `owner` and `none` is \emph{required}.
 The implementation of the remaining four affiliations is \emph{recommended}.
 An owner of a topic can manage the subscriptions and affiliations of other entities associated with a given topic.
 
-To make the creation of topics simpler for clients, \gls{pubsub} defines five topic access models ("node access models") that \emph{should} be available: open, presence, roaster, authorize and whitelist.
+To simplify the creation of topics, \gls{pubsub} defines five topic access models ("node access models") that \emph{should} be available: open, presence, roaster, authorize and whitelist.
 
 The open model allows uncontrolled access while presence and roaster are specific for IM. Using the authorize model, the owner has to approve all subscription requests. The whitelist model enables the owner to maintain a list of entities that are allowed to subscribe.
 
