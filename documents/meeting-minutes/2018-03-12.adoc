@@ -1,0 +1,28 @@
+== Meeting 2018-03-12
+
+=== Attendees
+
+* Fabian Hauser, fhauser
+* Raphael Zimmermann, rzimmerm
+* Prof. Dr. Andreas Steffen, SFF
+
+Minute Taker: rzimmerm
+
+
+=== Agenda
+
+. Discuss Requirements / Wireframes
+. Current State of the Task Description
+. Date and time for the next meeting
+
+=== Discussions / Decisions
+
+. Discuss Requirements / Wireframes
+. Current State of the Task Description
+. Date and time for the next meeting
+* 2018-03-23, 09:00 in SFFs office
+
+
+=== Upcoming absences
+
+- No weelky meeting on 2018-03-19 (SFF is absent)
