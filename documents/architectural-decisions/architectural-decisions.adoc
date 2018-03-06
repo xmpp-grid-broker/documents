@@ -2,8 +2,10 @@
 :doctype: book
 :pdf-page-size: A4
 
-include::implementation-style.adoc[]
+include::architecture-style.adoc[]
 
 include::platform.adoc[]
 
 include::sasl-authentication-strategy.adoc[]
+
+include::role-management.adoc[]
