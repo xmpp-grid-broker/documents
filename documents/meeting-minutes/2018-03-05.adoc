@@ -11,13 +11,42 @@ Minute Taker: rzimmerm
 
 === Agenda
 
+. Discuss and clarify Requirements/Wireframes
 . Current state of the Task Description
-. Clarify Requirements
 . Date and time for the next meeting
 
 === Discussions / Decisions
 
+. Discuss and clarify Requirements/Wireframes
+* We discussed the open issues in the current requirements draft. 
+** The application is meant to run in production and must, therefore, meet strict security requirements
+*** Especially TLS >= 1.2 and certificate-based 
+*** The existing python scripts were the prototype and this project is intended to be a proper implementation
+** Response time is not very crucial for this application as it is designed for maintenance work and not real-time interventions.
+** We must propose an authentication model, e.g. using TLS mutual authentication and exactly one broker user.
+** SFF notes that SASL is quite complex. We might not need it although the IETF draft explicitly requires it.
+** The number of consumers and producers depends strongly on the concrete application. In most cases, however, there will be much more publishers than subscribers. SFF gave the following estimates as reference values.
+*** > 1000 Producers
+*** 100 Subscribers
+*** 1-4 Toplevel Topics
+*** > 1000 Subtopics (eg. one for every publisher)
+*** > 10000 Persisted Items (note that these items might contain large payloads)
+** We plan to include search, filtering and paging functionality for most listings. We will include these features in the next requirements draft.
+** SFF points out that subtopics are missing in the current draft as well as the wireframes. We will include this in the next requirements draft.
+** SFF notes that a role concept might be needed to simplify the administration. We might be able to use existing XMPP features for this (e.g. XEP-0144).
+** According to SFF, Subscription Requests and Validation are nice to have but have low priority.
+*** Instead of validation, unsupported functionality should not be visible
+** For deleting persisted items, SFF suggests a "bulk delete" functionality, which allows administrators to delete all items that match certain criteria. 
+** SFF prefers a standalone application over a server plugin to reduce coupling.
+** The implementation language is not of paramount importance to SFF although he prefers Python or Java. A single page app written in JavaScript using a Python backend is also a viable option for him.
+*** We should not rely on too many third-party libraries that save us several hours during the project but might require extra maintenance effort in the future (SFF gave a Django paging extension as an example)
+
+. Current State of the Task Description
+* SFF will complete the task description after he receives the revised user stories and wireframes.
+
+. Date and time for the next meeting
+* 2018-03-12, 09:00 in SFFs office
 
 === Upcoming absences
 
-_no upcoming absences_
+- No weekly meeting on 2018-03-19 (SFF is absent)
