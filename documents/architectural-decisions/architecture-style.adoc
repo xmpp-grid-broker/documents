@@ -1,0 +1,46 @@
+== Architecture Style
+
+There are three common variants to participate in XMPP communication and manage server configurations: As XMPP-server plugin, XMPP component or an XMPP Client/Bot.
+
+The implementation style fundamentally restricts the set of implementation languages and has a profound impact on the fundamental architecture. 
+
+The following aspects must be taken into account to find the most suitable architecture style:
+
+* All required management functionality must be supported over the available APIs and protocols.
+* Compatibility with most XMPP servers
+* Keep the implementation complexity as low as possible
+
+=== Considered Options
+
+* XMPP server plugin, e.g. for http://download.igniterealtime.org/openfire/docs/latest/documentation/plugin-dev-guide.html[Openfire Plugin].
+* XMPP Component (https://xmpp.org/extensions/xep-0114.html[XEP-0114]).
+* XMPP Client/Bot
+
+=== Decision Outcome
+
+Chosen option: XMPP Client/bot, because it is not coupled to a specific XMPP server as the Server Plugin and, in contrast to the XMPP Component, supports strong authentication.
+
+=== Pros and Cons of the Options
+
+==== Server Plugin
+
+* Good, because all features could be implemented directly on the XMPP server.
+* Good, because there is minimal protocol overhead and abstraction.
+* Bad, because a very high coupling to a specific XMPP server is required and compatibility/interoperability is therefore limited
+* Bad, because the high coupling to a specific XMPP server usually limits the possible implementation language.
+
+==== XMPP Component
+
+* Good, because the application style fits very well in the Components model.
+* Bad, because the specification of Components is marked as _Historical_ and might therefore not be implemented by many XMPP Servers.
+** Note: Openfire supports Components
+* Bad, because some XMPP client libraries might support Components.
+* Bad, because the authentication mechanisms might not suffice the required standards of the ietf draft.
+* Bad, because it uses a own handshake based digest authentication message.
+
+==== XMPP Client/Bot
+
+* Good, because a Bot is basically a normal XMPP client, which is supported by every XMPP server
+* Good, because all XMPP client libraries implement this feature.
+* Good, because secure connections to the XMPP server are supported (SASL).
+* Bad, because the application is conceptually not a normal XMPP-Client.
