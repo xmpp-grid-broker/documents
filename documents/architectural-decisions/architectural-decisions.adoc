@@ -11,3 +11,5 @@ include::sasl-authentication-strategy.adoc[]
 include::role-management.adoc[]
 
 include::webapp-communication-topology.adoc[]
+
+include::frontend-framework.adoc[]
