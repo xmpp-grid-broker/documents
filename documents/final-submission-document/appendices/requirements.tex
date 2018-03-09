@@ -76,12 +76,27 @@ As an Administrator,\\
 I want to log out\\
 so that I can terminate a session.
 
-\subsection{List Topics}
+\subsection{List Topics and Collections}
 
 \subsubsection{List All Topics}
 As an Administrator,\\
 I want to see a list of all Topics of the associated Controller\\
 so that I can quickly assimilate which Topics exist.
+
+\subsubsection{List All Collections}
+As an Administrator,\\
+I want to see a list of all Collections of the associated Controller\\
+so that I can quickly assimilate which Collections exist.
+
+\subsubsection{List All Parent-Collections of a Topic}
+As an Administrator,\\
+I want to see a list of all transitive parent Collections that contain a given Topic\\
+so that I can quickly assimilate in which Collections items are published.
+
+\subsubsection{List All Subtopics and Subcollection of a Collection}
+As an Administrator,\\
+I want to see a list of all Collections and Topics that a given Collection contains\\
+so that I can quickly the collection hierarchy.
 
 \noindent\textcolor{red}{To be clarified}
 
@@ -89,12 +104,18 @@ so that I can quickly assimilate which Topics exist.
     \item How many topics are realistic? 1-10, 10-100, 100-1000, > 1000? (search required?)
 \end{itemize}
 
-
 \subsubsection{List Available Topics With Limited Access}
 
 As an Administrator,\\
 I want to see a list of all Topics of the associated Controller to which I have limited access to,\\
 to simplify troubleshooting and locate errors.
+
+\subsubsection{List Available Collections With Limited Access}
+
+As an Administrator,\\
+I want to see a list of all Collections of the associated Controller to which I have limited access to,\\
+to simplify troubleshooting and locate errors.
+
 
 \noindent\textcolor{red}{\\To be clarified}
 
@@ -109,9 +130,21 @@ As an Administrator,\\
 I want to create a new Topic on the associated Controller\\
 so that I am not tied to a fixed set of Topics.
 
+\subsection{Create a New Collection}
+
+As an Administrator,\\
+I want to create a new Collection on the associated Controller\\
+so that I can flexibly patch Topics together.
+
 \subsubsection{Override Default Topic Configuration}
 
 As an Administrator in the process of creating a new Topic,\\
+I want to override the default configuration (e.g. the affiliations) \\
+so that I can restrict access and provide reasonable defaults.
+
+\subsubsection{Override Default Collection Configuration}
+
+As an Administrator in the process of creating a new Collection,\\
 I want to override the default configuration (e.g. the affiliations) \\
 so that I can restrict access and provide reasonable defaults.
 
@@ -121,24 +154,44 @@ As an Administrator in the process of creating a new Topic,\\
 I want to specify an initial set of Consumers and Providers \\
 so that I can restrict access to that Topic and provide reasonable defaults.
 
+\subsubsection{Initial Collection Consumers}
+
+As an Administrator in the process of creating a new Collection,\\
+I want to specify an initial set of Consumers \\
+so that I can restrict access to that Collection and provide reasonable defaults.
+
 \subsection{Delete an Existing Topic}
 
 As an Administrator,\\
 I want to delete an existing Topic on the associated Controller\\
 so that I can get rid of obsolete Topics.
 
-\subsubsection{Fault Prevention On Delete}
+\subsection{Delete an Existing Collection}
+
+As an Administrator,\\
+I want to delete an existing Collection on the associated Controller\\
+so that I can get rid of obsolete Collections.
+
+
+\subsubsection{Fault Prevention On Topic-Delete}
 
 As an Administrator in the process of deleting a Topic, \\
 I want a mechanism to prevent me from deleting the wrong Topic on the associated Controller\\
 (e.g. require me to enter the name of the Topic manually).
 
-\subsection{Manage Topic Subscriptions}
+\subsubsection{Fault Prevention On Collection-Delete}
+
+As an Administrator in the process of deleting a Collection, \\
+I want a mechanism to prevent me from deleting the wrong Collection on the associated Controller\\
+(e.g. require me to enter the name of the Collection manually).
+
+
+\subsection{Manage Topic/Collection Subscriptions}
 
 \subsubsection{List Consumers}
 
 As an Administrator, \\
-I want to list all Consumers (including their JIDs) of a given Topic on the associated Controller, \\
+I want to list all Consumers (including their JIDs) of a given Topic/Collection on the associated Controller, \\
 so that I can verify that specific Consumers are subscribed, and others are not.
 
 \noindent\textcolor{red}{To be clarified}
@@ -151,33 +204,33 @@ so that I can verify that specific Consumers are subscribed, and others are not.
 \subsubsection{Inspect Detailed Subscription Configuration}
 
 As an Administrator, \\
-I want to inspect the detailed Topic subscription configuration of a given Consumer, \\
+I want to inspect the detailed Topic/Collection subscription configuration of a given Consumer, \\
 so that I can reproduce and reason about the receipt of data on that Consumer
 and find potential misconfiguration.
 
 \subsubsection{Partially Modify Subscription Configuration}
 
 As an Administrator, \\
-I want to modify parts of the Topic subscription configuration of a given Consumers, \\
+I want to modify parts of the Topic/Collection subscription configuration of a given Consumers, \\
 so that I can fix misconfiguration.
 
 \subsubsection{Unsubscribe Consumer}
 
 As an Administrator, \\
-I want to manually unsubscribe a specific Consumer from a particular Topic on the associated Controller, \\
+I want to manually unsubscribe a specific Consumer from a particular Topic/Collection on the associated Controller, \\
 so that I can remove obsolete or undesired subscriptions.
 
 \subsubsection{Subscribe Consumer}
 
 As an Administrator, \\
-I want to manually subscribe a specific Consumer on a particular Topic on the associated Controller, \\
+I want to manually subscribe a specific Consumer on a particular Topic/Collection on the associated Controller, \\
 so that I can faster setup and manage Consumers.
 
 \subsection{Manage Topic Affiliations}
 \subsubsection{Inspect Affiliations}
 
 As an Administrator,\\
-I want to list all Affiliations (JID and "Role") for a particular Topic on the associated Controller \\
+I want to list all Affiliations (JID and "Role") for a particular Topic/Collection on the associated Controller \\
 so that I can find potential misconfiguration.
 
 \noindent\textcolor{red}{To be clarified}
@@ -190,18 +243,18 @@ so that I can find potential misconfiguration.
 \subsubsection{Modify Affiliations}
 
 As an Administrator,\\
-I want to modify the Affiliation ("Role") of a given JID for a particular Topic on the associated Controller \\
+I want to modify the Affiliation ("Role") of a given JID for a particular Topic/Collection on the associated Controller \\
 so that I can fix potential misconfiguration.
 
 \subsubsection{Fault Prevention When Modifying My Affiliation}
 
-As an Administrator in the process of modifying my Affiliation for a particular Topic on the associated Controller,\\
+As an Administrator in the process of modifying my Affiliation for a particular Topic/Collection on the associated Controller,\\
 I want a mechanism to prevent me from accidentally downgrading my rights.
 
-\subsubsection{Meaningful Error For Topics With Limited Access}
+\subsubsection{Meaningful Error For Topics/Collection With Limited Access}
 
 As an Administrator,\\
-I want to receive a meaningful error message when inspecting a node to which I have limited access \\
+I want to receive a meaningful error message when inspecting a Topic/Collection to which I have limited access \\
 so that I can quickly comprehend why the configuration options are limited.
 
 \subsection{Manage Subscription Requests}
