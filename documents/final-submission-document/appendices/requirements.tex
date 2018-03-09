@@ -257,7 +257,30 @@ As an Administrator,\\
 I want to receive a meaningful error message when inspecting a Topic/Collection to which I have limited access \\
 so that I can quickly comprehend why the configuration options are limited.
 
-\subsection{Manage Subscription Requests}
+\subsection{Delete Persisted Items From a Topic}
+
+\subsubsection{Delete a Persisted Item From a Topic}
+
+As an Administrator,\\
+I want to delete a particular persisted item from a specific Topic\\
+- given that this feature is supported by the associated Controller -\\
+so that I can clean up test items and remove obsolete or corrupted items.
+
+\subsubsection{Purge All Persisted Items From a Topic}
+
+As an Administrator,\\
+I want to purge persisted items from a specific Topic\\
+- given that this feature is supported by the associated Controller -\\
+so that I can clean up test items and remove obsolete or corrupted items.
+
+\subsubsection{Delete Set of Persisted Item From a Topic (optional)}
+
+As an Administrator,\\
+I want to delete a set of persisted item that match a given criteria from a specific Topic\\
+- given that this feature is supported by the associated Controller -\\
+so that I can clean up test items and remove obsolete or corrupted items.
+
+\subsection{Manage Subscription Requests (optional)}
 
 \subsubsection{List Subscription Request}
 As an Administrator,\\
@@ -279,30 +302,8 @@ I want to reject a pending subscription request for a given Topic\\
 - given that this feature is supported by the associated Controller -\\
 so that I can deny user access in accordance with the XMPP standards.
 
-\subsection{Delete Persisted Items From a Topic}
 
-\subsubsection{Delete a Persisted Item From a Topic}
-
-As an Administrator,\\
-I want to delete a particular persisted item from a specific Topic\\
-- given that this feature is supported by the associated Controller -\\
-so that I can clean up test items and remove obsolete or corrupted items.
-
-\subsubsection{Delete Set of Persisted Item From a Topic}
-
-As an Administrator,\\
-I want to delete a set of persisted item that match a given criteria from a specific Topic\\
-- given that this feature is supported by the associated Controller -\\
-so that I can clean up test items and remove obsolete or corrupted items.
-
-\subsubsection{Purge All Persisted Items From a Topic}
-
-As an Administrator,\\
-I want to purge persisted items from a specific Topic\\
-- given that this feature is supported by the associated Controller -\\
-so that I can clean up test items and remove obsolete or corrupted items.
-
-\subsection{Validate Controller Configuration}
+\subsection{Validate Controller Configuration (optional)}
 
 \subsubsection{Validate Supported XEPs Configurations}
 As an Administrator,\\
