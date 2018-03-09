@@ -46,10 +46,10 @@ Chosen option: Web Application because it can easily be installed, updated and p
 * Good, because the development team has experience writing command line applications.
 * Good, because no additional runtime on the client side (except the browser) is required.
 * Good, because no additional rights are required for setup.
-* Good, because updates must only be performed on the server side (clients need no updates but the platform, i.e. the browser)
-* Good, because it scales well
-* Bad, because only limited OS-functionality is available
+* Good, because updates must only be performed on the server side (clients need no updates but the platform, i.e. the browser).
+* Good, because it scales well.
+* Bad, because only limited OS-functionality is available.
 * Bad, because testing of multiple browsers and browser versions is expensive.
 * Bad, because the supported features vary significantly depending on the browser and version.
-* Bad, backend a server is required although its importance might vary on the chosen architecture
-* Bad, because it has a potentially large attack vector depending on how and where it is deployed
+* Bad, because a backend server is required although its importance might vary on the chosen architecture.
+* Bad, because it has a potentially large attack vector depending on how and where it is deployed.
