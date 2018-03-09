@@ -1,0 +1,42 @@
+== Webapplication Communication Topology
+
+As we decided to build a web-application, it remains open how the communication the backing XMPP server flows.
+
+=== Considered Options
+
+* XMPP from the Browser with WebSockets (RFC 7395)
+* XMPP from the Browser with BOSH (XEP-0206)
+* XMPP via WebAPI Proxy
+
+=== Decision Outcome
+
+Chosen option: TODO
+
+=== Pros and Cons of the Options
+
+====  XMPP from the Browser with WebSockets (RFC 7395)
+
+* Good, because when building an SPA-Client, it is sufficient to serve just static files which provide higher levels of security and performance.
+* Good, because an actively maintained client exists (stanza.io)
+* Good, because existing client-certificates can re-use.
+* Good, because existing XMPP-mechanisms are used.
+* Bad, because additional server plugins must be enabled which is an additional attack vector. (Workaround: Implement a custom proxy)
+* Bad, because it is not a standard yet (Proposed Standard)
+
+====  XMPP from the Browser with BOSH (XEP-0206)
+
+* Good, because when building an SPA-Client, it is sufficient to serve just static files which provide higher levels of security and performance.
+* Good, because an actively maintained client exists (strophe.js)
+* Good, because existing client-certificates can re-use.
+* Good, because existing XMPP-mechanisms are used.
+* Bad, because additional server plugins must be enabled which is an additional attack vector. (Workaround: Implement a custom proxy)
+* Bad, because it is not a standard yet (Draft)
+
+
+==== XMPP via WebAPI Proxy
+
+* Good, because it decouples the client form the effective XMPP calls (separation of concerns)
+* Good, because only minimal HTTP and JavaScript features are used leading to a broad compatibility
+* Bad, because the indirection can limit the performance significantly
+* Bad, because a server application must be installed and maintained (security updates)
+* Bad, because existing XMPP-mechanisms are not used.
