@@ -4,7 +4,7 @@ The chosen platform has a fundamental impact on the resulting application as wel
 
 === Considered Options
 
-* Client Application with command line interface
+* Client Application with Command Line Interface
 * Client Application with Graphical User Interface
 * Web application
 
@@ -14,39 +14,39 @@ Chosen option: Web Application because it can easily be installed, updated and p
 
 === Pros and Cons of the Options 
 
-==== Client Application with command line interface
+==== Client Application with Command Line Interface
 
 * Good, because cross-platform support can be achieved relatively easy (depending on the chosen language/runtime).
 * Good, because the development team has experience writing command line applications.
 * Good, because all OS-functionality is available.
-* Good, because command line tools are relatively simple to implement
+* Good, because command line tools are relatively simple to implement.
 * Bad, because additional runtimes might be required (python, JVM, .NET etc.).
-* Bad, because not all users appreciate command tools.
+* Bad, because not all users appreciate command line tools.
 * Bad, because cross-platform testing is expensive.
-* Bad, because Mobile Devices (Phones, Tablets, Chromebooks) are not supported.
+* Bad, because mobile devices (phones, tablets, chromebooks) are not supported.
 * Bad, because updates must be performed on every client.
 * Bad, because additional rights are required for setup.
 
 
 ==== Client Application with Graphical User Interface
 
-* Good, because graphical interfaces have a broad acceptance
-* Good, because all OS-functionality is available
-* Bad, because additional runtimes might be required (python, JVM, .NET etc.)
-* Bad, because additional libraries are required (e.g. QT)
+* Good, because graphical interfaces have a broad acceptance.
+* Good, because all OS-functionality is available.
+* Bad, because additional runtimes might be required (python, JVM, .NET etc.).
+* Bad, because additional libraries are required (e.g. QT).
 * Bad, because cross-platform testing is expensive.
-* Bad, because Mobile Devices (Phones, Tablets, Chromebooks) are not supported.
+* Bad, because mobile-devices (phones, tablets, chromebooks) are not supported.
 * Bad, because updates must be performed on every client.
 * Bad, because additional rights are required for setup.
-* Bad, because the development team has no experience writing command line applications
+* Bad, because the development team has no experience writing graphical user interfaces.
 
 ==== Web Application
 
-* Good, because graphical interfaces have a broad acceptance
+* Good, because graphical interfaces have a broad acceptance.
 * Good, because the development team has experience writing command line applications.
-* Good, because no additional Runtime (except the Browser) is required.
+* Good, because no additional runtime (except the browser) is required.
 * Good, because no additional rights are required for setup.
-* Good, because updates must only be performed on the server side (Clients need no updates but the platform, i.e. the Browser)
+* Good, because updates must only be performed on the server side (clients need no updates but the platform, i.e. the browser)
 * Bad, because only limited OS-functionality is available
 * Bad, because testing of multiple browsers and browser versions is expensive.
 * Bad, because the supported features vary significantly depending on the browser and version.
