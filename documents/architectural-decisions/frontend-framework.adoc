@@ -41,12 +41,13 @@ Chosen option: TODO
 
 * Good, because it scales well.
 * Good, because it is lightweight
+* Good, because it encourages functional programming and discourages state
 * Good, because it provides components
 * Good, because it uses modern JavaScript features (ES6)
+* Good, because it has a large community and is built by Facebook.
 * Bad, because its "lightweightness" leads to lots of third-party dependencies.
 * Bad, because it is not trivial to learn (e.g. "pseudo" inline HTML requires custom attributes `className`)
 * Bad, because it only defines a minimal core and many standard problems must be solved manually.
-* Good, because it has a large community and is built by Facebook.
 * Neutral: Uses JS for everything which is a matter of taste.
 * Neutral: Can be used partially 
 
