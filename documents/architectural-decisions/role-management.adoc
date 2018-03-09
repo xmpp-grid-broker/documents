@@ -29,6 +29,7 @@ We must, however, keep in mind that the XEP is deferred and might therefore not 
 * Good, because publishing permissions are managed on a topic level which encourages per-device-topics.
 * Good, because this mechanism is used in production.
 * Bad, because XEP-0248 is deferred
+* Bad, because the Collection Nodes must be structured in a specific way to support access management
 
 ==== Roster Access Model which supports groups (XEP-0144)
 
