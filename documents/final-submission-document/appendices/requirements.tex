@@ -12,13 +12,6 @@ Figure \ref{fig:requirements-overview} shows an overview of the primary use stor
     \label{fig:requirements-overview}
 \end{figure}
 
-\noindent\textcolor{red}{To be clarified}
-
-\begin{itemize}
-    \item Non Functional Requirements
-\end{itemize}
-
-
 \subsection{Authentication}
 \subsubsection{Login}
 
@@ -83,9 +76,9 @@ As an Administrator,\\
 I want to see a list of all Topics of the associated Controller\\
 so that I can quickly assimilate which Topics exist.
 
-\subsubsection{List All Collections}
+\subsubsection{List All Top-Level-Collections}
 As an Administrator,\\
-I want to see a list of all Collections of the associated Controller\\
+I want to see a list of all Top-Level-Collections of the associated Controller\\
 so that I can quickly assimilate which Collections exist.
 
 \subsubsection{List All Parent-Collections of a Topic}
@@ -98,31 +91,27 @@ As an Administrator,\\
 I want to see a list of all Collections and Topics that a given Collection contains\\
 so that I can quickly the collection hierarchy.
 
-\noindent\textcolor{red}{To be clarified}
-
-\begin{itemize}
-    \item How many topics are realistic? 1-10, 10-100, 100-1000, > 1000? (search required?)
-\end{itemize}
-
-\subsubsection{List Available Topics With Limited Access}
+\subsubsection{List Available Topics With Limited Access (optional)}
 
 As an Administrator,\\
 I want to see a list of all Topics of the associated Controller to which I have limited access to,\\
 to simplify troubleshooting and locate errors.
 
-\subsubsection{List Available Collections With Limited Access}
+\subsubsection{List Available Collections With Limited Access (optional)}
 
 As an Administrator,\\
 I want to see a list of all Collections of the associated Controller to which I have limited access to,\\
 to simplify troubleshooting and locate errors.
 
+\subsubsection{Topic and Collection Paging}
+As an Administrator,\\
+I want to be able to page through any set of Collection/Topic with more than 10 Items \\
+so that I can work with more than 1000 Collections and Topics more effectively.
 
-\noindent\textcolor{red}{\\To be clarified}
-
-\begin{itemize}
-    \item Is this a relevant scenario?
-\end{itemize}
-
+\subsubsection{Topic and Collection Name Filter}
+As an Administrator,\\
+I want to be able to quickly filter any set of Collections/Topics with more than 10 Items \\
+so that I can work with more than 1000 Collections and Topics more effectively.
 
 \subsection{Create a New Topic}
 
@@ -194,12 +183,6 @@ As an Administrator, \\
 I want to list all Consumers (including their JIDs) of a given Topic/Collection on the associated Controller, \\
 so that I can verify that specific Consumers are subscribed, and others are not.
 
-\noindent\textcolor{red}{To be clarified}
-
-\begin{itemize}
-    \item How many Consumers are realistic? 1-10, 10-100, 100-1000, > 1000? (search required?)
-\end{itemize}
-
 
 \subsubsection{Inspect Detailed Subscription Configuration}
 
@@ -233,13 +216,6 @@ As an Administrator,\\
 I want to list all Affiliations (JID and "Role") for a particular Topic/Collection on the associated Controller \\
 so that I can find potential misconfiguration.
 
-\noindent\textcolor{red}{To be clarified}
-
-\begin{itemize}
-    \item How many Consumers/Publishers are realistic?
-\end{itemize}
-
-
 \subsubsection{Modify Affiliations}
 
 As an Administrator,\\
@@ -258,6 +234,21 @@ I want to receive a meaningful error message when inspecting a Topic/Collection 
 so that I can quickly comprehend why the configuration options are limited.
 
 \subsection{Delete Persisted Items From a Topic}
+
+\subsubsection{Filter Persisted Items}
+As an Administrator,\\
+I want to be able to filter all persisted Items of from a specific Topic by \\
+\begin{itemize}
+    \item the timestamp of its publication
+    \item the publishers JID
+\end{itemize}
+so that I can work with more than 1000 Collections and Topics more effectively.
+
+\subsubsection{Paged Persisted Items}
+As an Administrator working with filtered persisted items,\\
+I want to be able to page through the resulting items\\
+- given that this feature is supported by the associated Controller -\\
+so that I can work with more than 10000 persisted items more effectively.
 
 \subsubsection{Delete a Persisted Item From a Topic}
 
@@ -301,7 +292,6 @@ As an Administrator,\\
 I want to reject a pending subscription request for a given Topic\\
 - given that this feature is supported by the associated Controller -\\
 so that I can deny user access in accordance with the XMPP standards.
-
 
 \subsection{Validate Controller Configuration (optional)}
 
