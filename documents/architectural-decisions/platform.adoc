@@ -6,36 +6,47 @@ The chosen platform has a fundamental impact on the resulting application as wel
 
 * Client Application with command line interface
 * Client Application with Graphical User Interface
-* Webapplication
+* Web application
 
 === Decision Outcome
 
-Chosen option: [option 1], because [justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force force | ... | comes out best (see below)].
+Chosen option: Web Application because it can easily be installed, updated and provides maximal user acceptance. The development team has experience in writing web applications meaning they know common pitfalls and limitations of the platform. Command line users might use the already existing proof of concept instead.
 
 === Pros and Cons of the Options 
 
 ==== Client Application with command line interface
 
-* Usability Issues
-* Cross-Plattform least for desktop applications is possible but additional runtime might be required (python, java, mono etc)
-** Expensive testing
-* No Mobile
-* Full Access to OS-Functionality (required?!)
-* Updates must be perfomred on every client
-* Additional rights for setup are required
+* Good, because cross-platform support can be achieved relatively easy (depending on the chosen language/runtime).
+* Good, because the development team has experience writing command line applications.
+* Good, because all OS-functionality is available.
+* Good, because command line tools are relatively simple to implement
+* Bad, because additional runtimes might be required (python, JVM, .NET etc.).
+* Bad, because not all users appreciate command tools.
+* Bad, because cross-platform testing is expensive.
+* Bad, because Mobile Devices (Phones, Tablets, Chromebooks) are not supported.
+* Bad, because updates must be performed on every client.
+* Bad, because additional rights are required for setup.
+
 
 ==== Client Application with Graphical User Interface
 
-* Cross-Plattform for desktop applications is possible with toolkits such as QT but additional runtime might be required (python, java, mono etc)
-** Expensive testing
-* No Mobile 
-* Full Access to OS-Functionality (required?!)
-* Updates must be perfomred on every client
-* Additional rights for setup are required
+* Good, because graphical interfaces have a broad acceptance
+* Good, because all OS-functionality is available
+* Bad, because additional runtimes might be required (python, JVM, .NET etc.)
+* Bad, because additional libraries are required (e.g. QT)
+* Bad, because cross-platform testing is expensive.
+* Bad, because Mobile Devices (Phones, Tablets, Chromebooks) are not supported.
+* Bad, because updates must be performed on every client.
+* Bad, because additional rights are required for setup.
+* Bad, because the development team has no experience writing command line applications
 
-==== Webapplication
+==== Web Application
 
-* Most compatibility: All Desktop Operating Systems as well as Mobile clients
-* Intuitive to usage
-* Supported features varay significantly depending on the browser and version
-* Limited Access to OS-Functionality (required?!)
+* Good, because graphical interfaces have a broad acceptance
+* Good, because the development team has experience writing command line applications.
+* Good, because no additional Runtime (except the Browser) is required.
+* Good, because no additional rights are required for setup.
+* Good, because updates must only be performed on the server side (Clients need no updates but the platform, i.e. the Browser)
+* Bad, because only limited OS-functionality is available
+* Bad, because testing of multiple browsers and browser versions is expensive.
+* Bad, because the supported features vary significantly depending on the browser and version.
