@@ -3,3 +3,5 @@
 :pdf-page-size: A4
 
 include::implementation-style.adoc[]
+
+include::platform.adoc[]

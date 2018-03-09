@@ -1,0 +1,41 @@
+== Platform
+
+The chosen platform has a fundamental impact on the resulting application as well as on the user experience: Where is it used, from whom and from which device.
+
+=== Considered Options
+
+* Client Application with command line interface
+* Client Application with Graphical User Interface
+* Webapplication
+
+=== Decision Outcome
+
+Chosen option: [option 1], because [justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force force | ... | comes out best (see below)].
+
+=== Pros and Cons of the Options 
+
+==== Client Application with command line interface
+
+* Usability Issues
+* Cross-Plattform least for desktop applications is possible but additional runtime might be required (python, java, mono etc)
+** Expensive testing
+* No Mobile
+* Full Access to OS-Functionality (required?!)
+* Updates must be perfomred on every client
+* Additional rights for setup are required
+
+==== Client Application with Graphical User Interface
+
+* Cross-Plattform for desktop applications is possible with toolkits such as QT but additional runtime might be required (python, java, mono etc)
+** Expensive testing
+* No Mobile 
+* Full Access to OS-Functionality (required?!)
+* Updates must be perfomred on every client
+* Additional rights for setup are required
+
+==== Webapplication
+
+* Most compatibility: All Desktop Operating Systems as well as Mobile clients
+* Intuitive to usage
+* Supported features varay significantly depending on the browser and version
+* Limited Access to OS-Functionality (required?!)
