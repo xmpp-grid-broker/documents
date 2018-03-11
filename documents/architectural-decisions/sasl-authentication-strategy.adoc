@@ -9,6 +9,8 @@ ____
 
 The chosen authentication mechanism has impact on XMPP server support, as well as the implementation of the broker application.
 
+Note that this architectural decision has no impact on the communication between other Platforms and the Controller (i.e. other XMPP clients and the XMPP server).
+
 
 === Considered Options
 
