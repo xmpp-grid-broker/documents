@@ -6,7 +6,7 @@
 
 To find a suited server to develop, test and document our application with, we considered the three major open source XMPP servers, which are still under active maintenance and provide extensive documentation on their XEP-implementations.
 
-For our implementation, we might require the following XEPs respectively RFCs. Any deviations are noted under ``Supported XEPs''.
+For our implementation, we might require the following XEPs respectively RFCs. Any deviations are noted under ``XEP/RFC Support''.
 
 \begin{description}
     \item[XEP-0004] Data Forms
@@ -29,12 +29,14 @@ For our implementation, we might require the following XEPs respectively RFCs. A
     Plugin Architecture
     & Java JAR\footnote{\url{http://download.igniterealtime.org/openfire/docs/latest/documentation/plugin-dev-guide.html}} \\
 
-    Supported XEPs\footnote{\url{http://download.igniterealtime.org/openfire/docs/latest/documentation/protocol-support.html}}
+    XEP/RFC Support
     & \begin{tabu}{@{}l X}
     XEP-0133 & Partial, also not explicitly supported\footnote{\url{https://issues.igniterealtime.org/browse/OF-284}}\\
     XEP-0178 & Partial, also not explicitly supported\footnote{\url{https://github.com/Connectify/Openfire/blob/master/src/java/org/jivesoftware/openfire/net/SASLAuthentication.java} and \hfill\\ \url{https://issues.igniterealtime.org/browse/OF-1191}}\\
     XEP-0248 & Partial, as part of outdated XEP-0060\footnote{\url{https://igniterealtime.jiveon.com/thread/38929}} \\
-    \end{tabu} \\
+    \end{tabu}
+    All other required XEPs are supported\footnote{\url{http://download.igniterealtime.org/openfire/docs/latest/documentation/protocol-support.html}}\\
+
 \end{tabu}
 
 \subsubsection{Prosody}
@@ -45,12 +47,13 @@ For our implementation, we might require the following XEPs respectively RFCs. A
     Plugin Architecture
     & Luascript\footnote{\url{https://prosody.im/doc/developers/modules}} \\
 
-    Supported XEPs\footnote{\url{https://prosody.im/doc/modules} and  \url{https://prosody.im/doc/xeplist}}
+    XEP/RFC Support
     & \begin{tabu}{@{}l X}
     XEP-0059 & Not supported\\
     XEP-0178 & Not supported\\
     XEP-0248 & Not supported\\
-    \end{tabu} \\
+    \end{tabu}
+    All other required XEPs are supported\footnote{\url{https://prosody.im/doc/modules} and  \url{https://prosody.im/doc/xeplist}}\\
 \end{tabu}
 
 \subsubsection{Ejabberd}
@@ -61,18 +64,19 @@ For our implementation, we might require the following XEPs respectively RFCs. A
     Plugin Architecture
     & Erlang/Elixir\footnote{\url{https://docs.ejabberd.im/developer/extending-ejabberd/modules/}} \\
 
-    Supported XEPs\footnote{\url{http://www.ejabberd.im/protocols}}
+    XEP/RFC Support
     & \begin{tabu}{@{}l X}
     XEP-0178 & Partial, commercially only\footnote{Server to server only in community edition}\\
     RFC-7395 & Partial, not explicitly supported\footnote{\url{https://docs.ejabberd.im/xmpp}}\\
-    \end{tabu} \\
+    \end{tabu}
+    All other required XEPs are supported\footnote{\url{http://www.ejabberd.im/protocols}} \\
 \end{tabu}
 
 \subsection{Libraries}
 
 To find a suited library to implement our application with, we considered various open source XMPP libraries, which are still under active maintenance and provide extensive documentation on their XEP-implementations. We also limited the programming languages to Python, Java and JavaScript as discussed in the project meeting of 2018-03-05 (see~\fullref{sec:meeting-minutes}).
 
-For our implementation, we might require the following XEPs. Any deviations are noted under ``Features''.
+For our implementation, we might require the following XEPs. Any deviations are noted under ``Limitations''.
 
 \begin{description}
     \item[XEP-0004] Data Forms
@@ -92,7 +96,7 @@ For our implementation, we might require the following XEPs. Any deviations are 
     Name
     & Language
     & Plugins
-    & Features
+    & Limitations
     \\ \hline
 
     SleekXMPP\footnote{\url{http://sleekxmpp.com/xeps.html}}
