@@ -1,0 +1,47 @@
+== SASL Authentication Strategy
+
+User Story: 1.2 Authentication: Secure XMPP Connection
+
+The https://tools.ietf.org/html/draft-ietf-mile-xmpp-grid-05#section-8.3.1[XMPP grid draft] states in section 8.3.1 that
+____
+The XMPP-Grid Controller MUST authenticate the XMPP-Grid Platform either using the SASL EXTERNAL mechanism or using the SASL SCRAM mechanism (with the SCRAM-SHA-256-PLUS variant being preferred over the SCRAM-SHA-256 variant and SHA-256 variants [RFC7677] being preferred over SHA-1 varients [RFC5802]).
+____
+
+The chosen authentication mechanism has an impact on the implementation of the broker application as well as on the XMPP server support.
+
+Note that this architectural decision has no impact on the communication between the Controller and other Platforms (i.e. other XMPP clients and the XMPP server).
+
+
+=== Considered Options
+
+* SASL SCRAM
+** SASL SCRAM-SHA-256-PLUS is described in https://tools.ietf.org/html/rfc7677[RFC 7677].
+** In summary, SASL SCRAM-SHA-256-PLUS means XMPP over TLS with the client authenticating using a username (JID) and password with challenge-response-exchange.
+** In our case, we may assume that SASL SCRAM-SHA-256-PLUS is currently the only variant supporting a strong hash mechanism 
+* SASL EXTERNAL
+** SASL EXTERNAL is described in https://tools.ietf.org/html/rfc4422#appendix-A[RFC 4422 Appendix A].
+** The SASL EXTERNAL mechanism for XMPP in combination with https://tools.ietf.org/html/rfc5280[TLS/PKIX] certificates is described in https://xmpp.org/extensions/xep-0178.html[XEP-0178].
+** In our case, we may assume SASL EXTERNAL means XMPP over TLS with the client authenticating using an X.509 certificate, as this is currently the only practical available implementation.
+
+=== Decision Outcome
+
+Chosen option: SASL EXTERNAL, because it offers the highest security level and is well suited for large-scale deployments.
+
+=== Pros and Cons of the Options
+
+==== SASL SCRAM
+
+* Good, because SASL SCRAM is widely supported and used by XMPP servers.
+* Good, because SASL SCRAM is easy to use for small deployments, as it only requires a JID and password for authentication.
+* Good, because SASL SCRAM fulfils the XMPP grid draft requirements.
+* Bad, because the key management is on the XMPP Controller, which leads to a single point of failure and might lead to additional administration efforts.
+* Bad, because shared keys (i.e. the password) are used, which cannot be limited to a validity date or selectively revoked.
+* Bad, because shared keys(i.e. the password) are difficult to manage in a large scale, decentralised and automated infrastructure.
+
+==== SASL EXTERNAL
+
+* Good, because a very high-security level can be achieved with X.509 certificates.
+* Good, because certificates can be integrated efficiently in a large scale, (mostly) decentralised and automated infrastructure.
+* Good, because SASL SCRAM fulfils the XMPP grid draft requirements.
+* Bad, because a Certification Authority (CA) must be used to issue certificates, which may lead to additional administration efforts and complexity, especially for small deployments.
+* Bad, because not all XMPP server and clients have comprehensive support for SASL EXTERNAL.
