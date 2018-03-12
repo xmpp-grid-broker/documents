@@ -10,7 +10,8 @@ As we decided to build a web-application, it remains open how the communication 
 
 === Decision Outcome
 
-Chosen option: TODO
+Chosen option: XMPP from the Browser with WebSockets to reduce duplicated code an use standardised XMPP features.
+In comparison to the WebAPI, it simplifies the deployment of new features because they must not be added on two places (on the UI and the WebAPI). WebSockets offer in comparison to BOSH a stateful TCP-Connection based on relatively modern Standards while BOSH is used by many frameworks as a fallback option.
 
 === Pros and Cons of the Options
 
