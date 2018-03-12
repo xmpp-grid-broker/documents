@@ -10,34 +10,34 @@ As we decided to build a web-application, it remains open how the communication 
 
 === Decision Outcome
 
-Chosen option: XMPP from the Browser with WebSockets to reduce duplicated code an use standardised XMPP features.
-In comparison to the WebAPI, it simplifies the deployment of new features because they must not be added on two places (on the UI and the WebAPI). WebSockets offer in comparison to BOSH a stateful TCP-Connection based on relatively modern Standards while BOSH is used by many frameworks as a fallback option.
+Chosen option: XMPP from the Browser with WebSockets to reduce duplicated code and use standardised XMPP features.
+In comparison to XMPP via WebAPI Proxy, it simplifies the deployment of new features because they must not be added in two places (the UI and the WebAPI). In comparison to BOSH, WebSockets offer  a stateful TCP-connection based on relatively modern standards while BOSH is used by many frameworks as a fallback option.
 
 === Pros and Cons of the Options
 
 ====  XMPP from the Browser with WebSockets (RFC 7395)
 
-* Good, because when building an SPA-Client, it is sufficient to serve just static files which provide higher levels of security and performance.
-* Good, because an actively maintained client exists (stanza.io)
-* Good, because existing client-certificates can re-use.
+* Good, because when building an SPA-Client, it is sufficient to serve just static files which provides a higher level of security and performance.
+* Good, because actively maintained clients exists (e.g. stanza.io). Some libraries also support fallback to BOSH.
+* Good, because existing client-certificates can be re-used.
 * Good, because existing XMPP-mechanisms are used.
 * Bad, because additional server plugins must be enabled which is an additional attack vector. (Workaround: Implement a custom proxy)
-* Bad, because it is not a standard yet (Proposed Standard)
+* Bad, because it is not a standard yet (Proposed Standard).
 
 ====  XMPP from the Browser with BOSH (XEP-0206)
 
 * Good, because when building an SPA-Client, it is sufficient to serve just static files which provide higher levels of security and performance.
-* Good, because an actively maintained client exists (strophe.js)
-* Good, because existing client-certificates can re-use.
+* Good, because actively maintained clients exists (e.g. strophe.js).
+* Good, because existing client-certificates can be re-used.
 * Good, because existing XMPP-mechanisms are used.
 * Bad, because additional server plugins must be enabled which is an additional attack vector. (Workaround: Implement a custom proxy)
-* Bad, because it is not a standard yet (Draft)
+* Bad, because it is not a standard yet (Draft).
 
 
 ==== XMPP via WebAPI Proxy
 
-* Good, because it decouples the client form the effective XMPP calls (separation of concerns)
-* Good, because only minimal HTTP and JavaScript features are used leading to a broad compatibility
-* Bad, because the indirection can limit the performance significantly
-* Bad, because a server application must be installed and maintained (security updates)
+* Good, because it decouples the client from the effective XMPP calls (separation of concerns).
+* Good, because only minimal HTTP and JavaScript features are used leading to a broad compatibility.
+* Bad, because the indirection can limit the performance significantly.
+* Bad, because a server application must be installed and maintained (security updates).
 * Bad, because existing XMPP-mechanisms are not used.
