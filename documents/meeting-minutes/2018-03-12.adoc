@@ -1,27 +1,44 @@
 == Meeting 2018-03-12
 
-=== Attendees
-
-* Fabian Hauser, fhauser
-* Raphael Zimmermann, rzimmerm
-* Prof. Dr. Andreas Steffen, SFF
-
-Minute Taker: rzimmerm
-
-
 === Agenda
 
 . Discuss Requirements / Wireframes
+. Architectural Decisions
+    * Architectural Decision: Roles
+    * Architectural Decision: XMPP over Websockets/BOSH/Backend
+    * Architectural Decision: Client Framework
 . Current State of the Task Description
 . Date and time for the next meeting
 
 === Discussions / Decisions
 
 . Discuss Requirements / Wireframes
+    * We will send SFF the updated Wireframes and Requirements
+    * Next week, SFF will accept/reject the current state as the target set of requirements for the thesis.
+    * SFF considers the current wireframes as good
+. Architectural Decisions
+    * Architectural Decisions
+    ** SFF appreciates the current format
+    ** We must give more context for non-experts (e.g. what is an XMPP-Bot?)
+    * Architectural Decision: Roles
+    ** We discussed the pros and cons as described in the Architectural Decision.
+    ** The biggest downside is the limited OpenFire support as well as the deferred state of XEP-0248.
+    ** SFF ratifies this solution
+    * Architectural Decision: XMPP over Websockets/BOSH/Backend
+    ** SFF says, that this is an interesting approach to experiment with
+    ** We must conduct experiments to ensure that all functionality indeed works as expected
+    ** SFF says, that from a security aspect, a new interface is not that bad as long as it uses secure mechanisms such as TLS.
+    ** If we decide to use WebSockets/BOSH, we should investigate how an adapter could be implemented
+    * Architectural Decision: Client Framework (e.g. React, Vue, Angular)
+    ** For SFF, the most important criteria is to not rely on too many third-party dependencies.
+    ** Otherwise, use the best tool for the task
+    ** The institute has not preferred Framework
 . Current State of the Task Description
+    * Will be finished until the next meeting/
+    * SFF will send the current draft.
 . Date and time for the next meeting
-* 2018-03-23, 09:00 in SFFs office
-
+    * No weekly meeting on 2018-03-23
+    * Next weekly meeting is on 2018-03-23 10:00
 
 === Upcoming absences
 

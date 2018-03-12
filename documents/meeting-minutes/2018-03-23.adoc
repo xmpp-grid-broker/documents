@@ -1,0 +1,20 @@
+== Meeting 2018-03-23
+
+=== Agenda
+
+. Discuss Requirements / Wireframes
+. Current State of the Task Description
+. Date and time for the next meeting
+
+=== Discussions / Decisions
+
+. Discuss Requirements / Wireframes
+. Current State of the Task Description
+. Date and time for the next meeting
+    * No weelky meeting on 2018-03-19 (SFF is absent)
+    * No weelky meeting on 2018-04-02 (Easter Monday)
+
+=== Upcoming absences
+
+* No weelky meeting on 2018-03-19 (SFF is absent)
+* No weelky meeting on 2018-04-02 (Easter Monday)
