@@ -1,0 +1,46 @@
+== Role Management
+
+The XMPP Publish-Subscribe mechanism (XEP-0060) lacks an explicit description of how to implement role-based authentication for topics(nodes).
+It implies two possibilities on how to do so: collection nodes and the roster access model.
+
+The following aspects must be taken into account:
+
+* Preferably use existing XMPP protocols/mechanisms
+* The chosen strategy must be usable in most practical use-cases.
+
+=== Considered Options
+
+* Usage of Collection Nodes (XEP-0248)
+* Roster Access Model which supports groups (XEP-0144)
+* Custom Roles implemented on the Broker
+
+=== Decision Outcome
+
+Chosen option: Usage of Collection Nodes (XEP-0248), because the mechanism is the least intrusive that yet allows a powerful role-concept.
+We must, however, keep in mind that the XEP is deferred and might therefore not be fully supported by all XMPP servers.
+
+
+=== Pros and Cons of the Options
+
+==== Usage of Collection Nodes (XEP-0248)
+
+* Good, because existing XMPP mechanisms can be used.
+* Good, because with it few consumers can subscribe to many topics indirectly.
+* Good, because publishing permissions are managed on a topic level which encourages per-device-topics.
+* Good, because this mechanism is used in production.
+* Bad, because XEP-0248 is deferred
+* Bad, because the Collection Nodes must be structured in a specific way to support access management
+
+==== Roster Access Model which supports groups (XEP-0144)
+
+* Good, because existing XMPP mechanisms can be used.
+* Good, because XEP-0144 is a draft (not deferred).
+* Bad, because the roster concept aims for IM.
+* Bad, because the Roster Access Models is discouraged by the IETF XMPP grid draft.
+
+==== Custom Roles implemented on the Broker
+
+* Good, because it enables maximal flexibility
+* Bad, because existing XMPP mechanisms cannot be used.
+* Bad, because the controller must manage its own data instead of delegating it to the XMPP server.
+* Bad, because the controller must periodically check that the affiliations are still appropriately configured on the XMPP server.
