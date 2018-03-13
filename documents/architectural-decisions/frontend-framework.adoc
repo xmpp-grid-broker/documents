@@ -53,7 +53,7 @@ For these benefits, we are willing to accept a steeper learning curve.
 * Bad, because it only defines a minimal core and many standard problems must be solved manually.
 * Bad, because additional libraries such as Redux must be used and understood to create complex applications.
 * Neutral: Uses JS for everything which is a matter of taste.
-* Neutral: Can be used partially .
+* Neutral: Can be used partially.
 
 ==== SPA mit Vue.js
 
@@ -68,7 +68,7 @@ For these benefits, we are willing to accept a steeper learning curve.
 * Bad, because it only defines a relatively small core and some standard problems must be solved manually.
 * Bad, because there is no standard way for non-trivial setups (complex SPA, automated testing, etc.).
 * Bad, because additional libraries such as Vuex must be used and understood to create complex applications.
-* Neutral: Can be used partially 
+* Neutral: Can be used partially.
 
 ==== Django App
 
