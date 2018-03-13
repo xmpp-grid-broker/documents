@@ -73,10 +73,24 @@ Using XMPP for such a task also comes with its downsides. Most notably, because 
 
 The draft describes a trust model, thread model as well as specific countermeasures, e.g. to use at least TLS 1.2. These countermeasures also define restrictions of the XMPP protocol and its extensions, e.g. by limiting the topic access models of \gls{pubsub} to whitelist and authorized only~\cite{ietf-mile-xmpp-grid-05}.
 
-
 \section{Requirements Analysis}
 % NFR, priorisierung, Testbarkeit, Accessibility
 % Anforderungen abgenommen?
+
+We collected the functional requirements in the form of user stories.
+User Stories are an established and widespread concept for describing and managing requirements in agile software projects.
+In comparison to traditional tools for requirement analysis, user stories are more blured, levaing more space for changes. \cite{wirdemann2017scrum}
+
+We created some separate user stories for non-functional requirements.
+Additional non-functional requirements can be added during the project in the form of Constraints. \cite{wirdemann2017scrum}
+
+In the early phase of the project, we collected an initial set of user stories based on the task description and discussions with Prof. Dr. Steffen.
+This initial set covered the creation and deletion of topics as well as  granting publish and subscribe privileges.
+All user stories are listed in Appendix \fullref{sec:requirements}.
+
+After coarse prioritisation, Prof. Dr. Steffen approved the initial set of user stories that then served as the basis for the architectural concept draft.
+
+Detailed implementation prioritisation of the user stories are planned to be carried out before every sprint in agreement with Prof. Dr. Steffen.
 
 \section{Domain Analysis}
 
