@@ -4,12 +4,15 @@
 
 . Discuss Requirements / Wireframes
 . Current State of the Task Description
+. Current state of co-examinator
 . Date and time for the next meeting
 
 === Discussions / Decisions
 
 . Discuss Requirements / Wireframes
 . Current State of the Task Description
+. Current state of co-examinator
+    * Date for so that we can plann the the interim presentation
 . Date and time for the next meeting
     * No weelky meeting on 2018-03-19 (SFF is absent)
     * No weelky meeting on 2018-04-02 (Easter Monday)
