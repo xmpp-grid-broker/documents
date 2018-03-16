@@ -6,7 +6,7 @@ Taking into account that the intended audience for this thesis are developers an
 we mostly use the  Security Automation and Continuous Monitoring (SACM) terminology~\cite{ietf-sacm-terminology-14}
 and thereby follow the same guidelines as the XMPP grid draft~\cite{ietf-mile-xmpp-grid-05}.
 
-\section{Technical Background}
+\section{Technical Background}\label{sec:technical-background}
 
 The following sections introduce the underlying XMPP protocol and the relevant extensions (\glspl{xep}) used by the XMPP grid draft as well as a summary of it and the corresponding XMPP terminology.
 
@@ -93,6 +93,24 @@ After coarse prioritisation, Prof.\ Dr.\ Steffen approved the initial set of use
 Detailed implementation prioritisation of the user stories are carried out before every sprint in agreement with Prof.\ Dr.\ Steffen.
 
 \section{Domain Analysis}
+
+\subsection{Domain Specific Language}
+
+Figure~\ref{fig:architecturedslgriddraft} and \ref{fig:architecturedslxeps} present an overview of most interactions between the different components as specified in the XMPP grid draft~\cite{ietf-mile-xmpp-grid-05} and as used in the referenced XEPs (see Chapter~\ref{sec:technical-background}).
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{resources/architecture_dsl_grid_draft}
+\caption[DSL of XMPP grid draft]{Domain Specific Language of the XMPP grid draft}
+\label{fig:architecturedslgriddraft}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{resources/architecture_dsl_xeps}
+\caption[DSL of used XMPP XEPs]{Domain Specific Language of used XMPP XEPs}
+\label{fig:architecturedslxeps}
+\end{figure}
 
 
 \section{Risk Analysis}
