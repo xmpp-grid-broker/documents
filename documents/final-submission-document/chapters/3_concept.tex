@@ -12,23 +12,24 @@
 % - Beschreibung des Entwurfs (welche Experimente/Tests wurden durchgeführt? welche Lösungsoptionen wurden verworfen?)
 % - Entwurf Benutzerschnittstelle
 
-In this chapter, we present the architecture and architectural decisions of our application. All architectural decisions we took are documented fully in Appendix~\fullref{sec:architectural-decisions}.
+In this chapter, we present the architecture and fundamental architectural decisions of the XMPP grid broker application.
+All architectural decisions we took are fully documented in Appendix~\fullref{sec:architectural-decisions}.
 
-We illustrate the structure using the C4 Model for Software Architecture~\cite{c4-model}.
+We illustrate the concepts and structures using the C4 Model for Software Architecture~\cite{c4-model}.
 
 \subsection{Actors and Context}
 
 The context diagram pictured in Figure~\ref{fig:architecturecontext} shows the surrounding systems and actors that are given for the XMPP grid broker, as described in the \nameref{sec:task-description}.
 
-One or more administrators manage the XMPP grid, add and remove \glspl{platform} and configure \glspl{topic}.
-To do so, they interacts with the XMPP grid broker, which is implemented as part of this thesis.
+One or more administrators manage the XMPP grid by adding or removing \glspl{platform} and configuring \glspl{topic}.
+To minimize the required work and reduce the error-proneness, they interact with the XMPP grid broker, whose implementation is the primary goal of this thesis.
 
-The XMPP grid broker configures the XMPP Grid, which consists of the \gls{controller} and \glspl{platform}.
+The XMPP grid broker configures the XMPP grid, which consists of a \gls{controller} and \glspl{platform}.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{resources/architecture_context}
-\caption[Architecture Context Diagram]{Architecture diagram showing the XMPP grid broker context.}
+\caption[Architecture Context Diagram]{Architecture diagram showing the context of the XMPP grid broker application.}
 \label{fig:architecturecontext}
 \end{figure}
 
@@ -36,50 +37,48 @@ The XMPP grid broker configures the XMPP Grid, which consists of the \gls{contro
 \subsection{Architectural Style and Platform}
 
 To implement the XMPP grid broker, we evaluated three possible architecture styles:\hfill\\
-A XMPP Server Plugin (e.g. extension for the Openfire XMPP server), implementation with the Jabber Component Protocol~\cite{xep-0114} or as normal XMPP client/bot.
+An XMPP Server Plugin (e.g. extension for the Openfire XMPP server), an implementation with the Jabber Component Protocol~\cite{xep-0114} or an implementation acting as a regular XMPP client ("bot").
 
-We decided to build a XMPP client/bot, because it is not coupled to a specific XMPP server as the Server Plugin and, in contrast to the XMPP Component, supports strong authentication with SASL.
+We decided to build an XMPP client/bot, because it is not coupled to a specific XMPP server as the Server Plugin and, in contrast to the XMPP Component, supports a strong authentication mechanism with SASL.
 
 The full decision argument is documented in Appendix~\fullref{sec:architectural-decisions}.
 
 \subsubsection{Platform}
 
-The proposed XMPP client might be implemented in three different ways: as rich client application with a command line interface, a graphical interface as illustrated in Figure~\ref{fig:architecturecontainerrichclient}, or as a web application, illustrated in Figure~\ref{fig:architecturecontainerwebapplication} and \ref{fig:architecturecontainerwebproxy}.
+The proposed XMPP client might be implemented in three different ways: as rich client application with a command line or graphical interface as illustrated in Figure~\ref{fig:architecturecontainerrichclient}, or in the form of a web application, illustrated in Figure~\ref{fig:architecturecontainerwebapplication} and \ref{fig:architecturecontainerwebproxy}.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.7\linewidth]{resources/architecture_container_rich_client}
-\caption[Architecture Container Diagram Rich Client]{Architecture container view showing a possible rich client application.}
+\caption[Architecture Container Diagram: Rich Client]{Architecture Container Diagram showing a possible rich client architecture.}
 \label{fig:architecturecontainerrichclient}
 \end{figure}
 
-A web application has the great advantage to be easily installable, upgradable and has minimal requirements on the user's side (i.e. only requires a web-browser to be executed).
+A web application has the significant advantage to be easily installable, upgradable and has minimal requirements on the user's side (i.e. only requires a web browser to be executed).
 Therefore, we decided to implement the XMPP grid broker as web application.
-
 
 \subsection{Web Application Topology}
 
-To manage the Controller from our interface, we considered the implementation of either directly connecting to the XMPP server with WebSockets~\cite{rfc7395} or BOSH~\cite{xep-0124} or, alternatively, to connect indirectly to the XMPP server with a custom WebAPI Proxy.
-
-The possible topologies are illustrated in Figure~\ref{fig:architecturecontainerwebapplication} and Figure~\ref{fig:architecturecontainerwebproxy}.
+To manage the Controller from our interface, we considered the implementation of either directly connecting to the XMPP server over WebSockets~\cite{rfc7395} or HTTP (BOSH~\cite{xep-0124}), or to communicate indirectly with the XMPP server via custom WebAPI Proxy.
+These topologies are illustrated in Figure~\ref{fig:architecturecontainerwebapplication} and Figure~\ref{fig:architecturecontainerwebproxy}.
 
 As elaborated in the according design decision (see Appendix~\ref{sec:architectural-decisions}), we decided for the direct connection via WebSockets.
-It simplifies the implementation and deployment of the application, compared to a WebAPI Proxy.
-Additionally, it offers stateful TCP-sockets to exchange data with the XMPP server in contrast to BOSH, which uses HTTP long polling to emulate a bidirectional stream~\cite{xep-0124}.
+This topology simplifies the implementation and deployment of the application in comparison to a WebAPI Proxy.
+Additionally, WebSockets offer stateful TCP-sockets to exchange data with the XMPP server in contrast to BOSH, which uses HTTP long polling to emulate a bidirectional stream~\cite{xep-0124}.
 
 Using the XMPP Service Discovery~\cite{xep-0030}, the XMPP server may be queried for supported features, so that only supported functionality is presented to the application user.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.7\linewidth]{resources/architecture_container_webapplication}
-\caption[Architecture Container Diagram Web Application]{Architecture container view showing the web application topology with WebSockets or BOSH.}
+\caption[Architecture Container Diagram: Web Application]{Architecture Container Diagram showing the web application topology with WebSockets or BOSH.}
 \label{fig:architecturecontainerwebapplication}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.7\linewidth]{resources/architecture_container_proxy.pdf}
-\caption[Architecture Container Diagram Web Proxy]{Architecture container view showing the WebAPI Proxy topology.}
+\caption[Architecture Container Diagram: Web Proxy]{Architecture Container Diagram showing the WebAPI Proxy topology.}
 \label{fig:architecturecontainerwebproxy}
 \end{figure}
 
@@ -89,10 +88,10 @@ Using the XMPP Service Discovery~\cite{xep-0030}, the XMPP server may be queried
 XMPP uses SASL as authentication mechanism~\cite{rfc6120}.
 To authenticate against the XMPP Grid Controller, we decided to use the SASL EXTERNAL~\cite{rfc4422} mechanism whenever possible to authenticate the client.
 
-We decided against the alternative SASL authentication also recommended by in the XMPP grid draft~\cite{ietf-mile-xmpp-grid-05}, SASL SCRAM~\cite{rfc7677}.
-As described in the according architectural decision (Appendix~\ref{sec:architectural-decisions}), the main reason for SASL EXTERNAL is the higher security-level and easier large-scale deployment.
+We decided against the alternative SASL authentication method, SASL SCRAM~\cite{rfc7677}, that is also recommended by in the XMPP grid draft~\cite{ietf-mile-xmpp-grid-05}.
+As described in the corresponding architectural decision (Appendix~\ref{sec:architectural-decisions}), the main reason for SASL EXTERNAL is its higher level of security and and its relatively simple scaling capabilities.
 
-SASL EXTERNAL implies that the authentication takes place on a higher layer than the actual XMPP protocol; in our case, this implies authentication over TLS, i.e.~X.509 end-user certificates as specified in RFC6120~\cite{rfc6120}.
+SASL EXTERNAL implies that the authentication takes place on a higher layer than the actual XMPP protocol. In our case, this implies authentication over TLS, i.e.~X.509 end-user certificates as specified in RFC6120~\cite{rfc6120}.
 
 
 \section{Wireframes}
