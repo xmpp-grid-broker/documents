@@ -65,14 +65,6 @@ To simplify the creation of topics, \gls{pubsub} defines five topic access model
 
 The open model allows uncontrolled access while presence and roaster are specific for IM. Using the authorize model, the owner has to approve all subscription requests. The whitelist model enables the owner to maintain a list of entities that are allowed to subscribe.
 
-\subsection{IETF Internet-Draft: Using XMPP for Security Information Exchange}\label{sec:ietf-internet-draft-using-xmpp-for-security-information-exchange}
-This IETF Internet draft describes how the XMPP protocol enhanced with the previously discussed XEPs, most notably the \gls{pubsub} extension, can be used for the exchange and distribution of security-relevant information between network devices.
-
-One of the primary motivation for using XMPP for this task is the fast propagation of such security-relevant data.
-Using XMPP for such a task also comes with its downsides. Most notably, because the XMPP server (\gls{broker}/\gls{controller}) is the central configuration component in charge of managing access permission, its compromisation has serious consequences.
-
-The draft describes a trust model, thread model as well as specific countermeasures, e.g. to use at least TLS 1.2. These countermeasures also define restrictions of the XMPP protocol and its extensions, e.g. by limiting the topic access models of \gls{pubsub} to whitelist and authorized only~\cite{ietf-mile-xmpp-grid-05}.
-
 \section{Requirements Analysis}
 % NFR, priorisierung, Testbarkeit, Accessibility
 % Anforderungen abgenommen?
@@ -93,6 +85,20 @@ After coarse prioritisation, Prof.\ Dr.\ Steffen approved the initial set of use
 Detailed implementation prioritisation of the user stories are carried out before every sprint in agreement with Prof.\ Dr.\ Steffen.
 
 \section{Domain Analysis}
+
+\subsection{IETF Internet-Draft: Using XMPP for Security Information Exchange}\label{sec:ietf-internet-draft-using-xmpp-for-security-information-exchange}
+This IETF Internet draft describes how the XMPP protocol enhanced with the in Section~\ref{sec:technical-background} discussed XEPs, most notably the \gls{pubsub} extension, can be used for the exchange and distribution of security-relevant information between network devices. The draft assumes use of the Incident Object Description Exchange Format (IODEF)~\cite{rfc7970}.
+
+One of the primary motivation for using XMPP for this task is the fast propagation of such security-relevant data.
+Using XMPP for such a task also comes with its downsides. Most notably, because the XMPP server (\gls{broker}/\gls{controller}) is the central configuration component in charge of managing access permission, its compromisation has serious consequences.
+
+The draft describes a trust model, thread model as well as specific countermeasures, e.g. to use at least TLS 1.2. These countermeasures also define restrictions of the XMPP protocol and its extensions, e.g. by limiting the topic access models of \gls{pubsub} to whitelist and authorized only~\cite{ietf-mile-xmpp-grid-05}.
+
+\subsubsection{Information Exchange in the IODEF}
+
+The XMPP Grid draft states that ``although [the exchanged] information can take the form of any structured data (XML, JSON, etc.), this document illustrates the principles of XMPP-Grid with examples that use the Incident Object Description Exchange Format (IODEF)''~\cite{ietf-mile-xmpp-grid-05}.
+
+As IODEF is not strictly defined nor explicitly recommended by the XMPP Grid draft, the implementation of this protocol is not in the scope of this thesis.
 
 \subsection{Domain Specific Language}
 
