@@ -91,7 +91,7 @@ To authenticate against the XMPP Grid Controller, we decided to use the SASL EXT
 We decided against the alternative SASL authentication method, SASL SCRAM~\cite{rfc7677}, that is also recommended by in the XMPP grid draft~\cite{ietf-mile-xmpp-grid-05}.
 As described in the corresponding architectural decision (Appendix~\ref{sec:architectural-decisions}), the main reason for SASL EXTERNAL is its higher level of security and and its relatively simple scaling capabilities.
 
-SASL EXTERNAL implies that the authentication takes place on a higher layer than the actual XMPP protocol. In our case, this implies authentication over TLS, i.e.~X.509 end-user certificates as specified in RFC6120~\cite{rfc6120}.
+SASL EXTERNAL implies that the authentication takes place on a lower layer than the actual XMPP protocol. In our case, this implies authentication over TLS, i.e.~X.509 end-user certificates as specified in RFC6120~\cite{rfc6120}.
 
 
 \section{Wireframes}
