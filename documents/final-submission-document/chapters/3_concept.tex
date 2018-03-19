@@ -117,11 +117,11 @@ Details on all attack vectors are discussed in the following sections.
 \subsection{The XMPP-Protocol}
 
 An in-depth security analysis of the XMPP-Protocol is out of the scope of this thesis.
-A detailed discussion of security concerns can be found in the XMPP Specification \cite{rfc6120} and most XEPs\cite{xep-00060}\cite{xep-00248}.
+A detailed discussion of security concerns can be found in the XMPP Specification \cite{rfc6120} and most XEPs\cite{xep-0060}\cite{xep-0248}.
 In this section, we highlight the most crucial security concerns relevant to this thesis.
 
 XMPP reuses many established and standardised mechanisms to improve the protocol security.
-By layering protocols in a strict manner (XMPP over SASL over TLS over TCP), many attack scenarios such as replaying or eavesdropping are minimised.
+By layering protocols in a strict manner (XMPP with SASL over TLS over TCP), many attack scenarios such as replaying or eavesdropping are minimised.
 The Protocol also requires clients and servers to validate the certificates of the other party. \cite{rfc6120} 
 
 Since XMPP is based on XML, it inherits some of its security implications.
@@ -163,17 +163,17 @@ On their Project website, Angular recommends the following three best practices 
 \begin{itemize}
     \item Keep current with the latest Angular library releases
     \item Don't modify your copy of Angular
-    \item Avoid Angular APIs marked in the documentation as “Security Risk.”
+    \item Avoid Angular APIs marked in the documentation as ''Security Risk''.
 \end{itemize}
 
 We can ensure the later two by making them acceptance criteria.
 Keeping current with the latest Angular releases is harder, as our work on this project is limited.
 To ensure that future updates can easily be applied we deviate as less as possible from the standard angular setup (e.g. by not ejecting the Webpack configuration\footnote{\url{https://github.com/Angular/Angular-cli/wiki/eject}}).
-Keeping Angular up-to-date is of paramount importance as potential Vulnerabilities (e.g. XSS) can be exploited if not patched. \cite{angular-security}
+Keeping Angular up-to-date is of paramount importance as potential vulnerabilities (e.g. XSS) can be exploited if not patched. \cite{angular-security}
 
 \subsubsection{Web-Browsers}
 
-Except for persisted Items, no XMPP content is rendered directly but serves as the basis for the rendered HTML components.
+Except for persisted items, no XMPP content is rendered directly but serves as the basis for the rendered HTML components. %TODO: What about names and titles?
 To protect against malicious payloads the received XML messages must be validated before their usage. % TODO: Does this make sense?
 
 Persisted Items can contain an arbitrary message and must, therefore, be escaped before rendering to prevent Cross-Site Scripting (XSS) attacks.
@@ -197,7 +197,7 @@ The web server has no Authentication and Authorisation work to do (except TLS) a
 To minify security concerns on the server side, we decided to keep the server side static (See \fullref{sec:architectural-decisions}).
 This allows operators to use any standard web server (e.g. NGINX, Apache, etc.) to serve the client.
 Securing such standard web servers is common knowledge for operators and is out of the scope of this analysis.
-I addition to these general best practices, we explicitly recommend the following security measures to maximise the client security:
+In addition to these general best practices, we explicitly recommend the following security measures to maximise the client security:
 
 \begin{itemize}
     \item Enable Content Security Policy (CSP) \cite{w3c-csp}
@@ -221,7 +221,7 @@ To mitigate the discussed security risks, we implement the following measures:
     \item Define explicit security requirements in the form of constraints
     \item Automate build and release processes to minimise the time required to patch.
     \item Stay as close to the default Angular setup to simplify further updates
-    \item Avoid third-party dependencies whenever possible
+    \item Avoid additional third-party dependencies whenever possible
 \end{enumerate}
 
 \subsection{Client Security Checklist}
@@ -237,3 +237,5 @@ To mitigate the discussed security risks, we implement the following measures:
     \item User input is always escaped using the mechanisms provided by the framework
     \item XMPP-Messages are validated to contain only the specified result-types
 \end{itemize}
+
+%TODO: XSRF
