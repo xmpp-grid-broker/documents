@@ -5,6 +5,8 @@
 . Discuss Requirements / Wireframes
 . Current State of the Task Description
 . Current state of co-examinator
+. "Broker" Term
+. Architectural analysis with an industry expert (https://project.redbackup.org/browse/XGB-97[XGB-97])
 . Date and time for the next meeting
 
 === Discussions / Decisions
@@ -13,7 +15,9 @@
 . Current State of the Task Description
 . Current state of co-examinator
     * Date for so that we can plan the the interim presentation
-. Is "Broker" the right term for the web interface of the XMPP grid?
+. "Broker" Term
+    * Is "Broker" the right term for the web interface of the XMPP grid?
+. Architectural analysis with an industry expert (https://project.redbackup.org/browse/XGB-97[XGB-97])
 . Date and time for the next meeting
     * No weekly meeting on 2018-03-19 (SFF is absent)
     * No weekly meeting on 2018-04-02 (Easter Monday)
