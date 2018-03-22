@@ -64,7 +64,9 @@ build_tex "documents/final-submission-document/final-submission-document.tex" "d
 build_adoc_html README.adoc
 
 echo "Copy existing files..."
-cp "README.html" "$TARGET_DIRECTORY/index.html"
+cp  "README.html" "$TARGET_DIRECTORY/index.html"
+cp "logo.png" "$TARGET_DIRECTORY/favicon.ico"
+cp "logo.svg" "$TARGET_DIRECTORY/"
 copy "documents/usage-rights.pdf"
 copy "documents/poster.pdf"
 cp -r "documents/final-submission-document/final-submission-document.pdf" "$TARGET_DIRECTORY/documents/"

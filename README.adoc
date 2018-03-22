@@ -1,4 +1,5 @@
-= Bachelor Thesis XMPP-Grid Broker 
+
+= image:logo.svg[XMPP-Grid Broker,width=40px] Bachelor Thesis XMPP-Grid Broker
 
 This archive/website contains all project data of the bachelor project `XMPP-Grid Broker` conducted in the spring semester 2018 by Fabian Hauser and Raphael Zimmermann.
 
