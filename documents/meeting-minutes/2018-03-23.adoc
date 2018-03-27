@@ -20,18 +20,18 @@ Minute Taker: rzimmerm
 === Discussions / Decisions
 
 . Discuss Requirements / Wireframes
-    * SFF accepts the current state of the wireframes
+    * SFF accepts the current state of the wireframes.
 . Current State of the Task Description
-    * We collectively declared the Task Description  final
-    * SFF suggests to move it up in the document before the abstract
+    * We collectively declared the Task Description final.
+    * SFF suggests to move it up in the document before the abstract (https://project.redbackup.org/browse/XGB-105[XGB-105]).
 . The current state of co-examinator
-    * Prof. Dr Thomas Bocek is the co-examinator of this thesis
+    * Prof. Dr Thomas Bocek is the co-examinator of this thesis.
     * We will organise the interim presentation in 2-5 weeks from now, ideally combined with a weekly meeting and not on Tuesdays.
 . "Broker" Term
-    * While reading the XMPP-Grid IETF draft, we were confused by the definition of  "Broker", and whether it applies to our application.
-    * SFF sees no discrepancy. We might not implement the complete broker but at least parts of it
+    * While reading the XMPP-Grid IETF draft, we were confused by the definition of "Broker", and whether it applies to our application.
+    * SFF sees no discrepancy. We might not implement the complete broker but at least parts of it.
 . Architectural security analysis with an industry expert (https://project.redbackup.org/browse/XGB-97[XGB-97])
-    * SFF suggests conducting the security analysis with  Tobias Brunner on a Monday.
+    * SFF suggests conducting the security analysis with Tobias Brunner on a Monday.
 . Date and time for the next meeting
     * No weekly meeting on 2018-03-26 (SFF absent)
     * No weekly meeting on 2018-04-02 (Easter Monday)
