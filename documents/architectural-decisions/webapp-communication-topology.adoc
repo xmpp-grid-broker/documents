@@ -14,7 +14,9 @@ Create a standalone application that proxies the XMPP server and exposes a web-A
 === Decision Outcome
 
 Chosen option: XMPP from the Browser with WebSockets to reduce duplicated code and use standardised XMPP features.
-In comparison to XMPP via WebAPI Proxy, it simplifies the deployment of new features because they must not be added in two places (the UI and the WebAPI). In comparison to BOSH, WebSockets offer  a stateful TCP-connection based on relatively modern standards while BOSH is used by many frameworks as a fallback option.
+In case the required features are not implemented, a fallback to BOSH should be possible.
+
+In comparison to XMPP via WebAPI Proxy, WebSockets simplify the deployment of new features because they must not be added in two places (the UI and the WebAPI). In comparison to BOSH, WebSockets offer a stateful TCP-connection based on relatively modern standards while BOSH support is provided by many frameworks as a fallback option.
 
 === Pros and Cons of the Options
 

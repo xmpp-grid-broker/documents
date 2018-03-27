@@ -62,9 +62,9 @@ Therefore, we decided to implement the XMPP grid broker as web application.
 To manage the Controller from our interface, we considered the implementation of either directly connecting to the XMPP server over WebSockets~\cite{rfc7395} or HTTP (BOSH~\cite{xep-0124}), or to communicate indirectly with the XMPP server via custom WebAPI Proxy.
 These topologies are illustrated in Figure~\ref{fig:architecturecontainerwebapplication} and Figure~\ref{fig:architecturecontainerwebproxy}.
 
-As elaborated in the according design decision (see Appendix~\ref{sec:architectural-decisions}), we decided for the direct connection via WebSockets.
+As elaborated in the according design decision (see Appendix~\ref{sec:architectural-decisions}), we decided for the direct connection via WebSockets, with a fallback to BOSH if the required features are not supported (e.g. SASL EXTERNAL authentication).
 This topology simplifies the implementation and deployment of the application in comparison to a WebAPI Proxy.
-Additionally, WebSockets offer stateful TCP-sockets to exchange data with the XMPP server in contrast to BOSH, which uses HTTP long polling to emulate a bidirectional stream~\cite{xep-0124}.
+WebSockets offer stateful TCP-sockets to exchange data with the XMPP server in contrast to BOSH, which uses HTTP long polling to emulate a bidirectional stream and is therefore less efficient~\cite{xep-0124}.
 
 Using the XMPP Service Discovery~\cite{xep-0030}, the XMPP server may be queried for supported features, so that only supported functionality is presented to the application user.
 
@@ -195,9 +195,11 @@ The XMPP-Grid Broker should document an appropriate CSP, that must be supported 
 
 The XMPP server implements most of the authentication and authorisation mechanisms used in a XMPP-Grid Broker implementation, such as storing passwords and validating certificates.
 
+If used together with BOSH or WebSockets, it is important that the XMPP server supports most HTTP security features, as listed in Section~\ref{sec:web-server}. Additionally, the origin of WebSockets and BOSH requests must be verified (by either the \texttt{Origin}-Header or CORS support.~\cite{rfc6455}\cite{cross-origin-resource-sharing}
+
 The web server hosting the client application has no active authentication or authorisation responsibility, except to ensure the integrity and authenticity of the application, i.e. by using TLS.
 
-\subsubsection{Web Server}
+\subsubsection{Web Server}\label{sec:web-server}
 
 To minify security concerns on the server side, we decided to keep the server side static (See \fullref{sec:architectural-decisions}).
 This allows operators to use any standard web server (e.g. NGINX, Apache, etc.) to serve the client.
