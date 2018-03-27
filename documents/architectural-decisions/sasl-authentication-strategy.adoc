@@ -48,3 +48,4 @@ Chosen option: SASL EXTERNAL, because it offers the highest security level and i
 ** Openfire does not support SASL EXTERNAL with WebSockets, however, it is supported with BOSH.
 ** Ejabberd only supports SASL EXTERNAL in the paid professional edition.
 ** WebSockets connections over authenticated TLS is not extensively specified, support may therefore vary depending on the browser implementation.
+* Bad, because it might lead to security issues (i.e. CSRF) if used with WebSockets over TLS, if no strict request-origin verification is done by the server implementation.
