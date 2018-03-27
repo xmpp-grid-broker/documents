@@ -14,7 +14,9 @@ Create a standalone application that proxies the XMPP server and exposes a web-A
 === Decision Outcome
 
 Chosen option: XMPP from the Browser with WebSockets to reduce duplicated code and use standardised XMPP features.
-In comparison to XMPP via WebAPI Proxy, it simplifies the deployment of new features because they must not be added in two places (the UI and the WebAPI). In comparison to BOSH, WebSockets offer  a stateful TCP-connection based on relatively modern standards while BOSH is used by many frameworks as a fallback option.
+In case the required features are not implemented, a fallback to BOSH should be possible.
+
+In comparison to XMPP via WebAPI Proxy, WebSockets simplify the deployment of new features because they must not be added in two places (the UI and the WebAPI). In comparison to BOSH, WebSockets offer a stateful TCP-connection based on relatively modern standards while BOSH support is provided by many frameworks as a fallback option.
 
 === Pros and Cons of the Options
 
@@ -26,6 +28,11 @@ In comparison to XMPP via WebAPI Proxy, it simplifies the deployment of new feat
 * Good, because existing XMPP-mechanisms are used.
 * Bad, because additional server plugins must be enabled which is an additional attack vector. (Workaround: Implement a custom proxy)
 * Bad, because it is not a standard yet (Proposed Standard).
+* Bad, because SASL EXTERNAL is not well supported with WebSockets
+** Openfire does not implement SASL EXTERNAL with WebSockets.
+** WebSockets connections over authenticated TLS is not extensively specified, support may therefore vary depending on the browser implementation.
+* Bad, because it might lead to security issues (i.e. CSRF) if used in combination with SASL EXTERNAL/TLS, if no strict request-origin verification is done by the server implementation.
+
 
 ====  XMPP from the Browser with BOSH (XEP-0206)
 
@@ -35,6 +42,9 @@ In comparison to XMPP via WebAPI Proxy, it simplifies the deployment of new feat
 * Good, because existing XMPP-mechanisms are used.
 * Bad, because additional server plugins must be enabled which is an additional attack vector. (Workaround: Implement a custom proxy)
 * Bad, because it is not a standard yet (Draft).
+* Bad, because not all HTTP-features might be implemented by the XMPP server, which might be a security risk.
+** OPTION preflight requests are not supported by Openfire.
+** A reverse HTTP proxy might be used, to support additional HTTP security features.
 
 
 ==== XMPP via WebAPI Proxy
