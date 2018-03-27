@@ -13,3 +13,6 @@ include::role-management.adoc[]
 include::webapp-communication-topology.adoc[]
 
 include::frontend-framework.adoc[]
+
+include::frontend-structure.adoc[]
+
