@@ -1,5 +1,13 @@
 == Meeting 2018-03-12
 
+=== Attendees
+
+* Fabian Hauser, fhauser
+* Raphael Zimmermann, rzimmerm
+* Prof. Dr. Andreas Steffen, SFF
+
+Minute Taker: rzimmerm
+
 === Agenda
 
 . Discuss Requirements / Wireframes
