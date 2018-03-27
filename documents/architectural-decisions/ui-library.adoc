@@ -1,0 +1,24 @@
+== UI Library
+
+To create a modern and beautiful cross-browser user experience and to reduce the implementation efforts, a UI-library shall be used.
+
+=== Considered Options
+
+* https://material.angular.io/[Angular Material]: Material Design components for Angular
+* https://edcarroll.github.io/[Semantic UI Angular 2]
+* https://picturepan2.github.io/spectre/[Spectre.css] with Custom Components
+
+=== Decision Outcome
+
+Chosen option: Spectre.css with Custom Components, because it has minimal third-party dependencies. 
+
+Positive Consequences: 
+
+* from a security point of view, a pure CSS library must not be upgraded.
+** An Angular component library might introduce security vulnerabilities (e.g. XSS).
+** if the CSS library project is discontinued, the XMPP grid broker application must not necessarily be upgraded
+
+Negative consequences:
+
+* Additional effort are required for the creation and testing of new components
+* Angulars component features such as style scoping are not fully utilised
