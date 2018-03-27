@@ -1,10 +1,18 @@
 == Meeting 2018-03-23
 
+=== Attendees
+
+* Fabian Hauser, fhauser
+* Raphael Zimmermann, rzimmerm
+* Prof. Dr. Andreas Steffen, SFF
+
+Minute Taker: rzimmerm
+
 === Agenda
 
 . Discuss Requirements / Wireframes
 . Current State of the Task Description
-. Current state of co-examinator
+. The current state of co-examinator
 . "Broker" Term
 . Architectural analysis with an industry expert (https://project.redbackup.org/browse/XGB-97[XGB-97])
 . Date and time for the next meeting
@@ -12,17 +20,24 @@
 === Discussions / Decisions
 
 . Discuss Requirements / Wireframes
+    * SFF accepts the current state of the wireframes
 . Current State of the Task Description
-. Current state of co-examinator
-    * Date for so that we can plan the the interim presentation
+    * We collectively declared the Task Description  final
+    * SFF suggests to move it up in the document before the abstract
+. The current state of co-examinator
+    * Prof. Dr Thomas Bocek is the co-examinator of this thesis
+    * We will organise the interim presentation in 2-5 weeks from now, ideally combined with a weekly meeting and not on Tuesdays.
 . "Broker" Term
-    * Is "Broker" the right term for the web interface of the XMPP grid?
-. Architectural analysis with an industry expert (https://project.redbackup.org/browse/XGB-97[XGB-97])
+    * While reading the XMPP-Grid IETF draft, we were confused by the definition of  "Broker", and whether it applies to our application.
+    * SFF sees no discrepancy. We might not implement the complete broker but at least parts of it
+. Architectural security analysis with an industry expert (https://project.redbackup.org/browse/XGB-97[XGB-97])
+    * SFF suggests conducting the security analysis with  Tobias Brunner on a Monday.
 . Date and time for the next meeting
-    * No weekly meeting on 2018-03-19 (SFF is absent)
+    * No weekly meeting on 2018-03-26 (SFF absent)
     * No weekly meeting on 2018-04-02 (Easter Monday)
+    * Next weekly meeting on 2018-04-09
 
 === Upcoming absences
 
-* No weekly meeting on 2018-03-19 (SFF is absent)
+* No weekly meeting on 2018-03-26 (SFF absent)
 * No weekly meeting on 2018-04-02 (Easter Monday)

@@ -8,7 +8,6 @@
 
 Minute Taker: rzimmerm
 
-
 === Agenda
 
 . Discuss and clarify Requirements/Wireframes
