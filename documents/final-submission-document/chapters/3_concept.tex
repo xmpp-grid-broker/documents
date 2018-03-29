@@ -62,12 +62,6 @@ Therefore, we decided to implement the XMPP grid broker as web application.
 To manage the Controller from our interface, we considered the implementation of either directly connecting to the XMPP server over WebSockets~\cite{rfc7395} or HTTP (BOSH~\cite{xep-0124}), or to communicate indirectly with the XMPP server via custom WebAPI Proxy.
 These topologies are illustrated in Figure~\ref{fig:architecturecontainerwebapplication} and Figure~\ref{fig:architecturecontainerwebproxy}.
 
-As elaborated in the according design decision (see Appendix~\ref{sec:architectural-decisions}), we decided for the direct connection via WebSockets, with a fallback to BOSH if the required features are not supported (e.g. SASL EXTERNAL authentication).
-This topology simplifies the implementation and deployment of the application in comparison to a WebAPI Proxy.
-WebSockets offer stateful TCP-sockets to exchange data with the XMPP server in contrast to BOSH, which uses HTTP long polling to emulate a bidirectional stream and is therefore less efficient~\cite{xep-0124}.
-
-Using the XMPP Service Discovery~\cite{xep-0030}, the XMPP server may be queried for supported features, so that only supported functionality is presented to the application user.
-
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.7\linewidth]{resources/architecture_container_webapplication}
@@ -75,13 +69,26 @@ Using the XMPP Service Discovery~\cite{xep-0030}, the XMPP server may be queried
 \label{fig:architecturecontainerwebapplication}
 \end{figure}
 
+\subsubsection{WebAPI Proxy}
+
+A WebAPI Proxy could be realised with a custom browser-to-proxy protocol, as implemented in the XMPP-FTW JavaScript library\footnote{\url{http://docs.xmpp-ftw.org/}}. However, this approach leads to a high coupling between a concrete library and the web application.
+
+Another approach would be the implementation of a custom WebSocket-to-XMPP Proxy, which allows connecting to XMPP servers that do not fully support WebSockets or BOSH. As this can be done transparently, the implementation of the client does not differ from a direct communication with a supporting XMPP server, and might therefore be added at a later time.
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.7\linewidth]{resources/architecture_container_proxy.pdf}
+\includegraphics[width=\linewidth]{resources/architecture_container_proxy.pdf}
 \caption[Architecture Container Diagram: Web Proxy]{Architecture Container Diagram showing the WebAPI Proxy topology.}
 \label{fig:architecturecontainerwebproxy}
 \end{figure}
 
+\subsubsection{Implemented Web Application Topology}
+
+As elaborated in the according design decision (see Appendix~\ref{sec:architectural-decisions}), we decided for the direct connection via WebSockets, with a fallback to BOSH if the required features are not supported (e.g. SASL EXTERNAL authentication).
+This topology simplifies the implementation and deployment of the application in comparison to a WebAPI Proxy.
+WebSockets offer stateful TCP-sockets to exchange data with the XMPP server in contrast to BOSH, which uses HTTP long polling to emulate a bidirectional stream and is therefore less efficient~\cite{xep-0124}.
+
+Using the XMPP Service Discovery~\cite{xep-0030}, the XMPP server may be queried for supported features, so that only supported functionality is presented to the application user.
 
 \subsection{Authentication and Connection Security}
 
