@@ -88,7 +88,7 @@ If such a proxy is implemented transparently, the client is not aware of the ser
 
 As elaborated in the according design decision (see Appendix~\ref{sec:architectural-decisions}), we decided for the direct connection via WebSockets, with a fallback to BOSH if the required features are not supported (e.g. SASL EXTERNAL authentication).
 This topology simplifies the implementation and deployment of the application in comparison to a WebAPI Proxy.
-WebSockets offer stateful TCP-sockets to exchange data with the XMPP server in contrast to BOSH, which uses HTTP long polling to emulate a bidirectional stream and is therefore less efficient~\cite{xep-0124}.
+WebSockets offer stateful TCP-sockets to exchange data with the XMPP server in contrast to BOSH, which uses HTTP long polling to emulate a bidirectional stream and is, therefore, less efficient~\cite{xep-0124}.
 
 Using the XMPP Service Discovery~\cite{xep-0030}, the XMPP server may be queried for supported features, so that only supported functionality is presented to the application user.
 
