@@ -71,9 +71,11 @@ These topologies are illustrated in Figure~\ref{fig:architecturecontainerwebappl
 
 \subsubsection{WebAPI Proxy}
 
-A WebAPI Proxy could be realised with a custom browser-to-proxy protocol, as implemented in the XMPP-FTW JavaScript library\footnote{\url{http://docs.xmpp-ftw.org/}}. However, this approach leads to a high coupling between a concrete library and the web application.
+A WebAPI Proxy could be realised with a custom browser-to-proxy protocol, as implemented in the XMPP-FTW JavaScript library\footnote{\url{http://docs.xmpp-ftw.org/}}.
+However, this approach leads to a high coupling between a concrete library and the web application.
 
-Another approach would be the implementation of a custom WebSocket-to-XMPP Proxy, which allows connecting to XMPP servers that do not fully support WebSockets or BOSH. As this can be done transparently, the implementation of the client does not differ from a direct communication with a supporting XMPP server, and might therefore be added at a later time.
+Another approach would be the implementation of a custom WebSocket-to-XMPP Proxy, which allows connecting to XMPP servers that do not fully support WebSockets or BOSH.
+If such a proxy is implemented transparently, the client is not aware of the server limitations. Therefore, the client implementation is no different from direct communication with an XMPP server.
 
 \begin{figure}[h]
 \centering
