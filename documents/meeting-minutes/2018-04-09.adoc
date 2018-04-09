@@ -10,11 +10,26 @@ Minute Taker: rzimmerm
 
 === Agenda
 
+. Current State and Next Steps
+. Administrative Tasks
 . Date and time for the next meeting
 
 === Discussions / Decisions
 
+. Current State and Next Steps
+    * rzimmerm preset a demo of the current client
+    * fhauser explains the TLS client certificate issues we occurred in the last weeks.
+    * SFF suggest to make and document assumptions (eg. nginx and openfire are co-located) and begin with the implementation
+    * SFF suspects issues with the XMPP client libraries
+. Administrative Tasks
+    * Intermediate Presentation: SFF suggest we do this in the next three weeks with a working demo including XMPP
+    * Final Presentation:
+        * 2018-06-27 is the ideal date for rzimmerm and fhauser
+        * we will contact Mr. Bocek concerning this date
+        * SFF will contact Mr. Hauser
 . Date and time for the next meeting
+    * Next weekly meeting on 2018-04-16
 
 === Upcoming absences
 
+_none_
