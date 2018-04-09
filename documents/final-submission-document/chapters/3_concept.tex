@@ -75,7 +75,10 @@ A WebAPI Proxy could be realised with a custom browser-to-proxy protocol, as imp
 However, this approach leads to a high coupling between a concrete library and the web application.
 
 Another approach would be the implementation of a custom WebSocket-to-XMPP Proxy, which allows connecting to XMPP servers that do not fully support WebSockets or BOSH.
-If such a proxy is implemented transparently, the client is not aware of the server limitations. Therefore, the client implementation is no different from direct communication with an XMPP server.
+If such a proxy is implemented transparently, the client is not aware of the server limitations.
+Therefore, the client implementation is no different from direct communication with an XMPP server.
+
+As the XMPP over Websocket protocol has some differences to the normal XMPP protocol, a transparent proxy implementation would inevitably need to know the connection state and implement custom keep-alive mechanisms~\cite{rfc7395}.
 
 \begin{figure}[h]
 \centering
@@ -84,15 +87,15 @@ If such a proxy is implemented transparently, the client is not aware of the ser
 \label{fig:architecturecontainerwebproxy}
 \end{figure}
 
-\subsubsection{Implemented Web Application Topology}
+\subsubsection{Implemented Web Application Topology}\label{sec:implemented-web-application-topology}
 
-As elaborated in the according design decision (see Appendix~\ref{sec:architectural-decisions}), we decided for the direct connection via WebSockets, with a fallback to BOSH if the required features are not supported (e.g. SASL EXTERNAL authentication).
+As elaborated in the according design decision (see Appendix~\ref{sec:architectural-decisions}), we decided for the direct connection via WebSockets, if possible with a fallback to BOSH.
 This topology simplifies the implementation and deployment of the application in comparison to a WebAPI Proxy.
 WebSockets offer stateful TCP-sockets to exchange data with the XMPP server in contrast to BOSH, which uses HTTP long polling to emulate a bidirectional stream and is, therefore, less efficient~\cite{xep-0124}.
 
-Using the XMPP Service Discovery~\cite{xep-0030}, the XMPP server may be queried for supported features, so that only supported functionality is presented to the application user.
+To increase the XMPP server security, a HTTP reverse proxy (e.g.\ nginx\footnote{\url{https://nginx.org/}}) between the client and the xmpp server might be added. The reverse proxy might also be used to serve the web application and provide authentication features (see Section~\ref{sec:authentication-and-connection-security}).
 
-\subsection{Authentication and Connection Security}
+\subsection{Authentication and Connection Security}\label{sec:authentication-and-connection-security}
 
 XMPP uses SASL as authentication mechanism~\cite{rfc6120}.
 To authenticate against the XMPP Grid Controller, we decided to use the SASL EXTERNAL~\cite{rfc4422} mechanism whenever possible to authenticate the client.
@@ -101,6 +104,10 @@ We decided against the alternative SASL authentication method, SASL SCRAM~\cite{
 As described in the corresponding architectural decision (Appendix~\ref{sec:architectural-decisions}), the main reason for SASL EXTERNAL is its higher level of security and and its relatively simple scaling capabilities.
 
 SASL EXTERNAL implies that the authentication takes place on a lower layer than the actual XMPP protocol. In our case, this implies authentication over TLS, i.e.~X.509 end-user certificates as specified in RFC6120~\cite{rfc6120}.
+
+Currently, not all XMPP servers that implement BOSH and Websockets also implement SASL EXTERNAL with TLS authentication
+(e.g.\ Openfire currently supports TLS authentication with BOSH but not with Websockets\footnote{\url{https://github.com/igniterealtime/Openfire/blob/02c22e/src/java/org/jivesoftware/openfire/websocket/OpenfireWebSocketServlet.java}}).
+To circumvent this limitation, a HTTP reverse proxy as described in Section~\ref{sec:implemented-web-application-topology} might be used, which handles the TLS authentication.
 
 
 \section{Wireframes}
