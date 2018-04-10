@@ -1,0 +1,53 @@
+== XMPP Client Library
+
+To communicate via XMPP from the client via Websockets or Bosh an existing client library shall be used to benefit from an existing implementation.
+
+Primarily, the following aspects are relevant for the decision, ordered by priority:
+
+. Community Support: How well is the project maintained
+. Plugin API: Is it easy to create or replace existing plugins
+. TypeScript binding: Are there existing TypeScript bindings?
+
+=== Considered Options
+
+* stanza.io
+* strophe.js
+
+=== Decision Outcome
+
+Chosen option: stanza.io, because it offers solid community support and provides a clean plugin API with minimal dependencies.
+Although strophe.js has a more active community, some plugins have dependencies on jQuery and are implemented in CoffeeScript.
+That is the main reason why we selected stanza.io over strophe.js.
+
+To fully benefit from TypeScript, we could implement the TypeScript bindings. https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html[]
+
+=== Evaluations of the Options
+
+==== stanza.io
+
+. Community Support
+    * > 20 Contributors
+    * primarily maintained by one person
+    * Project receives frequent updates since 2014
+    * Used by 40 Repos and 3 Packages (2018-04-10)
+    * > 10 Pull-Requests closed/merged since 2017-01-01
+. Plugin API
+    * New plugins can easily be added
+    * Existing plugins can be replaced
+. TypeScript binding
+    * No TypeScript bindings exist
+
+==== strophe.js
+
+. Community Support (only core repository)
+    * > 50 Contributors
+    * minor fixes in the last year by different contributors
+    * Project regularly updated since 2008
+    * Used by >90 Repos and >20 Packages (2018-04-10)
+    * > 25 Pull-Requests closed/merged since 2017-01-01
+. Plugin API
+    * Some Plugins depend on jQuery
+    * Minimal core allows to add and replace existing plugins simply
+    * Many plugins are written in CoffeeScript (whereas the core is in JavaScript)
+. TypeScript binding
+    * Bindings for the core exist (not tested!), see https://www.npmjs.com/package/@types/strophe[@types/strophe on NPM]

@@ -18,3 +18,4 @@ include::ui-library.adoc[]
 
 include::frontend-structure.adoc[]
 
+include::xmpp-library.adoc[]
