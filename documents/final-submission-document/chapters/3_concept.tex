@@ -45,7 +45,12 @@ The full decision argument is documented in Appendix~\fullref{sec:architectural-
 
 \subsubsection{Platform}
 
-The proposed XMPP client might be implemented in three different ways: as rich client application with a command line or graphical interface as illustrated in Figure~\ref{fig:architecturecontainerrichclient}, or in the form of a web application, illustrated in Figure~\ref{fig:architecturecontainerwebapplication} and \ref{fig:architecturecontainerwebproxy}.
+The proposed XMPP client might be implemented in different ways: as rich client application with a command line or graphical interface as illustrated in Figure~\ref{fig:architecturecontainerrichclient}, or in the form of a web application, illustrated in Figure~\ref{fig:architecturecontainerwebapplication} and \ref{fig:architecturecontainerwebproxy}.
+
+\subsection{Rich Client Application}
+
+In contrast to a rich client application, a web application has the significant advantage to be easily installable and upgradable with minimal requirements on the user's side (i.e. only requires a web browser to be executed).
+Therefore, we decided to implement the XMPP grid broker as web application.
 
 \begin{figure}[h]
 \centering
@@ -53,9 +58,6 @@ The proposed XMPP client might be implemented in three different ways: as rich c
 \caption[Architecture Container Diagram: Rich Client]{Architecture Container Diagram showing a possible rich client architecture.}
 \label{fig:architecturecontainerrichclient}
 \end{figure}
-
-A web application has the significant advantage to be easily installable, upgradable and has minimal requirements on the user's side (i.e. only requires a web browser to be executed).
-Therefore, we decided to implement the XMPP grid broker as web application.
 
 \subsection{Web Application Topology}
 
@@ -74,15 +76,15 @@ These topologies are illustrated in Figure~\ref{fig:architecturecontainerwebappl
 A WebAPI Proxy could be realised with a custom browser-to-proxy protocol, as implemented in the XMPP-FTW JavaScript library\footnote{\url{http://docs.xmpp-ftw.org/}}.
 However, this approach leads to a high coupling between a concrete library and the web application.
 
-Another approach would be the implementation of a custom WebSocket-to-XMPP Proxy, which allows connecting to XMPP servers that do not fully support WebSockets or BOSH.
+Another approach would be the implementation of a custom WebSocket-to-XMPP Proxy, which allows connecting to XMPP servers that do not support WebSockets or BOSH.
 If such a proxy is implemented transparently, the client is not aware of the server limitations.
 Therefore, the client implementation is no different from direct communication with an XMPP server.
 
 As the XMPP over Websocket protocol has some differences to the normal XMPP protocol, a transparent proxy implementation would inevitably need to know the connection state and implement custom keep-alive mechanisms~\cite{rfc7395}.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{resources/architecture_container_proxy.pdf}
+\includegraphics[width=0.8\linewidth]{resources/architecture_container_proxy}
 \caption[Architecture Container Diagram: Web Proxy]{Architecture Container Diagram showing the WebAPI Proxy topology.}
 \label{fig:architecturecontainerwebproxy}
 \end{figure}
@@ -93,7 +95,16 @@ As elaborated in the according design decision (see Appendix~\ref{sec:architectu
 This topology simplifies the implementation and deployment of the application in comparison to a WebAPI Proxy.
 WebSockets offer stateful TCP-sockets to exchange data with the XMPP server in contrast to BOSH, which uses HTTP long polling to emulate a bidirectional stream and is, therefore, less efficient~\cite{xep-0124}.
 
-To increase the XMPP server security, a HTTP reverse proxy (e.g.\ nginx\footnote{\url{https://nginx.org/}}) between the client and the xmpp server might be added. The reverse proxy might also be used to serve the web application and provide authentication features (see Section~\ref{sec:authentication-and-connection-security}).
+To increase the XMPP server security, an HTTP reverse proxy (e.g.\ nginx\footnote{\url{https://nginx.org/}}) between the client and the XMPP server might be added as shown in Figure~\ref{fig:architecturecontainerweb-http-proxy}.
+The reverse proxy might also be used to serve the web application and provide authentication (see Section~\ref{sec:authentication-and-connection-security}) and security (see Section~\ref{sec:ops-security}) features.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{resources/architecture_container_webapplication_with_http_proxy}
+    \caption[Architecture Container Diagram: Web Application with transparent Proxy]{Architecture Container Diagram showing the implemented web application topology.}
+    \label{fig:architecturecontainerweb-http-proxy}
+\end{figure}
+  
 
 \subsection{Authentication and Connection Security}\label{sec:authentication-and-connection-security}
 
@@ -263,7 +274,7 @@ To mitigate the security risks as discussed in Section~\ref{sec:security-conside
     \item XMPP-Messages are validated to contain only the specified result-types
 \end{itemize}
 
-\subsection{Operations Security}
+\subsection{Operations Security}\label{sec:ops-security}
 
 
 Administrators must configure the surrounding systems correctly to mitigate certain security risks.
