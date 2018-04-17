@@ -6,5 +6,6 @@ This archive/website contains all project data of the bachelor project `XMPP-Gri
 * link:./documents/final-submission-document.pdf[Final Submission Document]
 * link:./documents/poster.pdf[Poster]
 * link:./documents/usage-rights.pdf[Signed Usage Rights]
+* link:./presentations/interim.html[Interim Presentation]
 * link:./presentations/final.html[Final Presentation]
 * link:./project-management/jira-export.html[Project Management]
