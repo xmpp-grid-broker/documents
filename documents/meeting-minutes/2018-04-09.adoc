@@ -25,8 +25,8 @@ Minute Taker: rzimmerm
     * Intermediate Presentation: SFF suggest we do this in the next three weeks with a working demo including XMPP
     * Final Presentation:
         * 2018-06-27 is the ideal date for rzimmerm and fhauser
-        * We will contact Mr. Bocek concerning this date
-        * SFF will contact Mr. Ralf Hauser
+        * We will contact Prof. Dr. Thomas Bocek concerning this date
+        * SFF will contact Dr. Ralf Hauser
 . Date and time for the next meeting
     * Next weekly meeting on 2018-04-16
 

@@ -1,0 +1,29 @@
+== Meeting 2018-04-26
+
+=== Attendees
+
+* Fabian Hauser, fhauser
+* Raphael Zimmermann, rzimmerm
+* Prof. Dr. Andreas Steffen, SFF
+
+Minute Taker: rzimmerm
+
+=== Agenda
+
+. Administrative Tasks
+. Demo: Try it out with SFFs server and certificates
+. Date and time for the next meeting
+
+=== Discussions / Decisions
+
+. Administrative Tasks
+    * Review intermediate presentation
+. Demo: Try it out with SFFs server and certificates
+. Date and time for the next meeting
+    * fhauser is absent on 2018-04-30 (Zivilschutz)
+    * The meeting is postponed to 2018-04-26
+
+=== Upcoming absences
+
+* SFF: 2018-04-23
+* fhauser: 2018-04-30

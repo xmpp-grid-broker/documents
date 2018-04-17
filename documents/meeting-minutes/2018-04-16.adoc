@@ -5,16 +5,38 @@
 * Fabian Hauser, fhauser
 * Raphael Zimmermann, rzimmerm
 * Prof. Dr. Andreas Steffen, SFF
+* Tobias Brunner
 
 Minute Taker: rzimmerm
 
 === Agenda
 
+. Administrative Tasks
+. Demo
+. Architectural Security Review
 . Date and time for the next meeting
 
 === Discussions / Decisions
 
+. Administrative Tasks
+    * intermediate presentation
+    ** No response yet from Prof. Dr. Thomas Bocek. We will ask him today in the exercises session.
+    ** SFF is unavailable next Monday and suggests to do the presentation without him
+    * Final presentation
+    ** No response yet from Prof. Dr. Thomas Bocek. We will ask him today in the exercises session.
+    ** SFF will contact Dr. Ralf Hauser until next week
+. Demo
+    * fhauser demonstrates a working XMPP connection from the Angular application using TLS with Client certificates
+    * rzimmerm demonstrates the generic data forms implementation
+    * We will enable SFF to try it out with his setup next Week.
+. Architectural Security Review
+    * Tobias Brunner notes, that TLS Client Certificates without an Origin policy can be problematic
+    ** When using WebSockets or Bosh, the XMPP server (or Nginx) must verify the Origin header
 . Date and time for the next meeting
+    * SFF is unavailable next Monday.
+    * The meeting is postponed to 2018-04-26
 
 === Upcoming absences
 
+* SFF: 2018-04-23
+* fhauser: 2018-04-30
