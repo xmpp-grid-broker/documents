@@ -244,7 +244,6 @@ To mitigate the security risks as discussed in Section~\ref{sec:security-conside
 \begin{enumerate}
     \item Conduct Code Reviews for all newly added code using GitHub pull requests and a security checklist (See next section)
     \item Conduct an architectural analysis with an industry expert.
-    \item Define explicit security requirements in the form of constraints
     \item Automate build and release processes to minimise the time required to patch.
     \item Stay as close to the default Angular setup to simplify further updates
     \item Avoid additional third-party dependencies whenever possible
@@ -259,7 +258,25 @@ To mitigate the security risks as discussed in Section~\ref{sec:security-conside
     \item No usage of any Methods starting with \texttt{bypassSecurityTrust}.
     \item The client is fully Content Security Policy compliant
     \item The client is fully Same Origin Policy (SOP) / Cross-Origin Resource Sharing (CORS) compliant
-    \item Only complete templates offline using the offline template compiler.
-    \item User input is always escaped using the mechanisms provided by the framework
+    \item Only compile templates offline using the offline template compiler.
+    \item User input is always escaped using the mechanisms provided by the framework (eg. Angular Forms)
     \item XMPP-Messages are validated to contain only the specified result-types
 \end{itemize}
+
+\subsection{Operations Security}
+
+
+To mitigate some risks administrators must configure the surrounding systems correctly.
+To support administrators, we recommend the following measures.
+
+\subsubsection{Content Security Policy}
+
+The Content Security Policy (CSP) helps to mitigate certain types of attacks such as Cross Site Scripting (XSS) as a second line of defence \cite{w3c-csp}.
+The recommended values are directly documented in the project source code repository.
+
+\subsubsection{Verify Origin}
+Configure the XMPP server to accept only WebSockets/BOSH connections from the origin of the XMPP Broker application.
+The \emph{Origin} Header sent by the Browser must match the domain on which the XMPP Broker application is hosted.
+Otherwise,  establishing a connection must be blocked.
+If the XMPP server used does not support this feature, use a proxy server instead.
+In our development setup, we use the second approach using Nginx as Openfire does not properly validate the \emph{Origin} header.
