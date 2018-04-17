@@ -266,7 +266,7 @@ To mitigate the security risks as discussed in Section~\ref{sec:security-conside
 \subsection{Operations Security}
 
 
-To mitigate some risks administrators must configure the surrounding systems correctly.
+Administrators must configure the surrounding systems correctly to mitigate certain security risks.
 To support administrators, we recommend the following measures.
 
 \subsubsection{Content Security Policy}
@@ -275,8 +275,8 @@ The Content Security Policy (CSP) helps to mitigate certain types of attacks suc
 The recommended values are directly documented in the project source code repository.
 
 \subsubsection{Verify Origin}
-Configure the XMPP server to accept only WebSockets/BOSH connections from the origin of the XMPP Broker application.
-The \emph{Origin} Header sent by the Browser must match the domain on which the XMPP Broker application is hosted.
+The XMPP server should be configured to only accept WebSockets/BOSH connections from the origin of the XMPP Broker application.
+The \texttt{Origin} Header sent by the Browser must match the domain on which the XMPP Broker application is hosted.
 Otherwise,  establishing a connection must be blocked.
-If the XMPP server used does not support this feature, use a proxy server instead.
-In our development setup, we use the second approach using Nginx as Openfire does not properly validate the \emph{Origin} header.
+If a XMPP server used does not support this feature, a proxy server should be used to verify the \texttt{Origin} header.
+In our development setup, we use the second approach using Nginx as Openfire does not validate the \texttt{Origin} header.
