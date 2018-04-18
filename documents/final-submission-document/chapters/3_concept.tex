@@ -96,7 +96,7 @@ This topology simplifies the implementation and deployment of the application in
 WebSockets offer stateful TCP-sockets to exchange data with the XMPP server in contrast to BOSH, which uses HTTP long polling to emulate a bidirectional stream and is, therefore, less efficient~\cite{xep-0124}.
 
 To increase the XMPP server security, an HTTP reverse proxy (e.g.\ nginx\footnote{\url{https://nginx.org/}}) between the client and the XMPP server might be added as shown in Figure~\ref{fig:architecturecontainerweb-http-proxy}.
-The reverse proxy might also be used to serve the web application and provide authentication (see Section~\ref{sec:authentication-and-connection-security}) and security (see Section~\ref{sec:ops-security}) features.
+The reverse proxy might also be used to serve the web application and provide authentication (see Section~\ref{sec:authentication-and-connection-security}) and security features (see Section~\ref{sec:ops-security}).
 
 \begin{figure}[H]
     \centering
