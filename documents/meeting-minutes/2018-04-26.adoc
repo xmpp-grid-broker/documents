@@ -11,19 +11,33 @@ Minute Taker: rzimmerm
 === Agenda
 
 . Administrative Tasks
-. Demo: Try it out with SFFs server and certificates
+. How to Test-Drive
+. Presentation Date
+. Review: Issues we encountered
 . Date and time for the next meeting
 
 === Discussions / Decisions
 
 . Administrative Tasks
-    * Review intermediate presentation
-. Demo: Try it out with SFFs server and certificates
+    * The Interim presentation took place on Monday
+. How to Test-Drive
+    * SFF wants to try out the application as discussed last week
+    * To use an existing XMPP server, we recommend using the development setup with another upstream XMPP server
+    ** The CA and Client Certificate for connecting to the XMPP server must be replaced
+    ** The upstream URL must be replaced
+    * We will publish an alpha release this week
+. Presentation Date
+    * Prof. Dr. Thomas Bocek is available on 2018-06-27
+    * SFF will clarify if this date works for the other groups and the expert as well.
+. Review: Issues we encountered
+    * We were missing some functionality in the XMPP standards
+    ** loading all available configuration options before the creation of a topic
+    ** Lost updates when updating the topic configuration (eg. `max-items` and `node_type`)
+    * We decided to only focus on the features as Openfire support it
 . Date and time for the next meeting
     * fhauser is absent on 2018-04-30 (Zivilschutz)
-    * The meeting is postponed to 2018-04-26
+    * The meeting is postponed to 2018-05-07
 
 === Upcoming absences
 
-* SFF: 2018-04-23
-* fhauser: 2018-04-30
+* fhauser: 2018-04-30 (Zivilschutz)
