@@ -13,6 +13,7 @@ Minute Taker: rzimmerm
 . Administrative Tasks
 . Review: Test-Drive
 . Presentation Date
+. Priorisation: On what shoud we focus?
 . Review: Issues we encountered
 . Date and time for the next meeting
 
@@ -21,6 +22,15 @@ Minute Taker: rzimmerm
 . Administrative Tasks
 . Review: Test-Drive
 . Presentation Date
+. Priorisation: On what shoud we focus?
+    * The core functionallity is (almost) complete
+    ** Subtopics view is missing
+    ** Subscription view is missing
+    ** Persisted Items
+    * We can improve the usability of the existing components:
+    ** Add search field to the overview
+    ** Detect lost updates
+    ** Autocomplete of JIDs and Collections / Topics
 . Review: Issues we encountered
 . Date and time for the next meeting
 
