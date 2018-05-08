@@ -1,6 +1,21 @@
 % !TeX spellcheck = en_GB
 \chapter{Implementation and Testing} % Realisierung und Test
 \epigraph{Any fool can write code that a computer can understand. Good programmers write code that humans can understand.}{Martin Fowler}
+
+\section{Problems}
+
+% - Multiple Administrations (stanza.io)
+% - Audit Trail (obsolete)
+% - Logout (TLS)
+% - Initial Topic Consumers and Providers + Initial Topic Consumers and Providers => 2 Step Process!
+% - Openfire:
+%   - Lost updates with OpenFire
+%   - falsche Felder - speziell pubsub#node_type
+%   - vgl. https://discourse.igniterealtime.org/t/wrong-field-type-of-pubsub-node-type-and-how-to-update-it/81596
+% -> Fehlende Methoden/Funktionalität im Standard
+%   - "Liste alle Topics" -> Geht nur hierarchisch
+%   - Filtering von Persisted Items
+
 \section{Code Quality}
 % - Qualität des Codes
     % - Metriken
@@ -13,7 +28,7 @@
 % Typescript mit liter (tslint)
 % Best-Practices von Angular befolgt dank Intellij Ultimate (`@angular/language-service`) und https://github.com/mgechev/codelyzer (ink. tslint)
 % Modular und Testbar
-% Doku mit COmpodoc
+% Doku mit Compodoc
 
 \section{Complexity}
 % - Komplexität und Umfang
@@ -24,6 +39,11 @@
     % - Abdeckung der Anforderungen
     % - Coverage
     % - Protokolle
+
+% Viele Angular Component Tests -> Leider grosser gap zwischen test env und realität was testing etwas mühsam macht
+% Integration/E2E-Tests mit Protractor
+% - mühsam wegen BOSH da immer "polling"
+
 \section{Documentation}
 % - Installation
 % - Benutzerdokumentation
