@@ -35,7 +35,7 @@ Chosen option: XMPP Client/bot, because it is not coupled to a specific XMPP ser
 * Bad, because the specification of Components is marked as _Historical_ and might therefore not be implemented by many XMPP Servers.
 ** Note: Openfire supports Components
 * Bad, because some XMPP client libraries might support Components.
-* Bad, because the authentication mechanisms might not suffice the required standards of the ietf draft.
+* Bad, because the authentication mechanisms might not suffice the required standards of the XMPP-Grid standard.
 * Bad, because it uses a own handshake based digest authentication message.
 
 ==== XMPP Client/Bot

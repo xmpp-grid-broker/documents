@@ -12,31 +12,31 @@
 % - Beschreibung des Entwurfs (welche Experimente/Tests wurden durchgeführt? welche Lösungsoptionen wurden verworfen?)
 % - Entwurf Benutzerschnittstelle
 
-In this chapter, we present the architecture and fundamental architectural decisions of the XMPP grid broker application.
+In this chapter, we present the architecture and fundamental architectural decisions of the \gls{xmpp-grid} \gls{broker} application.
 All architectural decisions we took are fully documented in Appendix~\fullref{sec:architectural-decisions}.
 
 We illustrate the concepts and structures using the \emph{C4 Model for Software Architecture}~\cite{c4-model}.
 
 \subsection{Actors and Context}
 
-The context diagram pictured in Figure~\ref{fig:architecturecontext} shows the surrounding systems and actors that are given for the XMPP grid broker, as described in the \nameref{sec:task-description}.
+The context diagram pictured in Figure~\ref{fig:architecturecontext} shows the surrounding systems and actors that are given for the \gls{xmpp-grid} \gls{broker}, as described in the \nameref{sec:task-description}.
 
-One or more administrators manage the XMPP grid by adding or removing \glspl{platform} and configuring \glspl{topic}.
-To minimize the required work and reduce the error-proneness, they interact with the XMPP grid broker, whose implementation is the primary goal of this thesis.
+One or more administrators manage the \gls{xmpp-grid} by adding or removing \glspl{platform} and configuring \glspl{topic}.
+To minimize the required work and reduce the error-proneness, they interact with the \gls{xmpp-grid} \gls{broker}, whose implementation is the primary goal of this thesis.
 
-The XMPP grid broker configures the XMPP grid, which consists of a \gls{controller} and \glspl{platform}.
+The \gls{xmpp-grid} \gls{broker} configures the \gls{xmpp-grid}, which consists of a \gls{controller} and \glspl{platform}.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{resources/architecture_context}
-\caption[Architecture Context Diagram]{Architecture diagram showing the context of the XMPP grid broker application.}
+\caption[Architecture Context Diagram]{Architecture diagram showing the context of the \gls{xmpp-grid} \gls{broker} application.}
 \label{fig:architecturecontext}
 \end{figure}
 
 
 \subsection{Architectural Style and Platform}
 
-To implement the XMPP grid broker, we evaluated three possible architecture styles:\hfill\\
+To implement the \gls{xmpp-grid} \gls{broker}, we evaluated three possible architecture styles:\hfill\\
 An XMPP server plug-in (e.g. extension for the Openfire XMPP server), an implementation with the Jabber Component Protocol~\cite{xep-0114} or an implementation acting as a regular XMPP client ("bot").
 
 We decided to build an XMPP client/bot, because it is not coupled to a specific XMPP server as a server plug-in and, in contrast to the XMPP component, supports a strong authentication mechanism with SASL.
@@ -50,7 +50,7 @@ The proposed XMPP client might be implemented in different ways: as rich client 
 \subsection{Rich Client Application}
 
 In contrast to a rich client application, a web application has the significant advantage to be easily installable and upgradable with minimal requirements on the user's side (i.e. only requires a web browser to be executed).
-Therefore, we decided to implement the XMPP grid broker as web application.
+Therefore, we decided to implement the \gls{xmpp-grid} \gls{broker} as web application.
 
 \begin{figure}[h]
 \centering
@@ -61,7 +61,7 @@ Therefore, we decided to implement the XMPP grid broker as web application.
 
 \subsection{Web Application Topology}
 
-To manage the Controller from our interface, we considered the implementation of either directly connecting to the XMPP server over WebSockets~\cite{rfc7395} or HTTP (BOSH~\cite{xep-0124}), or to communicate indirectly with the XMPP server via custom web API proxy.
+To manage the \gls{controller} from our interface, we considered the implementation of either directly connecting to the XMPP server over WebSockets~\cite{rfc7395} or HTTP (BOSH~\cite{xep-0124}), or to communicate indirectly with the XMPP server via custom web API proxy.
 These topologies are illustrated in Figure~\ref{fig:architecturecontainerwebapplication} and Figure~\ref{fig:architecturecontainerwebproxy}.
 
 \begin{figure}[h]
@@ -109,9 +109,9 @@ The reverse proxy might also be used to serve the web application and provide au
 \subsection{Authentication and Connection Security}\label{sec:authentication-and-connection-security}
 
 XMPP uses SASL as authentication mechanism~\cite{rfc6120}.
-To authenticate against the XMPP Grid Controller, we decided to use the SASL EXTERNAL~\cite{rfc4422} mechanism whenever possible to authenticate the client.
+To authenticate against the \gls{xmpp-grid} \gls{controller}, we decided to use the SASL EXTERNAL~\cite{rfc4422} mechanism whenever possible to authenticate the client.
 
-We decided against the alternative SASL authentication method, SASL SCRAM~\cite{rfc7677}, that is also recommended by in the XMPP grid draft~\cite{ietf-mile-xmpp-grid-05}.
+We decided against the alternative SASL authentication method, SASL SCRAM~\cite{rfc7677}, that is also recommended by in the \gls{xmpp-grid} standard~\cite{ietf-mile-xmpp-grid-05}.
 As described in the corresponding architectural decision (Appendix~\ref{sec:architectural-decisions}), the main reason for SASL EXTERNAL is its higher level of security and and its relatively simple scaling capabilities.
 
 SASL EXTERNAL implies that the authentication takes place on a lower layer than the actual XMPP protocol. In our case, this implies authentication over TLS, i.e.~X.509 end-user certificates as specified in RFC6120~\cite{rfc6120}.
@@ -129,7 +129,7 @@ All wireframes are listed in Appendix~\fullref{sec:wireframes}.
 
 \section{Security Considerations}\label{sec:security-considerations}
 
-Regarding only the XMPP-Grid Broker application, there are three primary attack vectors:
+Regarding only the \gls{xmpp-grid} Broker application, there are three primary attack vectors:
 
 \begin{description}
     \item[Client-side attacks,] e.g. via web browser, web browser extension or malicious software on the client operating system.
@@ -163,7 +163,7 @@ To reduce the risk of these attack vectors best practices such as storing certif
 
 The use of PubSub collection nodes~\cite{xep-0248} can leak private data if not configured properly.
 Administrators must take great care when configuring collection nodes.
-The XMPP-Grid Broker should support administrators to detect such data leaks.
+The \gls{xmpp-grid} Broker should support administrators to detect such data leaks.
 
 \subsection{Client Security}
 
@@ -214,13 +214,13 @@ Angular supports these measures by treating all values (except Angular templates
 To prevent user-generated data to influence Angular templates, the offline template compiler is used. To fully utilise the security measures provided by Angular, their APIs must be used at all times instead of direct use of the DOM-APIs.~\cite{angular-security}
 
 Using Content-Security-Policy (CSP) provides additional XSS-protection mechanisms \cite{w3c-csp}.
-The XMPP-Grid Broker should document an appropriate CSP that must be supported in a production environment.
+The \gls{xmpp-grid} Broker should document an appropriate CSP that must be supported in a production environment.
 
 \subsection{Server Security}
 
 \subsubsection{Authentication and Authorisation}
 
-The XMPP server implements most of the authentication and authorisation mechanisms used in a XMPP-Grid Broker implementation, such as storing passwords and validating certificates.
+The XMPP server implements most of the authentication and authorisation mechanisms used in a \gls{xmpp-grid} Broker implementation, such as storing passwords and validating certificates.
 
 If BOSH or WebSockets are used, the XMPP server should supports most HTTP security features as listed in Section~\ref{sec:web-server}. Additionally, the origin of WebSockets and BOSH requests must be verified (by either the \texttt{Origin}-Header or CORS support.~\cite{rfc6455}\cite{cross-origin-resource-sharing}
 
@@ -244,7 +244,7 @@ In addition to these general best practices, we explicitly recommend the followi
 
 XMPP server security depends on the chosen implementation and the application domain.
 Discussing XMPP server security in detail is beyond the scope of this thesis.
-Operators should adhere to the security recommendations of their XMPP server vendor and follow general security best practices as outlined by the XMPP-Grid draft~\cite{ietf-mile-xmpp-grid-05}.
+Operators should adhere to the security recommendations of their XMPP server vendor and follow general security best practices as outlined by the \gls{xmpp-grid} standard~\cite{ietf-mile-xmpp-grid-05}.
 
 \section{Security Risk Mitigation}
 
