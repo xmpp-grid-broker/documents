@@ -16,7 +16,7 @@ Positive consequences:
 
 * From a security point of view, a pure CSS library does not require updates.
 ** An Angular component library might introduce security vulnerabilities (e.g. XSS).
-** If the CSS library project is discontinued, the XMPP grid broker application can continue to use the latest available version.
+** If the CSS library project is discontinued, the XMPP-Grid Broker can continue to use the latest available version.
 
 Negative consequences:
 

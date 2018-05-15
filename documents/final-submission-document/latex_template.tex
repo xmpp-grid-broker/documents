@@ -73,10 +73,10 @@ consistentlayout, % Uncomment to change the layout of the declaration, abstract 
 	\makeglossaries
 	\newacronym[see={[Siehe:]{gls-#3}},#2]{#3}{#4}{#5\glsadd{gls-#3}}
 }
-\renewcommand{\glstextformat}[1]{\textit{#1}}
+\renewcommand{\glstextformat}[1]{\slshape{#1}}
 \makeglossaries
 
-\DeclareTextFontCommand{\emph}{\bfseries\em}
+\DeclareTextFontCommand{\emph}{\itshape}
 
 %----------------------------------------------------------------------------------------
 %	THESIS INFORMATION
