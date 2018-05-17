@@ -1,4 +1,4 @@
-== Meeting 2018-05-17
+== Meeting 2018-05-28
 
 === Attendees
 
@@ -22,4 +22,4 @@ Minute Taker: rzimmerm
 
 === Upcoming absences
 
-* Whitmonday: 2018-04-21
+* None
