@@ -10,24 +10,23 @@ Requirement \ref{sec:requirement-multiple-administrators} states that multiple a
 
 Authenticating multiple users with SASL EXTERNAL is possible with the client certificate extension field `xmppAddr'.
 The value of this field is then interpreted as user \gls{jid} by the \gls{xmpp} server.
-Optionally, a user \gls{jid} might be sent to the server during connection negotiation, which must match the `xmppAddr' embedded within the certificate. \cite{xep-0178}
 
-The \gls{xmpp} client `stanza.io' requires the configuration of a user \gls{jid}, which is then sent to the server. As a web application has no access to the web browsers TLS negotiation process, the \gls{jid} must be manually configured.
-
-In practice, most deployments of \gls{xmpp-grid} \glspl{broker} will require a HTTP proxy in front of the \gls{xmpp} server as security measure and to host the \gls{broker} application\footnote{
+In practice, most \gls{xmpp-grid} \gls{broker} deployments will require a HTTP proxy in front of the \gls{xmpp} server as security measure and to host the \gls{broker} application\footnote{
 More information on this can be found in Section~\fullref{sec:implemented-web-application-topology} and Section Webapplication Communication Topology in Appendix~\fullref{sec:architectural-decisions}.}.
-The HTTP proxy can accept multiple different client certificates and return a according \gls{broker} configuration tailored to the authenticated user.
+Such a HTTP proxy might also accept multiple different client certificates.
+
+However, as the proxy authenticates itself against the \gls{xmpp} server with a client certificate as well, the `xmppAddr' value of the proxy certificate is used by the \gls{xmpp} server.
+If multiple users should be differentiated on the \gls{xmpp} server, a HTTP proxy might choose different client certificates for connecting to the \gls{xmpp} server based on the browser's client certificate `xmppAddr'.
 
 
-\subsubsection{\emph{\fullref{sec:requirement-audit-trail}}}
+\subsection{Limitations of \emph{\fullref{sec:requirement-audit-trail}}}
 
 Actions of administrators should be traceable with an audit trail according to requirement \ref{sec:requirement-audit-trail}.
 
 As outlined in Section~\ref{sec:limitations-of-requirement-multiple-administrators}, practical deployments of \gls{xmpp-grid} \glspl{broker} will mostly use a HTTP proxy.
-Additionally to handling the client authentication and configuration,
-the proxy might be used to keep an audit trail of client requests which can be correlated with queries on the \gls{xmpp} server.
+Additionally to handling the client authentication, the proxy might be used to keep an audit trail of client requests which can be correlated with the query log on the \gls{xmpp} server.
 
-Creating an audit trail on the client side does not provide additional safety, as users might prevent trail entries by manipulating the client application. Therefore, no such mechanism was implemented.
+Creating audit trails on the client side does not provide additional safety, as users might prevent trail entries by manipulating the client application. Therefore, no such mechanism was implemented.
 
 
 % - Logout (TLS)
