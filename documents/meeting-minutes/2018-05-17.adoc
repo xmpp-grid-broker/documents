@@ -10,15 +10,24 @@ Minute Taker: rzimmerm
 
 === Agenda
 
+. Current State & Issues
 . Review: Test-Drive
 . Presentation Date
 . Date and time for the next meeting
 
 === Discussions / Decisions
 
+. Current State & Issues
+** We showed SFF the demo of the persisted items view
+** We discussed the limitations of the XEPs (XEP-0060, XEP-0059) and their implication on the feature set that we can implement
+*** For SFF it's not the highest priority to implement these features (e.g. autocomplete, search and filtering)
 . Review: Test-Drive
+** SFF was quite busy and has not had the time yet to try it out
 . Presentation Date
+** SFF will contact Dr. Ralf Hauser today
 . Date and time for the next meeting
+** Next weekly meeting on 2018-04-28
+** If SFF has feedback concerning the test drive, a short-dated meeting will be carried out on 2018-04-24.
 
 === Upcoming absences
 
