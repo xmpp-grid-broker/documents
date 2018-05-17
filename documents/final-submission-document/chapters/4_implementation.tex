@@ -12,11 +12,11 @@ Authenticating multiple users with SASL EXTERNAL is possible with the client cer
 The value of this field is then interpreted as user \gls{jid} by the \gls{xmpp} server.
 
 In practice, most \gls{xmpp-grid} \gls{broker} deployments will require a HTTP proxy in front of the \gls{xmpp} server as security measure and to host the \gls{broker} application\footnote{
-More information on this can be found in Section~\fullref{sec:implemented-web-application-topology} and Section Webapplication Communication Topology in Appendix~\fullref{sec:architectural-decisions}.}.
+More information on this can be found in Section~\fullref{sec:implemented-web-application-topology}.}.
 Such a HTTP proxy might also accept multiple different client certificates.
 
 However, as the proxy authenticates itself against the \gls{xmpp} server with a client certificate as well, the `xmppAddr' value of the proxy certificate is used by the \gls{xmpp} server.
-If multiple users should be differentiated on the \gls{xmpp} server, a HTTP proxy might choose different client certificates for connecting to the \gls{xmpp} server based on the browser's client certificate `xmppAddr'.
+If multiple users should be differentiated on the \gls{xmpp} server, a HTTP proxy might choose different client certificates for connecting to the \gls{xmpp} server based on the web browser's client certificate `xmppAddr'.
 
 
 \subsection{Limitations of \emph{\fullref{sec:requirement-audit-trail}}}
