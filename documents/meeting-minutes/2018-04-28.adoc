@@ -1,0 +1,25 @@
+== Meeting 2018-05-17
+
+=== Attendees
+
+* Fabian Hauser, fhauser
+* Raphael Zimmermann, rzimmerm
+* Prof. Dr. Andreas Steffen, SFF
+
+Minute Taker: rzimmerm
+
+=== Agenda
+
+. Review: Test-Drive
+. Presentation Date
+. Date and time for the next meeting
+
+=== Discussions / Decisions
+
+. Review: Test-Drive
+. Presentation Date
+. Date and time for the next meeting
+
+=== Upcoming absences
+
+* Whitmonday: 2018-04-21
