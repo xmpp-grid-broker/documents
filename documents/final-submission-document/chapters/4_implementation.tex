@@ -15,7 +15,7 @@ More information on this can be found in Section~\fullref{sec:implemented-web-ap
 Usually, the HTTP proxy can also be used to serve the \gls{broker} application.
 Such an HTTP proxy might also accept multiple different client certificates.
 
-If the client connects to the \gls{xmpp} sever over secure WebSockets (WSS) in combination with SASL EXTERNAL, the WebSocket URL must already be authenticated, as most browsers do not permit certificate selection on background requests\footnote{\url{https://bugs.chromium.org/p/chromium/issues/detail?id=329884\#c24}}.
+If the client connects to the \gls{xmpp} server over secure WebSockets (WSS) in combination with SASL EXTERNAL, the WebSocket URL must already be authenticated, as most browsers do not permit certificate selection on background requests\footnote{\url{https://bugs.chromium.org/p/chromium/issues/detail?id=329884\#c24}}.
 This might be achieved by serving the \gls{broker} from the same domain or by using client certificate policies\footnote{\url{https://support.google.com/chrome/a/answer/6080885?hl=en\#manage-certs}}.
 
 As the proxy intercepts the TLS connection, it must verify the client certificate sent by the browser and establish a connection to the \gls{xmpp} server using a client certificate as well.
