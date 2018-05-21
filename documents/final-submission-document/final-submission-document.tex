@@ -95,23 +95,32 @@ Prof.~Dr.~Thomas~Bocek \\[1cm]
 
 \begin{abstract}
 \addchaptertocentry{\abstractname}% Add the abstract to the table of contents
-%
-Today, most enterprises depend on large, diverse IT infrastructures which must be updated and secured against numerous attack vectors.
+% Context
+Most enterprises depend on large, diverse IT infrastructures which must be monitored, updated and protected from numerous attack scenarios.
 
-The IETF Managed Incident Lightweight Exchange~(MILE) working group proposes the standard ``Using XMPP for Security Information Exchange'' to exchange security-relevant information between network endpoints over an XMPP-Grid.\\\\
+To address this problem, the IETF Managed Incident Lightweight Exchange~(MILE) working group proposes the standard ``Using XMPP for Security Information Exchange''. The standard describes how an XMPP-Grid could be used to exchange security-relevant information between network endpoints.\\
 \vspace*{1ex}
 
-According to this standard, a Broker's responsibility is the configuration and maintenance of an XMPP-Grid.
-
-Today, no production ready implementations of a XMPP-Grid Broker exists.\\
+%Problem
+Today, no implementation of an interface specialised on administering XMPP-Grids exists, which is production ready and platform independent .\\
 \vspace*{1ex}
 
-In this thesis we propose and implement a Broker management web application based on the Angular framework. It enables administrators to create and configure communication Topics, apprehend the underlying hierarchy and manage permissions. Additionally, persistent items of Topics can be inspected and published.
+%Goal
+%TODO: SMART Goal
+The goal of this thesis is to engineer a platform independent administration interface as extension to existing XMPP-Grid Broker backends. This interface should enable administrators to configure XMPP-Grids in a usable and productive way.
 
-The implementation and documentation are focused mainly on portability, extensibility and security aspects of the application in a production environment.\\
+The main focus of the implementation should lie on portability, extensibility and security aspects of the application in a production environment.\\
 \vspace*{1ex}
 
-We hope that with the help of our implementation, XMPP-Grids become an established security standard used in practical industry applications.
+
+%Result
+We propose the architecture of an XMPP-Grid Broker as addition to existing XMPP servers and present an implementation based on the Angular framework.
+
+Our implementation enables administrators to create and configure communication Topics, apprehend the underlying hierarchy and manage permissions. Additionally, persistent items of Topics can be inspected and published.\\
+\vspace*{1ex}
+
+% Further Questions / Next Steps
+We hope that with the help of our work XMPP-Grids become an established security standard used in practical industry applications.
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
