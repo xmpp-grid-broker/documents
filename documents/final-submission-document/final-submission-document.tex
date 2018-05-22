@@ -96,31 +96,25 @@ Prof.~Dr.~Thomas~Bocek \\[1cm]
 \begin{abstract}
 \addchaptertocentry{\abstractname}% Add the abstract to the table of contents
 % Context
-Most enterprises depend on large, diverse IT infrastructures which must be monitored, updated and protected from numerous attack scenarios.
+The IETF Managed Incident Lightweight Exchange~(MILE) working group proposes the standard ``Using XMPP for Security Information Exchange'' which describes how an XMPP based publish-subscribe mechanism (XMPP-Grid) can be used to exchange security-relevant information between network endpoints.
 
-To address this problem, the IETF Managed Incident Lightweight Exchange~(MILE) working group proposes the standard ``Using XMPP for Security Information Exchange''. The standard describes how an XMPP-Grid could be used to exchange security-relevant information between network endpoints.\\
-\vspace*{1ex}
-
-%Problem
-Today, no implementation of an interface specialised on administering XMPP-Grids exists, which is production ready and platform independent .\\
+Today, no implementation of an administration interface (XMPP-Grid Broker) for XMPP-Grids  exists, which is production ready and platform independent .\\
 \vspace*{1ex}
 
 %Goal
-%TODO: SMART Goal
-The goal of this thesis is to engineer a platform independent administration interface as extension to existing XMPP-Grid Broker backends. This interface should enable administrators to configure XMPP-Grids in a usable and productive way.
+The goal of this thesis is to engineer a specialised and platform independent XMPP-Grid Broker that configures existing XMPP Controllers (XMPP Server). The XMPP-Grid Broker should enable administrators to configure XMPP-Grids in a usable and productive way.
 
-The main focus of the implementation should lie on portability, extensibility and security aspects of the application in a production environment.\\
+The focus of the application should be set on portability, extensibility and the security aspects in a production environment.\\
 \vspace*{1ex}
-
 
 %Result
-We propose the architecture of an XMPP-Grid Broker as addition to existing XMPP servers and present an implementation based on the Angular framework.
+We propose the architecture of an XMPP-Grid Broker to configure XMPP Controllers and present an implementation based on the Angular5 framework.
 
-Our implementation enables administrators to create and configure communication Topics, apprehend the underlying hierarchy and manage permissions. Additionally, persistent items of Topics can be inspected and published.\\
+The resulting implementation enables administrators to create and configure communication Topics, apprehend the underlying hierarchy and manage permissions. Additionally, persistent items of Topics can be inspected and published.\\
 \vspace*{1ex}
 
-% Further Questions / Next Steps
-We hope that with the help of our work XMPP-Grids become an established security standard used in practical industry applications.
+% Consequences
+The XMPP-Grid Broker implementation incorporates the specified functionality, demonstrating that the architecture is robust. Some supplementary helpers, such as autocomplete or filtering, could not be implemented efficiently due to limitations of the underlying XMPP standards.
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
