@@ -10,7 +10,7 @@ A developer connects via his browser to the reverse proxy that serves the XMPP-G
 The HTTP-Connection from the client to the server is secured using TLS-mutual authentication.
 The same reverse proxy also routes the XMPP connections.
 The client also authenticates to the proxy using TLS-mutual authentication, and the proxy afterwards establishes a TLS connection to the XMPP server using his client certificates.
-The reasons for this setup is described in more detail in \fullref{todo}.
+The reasons for this setup is described in more detail in Section \fullref{encountered-problems}.
 
 \begin{figure}[h]
     \centering
@@ -28,7 +28,7 @@ The efforts invested in this docker setup also paid off when we began to write i
 We deliberately decided to run unit test outside of the docker environment as unit tests are executed more often, and the additional docker-overhead would, therefore, be unnecessarily expensive.
 Also, debugging is more straightforward without any indirections.
 
-\section{Encountered Problems}
+\section{Encountered Problems}\label{encountered-problems}
 
 \subsection{Limitations of \emph{\fullref{sec:requirement-multiple-administrators}}}\label{sec:limitations-of-requirement-multiple-administrators}
 
