@@ -19,7 +19,7 @@ Minute Taker: rzimmerm
 . Review: Test-Drive
     * The location of the install instruction was not clear
     * Having a documentation repository can be confusing
-    * We will add a note Admonition to the documentation page
+    * We will add a note admonition to the documentation page
 . Presentation
     * The date and time for the presentation is fixed: 2018-06-27T15:00
     * We will start with a presentation (20-30 minutes) covering...
@@ -27,9 +27,9 @@ Minute Taker: rzimmerm
     ** our solution
     ** the biggest challenges
     ** special/notable efforts
-    ** Demo
+    ** demo
 . Date and time for the next meeting
-    * Next weekly meeting on 2018-04-16
+    * Next weekly meeting on 2018-06-04 09:00
 
 === Upcoming absences
 
