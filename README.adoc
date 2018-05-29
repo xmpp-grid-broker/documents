@@ -3,6 +3,13 @@
 
 This archive/website contains all project data of the bachelor project `XMPP-Grid Broker` conducted in the spring semester 2018 by Fabian Hauser and Raphael Zimmermann.
 
+[NOTE]
+====
+This website/repository/archive contains the Bachelor Thesis XMPP-Grid Broker.
+If you are looking for the XMPP-Grid Broker Software documentation, checkout the
+https://github.com/xmpp-grid-broker/xmpp-grid-broker/tree/master/docs[docs directory in the xmpp-grid-broker repository]
+====
+
 * link:./documents/final-submission-document.pdf[Final Submission Document]
 * link:./documents/poster.pdf[Poster]
 * link:./documents/usage-rights.pdf[Signed Usage Rights]

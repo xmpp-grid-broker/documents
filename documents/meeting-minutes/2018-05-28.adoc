@@ -11,15 +11,26 @@ Minute Taker: rzimmerm
 === Agenda
 
 . Review: Test-Drive
-. Presentation Date
+. Presentation
 . Date and time for the next meeting
 
 === Discussions / Decisions
 
 . Review: Test-Drive
-. Presentation Date
+    * The location of the install instruction was not clear
+    * Having a documentation repository can be confusing
+    * We will add a note Admonition to the documentation page
+. Presentation
+    * The date and time for the presentation is fixed: 2018-06-27T15:00
+    * We will start with a presentation (20-30 minutes) covering...
+    ** the problem
+    ** our solution
+    ** the biggest challenges
+    ** special/notable efforts
+    ** Demo
 . Date and time for the next meeting
+    * Next weekly meeting on 2018-04-16
 
 === Upcoming absences
 
-* None
+_None_
