@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eux
+set -eu
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 TARGET_DIRECTORY="$SCRIPT_PATH/export"
@@ -17,14 +17,14 @@ function is_in_path {
 function build_tex {
   _tectonic_base="docker run -ti --rm --user $(id -u) --env=HOME=/tectonic"
   _tectonic_image="fabianhauser/tectonic:0.1.6-2"
-  tectonic="$_tectonic_base --volume $(pwd):/tectonic:z $_tectonic_image"
+  tectonic="$_tectonic_base --volume $(pwd):/tectonic:z $_tectonic_image -c minimal"
   if [ "$#" -lt 2 ]; then
-    $tectonic "$1"
+    $tectonic "$1" 2>&1 | sed -u "s/^/[tectonic] /"
   else
     # For documents with a glossary..
-    $tectonic --keep-intermediates "$1"
-    $_tectonic_base --entrypoint=/home/tectonic/bin/makeglossaries --volume $(pwd)/$2:/tectonic:z $_tectonic_image "$3"
-    $tectonic  "$1"
+    $tectonic --keep-intermediates "$1" 2>&1 | sed -u "s/^/[tectonic] /"
+    $_tectonic_base --entrypoint=/home/tectonic/bin/makeglossaries --volume $(pwd)/$2:/tectonic:z $_tectonic_image -q "$3" 2>&1 | sed -u "s/^/[makeglossaries] /"
+    $tectonic  "$1" 2>&1 | sed -u "s/^/[tectonic] /"
   fi
 }
 
