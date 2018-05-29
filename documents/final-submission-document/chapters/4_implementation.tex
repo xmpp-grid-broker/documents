@@ -101,15 +101,28 @@ We also regularly discussed architectural and structural questions in our retros
 In general, writing clean, modular and testable code has been our main priority.
 
 \section{Testing}\label{sec:testing}
-% - Test
-    % - Sinnvoll
-    % - Abdeckung der Anforderungen
-    % - Coverage
-    % - Protokolle
 
-% Viele Angular Component Tests -> Leider grosser gap zwischen test env und realität was testing etwas mühsam macht
-% Integration/E2E-Tests mit Protractor
-% - mühsam wegen BOSH da immer "polling"
+Good tests are inevitable for long-lived software projects.
+They help developers to ensure that everything (still) works as expected after a change.
+For the XMPP-Grid Broker, we focused on unit and end-to-end tests.
+Following the principles of the test pyramid \cite{Cohn:2009:SAS:1667109}, we wrote many cheap and fast Unit tests verifying the fundamental behaviour and fewer expensive and complex end to end tests.
+
+Testing the Angular Services was rather straightforward just by using jasmine and it's mocking functionality.
+We deliberately abstained from using Angulars Testing framework for these services to keep them simple and comprehensible.
+However, most of the services merely send and receive an XMPP-commands for which integration or end to end tests are required.
+
+Writing tests for Angular Components, which requires actual rendering in the Browser, was not always essential.
+To have fine-grained control and to be able to conduct tests, Angular provides a rather complex set of testing tools.
+Because of this indirection, it is possible to write tests which are conceptually not identical with the actual angular application, making test driven development harder if not impossible.
+
+The end-to-end tests were written using Protractor, Angulars official end-to-end testing framework.
+Protractor starts the development setup and verifies the application using a remote-controlled browser.
+These kind of tests are usually hard to write, as different types of race conditions can occur.
+Protractor usually removes this issue due to its use of Zone.js, a library that simply put captures all events and requests on a given site (TODO: REF).
+Because Zone.js is aware of all open requests, protractor can wait until a request has completed.
+However, because we had to rely on BOSH (TODO: REF) which requires an open HTTP request at all time (HTTP long polling), we could not benefit from this feature and had to capture many of these race conditions manually.
+
+In our case, writing tests paid off quickly as they promptly caught many potential bugs introduced by small changes and refactorings.
 
 \section{Documentation}
 % - Installation
