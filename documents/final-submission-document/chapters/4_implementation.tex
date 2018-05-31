@@ -4,12 +4,31 @@
 
 
 \section{Development Setup}
-% - e2e tests
-% - angular cli
-% - build script / ci
-% - docker-compose, CA automated with scripts etc. SE stuff
 
-\section{Encountered Problems}
+Figure~\fullref{fig:development-setup} illustrates the development setup in the form of an UML deployment diagram.
+A developer connects via his browser to the reverse proxy that serves the XMPP-Grid Broker web application.
+The HTTP connection from the client to the server is secured using mutual TLS authentication.
+The same reverse proxy also routes the XMPP connections.
+The client also authenticates to the proxy using mutual TLS authentication, and the proxy afterwards establishes a TLS connection to the XMPP server using his client certificates.
+The reasons for this setup is described in more detail in Section \fullref{encountered-problems}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{resources/development-setup-uml}
+    \caption{UML Deployment Diagram presenting the development setup}
+    \label{fig:development-setup}
+\end{figure}
+
+As the previously described structure is not trivial, the guiding principle for our development setup was to maximise automation and minimise manual setup and configuration efforts. This principle is the basis for a durable software.
+We decided on a docker and docker-compose\footnote{\url{https://www.docker.com/}} based stack that provides a correctly configured Openfire instance, a preconfigured nginx\footnote{\url{https://www.nginx.com/}} instance as well as client and server certificates.
+Everyday tasks such as generating new certificates or building and testing the application and documentation were automated as bash scripts.
+
+The efforts invested in this docker setup proved valuable when we began to write integration tests that run in the same environment.
+
+We deliberately decided to run unit tests outside of the docker environment as unit tests are executed more often, and the additional docker-overhead would, therefore, be unnecessarily expensive.
+Also, debugging is more straightforward without any indirections.
+
+\section{Encountered Problems}\label{encountered-problems}
 
 \subsection{Limitations of \emph{\fullref{sec:requirement-multiple-administrators}}}\label{sec:limitations-of-requirement-multiple-administrators}
 
@@ -64,8 +83,8 @@ Another benefit of the Angular CLI project setup is that it comes with ``codelyz
 Apart from the built-in linting mechanism, we followed Angular's Style Guide~\cite{angular-style-guide}.
 Using the JetBrains IDEs (IntelliJ Ultimate and Webstorm)\footnote{\url{https://www.jetbrains.com/}} turned out to be particularly helpful as they give quick feedback for frequent mistakes and even violations of the Angular Style Guide.
 
-We would have loved to use more tools, especially for code metrics such as Lack of Cohesion of Methods (LCOM), and Afferent/Efferent Coupling.
-Sadly, we were not able to find such tools that were actively maintained and work with TypeScript.
+We would have prefered to use more tools, especially for code metrics such as Lack of Cohesion of Methods (LCOM), and Afferent/Efferent Coupling.
+However, we were not able to find such tools that were actively maintained and work with TypeScript.
 
 \subsubsection{Processes}
 
