@@ -53,29 +53,33 @@ Therefore, no such mechanism was implemented.
 %   - Filtering von Persisted Items
 
 \section{Code Quality}
-As our XMPP-Grid Broker implementation is intended to be a maintainable, production-ready application rather than a prototype, we placed much emphasis on code quality.
-The measures taken can broadly be divided into three categories: Technical measures, Strategic decisions and processes.
+As our \gls{xmpp-grid} \gls{broker} implementation is intended to be a maintainable, production-ready application rather than a prototype, we placed much emphasis on code quality.
+The measures taken can broadly be divided into three categories: technical measures, strategic decisions and processes.
 
+\subsubsection{Technical Measures and Strategic Decisions}
 Using Angular and the default Angular CLI was mostly a strategic decision.
 Deviating as less as possible from the standard configuration ensures long-term maintainability and relatively straight-forward upgrades to newer Angular versions.
-Another benefit of the Angular CLI project setup is that it comes with ``codelyzer'' (including ``tslint'') for static code analysis and style linting.
+Another benefit of the Angular CLI project setup is that it comes with ``codelyzer''\footnote{\url{http://codelyzer.com/}} (including ``tslint'') for static code analysis and style linting.
 
-Apart from the built-in linting mechanism, we followed Angular's Style Guide.
-Using the JetBrains IDEs (IntelliJ Ultimate and Webstorm) turned out to be particularly helpful as they give quick feedback for frequent mistakes and even violations of the Angular Style Guide.
+Apart from the built-in linting mechanism, we followed Angular's Style Guide~\cite{angular-style-guide}.
+Using the JetBrains IDEs (IntelliJ Ultimate and Webstorm)\footnote{\url{https://www.jetbrains.com/}} turned out to be particularly helpful as they give quick feedback for frequent mistakes and even violations of the Angular Style Guide.
 
-We would have loved to use more tools, especially for code metrics such as Lack of Cohesion of Methods(LCOM), and Afferent/Efferent Coupling.
-Sadly, we were not able to find such tools that were actively maintained and work with TypeScript.tools for such (oo) code metrics such as do not exist.
+We would have loved to use more tools, especially for code metrics such as Lack of Cohesion of Methods (LCOM), and Afferent/Efferent Coupling.
+Sadly, we were not able to find such tools that were actively maintained and work with TypeScript.
+
+\subsubsection{Processes}
 
 On the process side, we tried to work test driven as much as possible.
 Doing so turned out to be harder than expected as Angular's component testing infrastructure and the actual calls are sometimes wide apart (see Section~\fullref{sec:testing}).
+
 Another process we heavily relied on were code reviews.
-Each change, for the documentation and code, was reviewed using GitHub pull-requests.
+Each change, for the documentation and code, was reviewed using GitHub pull-requests\footnote{\url{https://www.github.com/}}.
 In most cases, minor changes were detected and addressed during these reviews.
-Continuous integration with TravisCI ensured that these changes never contained compilation errors or failing tests.
+Continuous integration with TravisCI\footnote{\url{https://travis-ci.com/}} ensured that these changes never contained compilation errors or failing tests.
 
 We also regularly discussed architectural and structural questions in our retrospectives and standup meetings.
 
-Summarising the above, it can be said that, writing clean, modular and testable code has been our priority.
+In general, writing clean, modular and testable code has been our main priority.
 
 \section{Testing}\label{sec:testing}
 % - Test
