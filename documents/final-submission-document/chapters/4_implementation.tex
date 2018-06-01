@@ -131,7 +131,7 @@ Because Zone.js is aware of all open HTTP requests, protractor can wait until a 
 However, due to our use of BOSH in the end-to-end tests\footnote{See Section~\fullref{sec:implemented-web-application-topology}}, we could not benefit from the Zone.js change detection.
 BOSH uses HTTP long polling to communicate with the XMPP server, which leads to a Zone that always has open requests~\cite{xep-0124}.
 
-Therefore, we had to manually implement waiting conditions, which proved to be difficult due to unstable web browser behaviour.
+Therefore, we had to manually implement waiting conditions, which proved to be difficult due to unstable behaviour of the application stack in different environments.
 
 In our case, writing tests paid off quickly as they promptly caught many potential bugs introduced by small changes and refactorings.
 
