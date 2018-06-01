@@ -136,7 +136,13 @@ Therefore, we had to manually implement waiting conditions, which proved to be d
 In our case, writing tests paid off quickly as they promptly caught many potential bugs introduced by small changes and refactorings.
 
 \section{Documentation}
-% - Installation
-% - Benutzerdokumentation
-% - Zielerreichung
-% - Architectural Decisions
+
+Install instructions, as well as security best practices, are directly documented in the git source code repository using a plain text file format called AsciiDoc.
+Interested parties can browse the documentation directly on GitHub, which is not uncommon in the open source community.
+
+A compact getting started guide for developers is also available in the source code repository.
+The source code has jsdoc\footnote{\url{http://usejsdoc.org/}} based documentation optimised for compodoc, a ``documentation tool for your Angular applications''\footnote{\url{https://compodoc.app/}}.
+
+As already discussed in Section \fullref{sec:architecture}, all architectural decisions were documented systematically.
+These decisions enable new developers and interested parties to comprehend why certain decisions were made.
+With the idea of making project documentation durable, all decisions were written in the same plaintext format as the other project documentation.
