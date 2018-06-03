@@ -3,14 +3,14 @@
 \epigraph{Any fool can write code that a computer can understand. Good programmers write code that humans can understand.}{Martin Fowler}
 
 
-\section{Development Setup}
+\section{Development Setup}\label{sec:development-setup}
 
 Figure~\ref{fig:development-setup} illustrates the development setup in the form of an UML deployment diagram.
 A developer connects via his browser to the reverse proxy that serves the XMPP-Grid Broker web application.
 The HTTP connection from the client to the server is secured using mutual TLS authentication.
 The same reverse proxy also routes the XMPP connections.
 The client also authenticates to the proxy using mutual TLS authentication, and the proxy afterwards establishes a TLS connection to the XMPP server using his client certificates.
-The reasons for this setup is described in more detail in Section \fullref{encountered-problems}.
+The reasons for this setup is described in more detail in~Section \fullref{sec:limitations-of-the-openfire-xmpp-server}.
 
 \begin{figure}[h]
     \centering
@@ -61,15 +61,80 @@ Creating audit trails on the client side does not provide additional safety, as 
 Therefore, no such mechanism was implemented.
 
 
-% - Logout (TLS)
-% - Initial Topic Consumers and Providers + Initial Topic Consumers and Providers => 2 Step Process!
-% - Openfire:
-%   - Lost updates with OpenFire
-%   - falsche Felder - speziell pubsub#node_type
-%   - vgl. https://discourse.igniterealtime.org/t/wrong-field-type-of-pubsub-node-type-and-how-to-update-it/81596
-% -> Fehlende Methoden/Funktionalität im Standard
-%   - "Liste alle Topics" -> Geht nur hierarchisch
-%   - Filtering von Persisted Items
+\subsection{Limitations of \emph{\fullref{sec:requirement-logout}}}
+
+Administrators should be able to terminate a session by using a log out function, as stated in requirement~\ref{sec:requirement-logout}.
+
+After evaluating different authentication mechanism in the architectural decision about SASL Authentication Strategy (see Appendix~\ref{sec:architectural-decisions}), we decided to use TLS client certificate authentication (as part of SASL EXTERNAL). In combination with our decision to write a web application, the web browser is responsible for the TLS authentication.
+
+Unfortunately, web browsers expose no standardised way to log out of a TLS client authenticated session \cite{practical-issues-with-tls-client}.
+To close the TLS session, administrators should close their browser window after using the XMPP-Grid Broker.
+
+\subsection{Limitations due to XMPP or \gls{xep} Standards}
+
+During the realisation of our proposed architecture, multiple shortcomings in the relevant \glspl{xep} were discovered, which prevented us from implementing some requirements or realising them in an efficient way.
+
+\subsubsection{Recursive Listing and Filtering of all \glspl{topic}}
+
+Requirement~\fullref{sec:requirement-list-all-topics} states that a administrator should be able to list all topics recursively.
+
+This requirement could not be implemented in an efficient way, as the current \gls{publish-subscribe} \gls{xep} does not support direct recursive queries of \glspl{topic}, but only the root level or subtopics of a specific topic.
+
+Therefore, we implemented a recursive approach in the client, which queries a specific set of root \glspl{topic} and recursively requests all subtopics to be displayed.
+
+For the same reason, we did not implement requirement~\fullref{sec:requirement-topic-filter} as, for a full search, the whole \glspl{topic} tree would have to be traversed on the client side.
+With an assumed level of approximately 1000 \glspl{topic}, this requirement can currently not be implemented in an efficient way.
+
+\subsubsection{Filtering of \glspl{persisted-item}}
+
+Requirements~\fullref{sec:requirement-filter-persisted-items} and \fullref{sec:paged-persisted-items} were built on the premise that filtering and paging of \glspl{persisted-item} would be possible with the Jabber Search \cite{xep-0055} and \gls{result-set-management} \cite{xep-0059} \glspl{xep}.
+
+Sadly, the \gls{publish-subscribe} \gls{xep} does not explicitly define an integration with Jabber Search.
+The main reason for this is probably the exchangeable \glspl{persisted-item} content format.
+
+Retrieving multiple \glspl{persisted-item} in pages was added in version 1.12 (2008-09-03) only of the \gls{publish-subscribe} \gls{xep}.
+A XMPP server does not report, which version of the standard it supports.
+
+Therefore, we could not presume an implementation of \gls{result-set-management}
+In fact, the openfire XMPP server we used in our setup has no support for retrieving \glspl{persisted-item} with \gls{result-set-management}.
+
+\subsubsection{Create and Configure \glspl{topic}}
+
+We have four requirements that are concerned with the initial configuration of \glspl{topic}:
+\begin{itemize}
+  \item \fullref{sec:requirement-topic-default-configuration}
+  \item \fullref{sec:requirement-collection-default-configuration}
+  \item \fullref{sec:requirement-initial-topic-consumer-provider}
+  \item \fullref{sec:requirement-initial-collection-consumer}
+\end{itemize}
+
+The implementation of a initial configuration of \glspl{topic} was not possible due to limitations in the \gls{xep} \gls{data-forms} and \gls{publish-subscribe} standards. According to these standards, the form to configure \glspl{topic} can only be requested after the nodes have been created. It is not possible to request a general configuration form prior to creating the according \gls{topic}.~\cite{xep-0004, xep-0060}
+
+Therefore, we decided to split creation and configuration of \glspl{topic} into a two step process.
+
+\subsection{Limitations of the Openfire XMPP Server}\label{sec:limitations-of-the-openfire-xmpp-server}
+
+As discussed in Section~\fullref{sec:development-setup}, the openfire XMPP server was used in the development setup. This section details on the encountered limitations while implementing the \gls{xmpp-grid} \gls{broker}.
+
+\subsubsection{WebSocket SASL EXTERNAL Support}
+
+At time of this thesis, openfire does not support SASL EXTERNAL in combination with XMPP over WebSockets.
+Therefore, the current implementation of the XMPP-Grid Broker was developed with BOSH, but also support communication over WebSockets thanks to the stanza.io XMPP library\footnote{\url{https://github.com/legastero/stanza.io}}.
+
+\subsubsection{Lost Updates}
+%TODO:   - Lost updates with OpenFire
+
+\subsubsection{Wrong Field Types}
+
+At time of this writing, openfire returns wrong \gls{data-forms} field types for some \gls{publish-subscribe} fields.
+ This reduces the usability of these field.
+A prominent example is the `pubsub\#node\_type' field, which is presented as a text field instead of a limited selection.
+
+A support request at the openfire~project\footnote{\url{https://discourse.igniterealtime.org/t/wrong-field-type-of-pubsub-node-type-and-how-to-update-it/81596}} was opened,
+which is mandatory before opening an issue in the openfire issue tracker.
+However, there was no response until the editorial deadline of this thesis.
+
+Should the type of such fields change in the future, the flexible implementation of \gls{data-forms} in this \gls{xmpp-grid} \gls{broker} is sufficient to reflect the new form type.
 
 \section{Code Quality}
 As our \gls{xmpp-grid} \gls{broker} implementation is intended to be a maintainable, production-ready application rather than a prototype, we placed much emphasis on code quality.
