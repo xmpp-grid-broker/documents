@@ -2,21 +2,64 @@
 \chapter{Discussion and Conclusion}
 \epigraph{Wisdom is not a product of schooling but of the lifelong attempt to acquire it.}{Albert Einstein}
 \section{Achieved Result}
-% - requirements
-% - client
-% - tests
-% - architecture
-% - performance in terms of speed, scalability, concurrency, usability etc
-% Ausgewählte Implementierungsdetails/Metriken diskutieren (Bsp. Algorithmen, Datenstrukturen, Libraries, Architectural Hot Spots) 
 
-\section{Discussion}
-% Ergebnisdiskussion:
-% - Stärken und Schwächen der Konzepte
-% - Verbesserungen für die  Zielgruppe im Kontext)
+% Requirements(?)
+% - requirements: table with "top level requirements"
+
+% Architecture
+% - How did our architectural decisions turn out?: Positive and negative example
+%    - SASL EXTERNAL mit Websockets / client certificate -> would be easier with username/pw -> In practice you need proxy, because popup; link to problems
+%    - WebSockets with openfire did not work; webapi proxy would have some benefits, but "normal" web proxy are very stable.
+%    - Architectue Style: Features like autocomplete and filtering could only be implemented with server plugin...
+%    + Stanza is acceptable -> We do not use API but use direct messageing because of advanced features we require -> Our Pull Requests were merged fast
+%    + Web Application with Angular: TS with IDE support has paid off.
+%    + UI library was a help, but left us enough freedom; good decision regaring long life cycle.
+%    ? Role Managment: right way, but no way to test
+% - performance in terms of speed, scalability, concurrency, usability etc
+% - good security attestet in reviews
+
+% Implementation
+% - tests: coverage etc. (see redbackup); how many lines tests/lines code ratio
+% - Ausgewählte Implementierungsdetails/Metriken diskutieren (Bsp. Algorithmen, Datenstrukturen, Libraries, Architectural Hot Spots)
 
 \section{Lessons Learned}
-% eg. We tried to systematically document arch. decisions, how did that turned out?
+% - Documentation: Difficult to summarise standards;
+% - Compodoc documentation tool was not a grand help - probably better suited for library/widget providers
+% - We tried to systematically document arch. decisions, how did that turned out?
+%   - Good, and helps to think about decisions; helps for structured planning
+%   - We could have done more such decisions later in the project (structure in the modules; barrel imports etc.)
+% + Docker Development environment and automation was very helpful in terms of production and portability for developers.
+% - It paid off, writing many tests - but TDD sadly not possible with angular and stanza (api was not easy to mock - no TS types).
+
+% - Project management
+%   - Issue management good in general (JIRA)
+%       - some issues with time estimates due to too large issues https://project.redbackup.org/browse/XGB-47 https://project.redbackup.org/browse/XGB-46
+%       - We should have better specified tasks and created more and better todo lists
+%       - difficult to estimate because we did not know a) Angular b) XMPP c) XMPP-Grids beforehand
+%   + CI Setup / GitHub Reviews / Deployment project website
+
+
+% -----
+% - XMPP Standards with standard versions is BAD (e.g. split of pubsub nodes/collection)
+% - XEPs are very interlinked and not all standards are actively extended (e.g. rely on deprecated standards)
+% - XEPs are very much OPTIONAL or MAY - you can rely on nearly no features; many can not be queried feature discovery. XEPs have no comprehensive specified e.g. error cases.
+
+% - XMPP-Grid standard uses different terminology than xmpp standards - somtimes overlaping terms. This makes it very difficult to comprehend it.
+
 
 \section{Future work}
+% - Would require further analysis with "real XMPP-Grids administrators"
+% - Usability
+%    - A next step would be usability tests
+% - Some features require standard expansion and/or implementation in a xmpp server (see encountered problems)
+% - Features that are in Backlog
 
 \section{Conclusion}
+% Similar to Redbackup
+
+% - Verbesserungen für die  Zielgruppe im Kontext
+%    - Usability
+%    - Eases configuration of XMPP-Grids a lot
+% - Goal was reached
+% - Some limits due to standards etc. (reference lesseons learned section)
+% - Main reason and use case for XMPP PubSub is missing in standards - this would have helped us to set priorities and build a sensible architecture. XMPP has a lot statefullness.
