@@ -10,14 +10,37 @@ Minute Taker: rzimmerm
 
 === Agenda
 
-. Review: Test-Drive
+. Review Test-Drive
+. Discuss Abstract
+. Project state
 . Date and time for the next meeting
 
 === Discussions / Decisions
 
-. Review: Test-Drive
+. Review Test-Drive
+    * SFF noted the following issues:
+    ** The application is slow in SFFs setup, which might be improved by modifying the TLS options (`proxy_ssl_session_reuse` and `proxy_request_buffering`). Issue: https://project.redbackup.org/browse/XGB-217[XGB-217].
+    ** Timeouts occur even if manually configuring a bigger value. Issue: https://project.redbackup.org/browse/XGB-216[XGB-216].
+    ** The page size is too small and should be configurable or at least 50 elements. https://project.redbackup.org/browse/XGB-217[XGB-217].
+    ** The error message when returning 403 can be improved ("connection lost")
+    *** As discussed, this can be fixed properly by configuring nginx differently.
+. Project state
+    * We added a new installation guide
+    * We wrote more documentation
+    ** We will send a draft on Thursday to SFF for review
+    * We will address the issues from the test drive.
+    * We will extend the e2e tests if we have enough time
+. Discuss Abstract
+    * SFF suggests extending the implementation section
+    ** Discuss Architecture in one paragraph and the functionality in another one
+    ** clarify that it's a 100% web-based application that (usually) requires a proxy
+    ** Try to "sell" the project
+    ** Can be longer
+    ** The target audience has generic software know-how (e.g. knows what JS is) but has no expertise in XMPP.
+    * SFF says, that the management summary is not necessary.
 . Date and time for the next meeting
-    * Next weekly meeting on 2018-XX-XX
+    * Will be arranged at short notice if needed.
+
 
 === Upcoming absences
 
