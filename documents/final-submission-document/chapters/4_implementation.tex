@@ -60,10 +60,9 @@ These requests can then be correlated with the query log on the \gls{xmpp} serve
 Creating audit trails on the client side does not provide additional safety, as users might prevent trail entries by manipulating the client application.
 Therefore, no such mechanism was implemented.
 
-
 \subsection{Limitations of \emph{\fullref{sec:requirement-logout}}}
 
-Administrators should be able to terminate a session by using a log out function, as stated in requirement~\ref{sec:requirement-logout}.
+Administrators should be able to terminate a session by using a logout function, as stated in requirement~\ref{sec:requirement-logout}.
 
 After evaluating different authentication mechanism in the architectural decision about SASL Authentication Strategy (see Appendix~\ref{sec:architectural-decisions}), we decided to use \gls{tls} client certificate authentication (as part of SASL EXTERNAL). In combination with our decision to write a web application, the web browser is responsible for the \gls{tls} authentication.
 
@@ -72,31 +71,30 @@ To close the \gls{tls} session, administrators should close their browser window
 
 \subsection{Limitations due to \gls{xmpp} or \gls{xep} Standards}
 
-During the realisation of our proposed architecture, multiple shortcomings in the relevant \glspl{xep} were discovered, which prevented us from implementing some requirements or realising them in an efficient way.
+Multiple shortcomings in the relevant \glspl{xep} were discovered during the realisation of the proposed architecture, that would have lead to a highly inefficient implementation of some requirements and therefore prevented us from implementing them.
 
 \subsubsection{Recursive Listing and Filtering of all \glspl{topic}}
 
-Requirement~\fullref{sec:requirement-list-all-topics} states that a administrator should be able to list all topics recursively.
+Requirement~\fullref{sec:requirement-list-all-topics} states that an administrator should be able to list all topics recursively.
 
-This requirement could not be implemented in an efficient way, as the current \gls{publish-subscribe} \gls{xep} does not support direct recursive queries of \glspl{topic}, but only the root level or children of a specific \gls{topic}.
+This requirement could not be implemented efficiently, as the current \gls{publish-subscribe} \gls{xep} does not support direct recursive queries of \glspl{topic}, but only the root level or children of a specific \gls{topic}.
 
-Therefore, we implemented a recursive approach in the client, which queries a specific set of root \glspl{topic} and recursively requests all child \glspl{topic} to be displayed.
+Therefore, we implemented a recursive approach in the client, that queries all \glspl{topic} and recursively requests all child \glspl{topic} to be displayed.
 
-For the same reason, we did not implement requirement~\fullref{sec:requirement-topic-filter} as, for a full search, the whole \glspl{topic} tree would have to be traversed on the client side.
-With an assumed count of approximately 1000 \glspl{topic}, this would result in a great performance overhead. Therefore, we decided to not implement this requirement.
+For the same reason, we did not implement requirement~\fullref{sec:requirement-topic-filter} as for a full search, the whole \glspl{topic} tree would have to be traversed on the client side.
+With an assumed count of approximately 1000 \glspl{topic}, this would result in large performance overhead.
 
 \subsubsection{Filtering and Paging of \glspl{persisted-item}}
 
-Requirements~\fullref{sec:requirement-filter-persisted-items} and \fullref{sec:paged-persisted-items} were built on the premise that filtering and paging of \glspl{persisted-item} would be possible with the \gls{jabber-search} \cite{xep-0055} and \gls{result-set-management} \cite{xep-0059} \glspl{xep}.
+Requirements~\fullref{sec:requirement-filter-persisted-items} and \fullref{sec:paged-persisted-items} were built on the premise that filtering and paging of \glspl{persisted-item} would be possible with the \gls{jabber-search} \cite{xep-0055} and the  \gls{result-set-management} \cite{xep-0059} \glspl{xep}.
 
-Sadly, the \gls{publish-subscribe} \gls{xep} does not explicitly define an integration with \gls{jabber-search}.
-The main reason for this is probably the exchangeable \glspl{persisted-item} content format.
+Sadly, the \gls{publish-subscribe} \gls{xep} does not define an integration with \gls{jabber-search}.
 
 Retrieving multiple \glspl{persisted-item} in \gls{result-set-management} pages was added in version 1.12 (2008-09-03) only of the \gls{publish-subscribe} \gls{xep}.
 A \gls{xmpp} server does not report, which version of the standard it supports.
 
 Therefore, we could not presume an implementation of \gls{result-set-management}.
-In fact, the openfire \gls{xmpp} server we used in our setup has no support for retrieving \glspl{persisted-item} with \gls{result-set-management}.
+In fact, the Openfire \gls{xmpp} server we used in our setup has no support for retrieving \glspl{persisted-item} with \gls{result-set-management}. We were still able to fetch the persisted items in pages using \gls{service-discovery}, as the \gls{result-set-management} draft uses service-discovery as an example, making the server side support more likely \cite{xep-0059}.
 
 \subsubsection{Create and Configure \glspl{topic}}
 
@@ -108,40 +106,37 @@ We have four requirements that are concerned with the initial configuration of \
   \item \fullref{sec:requirement-initial-collection-consumer}
 \end{itemize}
 
-The implementation of a initial configuration of \glspl{topic} was not possible due to limitations in the \gls{xep} \gls{data-forms} and \gls{publish-subscribe} standards. According to these standards, the form to configure \glspl{topic} can only be requested after the nodes have been created. It is not possible to request a general configuration form prior to creating the according \gls{topic}.~\cite{xep-0004, xep-0060}
-
-Therefore, we decided to split creation and configuration of \glspl{topic} into a two step process.
+The implementation of providing initial configuration for a \glspl{topic} is only partially possible due to limitations in the \gls{publish-subscribe} standard. The default configuration can be fetched, but it must it does not necessarily comprise all possible configuration options of a \glspl{topic}.
+As managing consumers (via subscriptions) and providers (via consumers) are separate concepts from the configuration an can only be configured after a \gls{topic} has been created, we concluded that a two-step process is more appropriate. ~\cite{xep-0060}
 
 \subsection{Limitations of the Openfire \gls{xmpp} Server}\label{sec:limitations-of-the-openfire-xmpp-server}
 
-As discussed in Section~\ref{sec:development-setup}, the openfire \gls{xmpp} server was used in the development setup. This section details on the encountered limitations while implementing the \gls{xmpp-grid} \gls{broker}.
+As discussed in Section~\ref{sec:development-setup}, the Openfire \gls{xmpp} server was used in the development setup. This section details on the encountered limitations while implementing the \gls{xmpp-grid} \gls{broker}.
 
 \subsubsection{WebSocket SASL EXTERNAL Support}
 
-At time of this thesis, openfire does not support SASL EXTERNAL in combination with \gls{xmpp} over WebSockets.
+At the time of this thesis, Openfire does not support SASL EXTERNAL in combination with \gls{xmpp} over WebSockets.
 Therefore, the current implementation of the \gls{xmpp-grid} \gls{broker} was developed with \gls{bosh}, but also support communication over WebSockets thanks to the stanza.io \gls{xmpp} library\footnote{\url{https://github.com/legastero/stanza.io}}.
 
 \subsubsection{Lost Updates}
 
-When editing the configuration of a \gls{topic}, openfire exposes multiple fields that depend on each other.
+When editing the configuration of a \gls{topic}, Openfire exposes multiple fields that depend on each other.
 One example of this is the configuration of how many \glspl{persisted-item} should be kept.
-Changes in this configuration are not saved, but neither an error is shown, if persisting Items on this \gls{topic} disabled in general.
+If persisting Items on a \gls{topic} is disabled, openfire does neither update the field nor respond with an error as specified in the standard \cite{xep-0060, xep-0004}.
 
-The main reason for this behaviour is most likely the limited set of error states that a \gls{publish-subscribe} service may return according to the \gls{xep}. \cite{xep-0060}
-
-This behaviour is not very user friendly, as an administrator might want to pro-actively change configuration options. To circumvent this problem, a functionality to compare any changes in the new configuration of a topic after storing all changes might be implemented in the future.
+This behaviour is not user-friendly at all, as an administrator might want to change configuration options pro-actively. To circumvent this problem, a functionality to compare any changes in the new configuration of a topic after storing all changes might be implemented in the future.
 
 \subsubsection{Wrong Field Types}
 
-At time of this writing, openfire returns wrong \gls{data-forms} field types for some \gls{publish-subscribe} fields.
- This reduces the usability of these field.
+At time of this writing, Openfire returns wrong \gls{data-forms} field types for some \gls{publish-subscribe} fields.
+Although modifing the field type is explicitly allowed by the standard \cite{xep-0060}, the usability of these fields suffer.
 A prominent example is the `pubsub\#node\_type' field, which is presented as a text field instead of a limited selection.
 
-A support request at the openfire~project was opened\footnote{\url{https://discourse.igniterealtime.org/t/wrong-field-type-of-pubsub-node-type-and-how-to-update-it/81596}},
-which is mandatory before filing an issue in the openfire issue tracker.
+A support request at the Openfire~project was opened\footnote{\url{https://discourse.igniterealtime.org/t/wrong-field-type-of-pubsub-node-type-and-how-to-update-it/81596}},
+which is mandatory before filing an issue in the Openfire issue tracker.
 However, there was no response until the editorial deadline of this thesis.
 
-Should the type of such fields change in the future, the flexible implementation of \gls{data-forms} in this \gls{xmpp-grid} \gls{broker} is sufficient to reflect the new form type.
+Should the type of such fields change in the future, the flexible implementation of \gls{data-forms} in our implementation is sufficient to reflect the new form type.
 
 \section{Code Quality}
 As our \gls{xmpp-grid} \gls{broker} implementation is intended to be a maintainable, production-ready application rather than a prototype, we placed much emphasis on code quality.
