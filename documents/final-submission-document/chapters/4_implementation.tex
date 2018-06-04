@@ -6,10 +6,10 @@
 \section{Development Setup}\label{sec:development-setup}
 
 Figure~\ref{fig:development-setup} illustrates the development setup in the form of an UML deployment diagram.
-A developer connects via his browser to the reverse proxy that serves the XMPP-Grid Broker web application.
-The HTTP connection from the client to the server is secured using mutual TLS authentication.
-The same reverse proxy also routes the XMPP connections.
-The client also authenticates to the proxy using mutual TLS authentication, and the proxy afterwards establishes a TLS connection to the XMPP server using his client certificates.
+A developer connects via his browser to the reverse proxy that serves the \gls{xmpp-grid} \gls{broker} web application.
+The HTTP connection from the client to the server is secured using mutual \gls{tls} authentication.
+The same reverse proxy also routes the \gls{xmpp} connections.
+The client also authenticates to the proxy using mutual \gls{tls} authentication, and the proxy afterwards establishes a \gls{tls} connection to the \gls{xmpp} server using his client certificates.
 The reasons for this setup is described in more detail in~Section \fullref{sec:limitations-of-the-openfire-xmpp-server}.
 
 \begin{figure}[h]
@@ -44,7 +44,7 @@ Such an HTTP proxy might also accept multiple different client certificates.
 If the client connects to the \gls{xmpp} server over secure WebSockets (WSS) in combination with SASL EXTERNAL, the WebSocket URL must already be authenticated, as most browsers do not permit certificate selection on background requests\footnote{\url{https://bugs.chromium.org/p/chromium/issues/detail?id=329884\#c24}}.
 This might be achieved by serving the \gls{broker} from the same domain or by using client certificate policies\footnote{\url{https://support.google.com/chrome/a/answer/6080885?hl=en\#manage-certs}}.
 
-As the proxy intercepts the TLS connection, it must verify the client certificate sent by the browser and establish a connection to the \gls{xmpp} server using a client certificate as well.
+As the proxy intercepts the \gls{tls} connection, it must verify the client certificate sent by the browser and establish a connection to the \gls{xmpp} server using a client certificate as well.
 Therefore, the `xmppAddr' field of the proxy's client ceritifcate is used by the \gls{xmpp} server.
 If multiple users should be differentiated on the \gls{xmpp} server, an HTTP proxy might choose different client certificates for connecting to the \gls{xmpp} server based on the web browser's client certificate `xmppAddr'.
 
@@ -65,12 +65,12 @@ Therefore, no such mechanism was implemented.
 
 Administrators should be able to terminate a session by using a log out function, as stated in requirement~\ref{sec:requirement-logout}.
 
-After evaluating different authentication mechanism in the architectural decision about SASL Authentication Strategy (see Appendix~\ref{sec:architectural-decisions}), we decided to use TLS client certificate authentication (as part of SASL EXTERNAL). In combination with our decision to write a web application, the web browser is responsible for the TLS authentication.
+After evaluating different authentication mechanism in the architectural decision about SASL Authentication Strategy (see Appendix~\ref{sec:architectural-decisions}), we decided to use \gls{tls} client certificate authentication (as part of SASL EXTERNAL). In combination with our decision to write a web application, the web browser is responsible for the \gls{tls} authentication.
 
-Unfortunately, web browsers expose no standardised way to log out of a TLS client authenticated session \cite{practical-issues-with-tls-client}.
-To close the TLS session, administrators should close their browser window after using the XMPP-Grid Broker.
+Unfortunately, web browsers do not expose a standardised way to log out of a \gls{tls} client authenticated session \cite{practical-issues-with-tls-client}.
+To close the \gls{tls} session, administrators should close their browser window after using the \gls{xmpp-grid} \gls{broker}.
 
-\subsection{Limitations due to XMPP or \gls{xep} Standards}
+\subsection{Limitations due to \gls{xmpp} or \gls{xep} Standards}
 
 During the realisation of our proposed architecture, multiple shortcomings in the relevant \glspl{xep} were discovered, which prevented us from implementing some requirements or realising them in an efficient way.
 
@@ -78,25 +78,25 @@ During the realisation of our proposed architecture, multiple shortcomings in th
 
 Requirement~\fullref{sec:requirement-list-all-topics} states that a administrator should be able to list all topics recursively.
 
-This requirement could not be implemented in an efficient way, as the current \gls{publish-subscribe} \gls{xep} does not support direct recursive queries of \glspl{topic}, but only the root level or subtopics of a specific topic.
+This requirement could not be implemented in an efficient way, as the current \gls{publish-subscribe} \gls{xep} does not support direct recursive queries of \glspl{topic}, but only the root level or children of a specific \gls{topic}.
 
-Therefore, we implemented a recursive approach in the client, which queries a specific set of root \glspl{topic} and recursively requests all subtopics to be displayed.
+Therefore, we implemented a recursive approach in the client, which queries a specific set of root \glspl{topic} and recursively requests all child \glspl{topic} to be displayed.
 
 For the same reason, we did not implement requirement~\fullref{sec:requirement-topic-filter} as, for a full search, the whole \glspl{topic} tree would have to be traversed on the client side.
-With an assumed level of approximately 1000 \glspl{topic}, this requirement can currently not be implemented in an efficient way.
+With an assumed count of approximately 1000 \glspl{topic}, this would result in a great performance overhead. Therefore, we decided to not implement this requirement.
 
-\subsubsection{Filtering of \glspl{persisted-item}}
+\subsubsection{Filtering and Paging of \glspl{persisted-item}}
 
-Requirements~\fullref{sec:requirement-filter-persisted-items} and \fullref{sec:paged-persisted-items} were built on the premise that filtering and paging of \glspl{persisted-item} would be possible with the Jabber Search \cite{xep-0055} and \gls{result-set-management} \cite{xep-0059} \glspl{xep}.
+Requirements~\fullref{sec:requirement-filter-persisted-items} and \fullref{sec:paged-persisted-items} were built on the premise that filtering and paging of \glspl{persisted-item} would be possible with the \gls{jabber-search} \cite{xep-0055} and \gls{result-set-management} \cite{xep-0059} \glspl{xep}.
 
-Sadly, the \gls{publish-subscribe} \gls{xep} does not explicitly define an integration with Jabber Search.
+Sadly, the \gls{publish-subscribe} \gls{xep} does not explicitly define an integration with \gls{jabber-search}.
 The main reason for this is probably the exchangeable \glspl{persisted-item} content format.
 
-Retrieving multiple \glspl{persisted-item} in pages was added in version 1.12 (2008-09-03) only of the \gls{publish-subscribe} \gls{xep}.
-A XMPP server does not report, which version of the standard it supports.
+Retrieving multiple \glspl{persisted-item} in \gls{result-set-management} pages was added in version 1.12 (2008-09-03) only of the \gls{publish-subscribe} \gls{xep}.
+A \gls{xmpp} server does not report, which version of the standard it supports.
 
-Therefore, we could not presume an implementation of \gls{result-set-management}
-In fact, the openfire XMPP server we used in our setup has no support for retrieving \glspl{persisted-item} with \gls{result-set-management}.
+Therefore, we could not presume an implementation of \gls{result-set-management}.
+In fact, the openfire \gls{xmpp} server we used in our setup has no support for retrieving \glspl{persisted-item} with \gls{result-set-management}.
 
 \subsubsection{Create and Configure \glspl{topic}}
 
@@ -112,17 +112,24 @@ The implementation of a initial configuration of \glspl{topic} was not possible 
 
 Therefore, we decided to split creation and configuration of \glspl{topic} into a two step process.
 
-\subsection{Limitations of the Openfire XMPP Server}\label{sec:limitations-of-the-openfire-xmpp-server}
+\subsection{Limitations of the Openfire \gls{xmpp} Server}\label{sec:limitations-of-the-openfire-xmpp-server}
 
-As discussed in Section~\fullref{sec:development-setup}, the openfire XMPP server was used in the development setup. This section details on the encountered limitations while implementing the \gls{xmpp-grid} \gls{broker}.
+As discussed in Section~\ref{sec:development-setup}, the openfire \gls{xmpp} server was used in the development setup. This section details on the encountered limitations while implementing the \gls{xmpp-grid} \gls{broker}.
 
 \subsubsection{WebSocket SASL EXTERNAL Support}
 
-At time of this thesis, openfire does not support SASL EXTERNAL in combination with XMPP over WebSockets.
-Therefore, the current implementation of the XMPP-Grid Broker was developed with BOSH, but also support communication over WebSockets thanks to the stanza.io XMPP library\footnote{\url{https://github.com/legastero/stanza.io}}.
+At time of this thesis, openfire does not support SASL EXTERNAL in combination with \gls{xmpp} over WebSockets.
+Therefore, the current implementation of the \gls{xmpp-grid} \gls{broker} was developed with \gls{bosh}, but also support communication over WebSockets thanks to the stanza.io \gls{xmpp} library\footnote{\url{https://github.com/legastero/stanza.io}}.
 
 \subsubsection{Lost Updates}
-%TODO:   - Lost updates with OpenFire
+
+When editing the configuration of a \gls{topic}, openfire exposes multiple fields that depend on each other.
+One example of this is the configuration of how many \glspl{persisted-item} should be kept.
+Changes in this configuration are not saved, but neither an error is shown, if persisting Items on this \gls{topic} disabled in general.
+
+The main reason for this behaviour is most likely the limited set of error states that a \gls{publish-subscribe} service may return according to the \gls{xep}. \cite{xep-0060}
+
+This behaviour is not very user friendly, as an administrator might want to pro-actively change configuration options. To circumvent this problem, a functionality to compare any changes in the new configuration of a topic after storing all changes might be implemented in the future.
 
 \subsubsection{Wrong Field Types}
 
@@ -130,8 +137,8 @@ At time of this writing, openfire returns wrong \gls{data-forms} field types for
  This reduces the usability of these field.
 A prominent example is the `pubsub\#node\_type' field, which is presented as a text field instead of a limited selection.
 
-A support request at the openfire~project\footnote{\url{https://discourse.igniterealtime.org/t/wrong-field-type-of-pubsub-node-type-and-how-to-update-it/81596}} was opened,
-which is mandatory before opening an issue in the openfire issue tracker.
+A support request at the openfire~project was opened\footnote{\url{https://discourse.igniterealtime.org/t/wrong-field-type-of-pubsub-node-type-and-how-to-update-it/81596}},
+which is mandatory before filing an issue in the openfire issue tracker.
 However, there was no response until the editorial deadline of this thesis.
 
 Should the type of such fields change in the future, the flexible implementation of \gls{data-forms} in this \gls{xmpp-grid} \gls{broker} is sufficient to reflect the new form type.
@@ -176,7 +183,7 @@ Following the principles of the test pyramid \cite{Cohn:2009:SAS:1667109}, we wr
 
 Testing the Angular Services was rather straightforward just by using jasmine and its mocking functionality.
 We deliberately abstained from using Angulars testing framework for these services to keep them simple and comprehensible.
-However, most of the services mainly send and receive XMPP-commands for which integration or end to end tests are required.
+However, most of the services mainly send and receive \gls{xmpp}-commands for which integration or end to end tests are required.
 
 Writing tests for Angular Components, which require actual rendering a web browser, was not always essential.
 To have fine-grained control and to be able to conduct tests, Angular provides a rather complex set of testing tools.
@@ -193,8 +200,8 @@ To create Zones, Zone.js intercepts most web browser events, like HTTP requests.
 
 Because Zone.js is aware of all open HTTP requests, protractor can wait until a request and document change has completed before continuing with test execution.
 
-However, due to our use of BOSH in the end-to-end tests\footnote{See Section~\fullref{sec:implemented-web-application-topology}}, we could not benefit from the Zone.js change detection.
-BOSH uses HTTP long polling to communicate with the XMPP server, which leads to a Zone that always has open requests~\cite{xep-0124}.
+However, due to our use of \gls{bosh} in the end-to-end tests\footnote{See Section~\fullref{sec:implemented-web-application-topology}}, we could not benefit from the Zone.js change detection.
+\gls{bosh} uses HTTP long polling to communicate with the \gls{xmpp} server, which leads to a Zone that always has open requests~\cite{xep-0124}.
 
 Therefore, we had to manually implement waiting conditions, which proved to be difficult due to unstable behaviour of the application stack in different environments.
 
