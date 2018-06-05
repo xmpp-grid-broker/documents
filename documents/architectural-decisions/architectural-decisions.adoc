@@ -1,6 +1,8 @@
 = Architectural Decisions
+:notitle:
 :doctype: book
-:pdf-page-size: A4
+:sectnums:
+:chapter-label:
 
 include::architecture-style.adoc[]
 

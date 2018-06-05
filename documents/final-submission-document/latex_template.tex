@@ -28,6 +28,7 @@ consistentlayout, % Uncomment to change the layout of the declaration, abstract 
 \usepackage{makecell}
 \usepackage{float}
 \usepackage{url}
+\usepackage{xstring}
 \usepackage{pdfpages}
 \usepackage[normalem]{ulem}
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
@@ -40,6 +41,14 @@ consistentlayout, % Uncomment to change the layout of the declaration, abstract 
 \rightskip=.8cm--- \textup{#2}%
 \end{flushright}%
 \vspace{2em}}
+
+% \addPdfAppendix[title]{label}{pdf}
+\newcommand*{\addPdfAppendix}[4][multipage]{
+	\includepdf[pages=1,scale=.75,frame, pagecommand=\section{#2}\label{#3}]{#4}
+	\IfStrEq{#1}{multipage}{
+	\includepdf[pages=2-,scale=.8,frame]{#4}
+	}
+}
 
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS

@@ -29,7 +29,7 @@ function build_tex {
 }
 
 function build_adoc_pdf {
-  asciidoctor_pdf="docker run -ti --rm --user $(id -u) --volume $(pwd):/documents:z asciidoctor/docker-asciidoctor asciidoctor-pdf"
+  asciidoctor_pdf="docker run -ti --rm --user $(id -u) --volume $(pwd):/documents:z asciidoctor/docker-asciidoctor asciidoctor-pdf -a pdf-style=documents/.style/style.yml -a pdf-fontsdir=documents/.style/fonts"
   $asciidoctor_pdf "$1"
 }
 function build_adoc_html {

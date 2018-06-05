@@ -244,16 +244,15 @@ Furthermore, we would like to thank Andrea~Jurt~Massey for her feedback regardin
 \chapter{Appendices}
 \setcounter{secnumdepth}{3}
 \renewcommand{\thechapter}{A}
-\section{Project Plan}\label{sec:project-plan}
-\includepdf[pages=-,scale=.9,frame]{../project-plan/project-plan.pdf}
-\section{Development Guide}\label{sec:development-guide}
-\includepdf[pages=-,scale=.9,frame]{../development-guide.pdf}
-\section{Architectural Decisions}\label{sec:architectural-decisions}
-\includepdf[pages=-,scale=.9,frame]{../architectural-decisions/architectural-decisions.pdf}
-\section{Time Accounting}\label{sec:time-accounting}
-\includepdf[pages=-,scale=.9,frame]{../time-accounting.pdf}
-\section{Meeting Minutes}\label{sec:meeting-minutes}
-\includepdf[pages=-,scale=.9,frame]{../meeting-minutes/meeting-minutes.pdf}
+\addPdfAppendix{Project Plan}{sec:project-plan}{../project-plan/project-plan.pdf}
+
+\addPdfAppendix[singlepage]{Development Guide}{sec:development-guide}{../development-guide.pdf}
+
+\addPdfAppendix{Architectural Decisions}{sec:architectural-decisions}{../architectural-decisions/architectural-decisions.pdf}
+
+\addPdfAppendix[singlepage]{Time Accounting}{sec:time-accounting}{../time-accounting.pdf}
+
+\addPdfAppendix{Meeting Minutes}{sec:meeting-minutes}{../meeting-minutes/meeting-minutes.pdf}
 
 \include{appendices/requirements}
 \include{appendices/wireframes}
