@@ -23,28 +23,102 @@
 % - Ausgewählte Implementierungsdetails/Metriken diskutieren (Bsp. Algorithmen, Datenstrukturen, Libraries, Architectural Hot Spots)
 
 \section{Lessons Learned}
-% - Documentation: Difficult to summarise standards;
-% - Compodoc documentation tool was not a grand help - probably better suited for library/widget providers
-% - We tried to systematically document arch. decisions, how did that turned out?
-%   - Good, and helps to think about decisions; helps for structured planning
-%   - We could have done more such decisions later in the project (structure in the modules; barrel imports etc.)
-% + Docker Development environment and automation was very helpful in terms of production and portability for developers.
-% - It paid off, writing many tests - but TDD sadly not possible with angular and stanza (api was not easy to mock - no TS types).
 
-% - Project management
-%   - Issue management good in general (JIRA)
-%       - some issues with time estimates due to too large issues https://project.redbackup.org/browse/XGB-47 https://project.redbackup.org/browse/XGB-46
-%       - We should have better specified tasks and created more and better todo lists
-%       - difficult to estimate because we did not know a) Angular b) XMPP c) XMPP-Grids beforehand
-%   + CI Setup / GitHub Reviews / Deployment project website
+In this section, we describe unexpected project events and the lessons we learned from them.
+
+\subsection{Project Course}
+
+\subsubsection{Issues and Time Management}
+
+In general, our issue management and time tracking with JIRA and our Scrum-based approached worked very well.
+
+While discussing time management issues in Retrospective 3, we noted that we had underestimated the required time for some implementation issues by several hours.
+Also, many implementation issues were rather large, mostly estimated four hours and longer.
+
+To solve this, we decided to create smaller tasks and list specific subtasks in form of check-lists.
+We decided to install a check-list extension for JIRA, to simplify this task.
+
+Despite the improved task size, it was still very difficult to estimate and specify tasks in a precise manner.
+The main reason for that was our limited experience with the chosen Angular framework and XMPP environment.
+
+\subsubsection{Documentation}
+
+To adhere a high documentation quality level, we used Github Pull Requests to carry out peer reviews.
+To simplify this process, we also set up a continous integration builds which always provided the latest stable documentation and appendices.
+We think that this approach led to a high overall documentation standard.
+
+In general, it was difficult to summarise and describe our architecture due to inconsistent terminology of the underlying standards.
+We discuss this in Section~\ref{lessons-learned-standards}.
 
 
-% -----
-% - XMPP Standards with standard versions is BAD (e.g. split of pubsub nodes/collection)
-% - XEPs are very interlinked and not all standards are actively extended (e.g. rely on deprecated standards)
-% - XEPs are very much OPTIONAL or MAY - you can rely on nearly no features; many can not be queried feature discovery. XEPs have no comprehensive specified e.g. error cases.
+\subsection{Decisions}
+\subsubsection{Architecture}
 
-% - XMPP-Grid standard uses different terminology than xmpp standards - somtimes overlaping terms. This makes it very difficult to comprehend it.
+Most decisions regarding the architecture were carried out as Architectural Design Decisions \cite{architectural-design-decisions} (see Appendix~\ref{sec:architectural-decisions}).
+
+The approach helped us to systematically document all influences and plan the architecture in a structured way.
+
+Retrospectively, we should have also created more architectural decisions later on in the project, e.g. to decide about the layering and structure of the modules, as well as barrel imports.
+
+
+\subsection{Development, Frameworks and Tooling}
+
+\paragraph{Test Driven Development} was not possible the way we had anticipated it.
+
+Due to the use of angular and stanza, the testing environment differed greatly from the real application context.
+Therefore, it was very difficult to create tests in advance of implementing the actual code structure.
+A factor that also contributed to this difficulty was our limited knowledge of the used frameworks.
+
+Nevertheless, writing many tests proved to be very valuable during the course of the project.
+It not only helped us to be confident in additional developments,
+but will also be useful to future developers expanding of the application.
+
+\paragraph{The Docker Development Environment} has proven itself to be valuable for a quick development start.
+It provides developers with a very productive way to test modifications in a realistic yet portable environment.
+
+\paragraph{Compodoc,} the tool we used to visualise the structure of our Angular application,
+did not add as much additional value to the project documentation as we had hoped.
+
+We assume, that it would be better suited for angular projects that implement libraries or provide widgets, in contrast to our application.
+
+\subsection{Standards}\label{lessons-learned-standards}
+
+During the course of this thesis, we learned several lessons about using standards and in which way these standards posed challenges or supported our work.
+
+\subsubsection{Terminology}
+
+The \gls{xmpp-grid} standard uses \gls{sacm} terminology \cite{ietf-sacm-terminology-14}, whereas all \gls{xmpp} standards use the \gls{xmpp}/\gls{xep} terminology.
+Most concepts and definitions of terms differ or overlap slightly, which makes it difficult to comprehend and connect both standard formats.
+It also makes the use of a consistent terminology impossible, as some concepts from \gls{xmpp}/\glspl{xep} are not reflected in \gls{sacm} terminology and vice versa.
+
+\subsubsection{Versions of \glspl{xep}}
+\gls{xmpp} Extension Procotols (\glspl{xep}) can receive modifications after being declared final, 
+``to correct errors, incorporate the lessons of experience, or document new security concerns''. \cite{xep-0001}
+
+This can make it very difficult to rely modified parts of these standards, as there is no indication which version of a standard is implemented by a \gls{xmpp} server or client.
+
+A prominent example of such a modified standard is the \gls{publish-subscribe} \gls{xep}.
+During the last few years, this standard was largely modified,
+and the concept of ``Collection Nodes'' was even extracted into a separate standard \cite{xep-0248}.
+In our case, the openfire XMPP server implemented a older version of the \gls{xep},
+not supporting all features that we wanted to use as part of this thesis.
+
+\subsubsection{Deprecated \glspl{xep}}
+
+Many \glspl{xep} build on functionality specified by other, cross referenced \glspl{xep}.
+This might be problematic, especially as some referenced standards might not be active anymore.
+
+A prominent example of this is the PubSub Collection Nodes \gls{xep} \cite{xep-0248}, which currently has a \emph{deferred} status, but is still used by the \gls{publish-subscribe} \gls{xep} \cite{xep-0060} which currently has a \emph{draft} status.
+
+\subsubsection{Non-binding Standardisation}
+
+Many features, which are required for the implementation of a \gls{xmpp-grid} \gls{broker}, are marked as optional in the corresponding \glspl{xep}.
+To some extent, the availability of these features can be queried with Feature Discovery \cite{xep-0030}, but not all optional features are exposed using Feature Discovery.
+An example of this is the \gls{publish-subscribe} \gls{xep} \cite{xep-0060}.
+
+Additionally, some features are not explicitely specified in the according \gls{xep}, but rather implicitly demonstrated using examples.
+
+These limitations make it difficult, to rely on availability of some features described in these \glspl{xep}
 
 
 \section{Future work}
