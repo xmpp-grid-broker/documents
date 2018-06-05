@@ -30,95 +30,93 @@ In this section, we describe unexpected project events and the lessons we learne
 
 \subsubsection{Issues and Time Management}
 
-In general, our issue management and time tracking with JIRA and our Scrum-based approached worked very well.
+In general, our issue management and time tracking with JIRA\footnote{\url{https://www.atlassian.com/software/jira}} and our Scrum-based approached worked very well.
 
-While discussing time management issues in Retrospective 3, we noted that we had underestimated the required time for some implementation issues by several hours.
-Also, many implementation issues were rather large, mostly estimated four hours and longer.
+While discussing time management issues in retrospective 3, we noted that we significantly underestimated the required time for several implementation issues.
+Many implementation issues were also relatively large, in most cases estimated four to hours or more hours.
 
-To solve this, we decided to create smaller tasks and list specific subtasks in form of check-lists.
-We decided to install a check-list extension for JIRA, to simplify this task.
+To address these estimation issues, we decided to create smaller issues and list tangible subtasks in the form of check-lists.
+A check-list extension for JIRA facilitated this task.
 
-Despite the improved task size, it was still very difficult to estimate and specify tasks in a precise manner.
-The main reason for that was our limited experience with the chosen Angular framework and XMPP environment.
+Despite the smaller task sizes, estimating and specifying tasks precisely remained a challenge.
+Our limited experience with the Angular framework and the XMPP ecosystem were undoubtedly large contributing factors.
 
 \subsubsection{Documentation}
 
-To adhere a high documentation quality level, we used Github Pull Requests to carry out peer reviews.
-To simplify this process, we also set up a continous integration builds which always provided the latest stable documentation and appendices.
+To accomplish high-quality documentation, we used GitHub pull requests to carry out peer reviews.
+To simplify this process, we also set up continuous integration builds which always posted the latest stable documentation and appendices on the project website.
 We think that this approach led to a high overall documentation standard.
 
-In general, it was difficult to summarise and describe our architecture due to inconsistent terminology of the underlying standards.
+It was difficult to summarise the technical background and describe our architecture due to the different terminology used by the XMPP and IETF standards.
 We discuss this in Section~\ref{lessons-learned-standards}.
-
 
 \subsection{Decisions}
 \subsubsection{Architecture}
 
-Most decisions regarding the architecture were carried out as Architectural Design Decisions \cite{architectural-design-decisions} (see Appendix~\ref{sec:architectural-decisions}).
+Architecture-relevant decisions were carried out and justified in the form of architectural design decisions \cite{architectural-design-decisions} (see Appendix~\ref{sec:architectural-decisions}).
 
-The approach helped us to systematically document all influences and plan the architecture in a structured way.
+This approach helped us to systematically document influences and plan the architecture in a structured way.
 
-Retrospectively, we should have also created more architectural decisions later on in the project, e.g. to decide about the layering and structure of the modules, as well as barrel imports.
-
+Retrospectively, we should have created more architectural decisions later on in the project, e.g. concerning barrel imports or to establish layering guidelines.
 
 \subsection{Development, Frameworks and Tooling}
 
 \paragraph{Test Driven Development} was not possible the way we had anticipated it.
 
-Due to the use of angular and stanza, the testing environment differed greatly from the real application context.
-Therefore, it was very difficult to create tests in advance of implementing the actual code structure.
-A factor that also contributed to this difficulty was our limited knowledge of the used frameworks.
+Due to the use of Angular and stanza, the testing environment differed substantially from the actual application context.
+Therefore, it was challenging to create tests before implementing most of the actual code structure.
+A factor that also contributed to this difficulty was our lack of prior knowledge of the used frameworks.
 
-Nevertheless, writing many tests proved to be very valuable during the course of the project.
-It not only helped us to be confident in additional developments,
-but will also be useful to future developers expanding of the application.
+Nevertheless, writing many tests proved to be very valuable during the project.
+It helped us be confident during development and will be useful to future developers expanding the application.
 
-\paragraph{The Docker Development Environment} has proven itself to be valuable for a quick development start.
+\paragraph{The Docker Development Environment} has proven itself to be valuable for a quick start in development.
 It provides developers with a very productive way to test modifications in a realistic yet portable environment.
 
-\paragraph{Compodoc,} the tool we used to visualise the structure of our Angular application,
+\paragraph{Compodoc,} the tool we used to document and visualise the structure of our Angular application,
 did not add as much additional value to the project documentation as we had hoped.
 
-We assume, that it would be better suited for angular projects that implement libraries or provide widgets, in contrast to our application.
+We assume that Compodoc is be better suited for Angular libraries than applications.
 
 \subsection{Standards}\label{lessons-learned-standards}
 
-During the course of this thesis, we learned several lessons about using standards and in which way these standards posed challenges or supported our work.
+During the course of this thesis, we learned several lessons about working with standards and in which way these standards posed challenges or supported our work.
 
 \subsubsection{Terminology}
 
-The \gls{xmpp-grid} standard uses \gls{sacm} terminology \cite{ietf-sacm-terminology-14}, whereas all \gls{xmpp} standards use the \gls{xmpp}/\gls{xep} terminology.
-Most concepts and definitions of terms differ or overlap slightly, which makes it difficult to comprehend and connect both standard formats.
+The \gls{xmpp-grid} standard uses \gls{sacm} terminology \cite{ietf-sacm-terminology-14}, whereas the \gls{xmpp} standard and all \glspl{xep} use a different terminology.
+Most concepts and term definitions differ or overlap slightly, making it difficult to comprehend and connect both formats.
 It also makes the use of a consistent terminology impossible, as some concepts from \gls{xmpp}/\glspl{xep} are not reflected in \gls{sacm} terminology and vice versa.
 
 \subsubsection{Versions of \glspl{xep}}
 \gls{xmpp} Extension Procotols (\glspl{xep}) can receive modifications after being declared final, 
 ``to correct errors, incorporate the lessons of experience, or document new security concerns''. \cite{xep-0001}
 
-This can make it very difficult to rely modified parts of these standards, as there is no indication which version of a standard is implemented by a \gls{xmpp} server or client.
+This can make it very difficult to rely on modified parts of these standards, as there is no indication which version of a standard is implemented by an \gls{xmpp} server or client.
 
 A prominent example of such a modified standard is the \gls{publish-subscribe} \gls{xep}.
-During the last few years, this standard was largely modified,
-and the concept of ``Collection Nodes'' was even extracted into a separate standard \cite{xep-0248}.
-In our case, the openfire XMPP server implemented a older version of the \gls{xep},
-not supporting all features that we wanted to use as part of this thesis.
+In the last few years, significant changes have been made to the standard draft
+and the concept of ``Collection Nodes'' was even extracted into a separate standard draft \cite{xep-0248}.
+In our case, the Openfire \gls{xmpp} server implemented an older version of this \gls{xep},
+not supporting all features that we planned to use in this thesis.
 
 \subsubsection{Deprecated \glspl{xep}}
 
-Many \glspl{xep} build on functionality specified by other, cross referenced \glspl{xep}.
-This might be problematic, especially as some referenced standards might not be active anymore.
+Many \glspl{xep} build on functionality specified by other, cross-referenced \glspl{xep}.
+This is problematic, especially as some referenced standards are not active anymore.
 
-A prominent example of this is the PubSub Collection Nodes \gls{xep} \cite{xep-0248}, which currently has a \emph{deferred} status, but is still used by the \gls{publish-subscribe} \gls{xep} \cite{xep-0060} which currently has a \emph{draft} status.
+An example for this is the PubSub Collection Nodes \gls{xep} \cite{xep-0248}, which currently has a \emph{deferred} status, but is still used in the latest version of the \gls{publish-subscribe} \gls{xep} \cite{xep-0060} which currently has a \emph{draft} status.
 
 \subsubsection{Non-binding Standardisation}
 
-Many features, which are required for the implementation of a \gls{xmpp-grid} \gls{broker}, are marked as optional in the corresponding \glspl{xep}.
-To some extent, the availability of these features can be queried with Feature Discovery \cite{xep-0030}, but not all optional features are exposed using Feature Discovery.
-An example of this is the \gls{publish-subscribe} \gls{xep} \cite{xep-0060}.
+Many features required for the implementation of an \gls{xmpp-grid} \gls{broker} are marked as optional in the corresponding \glspl{xep}.
+To some extent, the availability of these features can be queried using the Feature Discovery mechanism \cite{xep-0030}, but not all optional features are exposed using Feature Discovery.
 
-Additionally, some features are not explicitely specified in the according \gls{xep}, but rather implicitly demonstrated using examples.
+The \gls{publish-subscribe} \gls{xep} \cite{xep-0060} contains multiple such optional features.
 
-These limitations make it difficult, to rely on availability of some features described in these \glspl{xep}
+Additionally, some features are not explicitly specified in the according \gls{xep}, but rather implicitly demonstrated using examples.
+
+These limitations make it difficult, to rely on the availability of some features described in these \glspl{xep}
 
 
 \section{Future work}
