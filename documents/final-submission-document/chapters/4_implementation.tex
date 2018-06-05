@@ -118,7 +118,7 @@ As discussed in Section~\ref{sec:development-setup}, the Openfire \gls{xmpp} ser
 At the time of this thesis, Openfire does not support SASL EXTERNAL in combination with \gls{xmpp} over WebSockets.
 Therefore, the current implementation of the \gls{xmpp-grid} \gls{broker} was developed with \gls{bosh}, but also support communication over WebSockets thanks to the stanza.io \gls{xmpp} library\footnote{\url{https://github.com/legastero/stanza.io}}.
 
-\subsubsection{Lost Updates}
+\subsubsection{Lost Updates}\label{sec:lost-updates}
 
 When editing the configuration of a \gls{topic}, Openfire exposes multiple fields that depend on each other.
 One example of this is the configuration of how many \glspl{persisted-item} should be kept.
