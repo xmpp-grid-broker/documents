@@ -49,18 +49,18 @@
 
 \section{Future work}
 The result of our bachelor thesis is a working application, ready to prove itself in practice.
-Even though all specified functionality was implemented, the user experience can still further be improved.
+Even though all specified functionality was implemented, the user experience can still be further improved.
 
-Conducting usability tests by observing administrators who manage XMPP-Grids can reveal significant insights\cite{krug:dont-make-me-think}.
+Conducting usability tests by observing administrators who manage \glspl{xmpp-grid} can reveal significant insights~\cite{krug:dont-make-me-think}.
 
 To further improve the user experience, auto-complete for users and topics might be helpful.
-As already discussed in Section\fullref{encountered-problems}, this cannot be implemented efficiently due to shortcomings in the Publis-Subscribe XEP.
-One option would be to get involved and propose the required functionality in the XEP standardisation process.
-A more short-term solution would be to tie the implementation closer to specific XMPP-Server implementations that support these features over proprietary APIs.
-As another alternative,  an unofficial XEP including corresponding server plugins can be specified and implemented.
+As already discussed in Section~\fullref{encountered-problems}, this cannot be implemented efficiently due to shortcomings in the \gls{publish-subscribe} \gls{xep}.
+One option would be to get involved and propose the required functionality in the \gls{xep} standardisation process.
+A more short-term solution would be to tie the implementation closer to a specific \gls{xmpp} server that supports these features over proprietary APIs.
+Alternatively, an unofficial \gls{xep} including corresponding server plugins can be specified and implemented.
 
-Working around shortcomings of the XMPP server implementations, lost updates for example (See Section \fullref{sec:lost-updates}), could advance the usability as well.
-However, It must be noted that adding more logic in the client contradicts the XMPP philosophy that encourages simple client and complex server implementations \cite{definitive-guide-xmpp}.
+Working around shortcomings of the \gls{xmpp} server implementations, lost updates for example (See Section~\fullref{sec:lost-updates}), could advance the usability as well.
+However, It must be noted that adding more logic in the client contradicts the \gls{xmpp} philosophy that encourages simple client and complex server implementations \cite{definitive-guide-xmpp}.
 
 \section{Conclusion}
 % Similar to Redbackup
