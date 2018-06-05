@@ -55,11 +55,22 @@
 % - Features that are in Backlog
 
 \section{Conclusion}
-% Similar to Redbackup
+\paragraph{The \gls{xmpp-grid} \gls{broker} application} enables administrators to configure \glspl{xmpp-grid}in a usable and productive way.
+The modern web interface facilitates obtaining a comprehensive view of the configuration and structure of an XMPP-Grid.
+Apart from improving the usability significantly, the application is also cross-platform and not tied to a particular XMPP server implementation.
 
-% - Verbesserungen für die  Zielgruppe im Kontext
-%    - Usability
-%    - Eases configuration of XMPP-Grids a lot
-% - Goal was reached
-% - Some limits due to standards etc. (reference lesseons learned section)
-% - Main reason and use case for XMPP PubSub is missing in standards - this would have helped us to set priorities and build a sensible architecture. XMPP has a lot statefullness.
+\paragraph{Our proposed architecture} has proven to work in practice.
+Although the initial setup with a proxy server is not trivial, the architecture will pay off in practice regarding security and maintainability as reverse proxies are commonly used, and static sites are easy to maintain and upgrade.
+
+\paragraph{Angular and stanza} turned out to be a good choice for the implementation.
+Angular provides productive tools and a working testing infrastructure that allowed us to build an application that can be maintained efficiently in the long-term.
+Stanza met most of our requirements concerning XMPP and allowed us to extend and improve it where needed.
+Using Openfire as an XMPP-Server backend was demanding at times due to the scanty implementation of the \gls{publish-subscribe} standard.
+Some of these shortcomings, however, revealed problematic parts in the standards which otherwise might not have been considered.
+
+\paragraph{The Bachelor Thesis} went well from our point of view.
+We were able to satisfy all critical requirements despite some limitations in the underlying standards and XMPP-Server hindered our implementation.
+
+\paragraph{In the future}, the application must prove itself in practice.
+Based on feedback from users in the industry, the usability and feature set can further be refined.
+The implementation must either be bound to a specific server implementation or new extensions to the XMPP standard must be proposed to implement some features efficiently
