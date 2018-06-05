@@ -3,6 +3,12 @@
 \epigraph{Wisdom is not a product of schooling but of the lifelong attempt to acquire it.}{Albert Einstein}
 \section{Achieved Result}
 
+In this section, we describe the archived results during this thesis and how we managed to reach them.
+
+\subsection{Implemented Requirements}
+
+As listed in Table~\ref{tab:implemented-requirements}, we implemented 86\% of the overall requirements that we had planed to accomplish. The 5 missing requirements could not be implemented due to technical constrains, which is discussed in depth in Section~\fullref{encountered-problems}.
+
 \begin{table}[H]
     \begin{tabu}{X l}
         \toprule
@@ -62,26 +68,76 @@
 
     \end{tabu}
     \caption{Fulfilled requirements by groups}
+    \label{tab:implemented-requirements}
 \end{table}
 
-% Requirements(?)
-% - requirements: table with "top level requirements"
 
-% Architecture
-% - How did our architectural decisions turn out?: Positive and negative example
+\subsection{Architecture}
+
+\subsubsection{Performance}
+% TODO: Run tests?
+
+\subsubsection{Concurrency and Scalability}
+As our application is implemented to run in a web browser and holds no permanent state, it is very well suited for concurrency.
+
+The primary concern regarding scalability in a \gls{xmpp-grid} is the performance of the underlying \gls{xmpp} server, which was not part of this thesis.
+
+
+\subsubsection{Usability}
+% TODO
+
+\subsubsection{Security}
+In a expert review of our architecture, a good security level was attested.
+
+To prevent risks due to misconfiguration or missing features of the \gls{xmpp} server or reverse proxy, we provide additional documentation alongside the application, which contains recommendations for administrators\footnote{More details on this can be found in Section~\ref{sec:security-risk-mitigation} and `docs' folder in the source code repository.}.
+
+\subsubsection{Architectural Decisions}
+In this Section, we reflect on our \nameref{sec:architectural-decisions} and how they turned out.
+
+\paragraph{Architecture Style}
+Due to limitations in the \gls{xmpp} standard, features like autocomplete and filtering could not be implemented.
+This would have been easier with a server plug-in, but coupled the client to a specific XMPP server.
+
+\paragraph{Platform}
+The implementation of a web application proved as portable and flexible as we had hoped for.
+
+\paragraph{SASL Authentication Strategy}
 %    - SASL EXTERNAL mit Websockets / client certificate -> would be easier with username/pw -> In practice you need proxy, because popup; link to problems
-%    - WebSockets with openfire did not work; webapi proxy would have some benefits, but "normal" web proxy are very stable.
-%    - Architectue Style: Features like autocomplete and filtering could only be implemented with server plugin...
-%    + Stanza is acceptable -> We do not use API but use direct messageing because of advanced features we require -> Our Pull Requests were merged fast
-%    + Web Application with Angular: TS with IDE support has paid off.
-%    + UI library was a help, but left us enough freedom; good decision regaring long life cycle.
-%    ? Role Managment: right way, but no way to test
-% - performance in terms of speed, scalability, concurrency, usability etc
-% - good security attestet in reviews
+The use of SASL EXTERNAL proved to be suboptimal.
+We discovered, that due to policies in current web browsers nearly always a reverse-proxy is required with our implementation, as the \gls{xmpp} WebSocket or \gls{bosh} must be reachable under a already authenticated TLS endpoint.
 
-% Implementation
-% - tests: coverage etc. (see redbackup); how many lines tests/lines code ratio
-% - Ausgewählte Implementierungsdetails/Metriken diskutieren (Bsp. Algorithmen, Datenstrukturen, Libraries, Architectural Hot Spots)
+In hindsight, to use SASL SCRAM would probably have eased the development and deployment of the application.
+
+More details on this issue can be found in Section~\ref{sec:limitations-of-requirement-multiple-administrators}.
+
+\paragraph{Role Management}
+We think, that the decision to use Collection Nodes as role management makes sense.
+However, we were not able to verify this functionality, as the openfire \gls{xmpp} server used in our development setup has not implemented Collection Nodes according to the newest standard version \gls{publish-subscribe} \gls{xep} \cite{xep-0248}.
+
+\paragraph{Webapplication Communication Topology}
+In general, using XMPP directly from the web browser worked relatively well.
+However, due to limitations in the openfire \gls{xmpp} server implementation and SASL EXTERNAL, we had to use BOSH and a HTTP proxy in front of the \gls{xmpp} server. See Section~\fullref{encountered-problems} for more details on this topic.
+
+\paragraph{Frontend Framework}
+The decision to use Angular with TypeScript and IDEA has turned out to be very efficient and clean solution.
+
+\paragraph{UI Library}
+We think that the decision for the spectre.css library provided us with a good compromise in terms of productivity and visual results. Also, it is very well suited for the long life cycle of the application.
+
+\paragraph{Frontend Structure}
+To split the application into multiple modules was the right choice.
+However, we had to slightly modify the initial layering and design during the course of the project.
+
+\paragraph{XMPP Client Library}
+The Stanza.io \gls{xmpp} library worked well in our application.
+We did not largely rely on the abstraction API of Stanza, as we required many advanced \gls{publish-subscribe} features.
+We opened two Pull Requests with error corrections on the Stanza Github page\footnote{See \url{https://github.com/otalk/jxt-xmpp/pull/23} and \url{https://github.com/legastero/stanza.io/pull/264}},
+which were quickly merged and released.
+
+\subsection{Implementation}
+% TODO: - tests: coverage etc. (see redbackup); how many lines tests/lines code ratio
+% TODO: - Ausgewählte Implementierungsdetails/Metriken diskutieren (Bsp. Algorithmen, Datenstrukturen, Libraries, Architectural Hot Spots)
+
 
 \section{Lessons Learned}
 % - Documentation: Difficult to summarise standards;
