@@ -102,18 +102,24 @@ Today, no implementation of an administration interface (XMPP-Grid Broker) for X
 \vspace*{1ex}
 
 %Goal
-The goal of this thesis is to design and implement an XMPP-Grid Broker to configure existing Controllers (XMPP server),  focussing on portability, extensibility and the security aspects in a production environment. The  Broker application should enable administrators to configure XMPP-Grids in a usable and productive way.\\
+The goal of this thesis is to design and implement an XMPP-Grid Broker to configure existing Controllers (XMPP server), focussing on portability, extensibility and the security aspects in a production environment.
+The  Broker application should enable administrators to configure XMPP-Grids in a usable and productive way.\\
 \vspace*{1ex}
 
 %Result
-Our proposed architecture earmarks a purely client-side application that communicates typically through a regular reverse proxy with the XMPP Controller over WebSockets or HTTP streams (BOSH). Authentication is performed using mutual TLS authentication (Client Certificates) to conform to the IETF standard draft. The resulting application is implemented in TypeScript using the Angular5 framework.\\
+Our proposed architecture earmarks a purely client-side application that communicates typically through a regular reverse proxy with the XMPP Controller over WebSockets or HTTP streams (BOSH).
+Authentication is performed using mutual TLS authentication (client certificates) to conform to the IETF standard draft.
+The resulting application is implemented in TypeScript using the Angular5 framework.\\
 \vspace*{1ex}
 
-The resulting implementation enables administrators to create and configure communication Topics, apprehend the underlying hierarchy and manage permissions. Additionally, persistent items of Topics can be inspected and published.\\
+The resulting implementation enables administrators to create and configure communication Topics, apprehend the underlying hierarchy and manage permissions.
+Additionally, persistent items of Topics can be inspected and published.\\
 \vspace*{1ex}
 
 % Consequences
-The XMPP-Grid Broker implementation incorporates the specified functionality, resulting in a robust, ready-to-use solution. A few supplementary helpers, such as autocomplete or filtering, could not be implemented due to limitations of the underlying XMPP standards. These improvements can be realised in the future by enhancing the related XMPP standards or by specifying and implementing proprietary protocols
+The XMPP-Grid Broker implementation incorporates the specified functionality, resulting in a robust, ready-to-use solution.
+A few supplementary helpers, such as autocomplete or filtering, could not be implemented due to limitations of the underlying XMPP standards.
+These improvements can be realised in the future by enhancing the related XMPP standards or by specifying and implementing proprietary protocols
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
