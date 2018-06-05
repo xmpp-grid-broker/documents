@@ -108,13 +108,13 @@ The focus of the application should be set on portability, extensibility and the
 \vspace*{1ex}
 
 %Result
-We propose the architecture of an XMPP-Grid Broker to configure XMPP Controllers and present an implementation based on the Angular5 framework.
-
+Our proposed architecture earmarks a purely client-side application that communicates typically through a regular reverse proxy with the XMPP Controller over WebSockets or HTTP streams (BOSH). Authentication is performed using mutual TLS authentication (Client Certificates) to conform to the IETF standard draft. The resulting application is implemented in TypeScript using the Angular5 framework.
+\vspace*{1ex}
 The resulting implementation enables administrators to create and configure communication Topics, apprehend the underlying hierarchy and manage permissions. Additionally, persistent items of Topics can be inspected and published.\\
 \vspace*{1ex}
 
 % Consequences
-The XMPP-Grid Broker implementation incorporates the specified functionality, demonstrating that the architecture is robust. Some supplementary helpers, such as autocomplete or filtering, could not be implemented efficiently due to limitations of the underlying XMPP standards.
+The XMPP-Grid Broker implementation incorporates the specified functionality, resulting in a robust, ready-to-use solution. Except for a few supplementary helpers that could not be implemented due to limitations of the underlying XMPP standards, all requirements were implemented successfully.
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
