@@ -6,11 +6,11 @@ To create a modern and aesthetically pleasing cross-browser user experience and 
 
 * https://material.angular.io/[Angular Material]: Material Design components for Angular
 * https://edcarroll.github.io/[Semantic UI Angular 2]
-* https://picturepan2.github.io/spectre/[Spectre.css] with custom Components
+* https://picturepan2.github.io/spectre/[Spectre.css] with custom components
 
 === Decision Outcome
 
-Chosen option: Spectre.css with custom Components, because it has minimal third-party dependencies.
+Chosen option: Spectre.css with custom components, because it has minimal third-party dependencies.
 
 Positive consequences:
 
