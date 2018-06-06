@@ -74,19 +74,12 @@ As listed in Table~\ref{tab:implemented-requirements}, we implemented about 86\%
 
 \subsection{Architecture}
 
-\subsubsection{Performance}
-Due to our chosen architecture style (see Chapter~\fullref{sec:architecture}),
-the main performance concern of \gls{xmpp-grid} administrators lies with the \gls{xmpp} server.
+\subsubsection{Concurrency, Scalability and Performance}
+Due to our chosen architecture style (see Section~\fullref{sec:architecture}),
+concurrency, scalability and performance are primarily the concern of the \gls{xmpp} server.
 
-Our implementation submits queries to the \gls{xmpp} server in parallel whenever possible and reduces redundant queries via data sharing.
-However, due to limitations in some \glspl{xep}, it was not possible to implement all requirements efficiently.
+Our implementation submits queries to the \gls{xmpp} server in parallel whenever possible and reduces redundant queries via data sharing. However, due to limitations in some \glspl{xep}, it was not possible to implement all requirements efficiently.
 More details on these limitations can be found in Section~\fullref{encountered-problems}.
-
-\subsubsection{Concurrency and Scalability}
-Concurrency was not a primary concern as our application runs entirely in the user's web browser and \gls{xmpp} servers are responsible for managing concurrency in \gls{xmpp}.
-
-As with concurrency, the scalability of an \gls{xmpp-grid} is the responsibility of the underlying \gls{xmpp} server, which was not part of this thesis.
-
 
 \subsubsection{Usability}
 Usability was an priority in our application and we implemented several features for ease of use.
