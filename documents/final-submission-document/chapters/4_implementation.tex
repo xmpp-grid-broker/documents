@@ -6,7 +6,7 @@
 \section{Development Setup}\label{sec:development-setup}
 
 Figure~\ref{fig:development-setup} illustrates the development setup in the form of an UML deployment diagram.
-A developer connects via his browser to the reverse proxy that serves the \gls{xmpp-grid} \gls{broker} web application.
+A developer connects via his browser to the reverse proxy that serves the \gls{xmpp-grid-broker} web application.
 The HTTP connection from the client to the server is secured using mutual \gls{tls} authentication.
 The same reverse proxy also routes the \gls{xmpp} connections.
 The client also authenticates to the proxy using mutual \gls{tls} authentication, and the proxy afterwards establishes a \gls{tls} connection to the \gls{xmpp} server using his client certificates.
@@ -36,7 +36,7 @@ Requirement \ref{sec:requirement-multiple-administrators} states that multiple a
 
 When authenticating users with \gls{sasl-external}, the client certificate extension field `xmppAddr' is interpreted as user \gls{jid} by the \gls{xmpp} server.
 
-In practice, most \gls{xmpp-grid} \gls{broker} deployments will require an HTTP proxy in front of the \gls{xmpp} server as security measure\footnote{
+In practice, most \gls{xmpp-grid-broker} deployments will require an HTTP proxy in front of the \gls{xmpp} server as security measure\footnote{
 More information on this can be found in Section~\fullref{sec:implemented-web-application-topology}.}.
 Usually, the HTTP proxy can also be used to serve the \gls{broker} application.
 Such an HTTP proxy might also accept multiple different client certificates.
@@ -67,7 +67,7 @@ Administrators should be able to terminate a session by using a logout function,
 After evaluating different authentication mechanism in the architectural decision about \gls{sasl} Authentication Strategy (see Appendix~\ref{sec:architectural-decisions}), we decided to use \gls{tls} client certificate authentication (as part of \gls{sasl-external}). In combination with our decision to write a web application, the web browser is responsible for the \gls{tls} authentication.
 
 Unfortunately, web browsers do not expose a standardised way to log out of a \gls{tls} client authenticated session \cite{practical-issues-with-tls-client}.
-To close the \gls{tls} session, administrators should close their browser window after using the \gls{xmpp-grid} \gls{broker}.
+To close the \gls{tls} session, administrators should close their browser window after using the \gls{xmpp-grid-broker}.
 
 \subsection{Limitations due to \gls{xmpp} or \gls{xep} Standards}
 
@@ -111,12 +111,12 @@ As managing consumers (via subscriptions) and providers (via consumers) are sepa
 
 \subsection{Limitations of the Openfire \gls{xmpp} Server}\label{sec:limitations-of-the-openfire-xmpp-server}
 
-As discussed in Section~\ref{sec:development-setup}, the Openfire \gls{xmpp} server was used in the development setup. This section details on the encountered limitations while implementing the \gls{xmpp-grid} \gls{broker}.
+As discussed in Section~\ref{sec:development-setup}, the Openfire \gls{xmpp} server was used in the development setup. This section details on the encountered limitations while implementing the \gls{xmpp-grid-broker}.
 
 \subsubsection{WebSocket \gls{sasl-external} Support}
 
 At the time of this thesis, Openfire does not support \gls{sasl-external} in combination with \gls{xmpp} over WebSockets.
-Therefore, the current implementation of the \gls{xmpp-grid} \gls{broker} was developed with \gls{bosh}, but also support communication over WebSockets thanks to the Stanza.io \gls{xmpp} library\footnote{\url{https://github.com/legastero/stanza.io}}.
+Therefore, the current implementation of the \gls{xmpp-grid-broker} was developed with \gls{bosh}, but also support communication over WebSockets thanks to the Stanza.io \gls{xmpp} library\footnote{\url{https://github.com/legastero/stanza.io}}.
 
 \subsubsection{Lost Updates}\label{sec:lost-updates}
 
@@ -139,7 +139,7 @@ However, there was no response until the editorial deadline of this thesis.
 Should the type of such fields change in the future, the flexible implementation of \gls{data-forms} in our implementation is sufficient to reflect the new form type.
 
 \section{Code Quality}
-As our \gls{xmpp-grid} \gls{broker} implementation is intended to be a maintainable, production-ready application rather than a prototype, we placed much emphasis on code quality.
+As our \gls{xmpp-grid-broker} implementation is intended to be a maintainable, production-ready application rather than a prototype, we placed much emphasis on code quality.
 The measures taken can broadly be divided into three categories: technical measures, strategic decisions and processes.
 
 \subsubsection{Technical Measures and Strategic Decisions}
@@ -171,7 +171,7 @@ In general, writing clean, modular and testable code has been our main priority.
 
 Good tests are inevitable for long-lived software projects.
 They help developers to ensure that everything (still) works as expected after a change.
-For the \gls{xmpp-grid} \gls{broker}, we focused on unit and end-to-end tests.
+For the \gls{xmpp-grid-broker}, we focused on unit and end-to-end tests.
 Following the principles of the test pyramid \cite{Cohn:2009:SAS:1667109}, we wrote many cheap and fast unit tests verifying the fundamental behaviour and fewer expensive and complex end to end tests.
 
 \subsubsection{Unit Tests}
