@@ -42,6 +42,12 @@ consistentlayout, % Uncomment to change the layout of the declaration, abstract 
 \end{flushright}%
 \vspace{2em}}
 
+\newcommand{\beautyquote}[2]{\begin{flushright}%
+\rightskip=1.8cm\textit{``#1''} \\%
+\vspace{.2em}%
+\rightskip=.8cm--- \textup{#2}%
+\end{flushright}}
+
 % \addPdfAppendix[title]{label}{pdf}
 \newcommand*{\addPdfAppendix}[4][multipage]{
 	\includepdf[pages=1,scale=.75,frame, pagecommand=\section{#2}\label{#3}]{#4}
