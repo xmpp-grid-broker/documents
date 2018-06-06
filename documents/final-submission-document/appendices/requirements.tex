@@ -69,24 +69,24 @@ As an Administrator,\\
 I want to log out\\
 so that I can terminate a session.
 
-\subsection{List topics and collections}\label{sec:list-topics}
+\subsection{List Topics and Collections}\label{sec:list-topics}
 
-\subsubsection{List All topics}\label{sec:requirement-list-all-topics}
+\subsubsection{List All Topics}\label{sec:requirement-list-all-topics}
 As an Administrator,\\
 I want to see a list of all topics of the associated controller\\
 so that I can quickly assimilate which topics exist.
 
-\subsubsection{List All top-level-collections}
+\subsubsection{List All Top-Level-Collections}
 As an Administrator,\\
 I want to see a list of all top-level-collections of the associated controller\\
 so that I can quickly assimilate which collections exist.
 
-\subsubsection{List All Parent-collections of a topic}
+\subsubsection{List All Parent-Collections of a Topic}
 As an Administrator,\\
 I want to see a list of all transitive parent collections that contain a given topic\\
 so that I can quickly assimilate in which collections items are published.
 
-\subsubsection{List All Subtopics and Subcollection of a collection}
+\subsubsection{List All Subtopics and Subcollection of a Collection}
 As an Administrator,\\
 I want to see a list of all collections and topics that a given collection contains\\
 so that I can quickly assimilate the collection hierarchy.
@@ -103,12 +103,12 @@ As an Administrator,\\
 I want to see a list of all collections of the associated controller to which I have limited access to,\\
 to simplify troubleshooting and locate errors.
 
-\subsubsection{topic and collection Paging}
+\subsubsection{Topic and Collection Paging}
 As an Administrator,\\
 I want to be able to page through any set of collection/topic with more than 10 Items \\
 so that I can work with more than 1000 collections and topics more effectively.
 
-\subsubsection{topic and collection Name Filter}\label{sec:requirement-topic-filter}
+\subsubsection{Topic and Collection Name Filter}\label{sec:requirement-topic-filter}
 As an Administrator,\\
 I want to be able to quickly filter any set of collections/topics with more than 10 Items \\
 so that I can work with more than 1000 collections and topics more effectively.
@@ -125,59 +125,59 @@ As an Administrator,\\
 I want to create a new collection on the associated controller\\
 so that I can flexibly patch topics together.
 
-\subsubsection{Override Default topic Configuration}\label{sec:requirement-topic-default-configuration}
+\subsubsection{Override Default Topic Configuration}\label{sec:requirement-topic-default-configuration}
 
 As an Administrator in the process of creating a new topic,\\
 I want to override the default configuration (e.g. the affiliations) \\
 so that I can restrict access and provide reasonable defaults.
 
-\subsubsection{Override Default collection Configuration}\label{sec:requirement-collection-default-configuration}
+\subsubsection{Override Default Collection Configuration}\label{sec:requirement-collection-default-configuration}
 
 As an Administrator in the process of creating a new collection,\\
 I want to override the default configuration (e.g. the affiliations) \\
 so that I can restrict access and provide reasonable defaults.
 
-\subsubsection{Initial topic consumers and providers}\label{sec:requirement-initial-topic-consumer-provider}
+\subsubsection{Initial topic Consumers and Providers}\label{sec:requirement-initial-topic-consumer-provider}
 
 As an Administrator in the process of creating a new topic,\\
 I want to specify an initial set of consumers and providers \\
 so that I can restrict access to that topic and provide reasonable defaults.
 
-\subsubsection{Initial collection consumers}\label{sec:requirement-initial-collection-consumer}
+\subsubsection{Initial Collection Consumers}\label{sec:requirement-initial-collection-consumer}
 
 As an Administrator in the process of creating a new collection,\\
 I want to specify an initial set of consumers \\
 so that I can restrict access to that collection and provide reasonable defaults.
 
-\subsection{Delete an Existing topic}\label{sec:delete-topic}
+\subsection{Delete an Existing Topic}\label{sec:delete-topic}
 
 As an Administrator,\\
 I want to delete an existing topic on the associated controller\\
 so that I can get rid of obsolete topics.
 
-\subsection{Delete an Existing collection}\label{sec:delete-collection}
+\subsection{Delete an Existing Collection}\label{sec:delete-collection}
 
 As an Administrator,\\
 I want to delete an existing collection on the associated controller\\
 so that I can get rid of obsolete collections.
 
 
-\subsubsection{Fault Prevention On topic-Delete}
+\subsubsection{Fault Prevention On Topic-Delete}
 
 As an Administrator in the process of deleting a topic, \\
 I want a mechanism to prevent me from deleting the wrong topic on the associated controller\\
 (e.g. require me to enter the name of the topic manually).
 
-\subsubsection{Fault Prevention On collection-Delete}
+\subsubsection{Fault Prevention On Collection-Delete}
 
 As an Administrator in the process of deleting a collection, \\
 I want a mechanism to prevent me from deleting the wrong collection on the associated controller\\
 (e.g. require me to enter the name of the collection manually).
 
 
-\subsection{Manage topic/collection Subscriptions}\label{sec:manage-subscriptions}
+\subsection{Manage Topic/Collection Subscriptions}\label{sec:manage-subscriptions}
 
-\subsubsection{List consumers}
+\subsubsection{List Consumers}
 
 As an Administrator, \\
 I want to list all consumers (including their JIDs) of a given topic/collection on the associated controller, \\
@@ -197,19 +197,19 @@ As an Administrator, \\
 I want to modify parts of the topic/collection subscription configuration of a given consumer, \\
 so that I can fix misconfiguration.
 
-\subsubsection{Unsubscribe consumer}
+\subsubsection{Unsubscribe Consumer}
 
 As an Administrator, \\
 I want to manually unsubscribe a specific consumer from a particular topic/collection on the associated controller, \\
 so that I can remove obsolete or undesired subscriptions.
 
-\subsubsection{Subscribe consumer}
+\subsubsection{Subscribe Consumer}
 
 As an Administrator, \\
 I want to manually subscribe a specific consumer on a particular topic/collection on the associated controller, \\
 so that I can faster setup and manage consumers.
 
-\subsection{Manage topic Affiliations}\label{sec:manage-affiliations}
+\subsection{Manage Topic Affiliations}\label{sec:manage-affiliations}
 \subsubsection{Inspect Affiliations}
 
 As an Administrator,\\
@@ -227,20 +227,20 @@ so that I can fix potential misconfiguration.
 As an Administrator in the process of modifying my Affiliation for a particular topic/collection on the associated controller,\\
 I want a mechanism to prevent me from accidentally downgrading my rights.
 
-\subsubsection{Meaningful Error For topics/collection With Limited Access}
+\subsubsection{Meaningful Error For Topics/Collection With Limited Access}
 
 As an Administrator,\\
 I want to receive a meaningful error message when inspecting a topic/collection to which I have limited access \\
 so that I can quickly comprehend why the configuration options are limited.
 
-\subsection{Manage persisted items of a topic}\label{sec:manage-persisted-items}
-\subsubsection{Inspect persisted items}
+\subsection{Manage Persisted Items of a Topic}\label{sec:manage-persisted-items}
+\subsubsection{Inspect Persisted Items}
 
 As an Administrator,\\
 I want to list all persisted items for a particular topic on the associated controller \\
 so that I can get an overview and check for misconfiguration.
 
-\subsubsection{Filter persisted items}\label{sec:requirement-filter-persisted-items}
+\subsubsection{Filter Persisted Items}\label{sec:requirement-filter-persisted-items}
 
 As an Administrator,\\
 I want to be able to filter all persisted items of a specific topic by \\
@@ -250,27 +250,27 @@ I want to be able to filter all persisted items of a specific topic by \\
 \end{itemize}
 so that I can work with more than 10000 persisted items more effectively.
 
-\subsubsection{Paged persisted items}\label{sec:paged-persisted-items}
+\subsubsection{Paged Persisted Items}\label{sec:paged-persisted-items}
 As an Administrator working with filtered persisted items,\\
 I want to be able to page through the resulting items\\
 - given that this feature is supported by the associated controller -\\
 so that I can work with more than 10000 persisted items more effectively.
 
-\subsubsection{Delete a persisted item From a topic}
+\subsubsection{Delete a Persisted Items From a Topic}
 
 As an Administrator,\\
 I want to delete a particular persisted item from a specific topic\\
 - given that this feature is supported by the associated controller -\\
 so that I can clean up test items and remove obsolete or corrupted items.
 
-\subsubsection{Purge All persisted items From a topic}
+\subsubsection{Purge All Persisted Items From a Topic}
 
 As an Administrator,\\
 I want to purge persisted items from a specific topic\\
 - given that this feature is supported by the associated controller -\\
 so that I can clean up test items and remove obsolete or corrupted items.
 
-\subsubsection{Delete Set of persisted item From a topic (optional)}
+\subsubsection{Delete Set of Persisted Items From a Topic (optional)}
 
 As an Administrator,\\
 I want to delete a set of persisted item that match a given criteria from a specific topic\\
@@ -299,7 +299,7 @@ I want to reject a pending subscription request for a given topic\\
 - given that this feature is supported by the associated controller -\\
 so that I can deny user access in accordance with the \gls{xmpp} standards.
 
-\subsection{Validate controller Configuration (optional)}\label{sec:validate-controller-config}
+\subsection{Validate Controller Configuration (optional)}\label{sec:validate-controller-config}
 
 \subsubsection{Validate Supported XEPs Configurations}
 As an Administrator,\\
