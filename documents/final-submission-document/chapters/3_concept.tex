@@ -300,8 +300,8 @@ The Content Security Policy (CSP) helps to mitigate certain types of attacks suc
 The recommended values are directly documented in the project source code repository.
 
 \subsubsection{Verify Origin}
-The \gls{xmpp} server should be configured to only accept WebSockets/BOSH connections from the origin of the \gls{xmpp} Broker application.
-The `Origin' Header sent by the web browser must match the domain on which the \gls{xmpp} Broker application is hosted.
+The \gls{xmpp} server should be configured to only accept WebSockets/BOSH connections from the origin of the \gls{xmpp-grid-broker} application.
+The `Origin' Header sent by the web browser must match the domain on which the \gls{xmpp-grid-broker} application is hosted.
 Otherwise, connection requests must be ignored.
 If a \gls{xmpp} server does not support this feature, a proxy server should be used to verify the `Origin' header.
 In the provided development setup, this security feature is not implemented.
