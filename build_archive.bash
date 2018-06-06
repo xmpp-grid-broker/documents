@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu
+set -euo pipefail
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 TARGET_DIRECTORY="$SCRIPT_PATH/export"
