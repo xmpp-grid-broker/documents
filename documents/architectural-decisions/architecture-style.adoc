@@ -13,12 +13,12 @@ The following aspects must be taken into account to find the most suitable archi
 === Considered Options
 
 * XMPP server plugin, e.g. for http://download.igniterealtime.org/openfire/docs/latest/documentation/plugin-dev-guide.html[Openfire Plugin].
-* XMPP Component (https://xmpp.org/extensions/xep-0114.html[XEP-0114]).
+* XMPP component (https://xmpp.org/extensions/xep-0114.html[XEP-0114]).
 * XMPP Client/Bot
 
 === Decision Outcome
 
-Chosen option: XMPP Client/bot, because it is not coupled to a specific XMPP server as the Server Plugin and, in contrast to the XMPP Component, supports strong authentication.
+Chosen option: XMPP Client/bot, because it is not coupled to a specific XMPP server as the Server Plugin and, in contrast to the XMPP component, supports strong authentication.
 
 === Pros and Cons of the Options
 
@@ -31,10 +31,10 @@ Chosen option: XMPP Client/bot, because it is not coupled to a specific XMPP ser
 
 ==== XMPP Component
 
-* Good, because the application style fits very well in the Components model.
-* Bad, because the specification of Components is marked as _Historical_ and might therefore not be implemented by many XMPP Servers.
-** Note: Openfire supports Components
-* Bad, because some XMPP client libraries might support Components.
+* Good, because the application style fits very well in the components model.
+* Bad, because the specification of components is marked as _Historical_ and might therefore not be implemented by many XMPP Servers.
+** Note: Openfire supports components
+* Bad, because some XMPP client libraries might support components.
 * Bad, because the authentication mechanisms might not suffice the required standards of the XMPP-Grid standard.
 * Bad, because it uses a own handshake based digest authentication message.
 

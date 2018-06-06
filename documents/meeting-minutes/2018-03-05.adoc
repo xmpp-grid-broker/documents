@@ -29,7 +29,7 @@ Minute Taker: rzimmerm
 *** 100 Subscribers
 *** 1-4 Toplevel Topics
 *** > 1000 Subtopics (eg. one for every publisher)
-*** > 10000 Persisted Items (note that these items might contain large payloads)
+*** > 10000 persisted items (note that these items might contain large payloads)
 ** We plan to include search, filtering and paging functionality for most listings. We will include these features in the next requirements draft.
 ** SFF points out that subtopics are missing in the current draft as well as the wireframes. We will include this in the next requirements draft.
 ** SFF notes that a role concept might be needed to simplify the administration. We might be able to use existing XMPP features for this (e.g. XEP-0144).
