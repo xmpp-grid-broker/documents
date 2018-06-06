@@ -7,9 +7,7 @@ In this section, we describe the archived results during this thesis and how we 
 
 \subsection{Implemented Requirements}
 
-As listed in Table~\ref{tab:implemented-requirements}, we implemented 86\% of the overall requirements that we had planed to accomplish. The 5 missing requirements could not be implemented due to technical constrains, which is discussed in depth in Section~\fullref{encountered-problems}.
-
-During the course of the project, we implemented two optional requirements.
+As listed in Table~\ref{tab:implemented-requirements}, we implemented 86\% of the overall requirements that we had planned to accomplish. The five remaining requirements could not be implemented due to technical constraints as is discussed in depth in Section~\fullref{encountered-problems}. To compensate for it, we implemented two optional requirements.
 
 \begin{table}[H]
     \begin{tabu}{X l}
@@ -77,87 +75,83 @@ During the course of the project, we implemented two optional requirements.
 \subsection{Architecture}
 
 \subsubsection{Performance}
-% TODO: Run tests?
 Due to our chosen architecture style (see Chapter~\fullref{sec:architecture}),
 the main performance concern of \gls{xmpp-grid} administrators lies with the \gls{xmpp} server.
 
-Our implementation uses the most efficient, parallel way to query the \gls{xmpp} server.
-However, due to limitations of the \gls{xmpp} protocol, it was not possible to implement all requirements in an efficient way.
+Our implementation submits queries to the \gls{xmpp} server in parallel whenever possible and reduces redundant queries via data sharing.
+However, due to limitations in some \glspl{xep}, it was not possible to implement all requirements efficiently.
 More details on these limitations can be found in Section~\fullref{encountered-problems}.
 
 \subsubsection{Concurrency and Scalability}
-As our application is implemented to run in a web browser and holds no permanent state, it is very well suited for concurrency.
+Concurrency was not a primary concern as our application runs entirely in the user's web browser and \gls{xmpp} servers are responsible for managing concurrency in \gls{xmpp}.
 
-The primary concern regarding scalability in a \gls{xmpp-grid} is the performance of the underlying \gls{xmpp} server, which was not part of this thesis.
+As with concurrency, the scalability of an \gls{xmpp-grid} is the responsibility of the underlying \gls{xmpp} server, which was not part of this thesis.
 
 
 \subsubsection{Usability}
-During the course of our project we implemented several usability features in the application.
-A prominent example of this are the so called bread-crumbs, which allow fast and direct navigation trough different application levels.
+Usability was an priority in our application and we implemented several features for ease of use.
+A good example is the use of so-called bread-crumbs, which allow fast and direct navigation through different application levels.
 
 We regret that it was not possible to conduct a usability test with a typical user during the thesis.
 
 \subsubsection{Security}
-In a expert review of our architecture, a good security level was attested.
+In an expert review of our architecture, a good security level was attested.
 
-To prevent risks due to misconfiguration or missing features of the \gls{xmpp} server or reverse proxy, we provide additional documentation alongside the application, which contains recommendations for administrators\footnote{More details on this can be found in Section~\ref{sec:security-risk-mitigation} and `docs' folder in the source code repository.}.
+To prevent risks due to misconfiguration or missing features of the \gls{xmpp} server or reverse proxy, we provide additional documentation alongside the application, containing recommendations for administrators. More details on this can be found in Section~\ref{sec:security-risk-mitigation} and `docs' folder in the source code repository.
 
 \subsubsection{Architectural Decisions}
 In this Section, we reflect on our \nameref{sec:architectural-decisions} and how they turned out.
 
 \paragraph{Architecture Style}
-Due to limitations in the \gls{xmpp} standard, features like autocomplete and filtering could not be implemented.
-This would have been easier with a server plug-in, but coupled the client to a specific XMPP server.
+Due to limitations of the \glspl{xep}, features like autocomplete and filtering could not be implemented.
+This would probably have worked better with a server plug-in but would have resulted in close coupling to a specific XMPP server.
 
 \paragraph{Platform}
-The implementation of a web application proved as portable and flexible as we had hoped for.
+The implementation of a web application proved as portable and flexible as intended.
 
 \paragraph{SASL Authentication Strategy}
-%    - SASL EXTERNAL mit Websockets / client certificate -> would be easier with username/pw -> In practice you need proxy, because popup; link to problems
 The use of SASL EXTERNAL proved to be suboptimal.
-We discovered, that due to policies in current web browsers nearly always a reverse-proxy is required with our implementation, as the \gls{xmpp} WebSocket or \gls{bosh} must be reachable under a already authenticated TLS endpoint.
+We discovered that due to policies in current web browsers and our chosen architecture, a reverse-proxy is nearly always required. The reason for this is that the \gls{xmpp} WebSocket or \gls{bosh} endpoint must already be authenticated.
 
-In hindsight, to use SASL SCRAM would probably have eased the development and deployment of the application.
+In hindsight, to use SASL SCRAM with username and password would probably have eased the development and deployment of the application.
 
 More details on this issue can be found in Section~\ref{sec:limitations-of-requirement-multiple-administrators}.
 
 \paragraph{Role Management}
-We think, that the decision to use Collection Nodes as role management makes sense.
-However, we were not able to verify this functionality, as the openfire \gls{xmpp} server used in our development setup has not implemented Collection Nodes according to the newest standard version \gls{publish-subscribe} \gls{xep} \cite{xep-0248}.
+We are convinced that the decision to utilise collection nodes for role management is an ideal solution.
+However, we were not able to verify this functionality, as Openfire has not implemented collection nodes according to the latest version of the \gls{publish-subscribe} \gls{xep} draft \cite{xep-0248}.
 
-\paragraph{Webapplication Communication Topology}
-In general, using XMPP directly from the web browser worked relatively well.
-However, due to limitations in the openfire \gls{xmpp} server implementation and SASL EXTERNAL, we had to use BOSH and a HTTP proxy in front of the \gls{xmpp} server. See Section~\fullref{encountered-problems} for more details on this topic.
+\paragraph{Web Application Communication Topology}
+In general, using \gls{xmpp} directly from the web browser worked well.
+However, due to the incomplete WebSocket implementation in Openfire and the browsers policies concerning SASL EXTERNAL, we had to use BOSH and an HTTP proxy in front of the \gls{xmpp} server.
+See Section~\fullref{encountered-problems} for more details.
 
 \paragraph{Frontend Framework}
-The decision to use Angular with TypeScript and IDEA has turned out to be very efficient and clean solution.
+The decision to use Angular with TypeScript in combination with the IntelliJ IDEA IDE has turned out to be an efficient and clean solution.
 
 \paragraph{UI Library}
-We think that the decision for the spectre.css library provided us with a good compromise in terms of productivity and visual results. Also, it is very well suited for the long life cycle of the application.
+The decision for the spectre.css library provided us with a reasonable compromise regarding productivity and long-term maintainability.
 
 \paragraph{Frontend Structure}
-To split the application into multiple modules was the right choice.
-However, we had to slightly modify the initial layering and design during the course of the project.
+To split the application into multiple modules worked well and helped to strucutre the code.
+We had to slightly modify the initial layering and design in the course of the project.
 
 \paragraph{XMPP Client Library}
-The Stanza.io \gls{xmpp} library worked well in our application.
-We did not largely rely on the abstraction API of Stanza, as we required many advanced \gls{publish-subscribe} features.
-We opened two Pull Requests with error corrections on the Stanza Github page\footnote{See \url{https://github.com/otalk/jxt-xmpp/pull/23} and \url{https://github.com/legastero/stanza.io/pull/264}},
-which were quickly merged and released.
+The Stanza.io \gls{xmpp} library has served its purpose.
+We opened two pull requests with error corrections on Github \footnote{See \url{https://github.com/otalk/jxt-xmpp/pull/23} and \url{https://github.com/legastero/stanza.io/pull/264}}, which were quickly merged and released.
 
 \subsection{Implementation}
 
-
 \subsubsection{Tests}
-As described in Section~\ref{sec:testing}, good tests and a high application coverage are very important for a long-lived project.
+As described in Section~\ref{sec:testing}, good tests and a solid test coverage are very important for a long-lived project.
 
-To measure our unit tests, we used the istanbul coverage tool\footnote{\url{https://gotwarlost.github.io/istanbul/}}. We achieved a total of XX.X\% line coverage, thanks to our comprehensive set of unit tests. %TODO
+To measure unit tests coverate, we used the istanbul coverage tool\footnote{\url{https://gotwarlost.github.io/istanbul/}}. We achieved a total of XX.X\% line coverage, thanks to our comprehensive set of unit tests. %TODO (also: line coverage is the least informative)
 
-Code coverage achieved using the integration tests are not counted into this test coverage, as such a number is difficult to compute because of the transpilation of TypeScript into JavaScript and the Angulars use of frameworks like zone.js.
+The code coverage achieved using the integration tests is not included in the test coverage, as no such tooling exists.
 
 We wrote XX integration tests with a total of XXX lines of code. %TODO
 
-In total, we have XX test code lines per line of application code.  %TODO
+In total, we have XX test code lines per line of application code.  %TODO ~> Rewrite when the exact numbers and judge the result
 
 
 \section{Lessons Learned}
