@@ -1,6 +1,6 @@
-== Webapplication Communication Topology
+== Web Application Communication Topology
 
-As we decided to build a web-application, it remains open how the communication the backing XMPP server flows.
+As we decided to build a web application, it remains open how the communication the backing XMPP server flows.
 
 === Considered Options
 

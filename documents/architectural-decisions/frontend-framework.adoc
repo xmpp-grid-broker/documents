@@ -1,6 +1,6 @@
 == Frontend Framework
 
-To create a user interface for the web-application frontend, we must utilise a framework. User Interfaces are too complex these days to implement them in pure JavaScript.
+To create a user interface for the web application frontend, we must utilise a framework. User Interfaces are too complex these days to implement them in pure JavaScript.
 
 The frontend framework fundamentally restricts the set of implementation languages and has a profound impact on the web interface architecture.
 
