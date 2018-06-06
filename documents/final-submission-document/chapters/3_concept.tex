@@ -234,7 +234,7 @@ The \gls{xmpp-grid-broker} should document an appropriate CSP that must be suppo
 
 \subsubsection{Authentication and Authorisation}
 
-The \gls{xmpp} server implements most of the authentication and authorisation mechanisms used in a \gls{xmpp-grid-broker} implementation, such as storing passwords and validating certificates.
+The \gls{xmpp} server implements most of the authentication and authorisation mechanisms used in an \gls{xmpp-grid-broker} implementation, such as storing passwords and validating certificates.
 
 If BOSH or WebSockets are used, the \gls{xmpp} server should supports most HTTP security features as listed in Section~\ref{sec:web-server}. Additionally, the origin of WebSockets and BOSH requests must be verified (by either the \texttt{Origin}-Header or CORS support.~\cite{rfc6455}\cite{cross-origin-resource-sharing}
 
@@ -303,5 +303,5 @@ The recommended values are directly documented in the project source code reposi
 The \gls{xmpp} server should be configured to only accept WebSockets/BOSH connections from the origin of the \gls{xmpp-grid-broker} application.
 The `Origin' Header sent by the web browser must match the domain on which the \gls{xmpp-grid-broker} application is hosted.
 Otherwise, connection requests must be ignored.
-If a \gls{xmpp} server does not support this feature, a proxy server should be used to verify the `Origin' header.
+If an \gls{xmpp} server does not support this feature, a proxy server should be used to verify the `Origin' header.
 In the provided development setup, this security feature is not implemented.
