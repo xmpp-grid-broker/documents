@@ -102,11 +102,11 @@ This would probably have worked better with a server plug-in but would have resu
 \paragraph{Platform}
 The implementation of a web application proved as portable and flexible as intended.
 
-\paragraph{SASL Authentication Strategy}
-The use of SASL EXTERNAL proved to be suboptimal.
+\paragraph{\gls{sasl} Authentication Strategy}
+The use of \gls{sasl-external} proved to be suboptimal.
 We discovered that due to policies in current web browsers and our chosen architecture, a reverse-proxy is nearly always required. The reason for this is that the \gls{xmpp} WebSocket or \gls{bosh} endpoint must already be authenticated.
 
-In hindsight, to use SASL SCRAM with username and password would probably have eased the development and deployment of the application.
+In hindsight, to use \gls{sasl-scram} with username and password would probably have eased the development and deployment of the application.
 
 More details on this issue can be found in Section~\ref{sec:limitations-of-requirement-multiple-administrators}.
 
@@ -116,7 +116,7 @@ However, we were not able to verify this functionality, as Openfire has not impl
 
 \paragraph{Web Application Communication Topology}
 In general, using \gls{xmpp} directly from the web browser worked well.
-However, due to the incomplete WebSocket implementation in Openfire and the browsers policies concerning SASL EXTERNAL, we had to use BOSH and an HTTP proxy in front of the \gls{xmpp} server.
+However, due to the incomplete WebSocket implementation in Openfire and the browsers policies concerning \gls{sasl-external}, we had to use BOSH and an HTTP proxy in front of the \gls{xmpp} server.
 See Section~\fullref{encountered-problems} for more details.
 
 \paragraph{Frontend Framework}

@@ -39,7 +39,7 @@ The \gls{xmpp-grid} \gls{broker} configures the \gls{xmpp-grid}, which consists 
 To implement the \gls{xmpp-grid} \gls{broker}, we evaluated three possible architecture styles:\hfill\\
 An \gls{xmpp} server plug-in (e.g. extension for the Openfire \gls{xmpp} server), an implementation with the Jabber Component Protocol~\cite{xep-0114} or an implementation acting as a regular \gls{xmpp} client ("bot").
 
-We decided to build an \gls{xmpp} client/bot, because it is not coupled to a specific \gls{xmpp} server as a server plug-in and, in contrast to the \gls{xmpp} component, supports a strong authentication mechanism with SASL.
+We decided to build an \gls{xmpp} client/bot, because it is not coupled to a specific \gls{xmpp} server as a server plug-in and, in contrast to the \gls{xmpp} component, supports a strong authentication mechanism with \gls{sasl}.
 
 The full decision argument is documented in Appendix~\fullref{sec:architectural-decisions}.
 
@@ -108,15 +108,15 @@ The reverse proxy might also be used to serve the web application and provide au
 
 \subsection{Authentication and Connection Security}\label{sec:authentication-and-connection-security}
 
-\gls{xmpp} uses SASL as authentication mechanism~\cite{rfc6120}.
-To authenticate against the \gls{xmpp-grid} \gls{controller}, we decided to use the SASL EXTERNAL~\cite{rfc4422} mechanism whenever possible to authenticate the client.
+\gls{xmpp} uses \gls{sasl} as authentication mechanism~\cite{rfc6120}.
+To authenticate against the \gls{xmpp-grid} \gls{controller}, we decided to use the \gls{sasl-external}~\cite{rfc4422} mechanism whenever possible to authenticate the client.
 
-We decided against the alternative SASL authentication method, SASL SCRAM~\cite{rfc7677}, that is also recommended by in the \gls{xmpp-grid} standard~\cite{ietf-mile-xmpp-grid-05}.
-As described in the corresponding architectural decision (Appendix~\ref{sec:architectural-decisions}), the main reason for SASL EXTERNAL is its higher level of security and and its relatively simple scaling capabilities.
+We decided against the alternative \gls{sasl} authentication method, \gls{sasl-scram}~\cite{rfc7677}, that is also recommended by in the \gls{xmpp-grid} standard~\cite{ietf-mile-xmpp-grid-05}.
+As described in the corresponding architectural decision (Appendix~\ref{sec:architectural-decisions}), the main reason for \gls{sasl-external} is its higher level of security and and its relatively simple scaling capabilities.
 
-SASL EXTERNAL implies that the authentication takes place on a lower layer than the actual \gls{xmpp} protocol. In our case, this implies authentication over TLS, i.e.~X.509 end-user certificates as specified in RFC6120~\cite{rfc6120}.
+\gls{sasl-external} implies that the authentication takes place on a lower layer than the actual \gls{xmpp} protocol. In our case, this implies authentication over TLS, i.e.~X.509 end-user certificates as specified in RFC6120~\cite{rfc6120}.
 
-Currently, not all \gls{xmpp} servers that implement BOSH and Websockets also implement SASL EXTERNAL with TLS authentication
+Currently, not all \gls{xmpp} servers that implement BOSH and Websockets also implement \gls{sasl-external} with TLS authentication
 (e.g.\ Openfire currently supports TLS authentication with BOSH but not with Websockets\footnote{\url{https://github.com/igniterealtime/Openfire/blob/02c22e/src/java/org/jivesoftware/openfire/websocket/OpenfireWebSocketServlet.java}}).
 To circumvent this limitation, a HTTP reverse proxy as described in Section~\ref{sec:implemented-web-application-topology} might be used, which handles the TLS authentication.
 
@@ -162,7 +162,7 @@ In this section, we highlight the most crucial security concerns relevant to thi
 \subsubsection{Transport Security}
 
 \gls{xmpp} reuses many established and standardised mechanisms to improve the protocol security.
-By layering protocols in a strict manner (\gls{xmpp} with SASL over TLS over TCP), many attack scenarios such as replaying or eavesdropping are minimised.
+By layering protocols in a strict manner (\gls{xmpp} with \gls{sasl} over TLS over TCP), many attack scenarios such as replaying or eavesdropping are minimised.
 The protocol also requires clients and servers to validate the certificates of the other party.~\cite{rfc7590}\cite{rfc6120}
 
 \subsubsection{Protocol}
