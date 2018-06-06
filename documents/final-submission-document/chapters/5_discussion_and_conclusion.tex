@@ -9,6 +9,8 @@ In this section, we describe the archived results during this thesis and how we 
 
 As listed in Table~\ref{tab:implemented-requirements}, we implemented 86\% of the overall requirements that we had planed to accomplish. The 5 missing requirements could not be implemented due to technical constrains, which is discussed in depth in Section~\fullref{encountered-problems}.
 
+During the course of the project, we implemented two optional requirements.
+
 \begin{table}[H]
     \begin{tabu}{X l}
         \toprule
@@ -22,7 +24,7 @@ As listed in Table~\ref{tab:implemented-requirements}, we implemented 86\% of th
         %& Missing: "Multiple Administrators", "Audit Trail" and "Logout"\\
 
         \fullref{sec:list-topics}
-        & \textit{partial (5/6 resp. 5/8)}\\
+        & \textit{partial (5/6)}\\
         % & without name filter and  optional features ("Limited Access")\\
 
         \fullref{sec:create-topic}
@@ -30,7 +32,7 @@ As listed in Table~\ref{tab:implemented-requirements}, we implemented 86\% of th
         % & \\
 
         \fullref{sec:create-collection}
-        & \textit{complete (3/3 resp. 3/5)}\\
+        & \textit{complete (3/3)}\\
         % & Without initial Consumers and Providers\\
 
         \fullref{sec:delete-topic}
@@ -50,20 +52,20 @@ As listed in Table~\ref{tab:implemented-requirements}, we implemented 86\% of th
         % & \\
 
         \fullref{sec:manage-persisted-items}
-        & \textit{partial (4/5 resp. 4/6)}\\
+        & \textit{partial (4/5)}\\
         % & Without filtering and "Delete Set of Persisted Item From a Topic"\\
 
         \fullref{sec:subscription-requests}
-        & \textit{not implemented (0/0 resp. 0/3)}\\
+        & \textit{not implemented}\\
         % & \\
 
         \fullref{sec:validate-controller-config}
-        & \textit{complete (0/0 resp. 2/2)}\\
+        & \textit{complete (2/2)}\\
         % & \\
 
         % \midrule
         \textbf{Total}
-        & 30/35 $\approx 86\%$ (resp. 33/45) \\
+        & 32/37 $\approx 86\%$ \\
         % % & \\
 
     \end{tabu}
@@ -76,6 +78,12 @@ As listed in Table~\ref{tab:implemented-requirements}, we implemented 86\% of th
 
 \subsubsection{Performance}
 % TODO: Run tests?
+Due to our chosen architecture style (see Chapter~\fullref{sec:architecture}),
+the main performance concern of \gls{xmpp-grid} administrators lies with the \gls{xmpp} server.
+
+Our implementation uses the most efficient, parallel way to query the \gls{xmpp} server.
+However, due to limitations of the \gls{xmpp} protocol, it was not possible to implement all requirements in an efficient way.
+More details on these limitations can be found in Section~\fullref{encountered-problems}.
 
 \subsubsection{Concurrency and Scalability}
 As our application is implemented to run in a web browser and holds no permanent state, it is very well suited for concurrency.
@@ -84,7 +92,10 @@ The primary concern regarding scalability in a \gls{xmpp-grid} is the performanc
 
 
 \subsubsection{Usability}
-% TODO
+During the course of our project we implemented several usability features in the application.
+A prominent example of this are the so called bread-crumbs, which allow fast and direct navigation trough different application levels.
+
+We regret that it was not possible to conduct a usability test with a typical user during the thesis.
 
 \subsubsection{Security}
 In a expert review of our architecture, a good security level was attested.
