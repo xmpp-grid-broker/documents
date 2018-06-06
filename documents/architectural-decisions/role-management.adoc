@@ -1,6 +1,6 @@
 == Role Management
 
-The XMPP Publish-Subscribe mechanism (XEP-0060) lacks an explicit description of how to implement role-based authentication for Topics(nodes).
+The XMPP Publish-Subscribe mechanism (XEP-0060) lacks an explicit description of how to implement role-based authentication for topics(nodes).
 It implies two possibilities on how to do so: collection nodes and the roster access model.
 
 The following aspects must be taken into account:
@@ -25,8 +25,8 @@ We must, however, keep in mind that the XEP is deferred and might therefore not 
 ==== Usage of Collection Nodes (XEP-0248)
 
 * Good, because existing XMPP mechanisms can be used.
-* Good, because with it few consumers can subscribe to many Topics indirectly.
-* Good, because publishing permissions are managed on a Topic level which encourages per-device Topics.
+* Good, because with it few consumers can subscribe to many topics indirectly.
+* Good, because publishing permissions are managed on a topic level which encourages per-device topics.
 * Good, because this mechanism is used in production.
 * Bad, because XEP-0248 is deferred
 * Bad, because the Collection Nodes must be structured in a specific way to support access management
