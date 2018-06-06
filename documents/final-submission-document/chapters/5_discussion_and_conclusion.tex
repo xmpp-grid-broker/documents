@@ -97,7 +97,7 @@ In this Section, we reflect on our \nameref{sec:architectural-decisions} and how
 
 \paragraph{Architecture Style}
 Due to limitations of the \glspl{xep}, features like autocomplete and filtering could not be implemented.
-This would probably have worked better with a server plug-in but would have resulted in close coupling to a specific XMPP server.
+This would probably have worked better with a server plug-in but would have resulted in close coupling to a specific \gls{xmpp} server.
 
 \paragraph{Platform}
 The implementation of a web application proved as portable and flexible as intended.
@@ -129,7 +129,7 @@ The decision for the spectre.css library provided us with a reasonable compromis
 To split the application into multiple modules worked well and helped to strucutre the code.
 We had to slightly modify the initial layering and design in the course of the project.
 
-\paragraph{XMPP Client Library}
+\paragraph{\gls{xmpp} Client Library}
 The Stanza.io \gls{xmpp} library has served its purpose.
 We opened two pull requests with error corrections on Github \footnote{See \url{https://github.com/otalk/jxt-xmpp/pull/23} and \url{https://github.com/legastero/stanza.io/pull/264}}, which were quickly merged and released.
 
@@ -164,7 +164,7 @@ To address these estimation issues, we decided to create smaller issues and list
 A check-list extension for JIRA facilitated this task.
 
 Despite the smaller task sizes, estimating and specifying tasks precisely remained a challenge.
-Our limited experience with the Angular framework and the XMPP ecosystem were undoubtedly large contributing factors.
+Our limited experience with the Angular framework and the \gls{xmpp} ecosystem were undoubtedly large contributing factors.
 
 \subsubsection{Documentation}
 
@@ -172,7 +172,7 @@ To accomplish high-quality documentation, we used GitHub pull requests to carry 
 To simplify this process, we also set up continuous integration builds which always posted the latest stable documentation and appendices on the project website.
 We think that this approach led to a high overall documentation standard.
 
-It was difficult to summarise the technical background and describe our architecture due to the different terminology used by the XMPP and IETF standards.
+It was difficult to summarise the technical background and describe our architecture due to the different terminology used by the \gls{xmpp} and IETF standards.
 We discuss this in Section~\ref{lessons-learned-standards}.
 
 \subsection{Decisions}
