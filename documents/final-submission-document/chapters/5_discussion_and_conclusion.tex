@@ -88,17 +88,15 @@ The \gls{xmpp-grid} standard uses \gls{sacm} terminology \cite{ietf-sacm-termino
 Most concepts and term definitions differ or overlap slightly, making it difficult to comprehend and connect both formats.
 It also makes the use of a consistent terminology impossible, as some concepts from \gls{xmpp}/\glspl{xep} are not reflected in \gls{sacm} terminology and vice versa.
 
-\subsubsection{Versions of \glspl{xep}}
-\gls{xmpp} Extension Procotols (\glspl{xep}) can receive modifications after being declared final, 
-``to correct errors, incorporate the lessons of experience, or document new security concerns''. \cite{xep-0001}
+\subsubsection{\glspl{xep} Draft Versions}
+Many of the used \gls{xmpp} Extension Procotols (\glspl{xep}) are not yet final but still in the draft phase. Most notably, these include the Publish-Subscribe (XEP-0060 and XEP-0248), Result Set Management (XEP-0059) and BOSH (XEP-0206) \glspl{xep}.
+Only the core \glspl{xep}, such as Service Discovery (XEP-0030) and Data Forms (XEP-0004), are declared as final.
 
-This can make it very difficult to rely on modified parts of these standards, as there is no indication which version of a standard is implemented by an \gls{xmpp} server or client.
+Because many drafts have not received major updates (XEP-0059, for example, has not been modified for over 10 years) these drafts are treated as defacto standards in the community, neglecting the possibility of significant changes. Sadly, not all drafts are stable.
 
-A prominent example of such a modified standard is the \gls{publish-subscribe} \gls{xep}.
-In the last few years, significant changes have been made to the standard draft
-and the concept of ``Collection Nodes'' was even extracted into a separate standard draft \cite{xep-0248}.
-In our case, the Openfire \gls{xmpp} server implemented an older version of this \gls{xep},
-not supporting all features that we planned to use in this thesis.
+A prominent example of a modified standard draft is the \gls{publish-subscribe} \gls{xep}.
+In the last few years, significant changes have been made to and the concept of ``Collection Nodes'' was even extracted into a separate standard draft \cite{xep-0248}.
+In our case, the Openfire \gls{xmpp} server implemented an older version of this \gls{xep}, not supporting all features that we planned to use in this thesis.
 
 \subsubsection{Deprecated \glspl{xep}}
 
