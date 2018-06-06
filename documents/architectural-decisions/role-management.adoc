@@ -12,7 +12,7 @@ The following aspects must be taken into account:
 
 * Usage of Collection Nodes (XEP-0248)
 * Roster Access Model which supports groups (XEP-0144)
-* Custom Roles implemented on the Broker
+* Custom Roles implemented on the broker
 
 === Decision Outcome
 
@@ -38,7 +38,7 @@ We must, however, keep in mind that the XEP is deferred and might therefore not 
 * Bad, because the roster concept aims for IM.
 * Bad, because the Roster Access Models is discouraged by the IETF XMPP-Grid standard.
 
-==== Custom Roles implemented on the Broker
+==== Custom Roles implemented on the broker
 
 * Good, because it enables maximal flexibility
 * Bad, because existing XMPP mechanisms cannot be used.
