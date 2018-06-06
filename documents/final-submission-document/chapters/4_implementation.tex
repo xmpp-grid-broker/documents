@@ -34,14 +34,14 @@ Also, debugging is more straightforward without any indirections.
 
 Requirement \ref{sec:requirement-multiple-administrators} states that multiple administrators should be able to access the application.
 
-When authenticating users with SASL EXTERNAL, the client certificate extension field `xmppAddr' is interpreted as user \gls{jid} by the \gls{xmpp} server.
+When authenticating users with \gls{sasl-external}, the client certificate extension field `xmppAddr' is interpreted as user \gls{jid} by the \gls{xmpp} server.
 
 In practice, most \gls{xmpp-grid} \gls{broker} deployments will require an HTTP proxy in front of the \gls{xmpp} server as security measure\footnote{
 More information on this can be found in Section~\fullref{sec:implemented-web-application-topology}.}.
 Usually, the HTTP proxy can also be used to serve the \gls{broker} application.
 Such an HTTP proxy might also accept multiple different client certificates.
 
-If the client connects to the \gls{xmpp} server over secure WebSockets (WSS) in combination with SASL EXTERNAL, the WebSocket URL must already be authenticated, as most browsers do not permit certificate selection on background requests\footnote{\url{https://bugs.chromium.org/p/chromium/issues/detail?id=329884\#c24}}.
+If the client connects to the \gls{xmpp} server over secure WebSockets (WSS) in combination with \gls{sasl-external}, the WebSocket URL must already be authenticated, as most browsers do not permit certificate selection on background requests\footnote{\url{https://bugs.chromium.org/p/chromium/issues/detail?id=329884\#c24}}.
 This might be achieved by serving the \gls{broker} from the same domain or by using client certificate policies\footnote{\url{https://support.google.com/chrome/a/answer/6080885?hl=en\#manage-certs}}.
 
 As the proxy intercepts the \gls{tls} connection, it must verify the client certificate sent by the browser and establish a connection to the \gls{xmpp} server using a client certificate as well.
@@ -64,7 +64,7 @@ Therefore, no such mechanism was implemented.
 
 Administrators should be able to terminate a session by using a logout function, as stated in requirement~\ref{sec:requirement-logout}.
 
-After evaluating different authentication mechanism in the architectural decision about SASL Authentication Strategy (see Appendix~\ref{sec:architectural-decisions}), we decided to use \gls{tls} client certificate authentication (as part of SASL EXTERNAL). In combination with our decision to write a web application, the web browser is responsible for the \gls{tls} authentication.
+After evaluating different authentication mechanism in the architectural decision about \gls{sasl} Authentication Strategy (see Appendix~\ref{sec:architectural-decisions}), we decided to use \gls{tls} client certificate authentication (as part of \gls{sasl-external}). In combination with our decision to write a web application, the web browser is responsible for the \gls{tls} authentication.
 
 Unfortunately, web browsers do not expose a standardised way to log out of a \gls{tls} client authenticated session \cite{practical-issues-with-tls-client}.
 To close the \gls{tls} session, administrators should close their browser window after using the \gls{xmpp-grid} \gls{broker}.
@@ -113,9 +113,9 @@ As managing consumers (via subscriptions) and providers (via consumers) are sepa
 
 As discussed in Section~\ref{sec:development-setup}, the Openfire \gls{xmpp} server was used in the development setup. This section details on the encountered limitations while implementing the \gls{xmpp-grid} \gls{broker}.
 
-\subsubsection{WebSocket SASL EXTERNAL Support}
+\subsubsection{WebSocket \gls{sasl-external} Support}
 
-At the time of this thesis, Openfire does not support SASL EXTERNAL in combination with \gls{xmpp} over WebSockets.
+At the time of this thesis, Openfire does not support \gls{sasl-external} in combination with \gls{xmpp} over WebSockets.
 Therefore, the current implementation of the \gls{xmpp-grid} \gls{broker} was developed with \gls{bosh}, but also support communication over WebSockets thanks to the stanza.io \gls{xmpp} library\footnote{\url{https://github.com/legastero/stanza.io}}.
 
 \subsubsection{Lost Updates}\label{sec:lost-updates}
