@@ -122,13 +122,18 @@ To circumvent this limitation, a HTTP reverse proxy as described in Section~\ref
 
 \subsubsection{Concurrency, Scalability and Performance}
 
-As presented in the architecture above, the broker application communicates directly from the user's web browser with the \gls{xmpp} server. By adopting this approach, the main scalability concern is on the \gls{xmpp} server. This approach is also in alignment with the \gls{xmpp} philosophy to move as much complexity as possible on the server \cite{definitive-guide-xmpp}.
+As presented in the architecture above, the \gls{broker} application communicates directly from the user's web browser with the \gls{xmpp} server.
+By adopting this approach, the main scalability concern is on the \gls{xmpp} server.
+This approach is also in alignment with the \gls{xmpp} philosophy to move as much complexity as possible on the server \cite{definitive-guide-xmpp}.
 
-Concurrency and scalability are the responsibility and speciality of the underlying \gls{xmpp} server and therefore not directly relevant for the broker application \cite{definitive-guide-xmpp}.
+Concurrency and scalability are the responsibility and speciality of the underlying \gls{xmpp} server and therefore not directly relevant for the \gls{broker} application \cite{definitive-guide-xmpp}.
 
-Regarding performance, the network is the primary source of potential slowdowns. The XMPP-Grid Broker must reduce the number of requests needed to a minimum and whenever possible execute requests in parallel. Additionally, the initial loading time of the application can be optimised.
+Regarding performance, the network is the primary source of potential slowdowns.
+The \gls{xmpp-grid} \gls{broker} must reduce the number of requests needed to a minimum and whenever possible execute requests in parallel.
+Additionally, the initial loading time of the application can be optimised.
 
-A potentially used reverse proxy must be scaled with the number of administrators. As this number is usually rather small, no extra effort is usually required.
+A potentially used reverse proxy must be scaled with the number of administrators.
+As this number is usually rather small, no extra effort is usually required.
 
 \section{Wireframes}
 
