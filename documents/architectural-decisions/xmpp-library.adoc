@@ -10,20 +10,20 @@ Primarily, the following aspects are relevant for the decision, ordered by prior
 
 === Considered Options
 
-* stanza.io
+* Stanza.io
 * strophe.js
 
 === Decision Outcome
 
 Chosen option: stanza.io, because it offers solid community support and provides a clean plugin API with minimal dependencies.
 Although strophe.js has a more active community, some plugins have dependencies on jQuery and are implemented in CoffeeScript.
-That is the main reason why we selected stanza.io over strophe.js.
+That is the main reason why we selected Stanza.io over strophe.js.
 
 To fully benefit from TypeScript, we could implement the TypeScript bindings. https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html[]
 
 === Evaluations of the Options
 
-==== stanza.io
+==== Stanza.io
 
 . Community Support
     * > 20 Contributors

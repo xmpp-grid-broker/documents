@@ -188,7 +188,7 @@ Retrospectively, we should have created more architectural decisions later on in
 
 \paragraph{Test Driven Development} was not possible the way we had anticipated it.
 
-Due to the use of Angular and stanza, the testing environment differed substantially from the actual application context.
+Due to the use of Angular and Stanza.io, the testing environment differed substantially from the actual application context.
 Therefore, it was challenging to create tests before implementing most of the actual code structure.
 A factor that also contributed to this difficulty was our lack of prior knowledge of the used frameworks.
 
@@ -267,10 +267,10 @@ Apart from improving the usability significantly, the application is also cross-
 \paragraph{Our proposed architecture} has proven to work in practice.
 Although the initial setup with a proxy server is not trivial, the architecture will pay off in practice regarding security and maintainability as reverse proxies are commonly used, and static sites are easy to maintain and upgrade.
 
-\paragraph{Angular and stanza} turned out to be a good choice for the implementation.
+\paragraph{Angular and Stanza.io} turned out to be a good choice for the implementation.
 Angular provides productive tools and a comprehensive testing infrastructure that allowed us to build an application that can be maintained efficiently in the long-term.
 
-Stanza met most of our requirements concerning \gls{xmpp} support and allowed us to extend and improve it where needed.
+Stanza.io met most of our requirements concerning \gls{xmpp} support and allowed us to extend and improve it where needed.
 
 Using Openfire as an \gls{xmpp} server backend was demanding at times due to the scanty implementation of the \gls{publish-subscribe} standard.
 Some of these shortcomings, however, revealed problematic limitations of the standard which otherwise might not have been considered.

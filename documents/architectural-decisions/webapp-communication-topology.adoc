@@ -23,7 +23,7 @@ In comparison to XMPP via WebAPI Proxy, WebSockets simplify the deployment of ne
 ====  XMPP from the Browser with WebSockets (RFC 7395)
 
 * Good, because when building an SPA-Client, it is sufficient to serve just static files which provides a higher level of security and performance.
-* Good, because actively maintained clients exists (e.g. stanza.io). Some libraries also support fallback to BOSH.
+* Good, because actively maintained clients exists (e.g. Stanza.io). Some libraries also support fallback to BOSH.
 * Good, because existing client-certificates can be re-used.
 * Good, because existing XMPP-mechanisms are used.
 * Bad, because additional server plugins must be enabled which is an additional attack vector. (Workaround: Implement a custom proxy)
