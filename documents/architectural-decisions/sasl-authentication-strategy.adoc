@@ -4,12 +4,12 @@ User Story: 1.2 Authentication: Secure XMPP Connection
 
 The https://tools.ietf.org/html/draft-ietf-mile-xmpp-grid-05#section-8.3.1[XMPP-Grid standard] states in section 8.3.1 that
 ____
-The XMPP-Grid controller MUST authenticate the XMPP-Grid Platform either using the SASL EXTERNAL mechanism or using the SASL SCRAM mechanism (with the SCRAM-SHA-256-PLUS variant being preferred over the SCRAM-SHA-256 variant and SHA-256 variants [RFC7677] being preferred over SHA-1 varients [RFC5802]).
+The XMPP-Grid controller MUST authenticate the XMPP-Grid platform either using the SASL EXTERNAL mechanism or using the SASL SCRAM mechanism (with the SCRAM-SHA-256-PLUS variant being preferred over the SCRAM-SHA-256 variant and SHA-256 variants [RFC7677] being preferred over SHA-1 varients [RFC5802]).
 ____
 
 The chosen authentication mechanism has an impact on the implementation of the broker application as well as on the XMPP server support.
 
-Note that this architectural decision has no impact on the communication between the controller and other Platforms (i.e. other XMPP clients and the XMPP server).
+Note that this architectural decision has no impact on the communication between the controller and other platforms (i.e. other XMPP clients and the XMPP server).
 
 
 === Considered Options
