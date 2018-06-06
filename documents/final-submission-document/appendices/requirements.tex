@@ -12,7 +12,7 @@ Figure~\ref{fig:requirements-overview} shows an overview of the primary use stor
     \label{fig:requirements-overview}
 \end{figure}
 
-\subsection{Authentication}
+\subsection{Authentication}\label{sec:authentication}
 \subsubsection{Login}
 
 As an Administrator,\\
@@ -69,7 +69,7 @@ As an Administrator,\\
 I want to log out\\
 so that I can terminate a session.
 
-\subsection{List Topics and Collections}
+\subsection{List Topics and Collections}\label{sec:list-topics}
 
 \subsubsection{List All Topics}\label{sec:requirement-list-all-topics}
 As an Administrator,\\
@@ -113,13 +113,13 @@ As an Administrator,\\
 I want to be able to quickly filter any set of Collections/Topics with more than 10 Items \\
 so that I can work with more than 1000 Collections and Topics more effectively.
 
-\subsection{Create a New Topic}
+\subsection{Create a New Topic}\label{sec:create-topic}
 
 As an Administrator,\\
 I want to create a new Topic on the associated Controller\\
 so that I am not tied to a fixed set of Topics.
 
-\subsection{Create a New Collection}
+\subsection{Create a New Collection}\label{sec:create-collection}
 
 As an Administrator,\\
 I want to create a new Collection on the associated Controller\\
@@ -149,13 +149,13 @@ As an Administrator in the process of creating a new Collection,\\
 I want to specify an initial set of Consumers \\
 so that I can restrict access to that Collection and provide reasonable defaults.
 
-\subsection{Delete an Existing Topic}
+\subsection{Delete an Existing Topic}\label{sec:delete-topic}
 
 As an Administrator,\\
 I want to delete an existing Topic on the associated Controller\\
 so that I can get rid of obsolete Topics.
 
-\subsection{Delete an Existing Collection}
+\subsection{Delete an Existing Collection}\label{sec:delete-collection}
 
 As an Administrator,\\
 I want to delete an existing Collection on the associated Controller\\
@@ -175,7 +175,7 @@ I want a mechanism to prevent me from deleting the wrong Collection on the assoc
 (e.g. require me to enter the name of the Collection manually).
 
 
-\subsection{Manage Topic/Collection Subscriptions}
+\subsection{Manage Topic/Collection Subscriptions}\label{sec:manage-subscriptions}
 
 \subsubsection{List Consumers}
 
@@ -209,7 +209,7 @@ As an Administrator, \\
 I want to manually subscribe a specific Consumer on a particular Topic/Collection on the associated Controller, \\
 so that I can faster setup and manage Consumers.
 
-\subsection{Manage Topic Affiliations}
+\subsection{Manage Topic Affiliations}\label{sec:manage-affiliations}
 \subsubsection{Inspect Affiliations}
 
 As an Administrator,\\
@@ -233,7 +233,7 @@ As an Administrator,\\
 I want to receive a meaningful error message when inspecting a Topic/Collection to which I have limited access \\
 so that I can quickly comprehend why the configuration options are limited.
 
-\subsection{Manage Persisted Items of a Topic}
+\subsection{Manage Persisted Items of a Topic}\label{sec:manage-persisted-items}
 \subsubsection{Inspect Persisted Items}
 
 As an Administrator,\\
@@ -277,7 +277,7 @@ I want to delete a set of persisted item that match a given criteria from a spec
 - given that this feature is supported by the associated Controller -\\
 so that I can clean up test items and remove obsolete or corrupted items.
 
-\subsection{Manage Subscription Requests (optional)}
+\subsection{Manage Subscription Requests (optional)}\label{sec:subscription-requests}
 
 \subsubsection{List Subscription Request}
 As an Administrator,\\
@@ -299,7 +299,7 @@ I want to reject a pending subscription request for a given Topic\\
 - given that this feature is supported by the associated Controller -\\
 so that I can deny user access in accordance with the \gls{xmpp} standards.
 
-\subsection{Validate Controller Configuration (optional)}
+\subsection{Validate Controller Configuration (optional)}\label{sec:validate-controller-config}
 
 \subsubsection{Validate Supported XEPs Configurations}
 As an Administrator,\\
