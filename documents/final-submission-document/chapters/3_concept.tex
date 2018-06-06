@@ -12,31 +12,31 @@
 % - Beschreibung des Entwurfs (welche Experimente/Tests wurden durchgeführt? welche Lösungsoptionen wurden verworfen?)
 % - Entwurf Benutzerschnittstelle
 
-In this chapter, we present the architecture and fundamental architectural decisions of the \gls{xmpp-grid} \gls{broker} application.
+In this chapter, we present the architecture and fundamental architectural decisions of the \gls{xmpp-grid-broker} application.
 All architectural decisions we took are fully documented in Appendix~\fullref{sec:architectural-decisions}.
 
 We illustrate the concepts and structures using the \emph{C4 Model for Software Architecture}~\cite{c4-model}.
 
 \subsection{Actors and Context}
 
-The context diagram pictured in Figure~\ref{fig:architecturecontext} shows the surrounding systems and actors that are given for the \gls{xmpp-grid} \gls{broker}, as described in the \nameref{sec:task-description}.
+The context diagram pictured in Figure~\ref{fig:architecturecontext} shows the surrounding systems and actors that are given for the \gls{xmpp-grid-broker}, as described in the \nameref{sec:task-description}.
 
 One or more administrators manage the \gls{xmpp-grid} by adding or removing \glspl{platform} and configuring \glspl{topic}.
-To minimize the required work and reduce the error-proneness, they interact with the \gls{xmpp-grid} \gls{broker}, whose implementation is the primary goal of this thesis.
+To minimize the required work and reduce the error-proneness, they interact with the \gls{xmpp-grid-broker}, whose implementation is the primary goal of this thesis.
 
-The \gls{xmpp-grid} \gls{broker} configures the \gls{xmpp-grid}, which consists of a \gls{controller} and \glspl{platform}.
+The \gls{xmpp-grid-broker} configures the \gls{xmpp-grid}, which consists of a \gls{controller} and \glspl{platform}.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{resources/architecture_context}
-\caption[Architecture Context Diagram]{Architecture diagram showing the context of the \gls{xmpp-grid} \gls{broker} application.}
+\caption[Architecture Context Diagram]{Architecture diagram showing the context of the \gls{xmpp-grid-broker} application.}
 \label{fig:architecturecontext}
 \end{figure}
 
 
 \subsection{Architectural Style and Platform}
 
-To implement the \gls{xmpp-grid} \gls{broker}, we evaluated three possible architecture styles:\hfill\\
+To implement the \gls{xmpp-grid-broker}, we evaluated three possible architecture styles:\hfill\\
 An \gls{xmpp} server plug-in (e.g. extension for the Openfire \gls{xmpp} server), an implementation with the Jabber Component Protocol~\cite{xep-0114} or an implementation acting as a regular \gls{xmpp} client ("bot").
 
 We decided to build an \gls{xmpp} client/bot, because it is not coupled to a specific \gls{xmpp} server as a server plug-in and, in contrast to the \gls{xmpp} component, supports a strong authentication mechanism with \gls{sasl}.
@@ -50,7 +50,7 @@ The proposed \gls{xmpp} client might be implemented in different ways: as rich c
 \subsection{Rich Client Application}
 
 In contrast to a rich client application, a web application has the significant advantage to be easily installable and upgradable with minimal requirements on the user's side (i.e. only requires a web browser to be executed).
-Therefore, we decided to implement the \gls{xmpp-grid} \gls{broker} as web application.
+Therefore, we decided to implement the \gls{xmpp-grid-broker} as web application.
 
 \begin{figure}[h]
 \centering
@@ -143,7 +143,7 @@ All wireframes are listed in Appendix~\fullref{sec:wireframes}.
 
 \section{Security Considerations}\label{sec:security-considerations}
 
-Regarding only the \gls{xmpp-grid} Broker application, there are three primary attack vectors:
+Regarding only the \gls{xmpp-grid-broker} application, there are three primary attack vectors:
 
 \begin{description}
     \item[Client-side attacks,] e.g. via web browser, web browser extension or malicious software on the client operating system.
@@ -177,7 +177,7 @@ To reduce the risk of these attack vectors best practices such as storing certif
 
 The use of PubSub collection nodes~\cite{xep-0248} can leak private data if not configured properly.
 Administrators must take great care when configuring collection nodes.
-The \gls{xmpp-grid} Broker should support administrators to detect such data leaks.
+The \gls{xmpp-grid-broker} should support administrators to detect such data leaks.
 
 \subsection{Client Security}
 
@@ -228,13 +228,13 @@ Angular supports these measures by treating all values (except Angular templates
 To prevent user-generated data to influence Angular templates, the offline template compiler is used. To fully utilise the security measures provided by Angular, their APIs must be used at all times instead of direct use of the DOM-APIs.~\cite{angular-security}
 
 Using Content-Security-Policy (CSP) provides additional XSS-protection mechanisms \cite{w3c-csp}.
-The \gls{xmpp-grid} Broker should document an appropriate CSP that must be supported in a production environment.
+The \gls{xmpp-grid-broker} should document an appropriate CSP that must be supported in a production environment.
 
 \subsection{Server Security}
 
 \subsubsection{Authentication and Authorisation}
 
-The \gls{xmpp} server implements most of the authentication and authorisation mechanisms used in a \gls{xmpp-grid} Broker implementation, such as storing passwords and validating certificates.
+The \gls{xmpp} server implements most of the authentication and authorisation mechanisms used in a \gls{xmpp-grid-broker} implementation, such as storing passwords and validating certificates.
 
 If BOSH or WebSockets are used, the \gls{xmpp} server should supports most HTTP security features as listed in Section~\ref{sec:web-server}. Additionally, the origin of WebSockets and BOSH requests must be verified (by either the \texttt{Origin}-Header or CORS support.~\cite{rfc6455}\cite{cross-origin-resource-sharing}
 
