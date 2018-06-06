@@ -146,8 +146,18 @@ We opened two Pull Requests with error corrections on the Stanza Github page\foo
 which were quickly merged and released.
 
 \subsection{Implementation}
-% TODO: - tests: coverage etc. (see redbackup); how many lines tests/lines code ratio
-% TODO: - Ausgewählte Implementierungsdetails/Metriken diskutieren (Bsp. Algorithmen, Datenstrukturen, Libraries, Architectural Hot Spots)
+
+
+\subsubsection{Tests}
+As described in Section~\ref{sec:testing}, good tests and a high application coverage are very important for a long-lived project.
+
+To measure our unit tests, we used the istanbul coverage tool\footnote{\url{https://gotwarlost.github.io/istanbul/}}. We achieved a total of XX.X\% line coverage, thanks to our comprehensive set of unit tests. %TODO
+
+Code coverage achieved using the integration tests are not counted into this test coverage, as such a number is difficult to compute because of the transpilation of TypeScript into JavaScript and the Angulars use of frameworks like zone.js.
+
+We wrote XX integration tests with a total of XXX lines of code. %TODO
+
+In total, we have XX test code lines per line of application code.  %TODO
 
 
 \section{Lessons Learned}
