@@ -138,6 +138,12 @@ However, there was no response until the editorial deadline of this thesis.
 
 Should the type of such fields change in the future, the flexible implementation of \gls{data-forms} in our implementation is sufficient to reflect the new form type.
 
+\subsection{Limited Error Handling}
+
+Running entirely in the browser comes with some limitations. As certificate handling is the browsers responsibility, handling errors such as wrongly chosen client certificates is impossible. When using a reverse proxy, this problem can be mitigated by returning appropriate error sites.
+
+More crucially, errors in the reverse proxy or \gls{xmpp} server configuration, such as missing client certificates, are hard if not impossible to detect on the client. Indicators for a misconfigured proxy can be HTTP status codes, which Stanza.io does sadly not expose.
+
 \section{Code Quality}
 As our \gls{xmpp-grid-broker} implementation is intended to be a maintainable, production-ready application rather than a prototype, we placed much emphasis on code quality.
 The measures taken can broadly be divided into three categories: technical measures, strategic decisions and processes.
