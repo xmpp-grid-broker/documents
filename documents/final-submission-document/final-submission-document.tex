@@ -98,16 +98,16 @@ Prof.~Dr.~Thomas~Bocek \\[1cm]
 % Context
 The IETF Managed Incident Lightweight Exchange~(MILE) working group proposes the standard ``Using XMPP for Security Information Exchange'' which describes how an XMPP based publish-subscribe mechanism (XMPP-Grid) can be used to exchange security-relevant information between network endpoints.
 
-Today, no implementation of an administration interface (XMPP-Grid broker) for XMPP-Grids exists, which is production ready and platform independent.\\
+Currently, no implementation of a production-ready and platform-independent administration interface (XMPP-Grid broker) for XMPP-Grids exists.\\
 \vspace*{1ex}
 
 %Goal
-The goal of this thesis is to design and implement an XMPP-Grid broker to configure existing controllers (XMPP server), focussing on portability, extensibility and the security aspects in a production environment.
+The goal of this thesis is to design and implement an XMPP-Grid broker to configure existing controllers (XMPP servers), focussing on portability, extensibility and the aspects of security in a production environment.
 The broker application should enable administrators to configure XMPP-Grids in a usable and productive way.\\
 \vspace*{1ex}
 
 %Result
-Our proposed architecture earmarks a purely client-side web application that communicates with the controller over WebSockets or HTTP streams (BOSH).
+Our proposed architecture earmarks a purely client-side web application that communicates with the controller via WebSockets or HTTP streams (BOSH).
 The controller is typically protected by a reverse proxy, which also hosts our application.
 User logins are performed using mutual TLS authentication to conform to the IETF standard draft.
 The resulting application is implemented in TypeScript using the Angular5 framework.\\
@@ -120,7 +120,7 @@ Additionally, persistent items of topics can be inspected and published.\\
 % Consequences
 The XMPP-Grid broker implementation incorporates the specified functionality, resulting in a robust, ready-to-use solution.
 A few supplementary helpers, such as autocomplete or filtering, could not be implemented due to limitations of the underlying XMPP standards.
-In the future, these improvements can be realised by enhancing the related XMPP standards or by specifying and implementing proprietary protocols.
+In the future, it will be possible to realise these improvements by enhancing the related XMPP standards or by specifying and implementing proprietary protocols.
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
@@ -139,33 +139,34 @@ In the future, these improvements can be realised by enhancing the related XMPP 
 % - Ausblick (optional)
 \section*{Motivation}
 %TODO: Can we just use IETF in this context?
-The IETF standard draft ``Using XMPP for Security Information Exchange'' describes how devices can exchange security-relevant information within a network, so-called ``XMPP-Grid'', using the widely adopted messaging protocol ``XMPP''.
+The IETF standard draft ``Using XMPP for Security Information Exchange'' describes how devices can exchange security-relevant information within a network, a so-called ``XMPP-Grid'', using the widely adopted messaging protocol ``XMPP''.
 Such security-relevant information can be used to take protective measures automatically, e.g. to block devices running outdated software.
 
-An administration interface, in the standard draft referred to as XMPP-Grid broker, is used to configure an XMPP-Grid.
+An administration interface, referred to as XMPP-Grid broker in the standard draft, is used to configure an XMPP-Grid.
 Today, no such XMPP-Grid broker exists that is production ready and cross-platform.
 
 \section*{Project Goals, Approach}
 
 The goal of this thesis is to engineer an XMPP-Grid broker that allows administrators to configure XMPP-Grids in a usable and productive way.
-The resulting application should only depend on the underlying standards and not on specific implementations to support the further standardisation process.
+The resulting application should depend only on the underlying standards and not on specific implementations to support the further standardisation process.
 
 A comprehensive analysis of the underlying standards is carried out in the first part of this thesis.
-Particular attention is given to portability, extensibility and security aspects in a production environment.
-By this analysis, a systematic selection of possible architecture options is executed in the form of architectural decisions.
+Particular attention is given to portability, extensibility and aspects of security in a production environment.
+This analysis enables a systematic selection of possible architecture options to be executed in the form of architectural decisions.
 
 \section*{Results}
 
-The resulting implementation enables administrators to create and configure communication topics, apprehend the hierarchy of the underlying XMPP-Grid and manage permissions of network participants.
-Additionally, persisted messages can be inspected and published on communication topic.
+The resulting implementation enables administrators to create and configure communication topics, apprehend the hierarchy of the underlying XMPP-Grid and manage the permissions of network participants.
+Additionally, persistent messages can be inspected and published on communication topics.
 
-The XMPP-Grid broker is implemented as Angular5 web application that connects directly from the web browser to the XMPP-Grid. Secure communication is assured by the use of mutual authentication over TLS.
+The XMPP-Grid broker is implemented as an Angular5 web application that connects directly from the web browser to the XMPP-Grid. Secure communication is assured by the use of mutual authentication via TLS.
 
 \section*{Prospects}
 
-The XMPP-Grid broker implementation incorporates the specified functionality, demonstrating that the architecture is robust.
+The XMPP-Grid broker implementation incorporates the specified functionality, resulting in a robust, ready-to-use solution.
+A few supplementary helpers, such as autocomplete or filtering, could not be implemented due to limitations of the underlying XMPP standards.
 
-In the future, the XMPP-Grid broker might be extended by usability features like autocomplete or filtering. Currently, these features could not be implemented efficiently due to missing support in the underlying XMPP standard, which would have to be extended.
+In the future, it will be possible to realise these improvements by enhancing the related XMPP standards or by specifying and implementing proprietary protocols.
 
 We hope that our work contributes to the further standardisation of XMPP-Grids and that it becomes an established standard used in practical industry applications.
 
