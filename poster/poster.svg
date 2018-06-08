@@ -473,11 +473,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.31819805"
-     inkscape:cx="1682.0322"
-     inkscape:cy="1573.1029"
+     inkscape:zoom="0.45"
+     inkscape:cx="2600.0294"
+     inkscape:cy="1611.249"
      inkscape:document-units="mm"
-     inkscape:current-layer="g3556"
+     inkscape:current-layer="g6443-8-6-5"
      showgrid="false"
      showguides="false"
      inkscape:guide-bbox="true"
@@ -665,7 +665,8 @@
      id="g1395"
      inkscape:groupmode="layer"
      inkscape:label="Header"
-     transform="translate(0,1927.5589)">
+     transform="translate(0,1927.5589)"
+     sodipodi:insensitive="true">
     <g
        id="g1285"
        inkscape:label="ink_ext_XXXXXX"
@@ -1185,12 +1186,12 @@
     <image
        sodipodi:absref="/home/fhauser/ba/documents/poster/portraits/raphael.jpg"
        xlink:href="portraits/raphael.jpg"
-       y="-1821.2598"
-       x="1652.0408"
-       id="image3399"
-       preserveAspectRatio="none"
+       width="248.03149"
        height="248.03149"
-       width="248.03149" />
+       preserveAspectRatio="none"
+       id="image3399"
+       x="1652.0408"
+       y="-1821.2598" />
     <flowRoot
        xml:space="preserve"
        id="flowRoot3448"
@@ -1208,12 +1209,12 @@
          style="font-size:60px;text-align:center;text-anchor:middle">Raphael Zimmermann</flowPara></flowRoot>    <image
        sodipodi:absref="/home/fhauser/ba/documents/poster/portraits/fabian.jpg"
        xlink:href="portraits/fabian.jpg"
-       y="-1821.2598"
-       x="2315.6501"
-       id="image3445"
-       preserveAspectRatio="none"
+       width="248.03149"
        height="248.03149"
-       width="248.03149" />
+       preserveAspectRatio="none"
+       id="image3445"
+       x="2315.6501"
+       y="-1821.2598" />
     <flowRoot
        xml:space="preserve"
        id="flowRoot3448-3"
@@ -1239,13 +1240,12 @@
            height="12.570787"
            x="2383.3428"
            y="520.64685" /></flowRegion><flowPara
-         id="flowPara6661"></flowPara></flowRoot>  </g>
+         id="flowPara6661" /></flowRoot>  </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Body"
-     style="display:inline"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <g
        inkscape:groupmode="layer"
        id="layer3"
@@ -1260,12 +1260,12 @@
           <polygon
              style="fill:#dd0031"
              class="st0"
-             points="125,230 203.9,186.3 218.1,63.2 125,30 31.9,63.2 46.1,186.3 "
+             points="218.1,63.2 125,30 31.9,63.2 46.1,186.3 125,230 203.9,186.3 "
              id="polygon6518" />
           <polygon
              style="fill:#c3002f"
              class="st1"
-             points="125,52.1 125,153.4 125,230 203.9,186.3 218.1,63.2 125,30 125,52.2 "
+             points="125,230 203.9,186.3 218.1,63.2 125,30 125,52.2 125,52.1 125,153.4 "
              id="polygon6520" />
           <path
              style="fill:#ffffff"
@@ -1334,7 +1334,7 @@
              transform="matrix(0.93749997,0,0,0.93749997,2947.3827,1414.1204)">
             <polygon
                id="polygon3703"
-               points="128,0 256,0 256,128 256,256 128,256 0,256 0,128 0,0 "
+               points="256,128 256,256 128,256 0,256 0,128 0,0 128,0 256,0 "
                transform="matrix(1,0,0,-1,0,256)"
                style="fill:#007acc" />
             <path
@@ -1501,6 +1501,7 @@
                 <xhtml:div
                    style="display:inline-block;text-align:inherit;text-decoration:inherit;">
                   <xhtml:span>Intrusion Detection<xhtml:br />
+
 
 System</xhtml:span>
                 </xhtml:div>
@@ -1846,6 +1847,7 @@ System</xhtml:span>
                   <xhtml:div
                      style="display:inline-block;text-align:inherit;text-decoration:inherit;">XMPP Server <xhtml:br />
 
+
 (PubSub) </xhtml:div>
                 </xhtml:div>
               </foreignObject>
@@ -1990,12 +1992,12 @@ System</xhtml:span>
          id="flowPara3987" /></flowRoot>    <image
        sodipodi:absref="/home/fhauser/ba/documents/poster/screenshot.png"
        xlink:href="screenshot.png"
-       width="1281.4937"
-       height="765.47882"
-       preserveAspectRatio="none"
-       id="image4062"
+       y="2108.1433"
        x="106.29925"
-       y="2108.1433" />
+       id="image4062"
+       preserveAspectRatio="none"
+       height="765.47882"
+       width="1281.4937" />
     <flowRoot
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;line-height:125%;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="flowRoot5238"
@@ -2611,7 +2613,7 @@ System</xhtml:span>
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:66.66666412px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
                ry="0" /></flowRegion><flowPara
              id="flowPara6599-0"
-             style="font-size:60px">Usually communicates to XMPP server over a proxy, which also hosts the broker</flowPara></flowRoot>      </g>
+             style="font-size:60px">Broker usually communicates with XMPP ser-ver over a proxy, which also hosts the broker</flowPara></flowRoot>      </g>
     </g>
   </g>
   <style
