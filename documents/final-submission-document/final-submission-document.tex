@@ -96,28 +96,34 @@ Prof.~Dr.~Thomas~Bocek \\[1cm]
 \begin{abstract}
 \addchaptertocentry{\abstractname}% Add the abstract to the table of contents
 % Context
-The IETF Managed Incident Lightweight Exchange~(MILE) working group proposes the standard ``Using XMPP for Security Information Exchange'' which describes how an XMPP based publish-subscribe mechanism (XMPP-Grid) can be used to exchange security-relevant information between network endpoints.
+The IETF Managed Incident Lightweight Exchange~(MILE) working group proposes the standard ``Using XMPP for Security Information Exchange'' which describes how an XMPP based publish-subscribe mechanism (XMPP-Grid) can be used to exchange security-relevant information between network endpoints.\\
+\vspace*{1ex}
 
+\noindent
 Currently, no implementation of a production-ready and platform-independent administration interface (XMPP-Grid broker) for XMPP-Grids exists.\\
 \vspace*{1ex}
 
 %Goal
+\noindent
 The goal of this thesis is to design and implement an XMPP-Grid broker to configure existing controllers (XMPP servers), focusing on portability, extensibility and the aspects of security in a production environment.
 The broker application should enable administrators to configure XMPP-Grids in a usable and productive way.\\
 \vspace*{1ex}
 
 %Result
+\noindent
 Our proposed architecture earmarks a purely client-side web application that communicates with the controller via WebSockets or HTTP streams (BOSH).
 The controller is typically protected by a reverse proxy, which also hosts our application.
 User logins are performed using mutual TLS authentication to conform to the IETF standard draft.
 The resulting application is implemented in TypeScript using the Angular5 framework.\\
 \vspace*{1ex}
 
+\noindent
 The resulting implementation enables administrators to create and configure communication topics, apprehend the underlying hierarchy and manage permissions.
 Additionally, persistent items of topics can be inspected and published.\\
 \vspace*{1ex}
 
 % Consequences
+\noindent
 The XMPP-Grid broker implementation incorporates the specified functionality, resulting in a robust, ready-to-use solution.
 A few supplementary helpers, such as autocomplete or filtering, could not be implemented due to limitations of the underlying XMPP standards.
 In the future, it will be possible to realise these improvements by enhancing the related XMPP standards or by specifying and implementing proprietary protocols.
@@ -138,7 +144,6 @@ In the future, it will be possible to realise these improvements by enhancing th
 % - Ergebnisse
 % - Ausblick (optional)
 \section*{Motivation}
-%TODO: Can we just use IETF in this context?
 The IETF standard draft ``Using XMPP for Security Information Exchange'' describes how devices can exchange security-relevant information within a network, a so-called ``XMPP-Grid'', using the widely adopted messaging protocol ``XMPP''.
 Such security-relevant information can be used to take protective measures automatically, e.g. to block devices running outdated software.
 
@@ -167,8 +172,6 @@ The XMPP-Grid broker implementation incorporates the specified functionality, re
 A few supplementary helpers, such as autocomplete or filtering, could not be implemented due to limitations of the underlying XMPP standards.
 
 In the future, it will be possible to realise these improvements by enhancing the related XMPP standards or by specifying and implementing proprietary protocols.
-
-We hope that our work contributes to the further standardisation of XMPP-Grids and that it becomes an established standard used in practical industry applications.
 
 %----------------------------------------------------------------------------------------
 %	ACKNOWLEDGEMENTS
