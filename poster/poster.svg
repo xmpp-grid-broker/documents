@@ -473,13 +473,13 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.45"
-     inkscape:cx="2600.0294"
-     inkscape:cy="1611.249"
+     inkscape:zoom="0.6363961"
+     inkscape:cx="2939.6744"
+     inkscape:cy="2075.2304"
      inkscape:document-units="mm"
-     inkscape:current-layer="g6443-8-6-5"
+     inkscape:current-layer="g1395"
      showgrid="false"
-     showguides="false"
+     showguides="true"
      inkscape:guide-bbox="true"
      inkscape:window-width="2560"
      inkscape:window-height="1382"
@@ -1123,7 +1123,7 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:76.42862701px;line-height:1.25;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';stroke-width:1.22285795px">Department of Computer Science</tspan></text>
       <g
          id="g2003"
-         transform="translate(3.8601684,98.148326)">
+         transform="matrix(0.97457876,0,0,0.97457876,74.346888,62.105241)">
         <g
            id="g1871"
            transform="translate(0,2.6272705)">
@@ -1150,7 +1150,7 @@
                id="tspan1313-6"
                x="3266.1636"
                y="-1506.8555"
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:62.50000381px;line-height:2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';stroke-width:0.92406243px">Prof. Dr. Andeas Steffen</tspan></text>
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:62.50000381px;line-height:2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';stroke-width:0.92406243px">Prof. Dr. Andreas Steffen</tspan></text>
         </g>
         <g
            transform="translate(-3.3774344,88.020563)"
@@ -1245,7 +1245,8 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Body"
-     style="display:inline">
+     style="display:inline"
+     sodipodi:insensitive="true">
     <g
        inkscape:groupmode="layer"
        id="layer3"
@@ -1260,12 +1261,12 @@
           <polygon
              style="fill:#dd0031"
              class="st0"
-             points="218.1,63.2 125,30 31.9,63.2 46.1,186.3 125,230 203.9,186.3 "
+             points="31.9,63.2 46.1,186.3 125,230 203.9,186.3 218.1,63.2 125,30 "
              id="polygon6518" />
           <polygon
              style="fill:#c3002f"
              class="st1"
-             points="125,230 203.9,186.3 218.1,63.2 125,30 125,52.2 125,52.1 125,153.4 "
+             points="218.1,63.2 125,30 125,52.2 125,52.1 125,153.4 125,230 203.9,186.3 "
              id="polygon6520" />
           <path
              style="fill:#ffffff"
@@ -1334,7 +1335,7 @@
              transform="matrix(0.93749997,0,0,0.93749997,2947.3827,1414.1204)">
             <polygon
                id="polygon3703"
-               points="256,128 256,256 128,256 0,256 0,128 0,0 128,0 256,0 "
+               points="128,256 0,256 0,128 0,0 128,0 256,0 256,128 256,256 "
                transform="matrix(1,0,0,-1,0,256)"
                style="fill:#007acc" />
             <path
@@ -1501,6 +1502,8 @@
                 <xhtml:div
                    style="display:inline-block;text-align:inherit;text-decoration:inherit;">
                   <xhtml:span>Intrusion Detection<xhtml:br />
+
+
 
 
 System</xhtml:span>
@@ -1846,6 +1849,8 @@ System</xhtml:span>
                    style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 74px; white-space: nowrap; overflow-wrap: normal; text-align: right;">
                   <xhtml:div
                      style="display:inline-block;text-align:inherit;text-decoration:inherit;">XMPP Server <xhtml:br />
+
+
 
 
 (PubSub) </xhtml:div>
