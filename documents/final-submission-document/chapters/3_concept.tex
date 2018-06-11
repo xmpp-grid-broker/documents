@@ -120,7 +120,7 @@ Currently, not all \gls{xmpp} servers that implement BOSH and Websockets also im
 (e.g.\ Openfire currently supports \gls{tls} authentication with BOSH but not with Websockets\footnote{\url{https://github.com/igniterealtime/Openfire/blob/02c22e/src/java/org/jivesoftware/openfire/websocket/OpenfireWebSocketServlet.java}}).
 To circumvent this limitation, a HTTP reverse proxy as described in Section~\ref{sec:implemented-web-application-topology} might be used, which handles the \gls{tls} authentication.
 
-\subsubsection{Concurrency, Scalability and Performance}
+\subsection{Concurrency, Scalability and Performance}
 
 As presented in the architecture above, the \gls{broker} application communicates directly from the user's web browser with the \gls{xmpp} server.
 By adopting this approach, the main scalability concern is on the \gls{xmpp} server.
