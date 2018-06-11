@@ -12,55 +12,209 @@
     <div class="reveal">
         <div class="slides">
             <section>
-                <h2>Study project XMPP-Grid Broker</h2>
-                <h3>Final Presentation</h3>
-                <small>Raphael Zimmermann</small>
-                <small>Fabian Hauser</small>
+                <img src="../logo.svg" style="border: none;box-shadow: none;height: 10vh;" />
+                <h2>XMPP-Grid Broker</h2>
+                <h3>Interim Presentation</h3>
+                <small>Raphael Zimmermann &amp; Fabian Hauser</small>
             </section>
             <section>
-                <h2>Slide 1</h2>
-                <pre><code class="cs">
-        using System.IO.Compression;
-        namespace MyApplication
-        {
-            [Obsolete(&quot;...&quot;)]
-            class Program : IInterface
-            {
-                public static List&lt;int&gt; JustDoIt(int count)
-                {
-                    Console.WriteLine($&quot;Hello {Name}!&quot;);
-                    return new List&lt;int&gt;(new int[] { 1, 2, 3 })
-                }
-            }
-        }
-    </code></pre>
+                <h2>🔭 Outline</h2>
+                <ol>
+                    <li>Problem Description</li>
+                    <li>Our Solution (Demo)</li>
+                    <li>Our Focus</li>
+                    <li>Conclusion</li>
+                    <li>Questions</li>
+                </ol>
+            </section>
+
+            <section>
+                <h3>🏋 1. The Problem</h3>
+                <img src="resources/explanatory-graphics-problem.svg" alt="problem explanatory graphic" style="height: 50vh;">
+            </section>
+            <section>
+                <h3>📚 IETF Draft</h3>
+                <div>
+                    <small>"Using XMPP for Security Information Exchange"</small>
+                </div>
+                <img src="resources/explanatory-graphics-ietf-draft.svg" alt="ietf draft explanatory graphic" style="height: 50vh;">
+            </section>
+            <section>
+                <h3>🎉 XMPP-Grid Broker</h3>
+                <img src="resources/explanatory-graphics-xmpp-grid-broker.svg" alt="xmpp-grid-broker explanatory graphic" style="height: 50vh;">
+            </section>
+            <section>
+                <h3>🗃 Task Description</h3>
+                <ul style="list-style-type: none;">
+                    <li class="fragment highlight-current-red">✓ Understand the Standards (IETF, XEPs)</li>
+                    <li>✓ Collect Requirements</li>
+                    <li>✓ Architecture</li>
+                    <li>✓ Technology Selection</li>
+                    <li>✓ Implementation</li>
+                </ul>
+                <p>
+                    <small>
+                        <a href="https://xmpp-grid-broker.github.io/documents/final-submission-document.pdf">Full Task Description</a>
+                    </small>
+                </p>
+            </section>
+            <section>
+                <h3>Understanding ALL the Standards</h3>
+                <div class="standard-container">
+                    <div class="standard-box fragment highlight-current-red"></div>
+                </div>
+            </section>
+            <section>
+                <h3>🗃 Task Description</h3>
+                <ul style="list-style-type: none;">
+                    <li>✓ Understand the Standards (IETF, XEPs)</li>
+                    <li class="fragment highlight-current-red">✓ Collect Requirements</li>
+                    <li class="fragment highlight-current-red">✓ Architecture</li>
+                    <li class="fragment highlight-current-red">✓ Technology Selection</li>
+                    <li class="fragment highlight-current-red">✓ Implementation</li>
+                </ul>
+            </section>
+            <section>
+                <h2>🏗 2. Our Solution</h2>
+                <img src="resources/development-setup-uml.svg" alt="xmpp-grid-broker explanatory graphic">
+            </section>
+            <section>
+                <h3>💻 Demo</h3>
+                <p>
+                    <small>
+                        <a href="https://xgb.localhost.redbackup.org/" target="_blank">🚀 Launch</a>
+                    </small>
+                </p>
+                <!-- 
+                    # Drehbuch
+                    
+                    ## Vorbereitung
+
+                    * Neues Topic "Topic #1"
+                    * Einstellungen -> Persist items & Persiste 100 items
+                    * > 50 persisted Items erstellen
+                    * => Branch mit OpenFire
+                    
+                    ## Effektive Vorführung
+
+                    * Neue Collection erzeugen "Coll #1"
+                    * Zeige Subtopics und Parent Tab (beide leer)
+                    * Config:
+                    ** Children: Topic #1
+                    ** Parent: Root #1
+                    * Subtopic Tab ist nicht mehr leer -> Gehe zu Topic #1
+                    * Zeige Parent Tab
+                    * Zeige Persisted Items
+                    ** Und Paging
+                    ** Zeige XML Content
+                    ** Zeige Purge
+                    * evtl. affiliations
+                 -->
+            </section>
+            <section>
+                <h1>🔬</h1>
+                <h2>3. Our Focus</h2>
+            </section>
+            <section>
+                <h3>🎯 Design Goals</h3>
+                <ul style="list-style-type: none;">
+                    <li class="fragment highlight-current-red">🔒 Security</li>
+                    <li class="fragment highlight-current-red">🖥️ Cross-Plattform</li>
+                    <li class="fragment highlight-current-red">⏲️ Long-Term Maintainability</li>
+                    <li class="fragment highlight-current-red">🐳 Reproducibility</li>
+                </ul>
+            </section>
+            <section>
+                <h3>👷 Software Engineering</h3>
+            </section>
+            <section>
+                <h3>📊 Testability</h3>
+                <canvas id="locChart"></canvas>
+                324 Test Cases
+            </section>
+            <section>
+                <h3>♼ Continuous Integration</h3>
+                <p>
+                    <small>Also with documentation</small>
+                </p>
+                <img src="resources/ci-builds.png" alt="Number of Builds on Travis">
+            </section>
+            <section>
+                <h3>🔍 Code Reviews</h3>
+                <p>122 Pull-Requests on GitHub</p>
+                <img src="resources/review-screenshot.png" alt="An example review" style="max-height: 80vh;">
+            </section>
+            <section>
+                <h3>🏗 Architectural Decisions</h3>
+                <img src="resources/architectural-decisions.png" alt="Archtectural Decisions PDF" style="max-height: 80vh;">
 
             </section>
             <section>
-                <h2>Slide $$e=mc^2$$</h2>
+                <h2>💭 4. Conclusion</h2>
             </section>
             <section>
-                <section>Vertical Slide 1</section>
-                <section>
-                    Vertical Slide 2
-                </section>
+                <h3>🔧 Technical</h3>
+                <ul>
+                    <li class="fragment highlight-current-red">XMPP PubSub is   still a draft</li>
+                    <li class="fragment highlight-current-red">SASL EXTERNAL + Browser = 💔</li>
+                    <li class="fragment highlight-current-red">Angular + TDD = 💔</li>
+                </ul>
             </section>
-
+            <section>
+                <h3>🎓 Non-Technical Personal</h3>
+                <ul>
+                    <li class="fragment highlight-current-red">Interesting Project</li>
+                    <li class="fragment highlight-current-red">Working with many standards (drafts)</li>
+                    <li class="fragment highlight-current-red">Most requirements implemented*</li>
+                </ul>
+                <br>
+                <p><small><small>* See final submission document for details</small></small></p>
+            </section>
+            <section>
+                <h2>❓ 5. Questions</h2>
+            </section>
         </div>
     </div>
 
     <script src="js/reveal.js"></script>
     <script src="js/head.load.min.js" charset="utf-8"></script>
+    <script src="js/chartjs-2.7.2.min.js"></script>
     <script>
         Reveal.initialize({
             controls: false,
             slideNumber: true,
-            transition: 'slide', // none/fade/slide/convex/concave/zoom
+            transition: 'none', // none/fade/slide/convex/concave/zoom
+            history: true,
+            viewDistance: 10,
             dependencies: [
                 { src: 'js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
                 { src: 'js/plugin/math/math.js', async: true },
             ],
         });
+
+        var locChart = new Chart(document.getElementById('locChart'), {
+            type: 'horizontalBar',
+            data: {
+                labels: ['Unit Tests', 'Integration Tests', 'Application Code', 'HTML + CSS'],
+                datasets: [{
+                    label: "Lines of Code",
+                    data: [5347, 768, 2060, 763],
+                    backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(255, 99, 132, 0.2)"],
+                }],
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks:
+                            { beginAtZero: true }
+                    }]
+                },
+                legend: {
+                    display: false
+                }
+            }
+        });
+
     </script>
 
 </body>
