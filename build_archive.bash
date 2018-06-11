@@ -3,6 +3,7 @@ set -euo pipefail
 
 SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
 TARGET_DIRECTORY="$SCRIPT_PATH/export"
+ARCHIVE_NAME="xmpp-grid-broker.zip"
 
 function is_in_path {
   set +e
@@ -44,8 +45,12 @@ function copy {
 is_in_path zip
 
 if [ -d "$TARGET_DIRECTORY" ]; then
-  echo "cleaning up..."
-  rm -r "$TARGET_DIRECTORY"
+  echo "cleaning up target directory..."
+  rm -rf "$TARGET_DIRECTORY"
+fi
+if [ -d "$ARCHIVE_NAME" ]; then
+  echo "cleaning up archive..."
+  rm "$ARCHIVE_NAME"
 fi
 
 echo "bootstrapping directories..."
@@ -73,9 +78,11 @@ cp -r "documents/final-submission-document/final-submission-document.pdf" "$TARG
 copy "project-management"
 copy "presentations"
 
-# TODO: Clone the source code repos (when it exists)
-# git clone git@github.com:xmpp-grid-broker/<REPO-NAME-HERE>.git "$TARGET_DIRECTORY/sources"
+echo "Freshly cloningo repos from remote..."
+mkdir -p "$TARGET_DIRECTORY/sources/"
+git clone https://github.com/xmpp-grid-broker/xmpp-grid-broker.git "$TARGET_DIRECTORY/sources/xmpp-grid-broker"
+git clone https://github.com/xmpp-grid-broker/xmpp-grid-broker.git "$TARGET_DIRECTORY/sources/documents"
 
 echo "creating archive..."
 cd "$TARGET_DIRECTORY"
-zip -r "../xmpp-grid-broker.zip" "./"
+zip -r "../$ARCHIVE_NAME" "./"
