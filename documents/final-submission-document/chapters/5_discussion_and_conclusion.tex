@@ -3,11 +3,13 @@
 \epigraph{Wisdom is not a product of schooling but of the lifelong attempt to acquire it.}{Albert Einstein}
 \section{Achieved Result}
 
-In this section, we describe the archived results during this thesis and how we managed to reach them.
+In this section, we describe the achieved results during this thesis and how we managed to reach them.
 
 \subsection{Implemented Requirements}
 
-As listed in Table~\ref{tab:implemented-requirements}, we implemented about 86\% of the overall requirements that we had planned to accomplish. The five remaining requirements could not be implemented due to technical constraints as is discussed in depth in Section~\fullref{encountered-problems}. To compensate for it, we implemented two optional requirements.
+As listed in table~\ref{tab:implemented-requirements}, we implemented about 86\% of the overall requirements that we had planned to accomplish.
+The five remaining requirements could not be implemented due to technical constraints as discussed in depth in section~\fullref{encountered-problems}.
+To compensate for it, we implemented two optional requirements.
 
 \begin{table}[H]
     \begin{tabu}{X l}
@@ -75,68 +77,66 @@ As listed in Table~\ref{tab:implemented-requirements}, we implemented about 86\%
 \subsection{Architecture}
 
 \subsubsection{Concurrency, Scalability and Performance}
-Due to our chosen architecture style (see Section~\fullref{sec:architecture}),
+Due to our chosen architecture style (see section~\fullref{sec:architecture}),
 concurrency, scalability and performance are primarily the concern of the \gls{xmpp} server.
 
-Our implementation submits queries to the \gls{xmpp} server in parallel whenever possible and reduces redundant queries via data sharing. However, due to limitations in some \glspl{xep}, it was not possible to implement all requirements efficiently.
-More details on these limitations can be found in Section~\fullref{encountered-problems}.
+Our implementation submits queries to the \gls{xmpp} server in parallel whenever possible and reduces redundant queries via data sharing.
 
 \subsubsection{Usability}
-Usability was an priority in our application and we implemented several features for ease of use.
+Usability was a priority in our application and we implemented several features for ease of use.
 A good example is the use of so-called bread-crumbs, which allow fast and direct navigation through different application levels.
 
 We regret that it was not possible to conduct a usability test with a typical user during the thesis.
 
 \subsubsection{Security}
-In an expert review of our architecture, a good security level was attested.
+In an expert review of our architecture, a high level of security was attested.
 
-To prevent risks due to misconfiguration or missing features of the \gls{xmpp} server or reverse proxy, we provide additional documentation alongside the application, containing recommendations for administrators. More details on this can be found in Section~\ref{sec:security-risk-mitigation} and `docs' folder in the source code repository.
+To prevent risks due to misconfiguration or missing features of the \gls{xmpp} server or reverse proxy, we added additional documentation alongside the application, containing recommendations for administrators.
+More details on this can be found in section~\fullref{sec:security-risk-mitigation} and the docs folder in the source code repository.
 
 \subsubsection{Architectural Decisions}
-In this Section, we reflect on our \nameref{sec:architectural-decisions} and how they turned out.
+In this section, we reflect on our \nameref{sec:architectural-decisions} and how they turned out.
 
 \paragraph{Architecture Style}
 Due to limitations of the \glspl{xep}, features like autocomplete and filtering could not be implemented.
-This would probably have worked better with a server plug-in but would have resulted in close coupling to a specific \gls{xmpp} server.
+This would probably have worked better with a server plug-in, but would have resulted in close coupling to a specific \gls{xmpp} server.
 
 \paragraph{Platform}
-The implementation of a web application proved as portable and flexible as intended.
+The implementation of a web application proved portable and flexible as intended.
 
-\paragraph{\gls{sasl} Authentication Strategy}
+\paragraph{SASL Authentication Strategy}
 The use of \gls{sasl-external} proved to be suboptimal.
-We discovered that due to policies in current web browsers and our chosen architecture, a reverse-proxy is nearly always required. The reason for this is that the \gls{xmpp} WebSocket or \gls{bosh} endpoint must already be authenticated.
+We discovered that due to the chosen architecture and policies in current web browsers, a reverse-proxy is nearly always required (see section~\fullref{sec:limitations-of-requirement-multiple-administrators}).
 
 In hindsight, to use \gls{sasl-scram} with username and password would probably have eased the development and deployment of the application.
 
-More details on this issue can be found in Section~\ref{sec:limitations-of-requirement-multiple-administrators}.
-
 \paragraph{Role Management}
-We are convinced that the decision to utilise collection nodes for role management is an ideal solution.
+We are convinced that the decision to model role management with collection nodes is an ideal solution.
 However, we were not able to verify this functionality, as Openfire has not implemented collection nodes according to the latest version of the \gls{publish-subscribe} \gls{xep} draft \cite{xep-0248}.
 
 \paragraph{Web Application Communication Topology}
 In general, using \gls{xmpp} directly from the web browser worked well.
 However, due to the incomplete WebSocket implementation in Openfire and the browsers policies concerning \gls{sasl-external}, we had to use BOSH and an HTTP proxy in front of the \gls{xmpp} server.
-See Section~\fullref{encountered-problems} for more details.
+See section~\fullref{encountered-problems} for more details.
 
 \paragraph{Frontend Framework}
 The decision to use Angular with TypeScript in combination with the IntelliJ IDEA IDE has turned out to be an efficient and clean solution.
 
 \paragraph{UI Library}
-The decision for the spectre.css library provided us with a reasonable compromise regarding productivity and long-term maintainability.
+The decision for the Spectre.css\footnote{\url{https://picturepan2.github.io/spectre/}} library provided us with a reasonable compromise regarding productivity and long-term maintainability.
 
 \paragraph{Frontend Structure}
-To split the application into multiple modules worked well and helped to strucutre the code.
-We had to slightly modify the initial layering and design in the course of the project.
+To split the application into multiple modules worked well and helped to structure the code.
+We had to slightly modify the initial design in the course of the project, to address the increasing complexity.
 
-\paragraph{\gls{xmpp} Client Library}
+\paragraph{XMPP Client Library}
 The Stanza.io \gls{xmpp} library has served its purpose.
-We opened two pull requests with error corrections on Github \footnote{See \url{https://github.com/otalk/jxt-xmpp/pull/23} and \url{https://github.com/legastero/stanza.io/pull/264}}, which were quickly merged and released.
+We opened two pull requests with error corrections on GitHub\footnote{See \url{https://github.com/otalk/jxt-xmpp/pull/23} and \url{https://github.com/legastero/stanza.io/pull/264}}, which were quickly merged and released.
 
 \subsection{Implementation}
 
 \subsubsection{Tests}
-As described in Section~\ref{sec:testing}, good tests and a solid test coverage are very important for a long-lived project.
+As described in section~\fullref{sec:testing}, good tests and a solid test coverage are important for a long-lived project.
 
 To measure unit tests coverage, we used the istanbul coverage tool\footnote{\url{https://gotwarlost.github.io/istanbul/}}. We achieved a total of XX.X\% line coverage, thanks to our comprehensive set of unit tests. %TODO (also: line coverage is the least informative)
 
@@ -155,15 +155,15 @@ In this section, we describe unexpected project events and the lessons we learne
 
 \subsubsection{Issues and Time Management}
 
-In general, our issue management and time tracking with JIRA\footnote{\url{https://www.atlassian.com/software/jira}} and our Scrum-based approached worked very well.
+In general, our issue management and time tracking with JIRA\footnote{\url{https://www.atlassian.com/software/jira}} and our Scrum-based approach worked very well.
 
 While discussing time management issues in retrospective 3, we noted that we significantly underestimated the required time for several implementation issues.
-Many implementation issues were also relatively large, in most cases estimated four to hours or more hours.
+Many implementation issues were quite comprehensive, in some cases estimated at more than hours.
 
 To address these estimation issues, we decided to create smaller issues and list tangible subtasks in the form of check-lists.
 A check-list extension for JIRA facilitated this task.
 
-Despite the smaller task sizes, estimating and specifying tasks precisely remained a challenge.
+Despite the reduced task sizes, estimating and specifying tasks precisely remained a challenge.
 Our limited experience with the Angular framework and the \gls{xmpp} ecosystem were undoubtedly large contributing factors.
 
 \subsubsection{Documentation}
@@ -173,39 +173,38 @@ To simplify this process, we also set up continuous integration builds which alw
 We think that this approach led to a high overall documentation standard.
 
 It was difficult to summarise the technical background and describe our architecture due to the different terminology used by the \gls{xmpp} and IETF standards.
-We discuss this in Section~\ref{lessons-learned-standards}.
+We discuss this in section~\fullref{lessons-learned-standards}.
 
-\subsection{Decisions}
-\subsubsection{Architecture}
+\subsection{Architectural Decisions}
 
-Architecture-relevant decisions were carried out and justified in the form of architectural design decisions \cite{architectural-design-decisions} (see Appendix~\ref{sec:architectural-decisions}).
+Architecture-relevant decisions were carried out and justified in the form of architectural design decisions \cite{architectural-design-decisions} (see appendix~\fullref{sec:architectural-decisions}).
 
 This approach helped us to systematically document influences and plan the architecture in a structured way.
 
-Retrospectively, we should have created more architectural decisions later on in the project, e.g. concerning barrel imports or to establish layering guidelines.
+Retrospectively, we should have made more architectural decisions later on in the project, e.g. concerning barrel imports or to establish layering guidelines.
 
 \subsection{Development, Frameworks and Tooling}
 
-\paragraph{Test Driven Development} was not possible the way we had anticipated it.
+\paragraph{Test Driven Development} was not possible in the way we had anticipated.
 
-Due to the use of Angular and Stanza.io, the testing environment differed substantially from the actual application context.
+Due to the use of Angular, the testing environment differed substantially from the actual application context.
 Therefore, it was challenging to create tests before implementing most of the actual code structure.
-A factor that also contributed to this difficulty was our lack of prior knowledge of the used frameworks.
+A factor that also contributed to this difficulty was our prior lack of Angular expertise.
 
-Nevertheless, writing many tests proved to be very valuable during the project.
-It helped us be confident during development and will be useful to future developers expanding the application.
+Nevertheless, writing many tests proved to be very valuable.
+It helped us to be confident during development and will be useful to future developers extending the application.
 
-\paragraph{The Docker Development Environment} has proven itself to be valuable for a quick start in development.
+\paragraph{The Docker Development Environment} has proven to be valuable.
 It provides developers with a very productive way to test modifications in a realistic yet portable environment.
 
 \paragraph{Compodoc,} the tool we used to document and visualise the structure of our Angular application,
-did not add as much additional value to the project documentation as we had hoped.
+did not add as much value to the project documentation as we had hoped.
 
-We assume that Compodoc is be better suited for Angular libraries than applications.
+We assume that Compodoc is better suited for Angular libraries than applications.
 
 \subsection{Standards}\label{lessons-learned-standards}
 
-During the course of this thesis, we learned several lessons about working with standards and in which way these standards posed challenges or supported our work.
+During the course of this thesis, we learned valuable lessons about working with standards and about the way these standards pose challenges or support development.
 
 \subsubsection{Terminology}
 
@@ -216,13 +215,13 @@ It also makes the use of a consistent terminology impossible, as some concepts f
 \subsubsection{\glspl{xep} Draft Versions}
 Many of the used \gls{xmpp} Extension Procotols (\glspl{xep}) are not yet final but still in the draft phase.
 Most notably, these include the Publish-Subscribe (XEP-0060 and XEP-0248), Result Set Management (XEP-0059) and BOSH (XEP-0206) \glspl{xep}.
-Only the core \glspl{xep}, such as Service Discovery (XEP-0030) and Data Forms (XEP-0004), are declared as final.
+Only the core \glspl{xep}, such as Service Discovery (XEP-0030) and Data Forms (XEP-0004), are declared final.
 
 Because many drafts have not received major updates (XEP-0059, for example, has not been modified for over 10 years) these drafts are treated as de facto standards in the community, neglecting the possibility of significant changes.
-Sadly, not all drafts are stable.
+Unfortunately, not all drafts are stable.
 
 A prominent example of a modified standard draft is the \gls{publish-subscribe} \gls{xep}.
-In the last few years, significant changes have been made to and the concept of ``Collection Nodes'' was even extracted into a separate standard draft \cite{xep-0248}.
+In the last few years, significant changes have been made and the concept of ``Collection Nodes'' was even extracted into a separate standard draft \cite{xep-0248}.
 In our case, the Openfire \gls{xmpp} server implemented an older version of this \gls{xep}, not supporting all features that we planned to use in this thesis.
 
 \subsubsection{Deprecated \glspl{xep}}
@@ -230,42 +229,42 @@ In our case, the Openfire \gls{xmpp} server implemented an older version of this
 Many \glspl{xep} build on functionality specified by other, cross-referenced \glspl{xep}.
 This is problematic, especially as some referenced standards are not active anymore.
 
-An example for this is the PubSub Collection Nodes \gls{xep} \cite{xep-0248}, which currently has a \emph{deferred} status, but is still used in the latest version of the \gls{publish-subscribe} \gls{xep} \cite{xep-0060} which currently has a \emph{draft} status.
+An example is the PubSub Collection Nodes \gls{xep} \cite{xep-0248}, which currently has a \emph{deferred} status, but is still used in the latest version of the \gls{publish-subscribe} \gls{xep} \cite{xep-0060}, which currently has a \emph{draft} status.
 
-\subsubsection{Non-binding Standardisation}
+\subsubsection{Non-Binding Standardisation}
 
-Many features required for the implementation of an \gls{xmpp-grid-broker} are marked as optional in the corresponding \glspl{xep}.
-To some extent, the availability of these features can be queried using the Feature Discovery mechanism \cite{xep-0030}, but not all optional features are exposed using Feature Discovery.
+Many features required for the \gls{xmpp-grid-broker} implementation are marked as optional in the corresponding \glspl{xep}.
+To some extent, the availability of these features can be queried using the feature discovery mechanism \cite{xep-0030}, but not all optional features are exposed in this way.
 
-The \gls{publish-subscribe} \gls{xep} \cite{xep-0060} contains multiple such optional features.
+The \gls{publish-subscribe} \gls{xep} contains multiple such optional features.
 
 Additionally, some features are not explicitly specified in the according \gls{xep}, but rather implicitly demonstrated using examples.
 
-These limitations make it difficult, to rely on the availability of some features described in these \glspl{xep}
+These limitations make it difficult to rely on the availability of some features described in these \glspl{xep}.
 
 
 \section{Future work}
-The result of our bachelor thesis is a working application, ready to prove itself in practice.
+The result of our bachelor thesis is a fully functional application, ready to prove itself in production.
 Even though all specified functionality was implemented, the user experience can still be further improved.
 
 Conducting usability tests by observing administrators who manage \glspl{xmpp-grid} can reveal significant insights~\cite{krug:dont-make-me-think}.
 
 To further improve the user experience, auto-complete for users and topics might be helpful.
-As already discussed in Section~\fullref{encountered-problems}, this cannot be implemented efficiently due to shortcomings in the \gls{publish-subscribe} \gls{xep}.
-One option would be to get involved and propose the required functionality in the \gls{xep} standardisation process.
+As already discussed in section~\fullref{encountered-problems}, this cannot be implemented efficiently due to shortcomings in the \gls{publish-subscribe} \gls{xep}.
+One option would be to propose the required functionality in the \gls{xep} standardisation process.
 A more short-term solution would be to tie the implementation closer to a specific \gls{xmpp} server that supports these features over proprietary APIs.
 Alternatively, an unofficial \gls{xep} including corresponding server plugins can be specified and implemented.
 
-Working around shortcomings of the \gls{xmpp} server implementations, lost updates for example (See Section~\fullref{sec:lost-updates}), could advance the usability as well.
-However, It must be noted that adding more logic in the client contradicts the \gls{xmpp} philosophy that encourages simple client and complex server implementations \cite{definitive-guide-xmpp}.
+Working around shortcomings of the \gls{xmpp} server implementations, lost updates for example (see section~\fullref{sec:lost-updates}), could advance the usability as well.
+However, it must be noted that adding more logic in the client contradicts the \gls{xmpp} philosophy that encourages simple clients and complex server implementations~\cite{definitive-guide-xmpp}.
 
 \section{Conclusion}
-\paragraph{The \gls{xmpp-grid-broker} application} enables administrators to configure \glspl{xmpp-grid} in a usable and productive way.
+\paragraph{The XMPP-Grid broker application} enables administrators to configure \glspl{xmpp-grid} in a straight-forward and productive way.
 The modern web interface facilitates obtaining a comprehensive view of the configuration and structure of an \gls{xmpp-grid}.
 Apart from improving the usability significantly, the application is also cross-platform and not tied to a particular \gls{xmpp} server implementation.
 
 \paragraph{Our proposed architecture} has proven to work in practice.
-Although the initial setup with a proxy server is not trivial, the architecture will pay off in practice regarding security and maintainability as reverse proxies are commonly used, and static sites are easy to maintain and upgrade.
+Although the initial setup with a proxy server is complex, the architecture will pay off in practice regarding security and maintainability as reverse proxies are commonly used, and static sites are easy to maintain and upgrade.
 
 \paragraph{Angular and Stanza.io} turned out to be a good choice for the implementation.
 Angular provides productive tools and a comprehensive testing infrastructure that allowed us to build an application that can be maintained efficiently in the long-term.
@@ -278,8 +277,11 @@ Some of these shortcomings, however, revealed problematic limitations of the sta
 \paragraph{The Bachelor Thesis} went well from our point of view.
 We were able to satisfy all critical requirements despite some limitations in the underlying standards and \gls{xmpp} server hindered our implementation.
 
+The Bachelor Thesis went well from our point of view.
+Not only were we able to reach all major requirements, but also deliver a robust and ready-to-use solution.
+
 \paragraph{In the future,} the application must prove itself in practice.
-Based on feedback from users in the industry, the usability and feature set can further be refined.
+Based on feedback from users in industry, the usability and feature set can further be refined.
 
 To support some features efficiently, the implementation must either be bound to a specific \gls{xmpp} server or new extensions to the \gls{xmpp} standard must be proposed.
 
