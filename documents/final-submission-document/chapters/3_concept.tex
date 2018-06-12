@@ -2,27 +2,19 @@
 \chapter{Concept} % Lösungsentwurf 
 \epigraph{Perfection (in design) is achieved not when there is nothing more to add,\\but rather when there is nothing more to take away.}{Antoine de Saint-Exupery}
 
-% (Lösungsvarianten und deren Beurteilung, Variantenentscheid, Konzept, Entwurf)
-% See arch. decisions
-
 \section{Architecture}\label{sec:architecture}
-% - Architekturdiagramme inkl. Layering (C4, UML)
-% - mit Entscheidungen und begründung
-% - wie Qualitätsattribute sichergestellt wurden
-% - Beschreibung des Entwurfs (welche Experimente/Tests wurden durchgeführt? welche Lösungsoptionen wurden verworfen?)
-% - Entwurf Benutzerschnittstelle
 
-In this chapter, we present the architecture and fundamental architectural decisions of the \gls{xmpp-grid-broker} application.
+In this section, we present the architecture and fundamental architectural decisions of the \gls{xmpp-grid-broker} application.
 All architectural decisions we took are fully documented in Appendix~\fullref{sec:architectural-decisions}.
 
-We illustrate the concepts and structures using the \emph{C4 Model for Software Architecture}~\cite{c4-model}.
+We illustrate the concepts and structures using the C4 Model for Software Architecture~\cite{c4-model}.
 
 \subsection{Actors and Context}
 
-The context diagram pictured in Figure~\ref{fig:architecturecontext} shows the surrounding systems and actors that are given for the \gls{xmpp-grid-broker}, as described in the \nameref{sec:task-description}.
+The context diagram pictured in figure~\ref{fig:architecturecontext} shows the actors and surrounding systems that are given for the \gls{xmpp-grid-broker}, as described in the \nameref{sec:task-description}.
 
 One or more administrators manage the \gls{xmpp-grid} by adding or removing \glspl{platform} and configuring \glspl{topic}.
-To minimize the required work and reduce the error-proneness, they interact with the \gls{xmpp-grid-broker}, whose implementation is the primary goal of this thesis.
+To minimize the required work and reduce the error-proneness, administrators interact with the \gls{xmpp-grid-broker}.
 
 The \gls{xmpp-grid-broker} configures the \gls{xmpp-grid}, which consists of a \gls{controller} and \glspl{platform}.
 
@@ -34,23 +26,23 @@ The \gls{xmpp-grid-broker} configures the \gls{xmpp-grid}, which consists of a \
 \end{figure}
 
 
-\subsection{Architectural Style and Platform}
+\subsection{Architectural Style}
 
 To implement the \gls{xmpp-grid-broker}, we evaluated three possible architecture styles:\hfill\\
-An \gls{xmpp} server plug-in (e.g. extension for the Openfire \gls{xmpp} server), an implementation with the Jabber Component Protocol~\cite{xep-0114} or an implementation acting as a regular \gls{xmpp} client ("bot").
+An \gls{xmpp} server plug-in (e.g. extension for the Openfire \gls{xmpp} server), an implementation using the Jabber Component Protocol~\cite{xep-0114} and an implementation acting as a regular \gls{xmpp} client ("bot").
 
-We decided to build an \gls{xmpp} client/bot, because it is not coupled to a specific \gls{xmpp} server as a server plug-in and, in contrast to the \gls{xmpp} component, supports a strong authentication mechanism with \gls{sasl}.
+We decided to build an \gls{xmpp} client/bot because, unlike a server plugin, it is not coupled to a specific \gls{xmpp} server.
+In contrast to the \gls{xmpp} component, \gls{xmpp} clients support strong authentication mechanisms with \gls{sasl}.
 
-The full decision argument is documented in Appendix~\fullref{sec:architectural-decisions}.
+The full decision argument is documented in appendix~\fullref{sec:architectural-decisions}.
 
-\subsubsection{Platform}
+\subsection{Platform}
 
-The proposed \gls{xmpp} client might be implemented in different ways: as rich client application with a command line or graphical interface as illustrated in Figure~\ref{fig:architecturecontainerrichclient}, or in the form of a web application, illustrated in Figures~\ref{fig:architecturecontainerwebapplication} and \ref{fig:architecturecontainerwebproxy}.
+The proposed \gls{xmpp} client might be implemented in different ways: as rich client application with a command line or graphical interface as illustrated in figure~\ref{fig:architecturecontainerrichclient}, and in the form of a web application, illustrated in figures~\ref{fig:architecturecontainerwebapplication} and \ref{fig:architecturecontainerwebproxy}.
 
-\subsection{Rich Client Application}
+\subsubsection{Rich Client Application}
 
-In contrast to a rich client application, a web application has the significant advantage to be easily installable and upgradable with minimal requirements on the user's side (i.e. only requires a web browser to be executed).
-Therefore, we decided to implement the \gls{xmpp-grid-broker} as web application.
+The idea of a rich client application is to communicate directly from a graphical desktop application with the \gls{xmpp-grid}, as illustrated in figure~\ref{fig:architecturecontainerrichclient}.
 
 \begin{figure}[h]
 \centering
@@ -59,10 +51,14 @@ Therefore, we decided to implement the \gls{xmpp-grid-broker} as web application
 \label{fig:architecturecontainerrichclient}
 \end{figure}
 
-\subsection{Web Application Topology}
+\subsubsection{Web Application}
 
-To manage the \gls{controller} from our interface, we considered the implementation of either directly connecting to the \gls{xmpp} server over WebSockets~\cite{rfc7395} or HTTP (BOSH~\cite{xep-0124}), or to communicate indirectly with the \gls{xmpp} server via custom web API proxy.
-These topologies are illustrated in Figure~\ref{fig:architecturecontainerwebapplication} and Figure~\ref{fig:architecturecontainerwebproxy}.
+In contrast to a rich client application, a web application has the significant advantage to be easily installable and upgradable with minimal interaction on the user's side (i.e. only requires a web browser to be executed).
+
+Therefore, we decided to implement the \gls{xmpp-grid-broker} as web application.
+
+To manage the \gls{controller} from the \gls{broker} interface, we considered either directly connecting to the \gls{xmpp} server over WebSockets~\cite{rfc7395} or HTTP (BOSH~\cite{xep-0124}), and the indirect communication with the \gls{xmpp} server via custom web API proxy.
+These topologies are illustrated in figure~\ref{fig:architecturecontainerwebapplication} and figure~\ref{fig:architecturecontainerwebproxy}.
 
 \begin{figure}[h]
 \centering
@@ -80,7 +76,7 @@ Another approach would be the implementation of a custom WebSocket-to-\gls{xmpp}
 If such a proxy is implemented transparently, the client is not aware of the server limitations.
 Therefore, the client implementation is no different from direct communication with an \gls{xmpp} server.
 
-As the `\gls{xmpp} over WebSocket' protocol differs from the normal \gls{xmpp} protocol, a transparent proxy implementation would inevitably need to hold the connection state and implement custom keep-alive mechanisms~\cite{rfc7395}.
+As the \gls{xmpp} over WebSocket protocol differs from the normal \gls{xmpp} protocol, a transparent proxy implementation would inevitably need to hold the connection state and implement custom keep-alive mechanisms~\cite{rfc7395}.
 
 \begin{figure}[H]
 \centering
@@ -91,9 +87,9 @@ As the `\gls{xmpp} over WebSocket' protocol differs from the normal \gls{xmpp} p
 
 \subsubsection{Implemented Web Application Topology}\label{sec:implemented-web-application-topology}
 
-As described in the according architectural decision (see Appendix~\ref{sec:architectural-decisions}), we decided on the direct connection via WebSockets, if possible with a fallback to BOSH.
+As described in the according architectural decision (see appendix~\ref{sec:architectural-decisions}), we decided on the option that connects directly via WebSockets, if possible with a fallback to \gls{bosh}.
 This topology simplifies the implementation and deployment of the application in comparison to a web API proxy.
-WebSockets offer stateful TCP-sockets to exchange data with the \gls{xmpp} server in contrast to BOSH, which uses HTTP long polling to emulate a bidirectional stream and is, therefore, less efficient~\cite{xep-0124}.
+WebSockets offer stateful TCP-sockets to exchange data with \gls{xmpp} servers in contrast to \gls{bosh}, which uses HTTP long polling to emulate bidirectional streams and is, therefore, less efficient~\cite{xep-0124}.
 
 To increase the \gls{xmpp} server security, an HTTP reverse proxy (e.g.\ nginx\footnote{\url{https://nginx.org/}}) between the client and the \gls{xmpp} server might be added as shown in Figure~\ref{fig:architecturecontainerweb-http-proxy}.
 The reverse proxy might also be used to serve the web application and provide authentication (see Section~\ref{sec:authentication-and-connection-security}) and security features (see Section~\ref{sec:ops-security}).
@@ -111,14 +107,14 @@ The reverse proxy might also be used to serve the web application and provide au
 \gls{xmpp} uses \gls{sasl} as authentication mechanism~\cite{rfc6120}.
 To authenticate against the \gls{xmpp-grid} \gls{controller}, we decided to use the \gls{sasl-external}~\cite{rfc4422} mechanism whenever possible to authenticate the client.
 
-We decided against the alternative \gls{sasl} authentication method, \gls{sasl-scram}~\cite{rfc7677}, that is also recommended by in the \gls{xmpp-grid} standard~\cite{ietf-mile-xmpp-grid-05}.
-As described in the corresponding architectural decision (Appendix~\ref{sec:architectural-decisions}), the main reason for \gls{sasl-external} is its higher level of security and and its relatively simple scaling capabilities.
+We decided against \gls{sasl-scram}~\cite{rfc7677}, the alternative authentication method that is also recommended by in the \gls{xmpp-grid-standard}.
+As described in the corresponding architectural decision (Appendix~\fullref{sec:architectural-decisions}), the main reason for \gls{sasl-external} is its higher level of security and and its relatively simple scaling capabilities.
 
-\gls{sasl-external} implies that the authentication takes place on a lower layer than the actual \gls{xmpp} protocol. In our case, this implies authentication over \gls{tls}, i.e.~X.509 end-user certificates as specified in RFC6120~\cite{rfc6120}.
+\gls{sasl-external} implies that the authentication takes place on a lower layer than the actual \gls{xmpp} protocol. In our case, this implies authentication over \gls{tls}, i.e.~X.509 user certificates as specified in RFC6120~\cite{rfc6120}.
 
 Currently, not all \gls{xmpp} servers that implement BOSH and Websockets also implement \gls{sasl-external} with \gls{tls} authentication
 (e.g.\ Openfire currently supports \gls{tls} authentication with BOSH but not with Websockets\footnote{\url{https://github.com/igniterealtime/Openfire/blob/02c22e/src/java/org/jivesoftware/openfire/websocket/OpenfireWebSocketServlet.java}}).
-To circumvent this limitation, a HTTP reverse proxy as described in Section~\ref{sec:implemented-web-application-topology} might be used, which handles the \gls{tls} authentication.
+To circumvent this limitation, an HTTP reverse proxy (see section~\fullref{sec:implemented-web-application-topology}) might be used to handle \gls{tls} authentication.
 
 \subsection{Concurrency, Scalability and Performance}
 
@@ -129,7 +125,7 @@ This approach is also in alignment with the \gls{xmpp} philosophy to move as muc
 Concurrency and scalability are the responsibility and speciality of the underlying \gls{xmpp} server and therefore not directly relevant for the \gls{broker} application \cite{definitive-guide-xmpp}.
 
 Regarding performance, the network is the primary source of potential slowdowns.
-The \gls{xmpp-grid} \gls{broker} must reduce the number of requests needed to a minimum and whenever possible execute requests in parallel.
+The \gls{xmpp-grid-broker} must reduce the number of requests needed to a minimum and whenever possible execute requests in parallel.
 Additionally, the initial loading time of the application can be optimised.
 
 A potentially used reverse proxy must be scaled with the number of administrators.
@@ -143,17 +139,17 @@ All wireframes are listed in Appendix~\fullref{sec:wireframes}.
 
 \section{Security Considerations}\label{sec:security-considerations}
 
-Regarding only the \gls{xmpp-grid-broker} application, there are three primary attack vectors:
+Regarding the \gls{xmpp-grid-broker} application, there are three primary attack vectors:
 
 \begin{description}
-    \item[Client-side attacks,] e.g. via web browser, web browser extension or malicious software on the client operating system.
-    \item[Web server attacks,] e.g. misconfiguration or insufficient hardening.
-    \item[\gls{xmpp} server attacks,] e.g. misconfiguration or insufficient hardening.
+    \item[Client-Side Attacks,] e.g. via web browser, web browser extension or malicious software on the client operating system.
+    \item[Web Server Attacks,] e.g. misconfiguration or insufficient hardening.
+    \item[\gls{xmpp} Server Attacks,] e.g. misconfiguration or insufficient hardening.
 \end{description}
 
-Details on all attack vectors are discussed in the following sections.
+Details on all these attack vectors are discussed in the following sections.
 
-\subsection{The \gls{xmpp} Protocol}
+\subsection{The XMPP Protocol}
 
 An in-depth security analysis of the \gls{xmpp} protocol is beyond the scope of this thesis.
 A detailed discussion of security concerns can be found in the \gls{xmpp} specification~\cite{rfc6120} and most XEPs~\cite{xep-0060}\cite{xep-0248}.
@@ -161,7 +157,7 @@ In this section, we highlight the most crucial security concerns relevant to thi
 
 \subsubsection{Transport Security}
 
-\gls{xmpp} reuses many established and standardised mechanisms to improve the protocol security.
+\gls{xmpp} reuses many established and standardised mechanisms to improve protocol security.
 By layering protocols in a strict manner (\gls{xmpp} with \gls{sasl} over \gls{tls} over TCP), many attack scenarios such as replaying or eavesdropping are minimised.
 The protocol also requires clients and servers to validate the certificates of the other party.~\cite{rfc7590}\cite{rfc6120}
 
@@ -175,7 +171,7 @@ To reduce the risk of these attack vectors best practices such as storing certif
 
 \subsubsection{PubSub Collection Nodes}
 
-The use of PubSub Collection Nodes~\cite{xep-0248} can leak private data if not configured properly.
+The use of \gls{xep}-0248 PubSub Collection Nodes~\cite{xep-0248} can leak private data if not configured properly.
 Administrators must take great care when configuring collection nodes.
 The \gls{xmpp-grid-broker} should support administrators to detect such data leaks.
 
@@ -184,8 +180,8 @@ The \gls{xmpp-grid-broker} should support administrators to detect such data lea
 Because the web gives rise to many potential security concerns, above all a modern web browser is critical for client security.
 Legacy web browsers can not provide an adequate level of security.~\cite{firefox-update-security}
 
-Most web browser support extension mechanisms which have rather significant capabilities.
-The usage of untrusted or uncertified browser extensions is strictly discouraged.~\cite{browser-extension-security}
+Most web browsers support extension mechanisms which have rather significant capabilities~\cite{browser-extension-security}.
+The usage of untrusted and uncertified browser extensions is strictly discouraged.
 
 The same applies to the client operating system and all software installed on clients.
 
@@ -194,7 +190,7 @@ The same applies to the client operating system and all software installed on cl
 Regarding authentication and authorisation, the \gls{xmpp} server does most of the heavy lifting such as storing passwords and validating certificates.
 On the client side, the web browser does most of that work too (i.e. validating certificates).
 
-The responsibility of our client implementation is to establish a secure channel to the \gls{xmpp} server and warn the user if a problem occurs during this process (e.g. invalid server certificate).
+The responsibility of a client implementation is to establish a secure channel to the \gls{xmpp} server and warn the user if a problem occurs during this process (e.g. invalid server certificate).
 
 \subsubsection{Angular Framework}
 
@@ -203,7 +199,7 @@ Angular is built with security in mind and is adopted in the industry in securit
 Therefore, Angular receives frequent security updates and is well tested.
 It's unlikely that a similar security level might be reached with plain JavaScript in a reasonable implementation timespan.
 
-On their project website, Angular recommends the following three best practices regarding security~\cite{angular-security}.
+On the project website, three best practices regarding security are recommended~\cite{angular-security}.
 
 \begin{itemize}
     \item Keep up with the latest Angular library releases.
@@ -225,7 +221,7 @@ To protect against malicious payloads, the received XML messages must be validat
 \Glspl{persisted-item} can contain arbitrary content and must therefore be escaped before rendering to prevent Cross-Site Scripting (XSS) attacks.
 
 Angular supports these measures by treating all values (except Angular templates) as untrusted by default.
-To prevent user-generated data to influence Angular templates, the offline template compiler is used. To fully utilise the security measures provided by Angular, their APIs must be used at all times instead of direct use of the DOM-APIs.~\cite{angular-security}
+To prevent user-generated data to influence Angular templates, the offline template compiler is used. To fully utilise the security measures provided by Angular, official APIs must be used at all times instead of direct use of the DOM-APIs.~\cite{angular-security}
 
 Using Content-Security-Policy (CSP) provides additional XSS-protection mechanisms \cite{w3c-csp}.
 The \gls{xmpp-grid-broker} should document an appropriate CSP that must be supported in a production environment.
@@ -236,29 +232,30 @@ The \gls{xmpp-grid-broker} should document an appropriate CSP that must be suppo
 
 The \gls{xmpp} server implements most of the authentication and authorisation mechanisms used in an \gls{xmpp-grid-broker} implementation, such as storing passwords and validating certificates.
 
-If BOSH or WebSockets are used, the \gls{xmpp} server should supports most HTTP security features as listed in Section~\ref{sec:web-server}. Additionally, the origin of WebSockets and BOSH requests must be verified (by either the \texttt{Origin}-Header or CORS support.~\cite{rfc6455}\cite{cross-origin-resource-sharing}
+If \gls{bosh} or WebSockets are used, the \gls{xmpp} server should support most HTTP security features as listed in section~\ref{sec:web-server}. Additionally, the origin of WebSockets and \gls{bosh} requests must be verified (by either the Origin header or CORS support.~\cite{rfc6455}\cite{cross-origin-resource-sharing}
 
 The web server hosting the client application has no active authentication or authorisation responsibility, except to ensure the integrity and authenticity of the application, i.e. by using \gls{tls}.
 
 \subsubsection{Web Server}\label{sec:web-server}
 
 To minify security concerns on the server side, we decided to keep the application files static (See \fullref{sec:architectural-decisions}).
-This allows operators to use any standard web server (e.g. NGINX, Apache, etc.) to serve the client.
+This allows operators to use any standard web server (e.g. nginx, Apache, etc.) to serve the client.
 Securing such standard web servers is common knowledge for operators and is beyond the scope of this analysis.
 
 In addition to these general best practices, we explicitly recommend the following security measures to improve client security:
 
 \begin{itemize}
     \item Enable Content Security Policy (CSP)~\cite{w3c-csp}.
-    \item Use secure \gls{tls} configurations such as secure Cipher Suites, strictly Honor Cipher Order, HSTS, HPKP and OCSP Stapling\footnote{\url{https://wiki.mozilla.org/Security/Server_Side_TLS}}.
+    \item Use secure \gls{tls} configurations such as secure cipher suites, strictly honor cipher order, HSTS, HPKP and OCSP Stapling\cite{mozilla-tls-recommendations}.
 \end{itemize}
 
+These recommendations should be documented in the application installation guide.
 
-\subsubsection{\gls{xmpp} Server}
+\subsubsection{XMPP Server}
 
 \gls{xmpp} server security depends on the chosen implementation and the application domain.
 Discussing \gls{xmpp} server security in detail is beyond the scope of this thesis.
-Operators should adhere to the security recommendations of their \gls{xmpp} server vendor and follow general security best practices as outlined by the \gls{xmpp-grid} standard~\cite{ietf-mile-xmpp-grid-05}.
+Operators should adhere to the security recommendations of their \gls{xmpp} server vendor and follow general security best practices as outlined by the \gls{xmpp-grid-standard}.
 
 \section{Security Risk Mitigation}\label{sec:security-risk-mitigation}
 
@@ -267,9 +264,9 @@ To mitigate the security risks as discussed in Section~\ref{sec:security-conside
 \subsection{Development}
 
 \begin{enumerate}
-    \item Conduct Code Reviews for all newly added code using GitHub pull requests and a security checklist (See next section)
+    \item Conduct code reviews for all newly added code using GitHub pull requests and a security checklist (See next section)
     \item Conduct an architectural analysis with an industry expert\footnote{Was carried out on 2018-04-16, see \fullref{sec:meeting-minutes}.}
-    \item Automate build and release processes to minimise the time required to patch.
+    \item Automate build and release processes to minimise the time required to patch
     \item Stay as close to the default Angular setup to simplify further updates
     \item Avoid additional third-party dependencies whenever possible
 \end{enumerate}
@@ -280,16 +277,16 @@ To mitigate the security risks as discussed in Section~\ref{sec:security-conside
     \item No customizations are made to the Angular version
     \item No direct access to DOM-APIs
     \item APIs marked in the documentation as ``Security Risk'' are \emph{not} used
-    \item No usage of any Methods starting with \texttt{bypassSecurityTrust}.
-    \item The client is fully Content Security Policy compliant
+    \item No usage of any methods starting with \code{bypassSecurityTrust}
+    \item The client is fully Content Security Policy (CSP) compliant
     \item The client is fully Same Origin Policy (SOP) / Cross-Origin Resource Sharing (CORS) compliant
-    \item Only compile templates offline using the offline template compiler.
+    \item Only compile templates with the offline template compiler (AOT)
     \item User input is always escaped using the mechanisms provided by the framework (eg. Angular Forms)
     \item \gls{xmpp} messages are validated to contain only the specified result-types
 \end{itemize}
 
-\subsection{Operations Security}\label{sec:ops-security}
 
+\subsection{Operations Security}\label{sec:ops-security}
 
 Administrators must configure the surrounding systems correctly to mitigate certain security risks.
 To support administrators, we recommend the following measures.
@@ -301,7 +298,7 @@ The recommended values are directly documented in the project source code reposi
 
 \subsubsection{Verify Origin}
 The \gls{xmpp} server should be configured to only accept WebSockets/BOSH connections from the origin of the \gls{xmpp-grid-broker} application.
-The `Origin' Header sent by the web browser must match the domain on which the \gls{xmpp-grid-broker} application is hosted.
+The Origin header sent by the web browser must match the domain on which the \gls{xmpp-grid-broker} application is hosted.
 Otherwise, connection requests must be ignored.
-If an \gls{xmpp} server does not support this feature, a proxy server should be used to verify the `Origin' header.
-In the provided development setup, this security feature is not implemented.
+If an \gls{xmpp} server does not support this feature, a proxy server should be used to verify the Origin header.
+In the provided development setup, this security feature must not necessarily be implemented.
