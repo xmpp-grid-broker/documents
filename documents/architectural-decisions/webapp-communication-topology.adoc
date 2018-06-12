@@ -7,7 +7,7 @@ As we decided to build a web application, it remains open how the communication 
 * *XMPP from the Browser with WebSockets (RFC 7395)* +
 Directly speak XMPP over a WebSocket connection with the XMPP server.
 * *XMPP from the Browser with BOSH (XEP-0206)* +
-Directly speak XMPP over a HTTP long polling connection with the XMPP server.
+Directly speak XMPP over an HTTP long polling connection with the XMPP server.
 * *XMPP via WebAPI Proxy* +
 Create a standalone application that proxies the XMPP server and exposes a web-API to the client (e.g. a RESTful API).
 
