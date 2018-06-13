@@ -138,14 +138,69 @@ We opened two pull requests with error corrections on GitHub\footnote{See \url{h
 \subsubsection{Tests}
 As described in section~\fullref{sec:testing}, good tests and a solid test coverage are important for a long-lived project.
 
-To measure unit tests coverage, we used the istanbul coverage tool\footnote{\url{https://gotwarlost.github.io/istanbul/}}. We achieved a total of XX.X\% line coverage, thanks to our comprehensive set of unit tests. %TODO (also: line coverage is the least informative)
+To measure unit tests coverage, we used the istanbul coverage tool\footnote{\url{https://gotwarlost.github.io/istanbul/}}. We achieved a total of 93.69\% statement coverage, thanks to our comprehensive set of unit tests.
 
 The code coverage achieved using the integration tests is not included in the test coverage, as no such tooling exists.
 
-We wrote XX integration tests with a total of XXX lines of code. %TODO
+In total, we have approximately 2.25 test code lines per line of application code.
 
-In total, we have XX test code lines per line of application code.  %TODO ~> Rewrite when the exact numbers and judge the result
+\begin{table}[H]
+    \begin{tabu}{X l}
+        \toprule
+        \textbf{Category}
+        & \textbf{Lines of Code}\\
+        \midrule
 
+        Typescript Application Code
+        & 2'060 \\
+
+        HTML Application Code
+        & 600 \\
+
+        CSS Application Code
+        & 163 \\
+        \midrule
+        \textbf{Total Application Code}
+        & \textbf{2'823} \\
+        \midrule
+
+        Unit Test Code
+        & 5'347 \\
+
+        Integration Test Code
+        & 994 \\
+
+        \midrule
+        \textbf{Total Test Code}
+        & \textbf{6'341} \\
+        \midrule
+
+    \end{tabu}
+    \caption{Lines of code by category excluding third-party code.}
+    \label{tab:lines-of-code}
+\end{table}
+
+\begin{table}[H]
+    \begin{tabu}{X l}
+        \toprule
+        Test Category
+        & Number of Tests\\
+        \midrule
+
+        Unit Tests
+        & 305 \\
+
+        Integration Tests
+        & 19 \\
+
+        \midrule
+        \textbf{Total}
+        & \textbf{324} \\
+
+    \end{tabu}
+    \caption{Number of tests per test category.}
+    \label{tab:lines-of-code}
+\end{table}
 
 \section{Lessons Learned}
 
