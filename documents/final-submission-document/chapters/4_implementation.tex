@@ -183,7 +183,7 @@ Following the principles of the test pyramid \cite{Cohn:2009:SAS:1667109}, we wr
 \subsubsection{Unit Tests}
 
 Testing the Angular services was rather straightforward with the aid of Jasmine and its mocking functionality.
-We deliberately abstained from using Angulars testing framework for services to keep tests simple and comprehensible.
+We deliberately abstained from using Angular's testing framework for services to keep tests simple and comprehensible.
 Since the primary task of most services is to send and receive \gls{xmpp}-commands, integration and end-to-end tests are better suited in most cases.
 
 Writing tests for Angular components was not always essential, as actual rendering in a web browser is required.
@@ -192,7 +192,7 @@ Because of this indirection, tests are conceptually not identical with the actua
 
 \subsubsection{End-to-End Tests}
 
-The end-to-end tests were written using Protractor\footnote{\url{http://www.protractortest.org/}}, Angulars official end-to-end testing framework.
+The end-to-end tests were written using Protractor\footnote{\url{http://www.protractortest.org/}}, Angular's official end-to-end testing framework.
 Protractor starts the development setup and verifies the application using a remote-controlled browser.
 
 End-to-end tests are usually more challenging to write than unit tests, as different types of race conditions and varying delays to backend applications can occur.
