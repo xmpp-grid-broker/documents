@@ -116,7 +116,7 @@ However, we were not able to verify this functionality, as Openfire has not impl
 
 \paragraph{Web Application Communication Topology}
 In general, using \gls{xmpp} directly from the web browser worked well.
-However, due to the incomplete WebSocket implementation in Openfire and the browsers policies concerning \gls{sasl-external}, we had to use BOSH and an HTTP proxy in front of the \gls{xmpp} server.
+However, due to the incomplete WebSocket implementation in Openfire and the browsers policies concerning \gls{sasl-external}, we had to use \gls{bosh} and an \gls{http} proxy in front of the \gls{xmpp} server.
 See section~\fullref{encountered-problems} for more details.
 
 \paragraph{Frontend Framework}
@@ -199,7 +199,7 @@ In total, we have approximately 2.25 test code lines per line of application cod
         \midrule
     \end{tabu}
     \caption{Number of tests per test category.}
-    \label{tab:lines-of-code}
+    \label{tab:no-of-tests}
 \end{table}
 
 \section{Lessons Learned}
@@ -269,7 +269,7 @@ It also makes the use of a consistent terminology impossible, as some concepts f
 
 \subsubsection{\glspl{xep} Draft Versions}
 Many of the used \gls{xmpp} Extension Procotols (\glspl{xep}) are not yet final but still in the draft phase.
-Most notably, these include the Publish-Subscribe (XEP-0060 and XEP-0248), Result Set Management (XEP-0059) and BOSH (XEP-0206) \glspl{xep}.
+Most notably, these include the Publish-Subscribe (XEP-0060 and XEP-0248), Result Set Management (XEP-0059) and \gls{bosh} (XEP-0206) \glspl{xep}.
 Only the core \glspl{xep}, such as Service Discovery (XEP-0030) and Data Forms (XEP-0004), are declared final.
 
 Because many drafts have not received major updates (XEP-0059, for example, has not been modified for over 10 years) these drafts are treated as de facto standards in the community, neglecting the possibility of significant changes.

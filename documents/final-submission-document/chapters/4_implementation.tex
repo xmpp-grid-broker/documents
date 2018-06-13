@@ -7,7 +7,7 @@
 
 Figure~\ref{fig:development-setup} illustrates the development setup in the form of an UML deployment diagram.
 Developers connects from their browsers to the reverse proxy that serves the static \gls{broker} web application.
-The HTTP connection from the client to the server is secured using mutual \gls{tls} authentication.
+The \gls{http} connection from the client to the server is secured using mutual \gls{tls} authentication.
 The same reverse proxy also routes the \gls{xmpp} connections.
 The proxy establishes a mutual authenticated \gls{tls} connection to the \gls{xmpp} server.
 The reasons for this setup are described in more detail in section~\fullref{sec:limitations-of-the-openfire-xmpp-server}.
@@ -37,23 +37,23 @@ Requirement \fullref{sec:requirement-multiple-administrators} states that multip
 
 When authenticating users with \gls{sasl-external}, the client certificate extension field xmppAddr is interpreted as user \gls{jid} by the \gls{xmpp} server.
 
-In practice, most \gls{xmpp-grid-broker} deployments require an HTTP proxy in front of the \gls{xmpp} server as security measure (see section~\fullref{sec:implemented-web-application-topology}).
-Usually, the HTTP proxy can also be used to serve the \gls{broker} application, as realised in the development setup.
-Such an HTTP proxy might also accept multiple client certificates.
+In practice, most \gls{xmpp-grid-broker} deployments require an \gls{http} proxy in front of the \gls{xmpp} server as security measure (see section~\fullref{sec:implemented-web-application-topology}).
+Usually, the \gls{http} proxy can also be used to serve the \gls{broker} application, as realised in the development setup.
+Such an \gls{http} proxy might also accept multiple client certificates.
 
 If the client connects to the \gls{xmpp} server over secure WebSockets (WSS) in combination with \gls{sasl-external}, the WebSocket URL must already be authenticated, as most browsers do not permit certificate selection on background requests~\cite{chromium-issue-background-certs}.
 This might be achieved by serving the \gls{broker} from the same domain or by using client certificate policies~\cite{chrome-cert-policies}.
 
 As the proxy intercepts the \gls{tls} connection, it must verify the client certificate sent by the browser and establish a connection to the \gls{xmpp} server using a client certificate as well.
 Therefore, the xmppAddr field of the proxy's client certificate is used by the \gls{xmpp} server.
-If multiple users should be differentiated on the \gls{xmpp} server, an HTTP proxy might choose different client certificates for connecting to the \gls{xmpp} server based on the web browser's client certificate xmppAddr.
+If multiple users should be differentiated on the \gls{xmpp} server, an \gls{http} proxy might choose different client certificates for connecting to the \gls{xmpp} server based on the web browser's client certificate xmppAddr.
 
 
 \subsection{Audit Trails}
 
 Actions of administrators should be traceable with an audit trail according to requirement \fullref{sec:requirement-audit-trail}.
 
-As outlined in section~\fullref{sec:limitations-of-requirement-multiple-administrators}, practical deployments of \glspl{xmpp-grid-broker} mostly use an HTTP proxy.
+As outlined in section~\fullref{sec:limitations-of-requirement-multiple-administrators}, practical deployments of \glspl{xmpp-grid-broker} mostly use an \gls{http} proxy.
 The proxy can also be used to keep an audit trail of client requests.
 These requests can then be correlated with the query log on the \gls{xmpp} server.
 
@@ -90,7 +90,7 @@ With an assumed count of approximately 1000 \glspl{topic}, this would result in 
 Requirements~\fullref{sec:requirement-filter-persisted-items} and \fullref{sec:paged-persisted-items} were built on the premise that filtering and paging of \glspl{persisted-item} would be possible with the \gls{result-set-management} \gls{xep}.
 
 Retrieving multiple \glspl{persisted-item} in \gls{result-set-management} pages was added in version 1.12 (2008-09-03) of the \gls{publish-subscribe} \gls{xep}.
-A \gls{xmpp} server does not report, which version of the standard draft it supports.
+An \gls{xmpp} server does not report, which version of the standard draft it supports.
 
 Therefore, we could not presume an implementation of \gls{result-set-management}.
 In fact, the Openfire \gls{xmpp} server we used in our setup has no support for retrieving \glspl{persisted-item} with \gls{result-set-management}. We were still able to fetch the persisted items in pages using \gls{service-discovery}, as the \gls{result-set-management} draft uses service-discovery as an example, making the server side support more likely \cite{xep-0059}.
@@ -142,7 +142,7 @@ Should the type of such fields change in the future, the flexible implementation
 
 Running entirely in the browser comes with some limitations. As certificate handling is the browsers responsibility, handling errors such as wrongly chosen client certificates is impossible. When using a reverse proxy, this problem can be mitigated by returning appropriate error sites.
 
-More crucially, errors in the reverse proxy or \gls{xmpp} server configuration, such as missing client certificates, are hard if not impossible to detect on the client. Indicators for a misconfigured proxy can be HTTP status codes, which Stanza.io does sadly not expose.
+More crucially, errors in the reverse proxy or \gls{xmpp} server configuration, such as missing client certificates, are hard if not impossible to detect on the client. Indicators for a misconfigured proxy can be \gls{http} status codes, which Stanza.io does sadly not expose.
 
 \section{Code Quality}
 As our \gls{xmpp-grid-broker} implementation is intended to be a maintainable, production-ready application rather than a prototype, we have placed much emphasis on code quality.
@@ -197,12 +197,12 @@ Protractor starts the development setup and verifies the application using a rem
 
 End-to-end tests are usually more challenging to write than unit tests, as different types of race conditions and varying delays to backend applications can occur.
 Protractor usually resolves these issues with the aid of Zone.js, a library that creates ``execution context[s] that persists across async tasks'' called zones.
-To create zones, Zone.js intercepts most web browser APIs, like HTTP requests.~\cite{zone-js-readme}
+To create zones, Zone.js intercepts most web browser APIs, like \gls{http} requests.~\cite{zone-js-readme}
 
-Because Zone.js is aware of all open HTTP requests, Protractor can wait until a request has been completed before continuing with test execution.
+Because Zone.js is aware of all open \gls{http} requests, Protractor can wait until a request has been completed before continuing with test execution.
 
 However, due to our use of \gls{bosh} in the end-to-end tests (see section~\fullref{sec:implemented-web-application-topology}), we could not benefit from the Zone.js change detection.
-\gls{bosh} uses HTTP long polling to communicate with the \gls{xmpp} server, which leads to a Zone that always has open requests~\cite{xep-0124}.
+\gls{bosh} uses \gls{http} long polling to communicate with the \gls{xmpp} server, which leads to a Zone that always has open requests~\cite{xep-0124}.
 
 Therefore, we had to manually implement waiting conditions.
 
