@@ -81,7 +81,7 @@ copy "presentations"
 echo "Freshly cloningo repos from remote..."
 mkdir -p "$TARGET_DIRECTORY/sources/"
 git clone https://github.com/xmpp-grid-broker/xmpp-grid-broker.git "$TARGET_DIRECTORY/sources/xmpp-grid-broker"
-git clone https://github.com/xmpp-grid-broker/xmpp-grid-broker.git "$TARGET_DIRECTORY/sources/documents"
+git clone https://github.com/xmpp-grid-broker/documents.git "$TARGET_DIRECTORY/sources/documents"
 
 echo "creating archive..."
 cd "$TARGET_DIRECTORY"
