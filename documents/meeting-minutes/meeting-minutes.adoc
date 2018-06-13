@@ -27,3 +27,5 @@ include::2018-05-17.adoc[]
 include::2018-05-28.adoc[]
 
 include::2018-06-04.adoc[]
+
+include::2018-06-13.adoc[]
