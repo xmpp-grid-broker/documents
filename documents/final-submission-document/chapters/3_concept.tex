@@ -5,7 +5,7 @@
 \section{Architecture}\label{sec:architecture}
 
 In this section, we present the architecture and fundamental architectural decisions of the \gls{xmpp-grid-broker} application.
-All architectural decisions we took are fully documented in Appendix~\fullref{sec:architectural-decisions}.
+All architectural decisions we took are fully documented in appendix~\fullref{sec:architectural-decisions}.
 
 We illustrate the concepts and structures using the C4 Model for Software Architecture~\cite{c4-model}.
 
@@ -91,8 +91,8 @@ As described in the according architectural decision (see appendix~\fullref{sec:
 This topology simplifies the implementation and deployment of the application in comparison to a web API proxy.
 WebSockets offer stateful TCP-sockets to exchange data with \gls{xmpp} servers in contrast to \gls{bosh}, which uses HTTP long polling to emulate bidirectional streams and is, therefore, less efficient~\cite{xep-0124}.
 
-To increase the \gls{xmpp} server security, an HTTP reverse proxy (e.g.\ nginx\footnote{\url{https://nginx.org/}}) between the client and the \gls{xmpp} server might be added as shown in Figure~\ref{fig:architecturecontainerweb-http-proxy}.
-The reverse proxy might also be used to serve the web application and provide authentication (see Section~\fullref{sec:authentication-and-connection-security}) and security features (see Section~\fullref{sec:ops-security}).
+To increase the \gls{xmpp} server security, an HTTP reverse proxy (e.g.\ nginx\footnote{\url{https://nginx.org/}}) between the client and the \gls{xmpp} server might be added as shown in figure~\ref{fig:architecturecontainerweb-http-proxy}.
+The reverse proxy might also be used to serve the web application and provide authentication (see section~\fullref{sec:authentication-and-connection-security}) and security features (see section~\fullref{sec:ops-security}).
 
 \begin{figure}[H]
     \centering
@@ -108,7 +108,7 @@ The reverse proxy might also be used to serve the web application and provide au
 To authenticate against the \gls{xmpp-grid} \gls{controller}, we decided to use the \gls{sasl-external}~\cite{rfc4422} mechanism whenever possible to authenticate the client.
 
 We decided against \gls{sasl-scram}~\cite{rfc7677}, the alternative authentication method that is also recommended by in the \gls{xmpp-grid-standard}.
-As described in the corresponding architectural decision (Appendix~\fullref{sec:architectural-decisions}), the main reason for \gls{sasl-external} is its higher level of security and and its relatively simple scaling capabilities.
+As described in the corresponding architectural decision (see appendix~\fullref{sec:architectural-decisions}), the main reason for \gls{sasl-external} is its higher level of security and and its relatively simple scaling capabilities.
 
 \gls{sasl-external} implies that the authentication takes place on a lower layer than the actual \gls{xmpp} protocol. In our case, this implies authentication over \gls{tls}, i.e.~X.509 user certificates as specified in RFC6120~\cite{rfc6120}.
 
@@ -135,7 +135,7 @@ As this number is usually rather small, no extra effort is usually required.
 
 We created wireframes for most screens to visualise the initial set of user stories.
 They helped us to find missing requirements, most notably the support of collections.
-All wireframes are listed in Appendix~\fullref{sec:wireframes}.
+All wireframes are listed in appendix~\fullref{sec:wireframes}.
 
 \section{Security Considerations}\label{sec:security-considerations}
 
@@ -259,7 +259,7 @@ Operators should adhere to the security recommendations of their \gls{xmpp} serv
 
 \section{Security Risk Mitigation}\label{sec:security-risk-mitigation}
 
-To mitigate the security risks as discussed in Section~\fullref{sec:security-considerations}, the measures as described in the following subsections are implemented.
+To mitigate the security risks as discussed in section~\fullref{sec:security-considerations}, the measures as described in the following subsections are implemented.
 
 \subsection{Development}
 
