@@ -1,0 +1,32 @@
+== Meeting 2018-06-13
+
+=== Attendees
+
+* Fabian Hauser, fhauser
+* Raphael Zimmermann, rzimmerm
+* Prof. Dr. Andreas Steffen, SFF
+
+Minute Taker: rzimmerm
+
+=== Agenda
+
+. Singin of the usage rights
+. Abstract status
+. Review of the final submission document draft
+. Electronic submission
+. Project transfer
+
+=== Discussions / Decisions
+
+. Singin of the usage rights
+    * SFF signed the usage rights
+. Abstract status
+    * SFF accepted and forwarded our abstract to the administration
+. Review of the final submission document draft
+    * SFF notes that he would have prefered parts of the appendix (eg. architectural decisions) in the main content
+    * The IODEF parts are not 100 accurate anymore and can safely be removed
+. Electronic submission
+    * According to SFF, it is sufficient to upload the artifacts via the official tools.
+. Project transfer
+    * We will install SFF as organisation administrator on our GitHub repository
+    * Further steps can be arranged bilateral
