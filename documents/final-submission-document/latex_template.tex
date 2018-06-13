@@ -32,8 +32,7 @@ consistentlayout, % Uncomment to change the layout of the declaration, abstract 
 \usepackage{pdfpages}
 \usepackage[normalem]{ulem}
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
-
-\newcommand*{\fullref}[1]{\hyperref[{#1}]{\ref*{#1} \nameref*{#1}}} % One single link
+\usepackage{letltxmacro}
 
 \newcommand{\epigraph}[2]{\vspace{-1em}\begin{flushright}%
 \rightskip=1.8cm\textit{``#1''} \\%
@@ -50,10 +49,10 @@ consistentlayout, % Uncomment to change the layout of the declaration, abstract 
 
 % \addPdfAppendix[title]{label}{pdf}
 \newcommand*{\addPdfAppendix}[4][multipage]{
-	\includepdf[pages=1,scale=.75,frame, pagecommand=\section{#2}\label{#3}]{#4}
-	\IfStrEq{#1}{multipage}{
-	\includepdf[pages=2-,scale=.8,frame]{#4}
-	}
+\includepdf[pages=1,scale=.75,frame, pagecommand=\section{#2}\label{#3}]{#4}
+\IfStrEq{#1}{multipage}{
+\includepdf[pages=2-,scale=.8,frame]{#4}
+}
 }
 
 %----------------------------------------------------------------------------------------
@@ -75,6 +74,7 @@ consistentlayout, % Uncomment to change the layout of the declaration, abstract 
 %	Glossary SETTINGS
 %----------------------------------------------------------------------------------------
 \usepackage{hyperref}
+
 \usepackage[toc,nopostdot, nonumberlist]{glossaries}%acronym
 \setglossarystyle{altlist}
 \usepackage{xparse}
@@ -89,6 +89,7 @@ consistentlayout, % Uncomment to change the layout of the declaration, abstract 
 	\newacronym[see={[Siehe:]{gls-#3}},#2]{#3}{#4}{#5\glsadd{gls-#3}}
 }
 \renewcommand{\glstextformat}[1]{\slshape{#1}}
+
 \makeglossaries
 
 \DeclareTextFontCommand{\emph}{\itshape}
@@ -110,4 +111,10 @@ consistentlayout, % Uncomment to change the layout of the declaration, abstract 
 \hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
 \hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
 \hypersetup{pdfkeywords=\keywordnames} % Set the PDF's keywords to your keywords
+% Redefine References to be cursive
+\LetLtxMacro{\origref}{\ref}
+\renewcommand{\ref}[1]{\textsl{\origref{#1}}}
+\LetLtxMacro{\orignameref}{\nameref}
+\renewcommand{\nameref}[1]{\textsl{\orignameref{#1}}}
+\newcommand*{\fullref}[1]{\textsl{\hyperref[{#1}]{\origref*{#1} \orignameref*{#1}}}} % One single link
 }
