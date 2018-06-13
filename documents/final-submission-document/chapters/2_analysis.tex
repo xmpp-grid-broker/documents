@@ -83,11 +83,13 @@ Using \gls{xmpp} for such a task also comes with its downsides. Most notably, be
 
 The standard describes a trust model, a thread model as well as specific countermeasures, e.g. to use at least \gls{tls} 1.2. These countermeasures also define restrictions of the \gls{xmpp} protocol and its extensions, e.g. by limiting the \gls{topic} access models of \gls{pubsub} to whitelist and authorized only~\cite{ietf-mile-xmpp-grid-05}.
 
-\subsubsection{Information Exchange in the IODEF}
+\subsubsection{Information Exchange Format}
 
 The \gls{xmpp-grid-standard} states that `although [the exchanged] information can take the form of any structured data (XML, JSON, etc.), this document illustrates the principles of \gls{xmpp-grid} with examples that use the Incident Object Description Exchange Format (IODEF)'~\cite{rfc7970, ietf-mile-xmpp-grid-05}.
 
 As IODEF is not strictly defined nor explicitly recommended by the \gls{xmpp-grid-standard}, no specific integrations are in the scope of this thesis.
+
+In practice, small payloads are sent over an \gls{xmpp-grid}, usually containing external pointers to an API that provides more comprehensive data (see appendix~\fullref{sec:meeting-minutes}).
 
 \subsection{Domain Specific Language}
 
