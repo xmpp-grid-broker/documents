@@ -35,7 +35,7 @@ The core \gls{stanza} types are \glspl{message}~(\code{<message/>}), \gls{presen
 \gls{info-query}~(\code{<iq/>}).
 \Glspl{message} can contain arbitrary data similar to email but are optimised for immediate delivery.
 \Gls{presence} \glspl{stanza} deal with network availability and the propagation of user presence information.
-An \gls{info-query} \gls{stanza} consists of a request and response (similar to the GET and POST HTTP methods), which is used for feature negotiation, configuration and general information exchange.
+An \gls{info-query} \gls{stanza} consists of a request and response (similar to the GET and POST \gls{http} methods), which is used for feature negotiation, configuration and general information exchange.
 Because of these coarse semantics, \gls{xmpp} provides a generalized communication layer~\cite{rfc6120}\cite{ieee-xplore-stream-xml-xmpp}.
 
 Figure~\ref{fig:xmpp-overview} illustrates an example setup with two servers and three clients.

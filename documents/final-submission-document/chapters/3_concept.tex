@@ -57,13 +57,13 @@ In contrast to a rich client application, a web application has the significant 
 
 Therefore, we decided to implement the \gls{xmpp-grid-broker} as web application.
 
-To manage the \gls{controller} from the \gls{broker} interface, we considered either directly connecting to the \gls{xmpp} server over WebSockets~\cite{rfc7395} or HTTP (BOSH~\cite{xep-0124}), and the indirect communication with the \gls{xmpp} server via custom web API proxy.
+To manage the \gls{controller} from the \gls{broker} interface, we considered either directly connecting to the \gls{xmpp} server over WebSockets~\cite{rfc7395} or \gls{http} (\gls{bosh}~\cite{xep-0124}), and the indirect communication with the \gls{xmpp} server via custom web API proxy.
 These topologies are illustrated in figure~\ref{fig:architecturecontainerwebapplication} and figure~\ref{fig:architecturecontainerwebproxy}.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.7\linewidth]{resources/architecture_container_webapplication}
-\caption[Architecture container diagram: Web application]{Architecture container diagram showing the web application topology with WebSockets or BOSH.}
+\caption[Architecture container diagram: Web application]{Architecture container diagram showing the web application topology with WebSockets or \gls{bosh}.}
 \label{fig:architecturecontainerwebapplication}
 \end{figure}
 
@@ -72,7 +72,7 @@ These topologies are illustrated in figure~\ref{fig:architecturecontainerwebappl
 A web API proxy could be realised with a custom browser-to-proxy protocol, as implemented in the \gls{xmpp}-FTW JavaScript library\footnote{\url{http://docs.xmpp-ftw.org/}}.
 However, this approach leads to a high coupling between a concrete library and the web application.
 
-Another approach would be the implementation of a custom WebSocket-to-\gls{xmpp} Proxy, which allows connecting to \gls{xmpp} servers that do not support WebSockets or BOSH.
+Another approach would be the implementation of a custom WebSocket-to-\gls{xmpp} Proxy, which allows connecting to \gls{xmpp} servers that do not support WebSockets or \gls{bosh}.
 If such a proxy is implemented transparently, the client is not aware of the server limitations.
 Therefore, the client implementation is no different from direct communication with an \gls{xmpp} server.
 
@@ -89,9 +89,9 @@ As the \gls{xmpp} over WebSocket protocol differs from the normal \gls{xmpp} pro
 
 As described in the according architectural decision (see appendix~\fullref{sec:architectural-decisions}), we decided on the option that connects directly via WebSockets, if possible with a fallback to \gls{bosh}.
 This topology simplifies the implementation and deployment of the application in comparison to a web API proxy.
-WebSockets offer stateful TCP-sockets to exchange data with \gls{xmpp} servers in contrast to \gls{bosh}, which uses HTTP long polling to emulate bidirectional streams and is, therefore, less efficient~\cite{xep-0124}.
+WebSockets offer stateful \gls{tcp}-sockets to exchange data with \gls{xmpp} servers in contrast to \gls{bosh}, which uses \gls{http} long polling to emulate bidirectional streams and is, therefore, less efficient~\cite{xep-0124}.
 
-To increase the \gls{xmpp} server security, an HTTP reverse proxy (e.g.\ nginx\footnote{\url{https://nginx.org/}}) between the client and the \gls{xmpp} server might be added as shown in figure~\ref{fig:architecturecontainerweb-http-proxy}.
+To increase the \gls{xmpp} server security, an \gls{http} reverse proxy (e.g.\ nginx\footnote{\url{https://nginx.org/}}) between the client and the \gls{xmpp} server might be added as shown in figure~\ref{fig:architecturecontainerweb-http-proxy}.
 The reverse proxy might also be used to serve the web application and provide authentication (see section~\fullref{sec:authentication-and-connection-security}) and security features (see section~\fullref{sec:ops-security}).
 
 \begin{figure}[H]
@@ -112,9 +112,9 @@ As described in the corresponding architectural decision (see appendix~\fullref{
 
 \gls{sasl-external} implies that the authentication takes place on a lower layer than the actual \gls{xmpp} protocol. In our case, this implies authentication over \gls{tls}, i.e.~X.509 user certificates as specified in RFC6120~\cite{rfc6120}.
 
-Currently, not all \gls{xmpp} servers that implement BOSH and Websockets also implement \gls{sasl-external} with \gls{tls} authentication
-(e.g.\ Openfire currently supports \gls{tls} authentication with BOSH but not with Websockets\footnote{\url{https://github.com/igniterealtime/Openfire/blob/02c22e/src/java/org/jivesoftware/openfire/websocket/OpenfireWebSocketServlet.java}}).
-To circumvent this limitation, an HTTP reverse proxy (see section~\fullref{sec:implemented-web-application-topology}) might be used to handle \gls{tls} authentication.
+Currently, not all \gls{xmpp} servers that implement \gls{bosh} and Websockets also implement \gls{sasl-external} with \gls{tls} authentication
+(e.g.\ Openfire currently supports \gls{tls} authentication with \gls{bosh} but not with Websockets\footnote{\url{https://github.com/igniterealtime/Openfire/blob/02c22e/src/java/org/jivesoftware/openfire/websocket/OpenfireWebSocketServlet.java}}).
+To circumvent this limitation, an \gls{http} reverse proxy (see section~\fullref{sec:implemented-web-application-topology}) might be used to handle \gls{tls} authentication.
 
 \subsection{Concurrency, Scalability and Performance}
 
@@ -158,7 +158,7 @@ In this section, we highlight the most crucial security concerns relevant to thi
 \subsubsection{Transport Security}
 
 \gls{xmpp} reuses many established and standardised mechanisms to improve protocol security.
-By layering protocols in a strict manner (\gls{xmpp} with \gls{sasl} over \gls{tls} over TCP), many attack scenarios such as replaying or eavesdropping are minimised.
+By layering protocols in a strict manner (\gls{xmpp} with \gls{sasl} over \gls{tls} over \gls{tcp}), many attack scenarios such as replaying or eavesdropping are minimised.
 The protocol also requires clients and servers to validate the certificates of the other party.~\cite{rfc7590}\cite{rfc6120}
 
 \subsubsection{Protocol}
@@ -232,7 +232,7 @@ The \gls{xmpp-grid-broker} should document an appropriate CSP that must be suppo
 
 The \gls{xmpp} server implements most of the authentication and authorisation mechanisms used in an \gls{xmpp-grid-broker} implementation, such as storing passwords and validating certificates.
 
-If \gls{bosh} or WebSockets are used, the \gls{xmpp} server should support most HTTP security features as listed in section~\fullref{sec:web-server}. Additionally, the origin of WebSockets and \gls{bosh} requests must be verified (by either the Origin header or CORS support.~\cite{rfc6455}\cite{cross-origin-resource-sharing}
+If \gls{bosh} or WebSockets are used, the \gls{xmpp} server should support most \gls{http} security features as listed in section~\fullref{sec:web-server}. Additionally, the origin of WebSockets and \gls{bosh} requests must be verified (by either the Origin header or CORS support.~\cite{rfc6455}\cite{cross-origin-resource-sharing}
 
 The web server hosting the client application has no active authentication or authorisation responsibility, except to ensure the integrity and authenticity of the application, i.e. by using \gls{tls}.
 
@@ -297,7 +297,7 @@ The Content Security Policy (CSP) helps to mitigate certain types of attacks suc
 The recommended values are directly documented in the project source code repository.
 
 \subsubsection{Verify Origin}
-The \gls{xmpp} server should be configured to only accept WebSockets/BOSH connections from the origin of the \gls{xmpp-grid-broker} application.
+The \gls{xmpp} server should be configured to only accept WebSockets/\gls{bosh} connections from the origin of the \gls{xmpp-grid-broker} application.
 The Origin header sent by the web browser must match the domain on which the \gls{xmpp-grid-broker} application is hosted.
 Otherwise, connection requests must be ignored.
 If an \gls{xmpp} server does not support this feature, a proxy server should be used to verify the Origin header.
