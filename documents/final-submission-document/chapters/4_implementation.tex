@@ -33,7 +33,7 @@ Also, debugging is more straightforward without indirections.
 
 \subsection{Multiple Administrators}\label{sec:limitations-of-requirement-multiple-administrators}
 
-Requirement \ref{sec:requirement-multiple-administrators} states that multiple administrators should be able to access the application.
+Requirement \fullref{sec:requirement-multiple-administrators} states that multiple administrators should be able to access the application.
 
 When authenticating users with \gls{sasl-external}, the client certificate extension field xmppAddr is interpreted as user \gls{jid} by the \gls{xmpp} server.
 
@@ -51,7 +51,7 @@ If multiple users should be differentiated on the \gls{xmpp} server, an HTTP pro
 
 \subsection{Audit Trails}
 
-Actions of administrators should be traceable with an audit trail according to requirement \ref{sec:requirement-audit-trail}.
+Actions of administrators should be traceable with an audit trail according to requirement \fullref{sec:requirement-audit-trail}.
 
 As outlined in section~\fullref{sec:limitations-of-requirement-multiple-administrators}, practical deployments of \glspl{xmpp-grid-broker} mostly use an HTTP proxy.
 The proxy can also be used to keep an audit trail of client requests.
@@ -62,7 +62,7 @@ Therefore, no such mechanism was implemented.
 
 \subsection{Logout}
 
-Administrators should be able to terminate a session by using a logout function, as stated in requirement~\ref{sec:requirement-logout}.
+Administrators should be able to terminate a session by using a logout function, as stated in requirement~\fullref{sec:requirement-logout}.
 
 We decided to use \gls{tls} client certificate authentication as part of \gls{sasl-external}.
 As a result of our decision to write a web application, the web browser authenticates users with \gls{tls} certificates.

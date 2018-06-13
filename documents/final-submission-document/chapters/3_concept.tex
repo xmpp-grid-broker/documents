@@ -87,12 +87,12 @@ As the \gls{xmpp} over WebSocket protocol differs from the normal \gls{xmpp} pro
 
 \subsubsection{Implemented Web Application Topology}\label{sec:implemented-web-application-topology}
 
-As described in the according architectural decision (see appendix~\ref{sec:architectural-decisions}), we decided on the option that connects directly via WebSockets, if possible with a fallback to \gls{bosh}.
+As described in the according architectural decision (see appendix~\fullref{sec:architectural-decisions}), we decided on the option that connects directly via WebSockets, if possible with a fallback to \gls{bosh}.
 This topology simplifies the implementation and deployment of the application in comparison to a web API proxy.
 WebSockets offer stateful TCP-sockets to exchange data with \gls{xmpp} servers in contrast to \gls{bosh}, which uses HTTP long polling to emulate bidirectional streams and is, therefore, less efficient~\cite{xep-0124}.
 
 To increase the \gls{xmpp} server security, an HTTP reverse proxy (e.g.\ nginx\footnote{\url{https://nginx.org/}}) between the client and the \gls{xmpp} server might be added as shown in Figure~\ref{fig:architecturecontainerweb-http-proxy}.
-The reverse proxy might also be used to serve the web application and provide authentication (see Section~\ref{sec:authentication-and-connection-security}) and security features (see Section~\ref{sec:ops-security}).
+The reverse proxy might also be used to serve the web application and provide authentication (see Section~\fullref{sec:authentication-and-connection-security}) and security features (see Section~\fullref{sec:ops-security}).
 
 \begin{figure}[H]
     \centering
@@ -232,7 +232,7 @@ The \gls{xmpp-grid-broker} should document an appropriate CSP that must be suppo
 
 The \gls{xmpp} server implements most of the authentication and authorisation mechanisms used in an \gls{xmpp-grid-broker} implementation, such as storing passwords and validating certificates.
 
-If \gls{bosh} or WebSockets are used, the \gls{xmpp} server should support most HTTP security features as listed in section~\ref{sec:web-server}. Additionally, the origin of WebSockets and \gls{bosh} requests must be verified (by either the Origin header or CORS support.~\cite{rfc6455}\cite{cross-origin-resource-sharing}
+If \gls{bosh} or WebSockets are used, the \gls{xmpp} server should support most HTTP security features as listed in section~\fullref{sec:web-server}. Additionally, the origin of WebSockets and \gls{bosh} requests must be verified (by either the Origin header or CORS support.~\cite{rfc6455}\cite{cross-origin-resource-sharing}
 
 The web server hosting the client application has no active authentication or authorisation responsibility, except to ensure the integrity and authenticity of the application, i.e. by using \gls{tls}.
 
@@ -259,7 +259,7 @@ Operators should adhere to the security recommendations of their \gls{xmpp} serv
 
 \section{Security Risk Mitigation}\label{sec:security-risk-mitigation}
 
-To mitigate the security risks as discussed in Section~\ref{sec:security-considerations}, the measures as described in the following subsections are implemented.
+To mitigate the security risks as discussed in Section~\fullref{sec:security-considerations}, the measures as described in the following subsections are implemented.
 
 \subsection{Development}
 
