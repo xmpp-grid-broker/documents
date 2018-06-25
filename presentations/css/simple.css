@@ -300,7 +300,7 @@ body {
 
 .standard-container {
   width: 60vw; 
-  height: 60vh;
+  height: 70vh;
 }
 
 .standard-box {
@@ -308,11 +308,11 @@ body {
   height: 100%;
   background-image: url("../resources/all-the-standards_compressed.png");
   background-position: center;
-  background-size: auto 2500%;
+  background-size: 300% 2500%;
   background-repeat: no-repeat;
   transition: background-size 3s!important;
 }
 
 .standard-box.visible {
-  background-size: auto 100%;
+  background-size: 10% 100%;
 }
