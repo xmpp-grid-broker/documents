@@ -12,24 +12,37 @@
     <div class="reveal">
         <div class="slides">
             <section>
-                <img src="../logo.svg" style="border: none;box-shadow: none;height: 10vh;" />
+                <img src="resources/logo.svg" style="border: none;box-shadow: none;height: 10vh;" />
                 <h2>XMPP-Grid Broker</h2>
                 <h3>Final Presentation</h3>
                 <small>Raphael Zimmermann &amp; Fabian Hauser</small>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Sprache: Hochdeusch?</li>
+                        <li>Vorschlag: Fragen nach der Präsentation, ausser unklarheiten und wichtige Fragen</li>
+                    </ul>
+                    <ul>
+                        <li>Begrüssung, Vorstellung Personen</li>
+                        <li>Häufigste Reaktion: Was ist denn ein XMPP-Grid Broker???</li>
+                    </ul>
             </section>
             <section>
                 <h2>🔭 Outline</h2>
                 <ol>
-                    <li>Problem Description</li>
-                    <li>Our Solution (Demo)</li>
-                    <li>Our Focus</li>
-                    <li>Conclusion</li>
+                    <li>Problem Description</li><!-- Fabian -->
+                    <li>Our Solution (Demo)</li><!-- Grafik: Fabian; Demo: Raphael -->
+                    <li>Our Focus</li><!-- Raphael -->
+                    <li>Conclusion</li><!-- Fabian -->
                     <li>Questions</li>
                 </ol>
             </section>
 
             <section>
-                <h3>🏋 1. The Problem</h3>
+                <h1>🏋<br>1. The Problem</h1>
+            </section>
+            <section>
+                <h3>Challenge: Exchange Security Data</h3>
                 <img src="resources/explanatory-graphics-problem.svg" alt="problem explanatory graphic" style="height: 50vh;">
             </section>
             <section>
@@ -54,7 +67,7 @@
                 </ul>
                 <p>
                     <small>
-                        <a href="https://xmpp-grid-broker.github.io/documents/final-submission-document.pdf">Full Task Description</a>
+                        <a href="https://xmpp-grid-broker.github.io/documents/final-submission-document.pdf#0">Full Task Description</a>
                     </small>
                 </p>
             </section>
@@ -63,6 +76,20 @@
                 <div class="standard-container">
                     <div class="standard-box fragment highlight-current-red"></div>
                 </div>
+
+                <aside class="notes">
+                    <p>XMPP-Grid Draft, which is based on:</p>
+                    <ul>
+                        <li> RFC6120: XMPP</li>
+                        <li> RFC7395: WebSockets</li>
+                        <li> XEP-0004: Data Forms</li>
+                        <li> XEP-0030: Service Discovery</li>
+                        <li> XEP-0059: Result Management</li>
+                        <li> XEP-0060: PubSub</li>
+                        <li> XEP-0206: XMPP over BOSH</li>
+                        <li> XEP-0248: PubSub Collection Nodes</li>
+                    </ul>
+                </aside>
             </section>
             <section>
                 <h3>🗃 Task Description</h3>
@@ -73,19 +100,42 @@
                     <li class="fragment highlight-current-red">✓ Technology Selection</li>
                     <li class="fragment highlight-current-red">✓ Implementation</li>
                 </ul>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Requirements: 37</li>
+                        <li>Technology Selection:
+                            <ul>
+                                <li>Production Ready</li>
+                                <li>Maintainability is important</li>
+                                <li>No bad dependencies.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </aside>
             </section>
             <section>
-                <h2>🏗 2. Our Solution</h2>
+                <h1>🏗<br>2. Our Solution</h1>
+            </section>
+            <section>
+                <h2>🛠️ Development Setup</h2>
                 <img src="resources/development-setup-uml.svg" alt="xmpp-grid-broker explanatory graphic">
+                <!--
+                - Docker because fast productive development due setup; cross-pattform
+                - Proxy for security
+                  ("Security Pattern - Integrating security and systems engineering"  from "Security Patterns" "Protection reverse proxy / Integration reverse Proxy)
+                - Proxy helps with flexibility; Microservices
+                - Proxy required for TLS authentication for background requests
+                -->
             </section>
             <section>
-                <h3>💻 Demo</h3>
+                <h2>💻 Demo</h2>
                 <p>
-                    <small>
-                        <a href="https://xgb.localhost.redbackup.org/" target="_blank">🚀 Launch</a>
-                    </small>
+                    <a href="https://xgb.localhost.redbackup.org/" target="_blank">🚀 Launch</a>
                 </p>
                 <!--
+                   - Frage: Falls bereits ausprobiert, nur kurze Demo
+
                     # Drehbuch
 
                     ## Vorbereitung
@@ -112,8 +162,7 @@
                  -->
             </section>
             <section>
-                <h1>🔬</h1>
-                <h2>3. Our Focus</h2>
+                <h1>🔬<br>3. Our Focus</h1>
             </section>
             <section>
                 <h3>🎯 Design Goals</h3>
@@ -123,14 +172,40 @@
                     <li class="fragment highlight-current-red">⏲️ Long-Term Maintainability</li>
                     <li class="fragment highlight-current-red">🐳 Reproducibility</li>
                 </ul>
+                <!--
+                  - Hervorgehend aus Task Description, Requirements und weiterführenden Überlegungen
+                  - Security auch mit Tipps für die Produktion; Architectural review
+                  - Cross-Platform: Produktions-Umgebung nicht klar; Mehr flexibel mit Web und Proxy
+                  - Keine komplexen Abhängigkeiten (security), wartung mit wenig aufwand
+                    - u.a. grund für Angular, weil alles als "paket" mitkommt
+                    - dokumentation für updates etc. ist einheitlich verfügbar
+                  -->
             </section>
             <section>
                 <h3>👷 Software Engineering</h3>
+                <!--
+                  - Starker Fokus, da produktionsfähige, langfristig wartbare Applikation
+                  - Klassisches SE-Problem
+                  - Viel Zeit darauf verwendet: Qualität vor Quantität
+                  -->
             </section>
             <section>
-                <h3>📊 Testability</h3>
-                <canvas id="locChart"></canvas>
-                324 Test Cases
+                <h3>🏗 Architectural Decisions</h3>
+                <img src="resources/architectural-decisions.png" alt="Archtectural Decisions PDF" style="max-height: 80vh;">
+                <!--
+                  - Ausprobieren von AppArch-Tool
+                  - Hilft, systematisch eine Entscheidung für Architectur und Technologiewahl zu fällen
+                  - Hat sich bewährt: Gute diskussionsgrundlage
+                  - Positiver Nebeneffekt: Dokumentation für Nachvollziehbarkeit
+                  -->
+            </section>
+            <section>
+                <h3>🔍 Code Reviews</h3>
+                <p>124 Pull-Requests on GitHub</p>
+                <img src="resources/review-screenshot.png" alt="An example review" style="max-height: 80vh;">
+                <!--
+                  - Jede Zeile von 4 Augen angeschaut - Hochwertiger Code!
+                  -->
             </section>
             <section>
                 <h3>♼ Continuous Integration</h3>
@@ -138,19 +213,22 @@
                     <small>Also with documentation</small>
                 </p>
                 <img src="resources/ci-builds.png" alt="Number of Builds on Travis">
+                <!--
+                  - Mehr als ein Build pro Arbeitsstunde im Projekt!
+                  - Open Source / Patching etc. viel einfacher. Bessere Maintainance!
+                  -->
             </section>
             <section>
-                <h3>🔍 Code Reviews</h3>
-                <p>124 Pull-Requests on GitHub</p>
-                <img src="resources/review-screenshot.png" alt="An example review" style="max-height: 80vh;">
+                <h3>📊 Testability</h3>
+                <canvas id="locChart"></canvas>
+                324 Test Cases
+                <!--
+                  - Mehr als doppelt so vielen Test-Zeilen wie Application Code
+                  - LOC: Entsprechen ungefähr SE-Schnitt für hochwertigen Code
+                  -->
             </section>
             <section>
-                <h3>🏗 Architectural Decisions</h3>
-                <img src="resources/architectural-decisions.png" alt="Archtectural Decisions PDF" style="max-height: 80vh;">
-
-            </section>
-            <section>
-                <h2>💭 4. Conclusion</h2>
+                <h1>💭<br>4. Conclusion</h1>
             </section>
             <section>
                 <h3>🔧 Technical</h3>
@@ -159,6 +237,21 @@
                     <li class="fragment highlight-current-red">SASL EXTERNAL + Browser = 💔</li>
                     <li class="fragment highlight-current-red">Angular + TDD = 💔</li>
                 </ul>
+                <!--
+                PubSub:
+                  - Schwierig, weil undelying XEPs immer noch draft nicht richtig versioniert
+                  - Unklar, welche version implementiert ist - Daher langlebigkeit und support sehr schwierig zu garantieren
+                  - Wurden in letzter Zeit nicht mehr so gross mehr weiterentwickelt
+                SASL EXTERNAL:
+                  - Client certificates wegen draft empfehlung
+                  - Probleme mit Browser Background Requests
+                  - Probleme mit unvollständiger implementation XMPP Server
+                  - Probleme mit Logout
+                Angular TDD:
+                  - Es gibt einen unterschied zwischen Testdurchlauf und Applikation im Browser
+                  - Lifecycle im Browser und Test sind unterschiedlich wegen fakes, sideffects etc. und komplex (async mit Zone.js!)
+                  - TDD nur als Angular-Expert möglich.
+                  -->
             </section>
             <section>
                 <h3>🎓 Non-Technical Personal</h3>
@@ -169,9 +262,31 @@
                 </ul>
                 <br>
                 <p><small><small>* See final submission document for details</small></small></p>
+                <!--
+                  - Motivierendes Problem, produktive Anwendung zu machen (SE-Problem)
+                  - Wir hatten nicht damit gerechnet, eine Angular Applikation zu machen
+
+
+                  - Arbeit direkt mit Standards neu im Studium
+                  - Schwierig mit Standards: Optionalen teilen, Versionierung und Stable/Draft von Standard
+                  - Vorsicht mit Samples in Standards - erst formelle spezifikation, sonst trugschlüsse
+
+                  - Knapp 90% der Requirements implementiert
+                  - z.T. nicht möglich wegen Standards
+                  - 2 Optionale Requirements implementiert
+                  -->
             </section>
             <section>
-                <h2>❓ 5. Questions</h2>
+                <h3>✨ Future</h3>
+                <ul>
+                    <li>Application in production</li>
+                    <li>Good basis that can be built upon</li>
+                    <li>XMPP-Grid Draft → Standard</li>
+                </ul>
+            </section>
+            <section>
+                <h1>🔥<br>5. Thank you!</h1>
+                <h2>Questions?</h2>
             </section>
         </div>
     </div>
@@ -187,8 +302,7 @@
             history: true,
             viewDistance: 10,
             dependencies: [
-                { src: 'js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
-                { src: 'js/plugin/math/math.js', async: true },
+                { src: 'plugin/notes/notes.js', async: true },
             ],
         });
 
