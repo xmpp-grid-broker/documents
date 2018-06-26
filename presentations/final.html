@@ -208,55 +208,70 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
 
             <aside class="notes" data-markdown>
 <small>Raphael</small>
+* Ein Proof-of-Concept existierte bereits - in python als CLI
+* Ziel nicht "ob es geht" sondern ideale Lösung finden
             </aside>
         </section>
 
         <section>
             <h3>🎯 Design Goals</h3>
+<aside class="notes" data-markdown>
+    <small>Raphael</small>
+* Haben uns auf folgende Punkte fokussiert
+* Hervorgehend aus
+  * Task Description
+  * Requirements
+  * weiterführenden Überlegungen
+* kurz auf jeden Punkt eingehen
+  * Zeigen, was konkret gemacht
+
+</aside>
             <ul style="list-style-type: none;">
                 <li class="fragment highlight-current-red">🔒 Security
                     <aside class="notes" data-markdown>
-* Mit Security-Tipps für die Produktion
+* Analyse im Vorfeld => Siehe Doku
 * Architectural review
+* Zusätzlich: Security-Tipps für Produktion
                     </aside>
                 </li>
                 <li class="fragment highlight-current-red">🖥️ Cross-Plattform
                     <aside class="notes" data-markdown>
-* Produktions-Umgebung nicht klar
-* Mehr flexibel mit Web und Proxy
+* Motivation: Produktions-Umgebung unklar
+* Cross-Plattform = flexibel
+* Web + Proxy = max. flexibilität
                     </aside>
                 </li>
                 <li class="fragment highlight-current-red">⏲️ Long-Term Maintainability
                     <aside class="notes" data-markdown>
 * Keine komplexen Abhängigkeiten (auch security)
-* Wartung mit wenig Aufwand
-  * u.a. grund für Angular, weil alles als "Paket" mitkommt
-  * Dokumentation für Updates etc. ist einheitlich verfügbar
+* Wartung mit minimalem Aufwand
+  * u.a. Grund für Angular => Alles in einem "Paket"
                     </aside>
                  </li>
                 <li class="fragment highlight-current-red">🐳 Reproducibility
                     <aside class="notes" data-markdown>
-* Docker
+* Alles automatisieren => reproduzierbar
+* mit Docker
+* u.a.:
+  * Development environment
+  * Website
+  * Document export (ZIP)
                     </aside>
                 </li>
             </ul>
-
-            <aside class="notes" data-markdown>
-<small>Raphael</small>
-
-* Hervorgehend aus Task Description, Requirements und weiterführenden Überlegungen
-            </aside>
         </section>
-
         <section>
             <h3>👷 Software Engineering</h3>
 
             <aside class="notes" , data-markdown>
 <small>Raphael</small>
 
-* Starker Fokus, da produktionsfähige, langfristig wartbare Applikation
-* Klassisches SE-Problem
-* Viel Zeit darauf verwendet: Qualität vor Quantität
+* SEHR WICHTIG
+  * produktionsfähige und langfristig wartbare Applikation
+* "Klassisches" SE-Problem
+* Folglich:
+  * Viel Zeit darauf verwendet: **Qualität vor Quantität**
+* Nächste Slides: Einige Erwähnenswerte Aufände
             </aside>
         </section>
 
@@ -267,10 +282,11 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
             <aside class="notes" data-markdown>
 <small>Raphael</small>
 
-* Ausprobieren von AppArch-Tool
-* Hilft, systematisch eine Entscheidung für Architectur und Technologiewahl zu fällen
-* Hat sich bewährt: Gute diskussionsgrundlage
-* Positiver Nebeneffekt: Dokumentation für Nachvollziehbarkeit
+* Tool bekannt aus Modul AppArch
+* Unterstützt systematische Entscheidung für Architektur/Technologiewahl
+* Hat sich bewährt
+  * diskussionsgrundlage
+  * Nachvollziebarkeit (wartbarkeit)
             </aside>
         </section>
 
@@ -282,7 +298,10 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
             <aside class="notes" data-markdown>
 <small>Raphael</small>
 
-* Jede Zeile von 4 Augen angeschaut - Hochwertiger Code!
+* Prozess Massnahme
+* Jede Zeile von 4 Augen angeschaut
+* Ziel: Hochwertiger Code!
+* Definition of Done unterstützt mit "Checkliste"
             </aside>
         </section>
 
@@ -296,9 +315,13 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
             <aside class="notes" data-markdown>
 <small>Raphael</small>
 
-* Mehr als ein Build pro Arbeitsstunde im Projekt
-* Open Source / Patching etc. viel einfacher
-* Bessere Maintainance
+* Prozess Massnahme
+* Sehr intensiv für alles genutzt
+* Mehr als ein Build pro Arbeitsstunde im Projekt!
+* Unterstützt
+  * Patching
+  * Open Source contributions
+  * Maintainance
             </aside>
         </section>
 
@@ -310,8 +333,11 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
             <aside class="notes" data-markdown>
 <small>Raphael</small>
 
+* Wie in Dokumentation erwähnt, haben wir intensiv getestet
 * Mehr als doppelt Test-Zeilen wie Application Code
-* LOC: Entsprechen ungefähr SE-Schnitt für hochwertigen Code
+* LOC:
+    * Entsprechen ungefähr SE-Schnitt für hochwertigen Code
+    * Vlg. SE2-Vorlesung 'Aufwandschätzungen' (FS 2017)
             </aside>
         </section>
 
@@ -324,6 +350,9 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
 
         <section>
             <h3>🔧 Technical</h3>
+            <aside class="notes" data-markdown>
+                <small>Fabian</small>
+            </aside>
             <ul>
                 <li class="fragment highlight-current-red">XMPP PubSub is still a draft
                     <aside class="notes" data-markdown>
@@ -350,13 +379,14 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
                     </aside>
                 </li>
             </ul>
-            <aside class="notes" data-markdown>
-<small>Fabian</small>
-            </aside>
         </section>
 
         <section>
             <h3>🎓 Non-Technical Personal</h3>
+            <aside class="notes" data-markdown>
+                <small>Fabian</small>
+            </aside>
+
             <ul>
                 <li class="fragment highlight-current-red">Interesting Project
                     <aside class="notes" data-markdown>
@@ -388,9 +418,6 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
                 </small>
             </p>
 
-            <aside class="notes" data-markdown>
-<small>Fabian</small>
-            </aside>
         </section>
         <section>
             <h3>✨ Future</h3>
