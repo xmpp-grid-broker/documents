@@ -18,13 +18,14 @@
             <small>Raphael Zimmermann &amp; Fabian Hauser</small>
 
             <aside class="notes" data-markdown>
-<small>Fabian</small>
+<small>Raphael</small>
+* Häufigste Reaktion: Was ist denn ein XMPP-Grid Broker???
+
+* Begrüssung
+* Vorstellung Personen
 
 * Sprache: Hochdeutsch?
 * Vorschlag: Fragen nach der Präsentation, ausser unklarheiten und wichtige Fragen
-
-* Begrüssung, Vorstellung Personen
-* Häufigste Reaktion: Was ist denn ein XMPP-Grid Broker???
         </section>
         <section>
             <h2>🔭 Outline</h2>
@@ -37,7 +38,7 @@
             </ol>
 
             <aside class="notes" data-markdown>
-<small>Fabian</small>
+<small>Raphael</small>
             </aside>
         </section>
 
@@ -68,6 +69,8 @@
 
             <aside class="notes" data-markdown>
 <small>Fabian</small>
+* Central Bus mit PubSub
+* Peer-to-Peer möglich, aber zentral verwaltet (permissions)
             </aside>
         </section>
         <section>
@@ -128,18 +131,16 @@ XMPP-Grid Draft, which is based on:
                 <li>✓ Understand the Standards (IETF, XEPs)</li>
                 <li class="fragment highlight-current-red">✓ Collect Requirements
                     <aside class="notes" data-markdown>
-Requirements: 37
+* Gegen 40 Requirements
                     </aside>
                 </li>
                 <li class="fragment highlight-current-red">✓ Architecture</li>
-                <li class="fragment highlight-current-red">✓ Technology Selection
+                <li class="fragment highlight-current-red">✓ Technology Selection</li>
+                <li class="fragment highlight-current-red">✓ Implementation
                     <aside class="notes" data-markdown>
 * Production Ready
-* Maintainability is important
-* No bad dependencies
                     </aside>
                 </li>
-                <li class="fragment highlight-current-red">✓ Implementation</li>
             </ul>
 
             <aside class="notes" data-markdown>
@@ -161,14 +162,17 @@ Requirements: 37
 
             <aside class="notes" data-markdown>
 <small>Fabian</small>
+* Alles beim User
+* Docker Container
+  * Reproduzierbarkeit und einfaches Setup
+* Openfire XMPP-Server und Angular Development Server
+* Proxy dazwischen
+  * wegen TLS und Security
+* Applikation läuft in Browser
 
-* Docker weil:
-  * Schneller Produktiver Development Setup
-  * Cross Plattform
-* Proxy wegen
-  * Sicherheit: "Security Pattern - Integrating security and systems engineering" -  Protection reverse proxy / Integration reverse Proxy
-  * Flexibilität (Microservices)
-  * TLS authentication für Background-Requests
+---
+
+* Sicherheit: "Security Pattern - Integrating security and systems engineering" -  Protection reverse proxy / Integration reverse Proxy
             </aside>
         </section>
         <section>
@@ -352,32 +356,40 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
         </section>
 
         <section>
-            <h3>🔧 Technical</h3>
+            <h3>🔧 Technical Conclusions</h3>
             <aside class="notes" data-markdown>
                 <small>Fabian</small>
             </aside>
             <ul>
                 <li class="fragment highlight-current-red">XMPP PubSub is still a draft
                     <aside class="notes" data-markdown>
-*  Schwierig, weil undelying XEPs immer noch draft
-  * nicht richtig versioniert
-*  Unklar, welche version implementiert ist
+<small>Raphael</small>
+
+* Basis-XEPs immer noch draft
+  * Verschiedene Versionen und änderungen
+  * Implementierte Version wird nicht ausgewiesen
   * Daher langlebigkeit und support sehr schwierig zu garantieren
-*  Wurden in letzter Zeit nicht mehr so gross mehr weiterentwickelt
+* z.B. PubSub Collection Nodes extrahiert, ist *aber deferred*
                     </aside>
                 </li>
                 <li class="fragment highlight-current-red">SASL EXTERNAL + Browser = 💔
                     <aside class="notes" data-markdown>
-*  Client certificates wegen draft empfehlung
-*  Probleme mit Browser Background Requests
-*  Probleme mit unvollständiger implementation XMPP Server
-*  Probleme mit Logout
+<small>Fabian</small>
+
+* Client certificates wegen draft empfehlung
+* Wahl zwischen Passwörter und Zertifikat
+  * Zertifikat von uns bevorzugt
+* Mit Browsern diverse Fallstricke
+  * z.B. Logout nicht möglich
                     </aside>
                 </li>
                 <li class="fragment highlight-current-red">Angular + TDD = 💔
                     <aside class="notes" data-markdown>
-*  Lifecycle im Browser und Test sind unterschiedlich
-  * wegen fakes, sideffects etc. und komplex (async mit Zone.js)
+<small>Raphael</small>
+
+* Unterschiedliche Umgebung in Unit Tests und Browser
+  * Wer hat die Kontrolle
+  * Async und Sideffects sind schwierig
 *  TDD nur als Angular-Expert möglich
                     </aside>
                 </li>
@@ -385,7 +397,7 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
         </section>
 
         <section>
-            <h3>🎓 Non-Technical Personal</h3>
+            <h3>🎓 Personal Conclusions</h3>
             <aside class="notes" data-markdown>
                 <small>Fabian</small>
             </aside>
@@ -393,24 +405,31 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
             <ul>
                 <li class="fragment highlight-current-red">Interesting Project
                     <aside class="notes" data-markdown>
+<small>Fabian</small>
+
 * Motivierendes Problem, produktive Anwendung zu machen (SE-Problem)
 * Hatten nicht mit Angular Applikation gerechnet
                     </aside>
                 </li>
+                <li class="fragment highlight-current-red">Most requirements implemented*
+                    <aside class="notes" data-markdown>
+<small>Raphael</small>
+
+* Wichtigste 90% Requirements implementiert
+* 2 Optionale Requirements implementiert
+* Fehlenden Funktionen im Standard
+  * Ein paar Requirements nicht ausprogrammiert, da nicht effizient möglich
+                    </aside>
+                </li>
                 <li class="fragment highlight-current-red">Working with many standards (drafts)
                     <aside class="notes" data-markdown>
+<small>Fabian</small>
+
 * Arbeit direkt mit Standards neu im Studium
 * Schwierig mit Standards:
   * "Optional"
   * Versionierung und Stable/Draft von Standard
 * Vorsicht mit Samples in Standards - erst formelle Spezifikation, sonst Trugschlüsse
-                    </aside>
-                </li>
-                <li class="fragment highlight-current-red">Most requirements implemented*
-                    <aside class="notes" data-markdown>
-* Knapp 90% der Requirements implementiert
-* z.T. nicht möglich wegen Standards
-* 2 Optionale Requirements implementiert
                     </aside>
                 </li>
             </ul>
@@ -425,9 +444,9 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
         <section>
             <h3>✨ Future</h3>
             <ul>
-                <li class="fragment highlight-current-red">Application in production</li>
-                <li class="fragment highlight-current-red">Good basis that can be built upon</li>
-                <li class="fragment highlight-current-red">XMPP-Grid Draft → Standard</li>
+                <li>Application in production</li>
+                <li>Good basis that can be built upon</li>
+                <li>XMPP-Grid Draft → Standard</li>
             </ul>
 
             <aside class="notes" data-markdown>
