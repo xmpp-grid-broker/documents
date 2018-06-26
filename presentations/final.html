@@ -12,7 +12,7 @@
 <div class="reveal">
     <div class="slides">
         <section>
-            <img src="resources/logo.svg" style="border: none;box-shadow: none;height: 10vh;"/>
+            <img src="images/logo.svg" style="border: none;box-shadow: none;height: 10vh;"/>
             <h2>XMPP-Grid Broker</h2>
             <h3>Final Presentation</h3>
             <small>Raphael Zimmermann &amp; Fabian Hauser</small>
@@ -51,7 +51,7 @@
 
         <section>
             <h3>🔏 Challenge: Exchange Security Data</h3>
-            <img src="resources/explanatory-graphics-problem.svg" alt="problem explanatory graphic"
+            <img src="images/explanatory-graphics-problem.svg" alt="problem explanatory graphic"
                  style="height: 80vh;">
 
             <aside class="notes" data-markdown>
@@ -63,7 +63,7 @@
             <div>
                 <small>"Using XMPP for Security Information Exchange"</small>
             </div>
-            <img src="resources/explanatory-graphics-ietf-draft.svg" alt="ietf draft explanatory graphic"
+            <img src="images/explanatory-graphics-ietf-draft.svg" alt="ietf draft explanatory graphic"
                  style="height: 80vh;">
 
             <aside class="notes" data-markdown>
@@ -72,7 +72,7 @@
         </section>
         <section>
             <h3>🎉 XMPP-Grid Broker</h3>
-            <img src="resources/explanatory-graphics-xmpp-grid-broker.svg" alt="xmpp-grid-broker explanatory graphic"
+            <img src="images/explanatory-graphics-xmpp-grid-broker.svg" alt="xmpp-grid-broker explanatory graphic"
                  style="height: 80vh;">
 
             <aside class="notes" data-markdown>
@@ -156,7 +156,7 @@ Requirements: 37
 
         <section>
             <h2>🛠️ Development Setup</h2>
-            <img src="resources/development-setup-uml.svg" alt="xmpp-grid-broker explanatory graphic">
+            <img src="images/development-setup-uml.svg" alt="xmpp-grid-broker explanatory graphic">
 
             <aside class="notes" data-markdown>
 <small>Fabian</small>
@@ -262,7 +262,7 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
 
         <section>
             <h3>🏗 Architectural Decisions</h3>
-            <img src="resources/architectural-decisions.png" alt="Archtectural Decisions PDF" style="max-height: 80vh;">
+            <img src="images/architectural-decisions.png" alt="Archtectural Decisions PDF" style="max-height: 80vh;">
 
             <aside class="notes" data-markdown>
 <small>Raphael</small>
@@ -277,7 +277,7 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
         <section>
             <h3>🔍 Code Reviews</h3>
             <p>124 Pull-Requests on GitHub</p>
-            <img src="resources/review-screenshot.png" alt="An example review" style="max-height: 80vh;">
+            <img src="images/review-screenshot.png" alt="An example review" style="max-height: 80vh;">
 
             <aside class="notes" data-markdown>
 <small>Raphael</small>
@@ -291,7 +291,7 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
             <p>
                 <small>Also with documentation</small>
             </p>
-            <img src="resources/ci-builds.png" alt="Number of Builds on Travis">
+            <img src="images/ci-builds.png" alt="Number of Builds on Travis">
 
             <aside class="notes" data-markdown>
 <small>Raphael</small>
@@ -414,9 +414,8 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
         </section>
     </div>
 </div>
-
+<script src="lib/js/head.min.js"></script>
 <script src="js/reveal.js"></script>
-<script src="js/head.load.min.js" charset="utf-8"></script>
 <script src="js/chartjs-2.7.2.min.js"></script>
 <script>
     Reveal.initialize({
@@ -427,7 +426,10 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
         viewDistance: 10,
         dependencies: [
             {src: 'socket.io/socket.io.js', async: true},
-            {src: 'js/plugin/notes-server/client.js', async: true}
+			{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'plugin/notes/notes.js', async: true }
         ],
     });
 

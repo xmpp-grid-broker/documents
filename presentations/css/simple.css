@@ -306,7 +306,7 @@ body {
 .standard-box {
   width: 100%;
   height: 100%;
-  background-image: url("../resources/all-the-standards_compressed.png");
+  background-image: url("../images/all-the-standards_compressed.png");
   background-position: center;
   background-size: 300% 2500%;
   background-repeat: no-repeat;
@@ -316,3 +316,5 @@ body {
 .standard-box.visible {
   background-size: 10% 100%;
 }
+.reveal .slides section .fragment.highlight-current-red.current-fragment {
+  color: #3634d2!important; }

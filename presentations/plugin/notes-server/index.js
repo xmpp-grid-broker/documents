@@ -12,7 +12,7 @@ io = io(server);
 
 var opts = {
 	port :      1947,
-	baseDir :   __dirname + '/../../../'
+	baseDir :   __dirname + '/../../'
 };
 
 io.on( 'connection', function( socket ) {
@@ -33,20 +33,27 @@ io.on( 'connection', function( socket ) {
 
 });
 
-[ 'css', 'js', 'resources', 'lib' ].forEach( function( dir ) {
+[ 'css', 'js', 'images', 'plugin', 'lib' ].forEach( function( dir ) {
 	app.use( '/' + dir, staticDir( opts.baseDir + dir ) );
 });
 
-app.get('/', function( req, res ) {
+app.get('/final', function( req, res ) {
 
 	res.writeHead( 200, { 'Content-Type': 'text/html' } );
 	fs.createReadStream( opts.baseDir + '/final.html' ).pipe( res );
 
 });
 
+app.get('/interim', function( req, res ) {
+
+	res.writeHead( 200, { 'Content-Type': 'text/html' } );
+	fs.createReadStream( opts.baseDir + '/interim.html' ).pipe( res );
+
+});
+
 app.get( '/notes/:socketId', function( req, res ) {
 
-	fs.readFile( opts.baseDir + 'js/plugin/notes-server/notes.html', function( err, data ) {
+	fs.readFile( opts.baseDir + 'plugin/notes-server/notes.html', function( err, data ) {
 		res.send( Mustache.to_html( data.toString(), {
 			socketId : req.params.socketId
 		}));
@@ -64,6 +71,8 @@ var brown = '\033[33m',
 var slidesLocation = 'http://localhost' + ( opts.port ? ( ':' + opts.port ) : '' );
 
 console.log( brown + 'reveal.js - Speaker Notes' + reset );
-console.log( '1. Open the slides at ' + green + slidesLocation + reset );
+console.log( '1. Open the slides at: ');
+console.log('    final presentation: ' + green + slidesLocation + reset + '/final' );
+console.log('    interim presentation: ' + green + slidesLocation + reset + '/interim' );
 console.log( '2. Click on the link in your JS console to go to the notes page' );
 console.log( '3. Advance through your slides and your notes will advance automatically' );
