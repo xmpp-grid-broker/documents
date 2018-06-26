@@ -4,4 +4,4 @@ This directory contains the sources of our presentations.
 
 The slides are created using https://revealjs.com/[reveal.js].
 
-To view the slides locally, you must serve them using a webserver, e.g. by calling `python3 -m http.server` in this directory
+To view the final presentation with notes, run `npm install && npm start` in this directory.
