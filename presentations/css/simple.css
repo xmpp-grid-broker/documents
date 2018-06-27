@@ -58,14 +58,14 @@ body {
   word-wrap: break-word; }
 
 .reveal h1 {
-  font-size: 3.77em; }
+  font-size: 3em; }
 
 .reveal h2 {
-  font-size: 2.11em;
+  font-size: 2.1em;
   margin-bottom: 3rem; }
 
 .reveal h3 {
-  font-size: 1.55em;
+  font-size: 1.5em;
 }
 
 .reveal h4 {
@@ -299,8 +299,7 @@ body {
 
 
 .standard-container {
-  width: 100vw; 
-  height: 70vh;
+  height: 560px;
 }
 
 .standard-box {
@@ -318,3 +317,12 @@ body {
 }
 .reveal .slides section .fragment.highlight-current-red.current-fragment {
   color: #3634d2!important; }
+
+img {
+  transition: opacity 0.3s ease-in;
+  opacity: 0;
+}
+
+.present img {
+  opacity: 1;
+}
