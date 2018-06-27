@@ -39,6 +39,12 @@
 
             <aside class="notes" data-markdown>
 <small>Raphael</small>
+
+* Problem Description
+* Our Solution (Demo)
+* Our Focus
+* Conclusion
+* Questions
             </aside>
         </section>
 
@@ -47,6 +53,8 @@
 
             <aside class="notes" data-markdown>
 <small>Fabian</small>
+
+* Problem, welches gelöst werden soll
             </aside>
         </section>
 
@@ -57,6 +65,12 @@
 
             <aside class="notes" data-markdown>
 <small>Fabian</small>
+
+* Grosse Netzwerke, in denen Sicherheitsinfos anfallen
+* Devices, welche interessiert sind
+* Publisher und Subscriber
+* Bisher Peer to Peer
+
             </aside>
         </section>
         <section>
@@ -69,7 +83,9 @@
 
             <aside class="notes" data-markdown>
 <small>Fabian</small>
-* Central Bus mit PubSub
+
+* Lösung von IETF MILE WG: XMPP-Grid
+* Zentraler Bus mit Publish-Subscribe
 * Peer-to-Peer möglich, aber zentral verwaltet (permissions)
             </aside>
         </section>
@@ -80,6 +96,10 @@
 
             <aside class="notes" data-markdown>
 <small>Fabian</small>
+
+* Unsere Arbeit
+* Verwalten von XMPP-Grid
+* Vor allem ein Interface
             </aside>
         </section>
         <section>
@@ -100,7 +120,9 @@
 
             <aside class="notes" data-markdown>
 <small>Fabian</small>
+
 * Basierend auf den gesammelten Requirements
+* 
             </aside>
         </section>
         <section>
@@ -187,18 +209,15 @@ XMPP-Grid Draft, which is based on:
 Frage: Falls bereits ausprobiert, nur kurze Demo
 
 * Neue Collection erzeugen "MyDemoCollection!()"
-* Zeige Subtopics und Parent Tab (beide leer)
 * Config:
   * Children: Topic #1
   * Parent: Root #1
-* Zeige Parent Tab -> nicht mehr leer
 * Subtopic Tab ist nicht mehr leer -> Gehe zu Topic #1
 * Zeige Parent Tab
 * Zeige Persisted Items
   * Und Paging
   * Zeige XML Content
   * Zeige Purge
-* evtl. affiliations
 
 ## Vorbereitung
 
@@ -217,6 +236,11 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
 <small>Raphael</small>
 * Ein Proof-of-Concept existierte bereits - in python als CLI
 * Ziel nicht "ob es geht" sondern ideale Lösung finden
+
+* Fokus hervorgehend aus
+  * Task Description
+  * Requirements
+  * weiterführenden Überlegungen
             </aside>
         </section>
 
@@ -224,14 +248,8 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
             <h3>🎯 Design Goals</h3>
 <aside class="notes" data-markdown>
     <small>Raphael</small>
-* Haben uns auf folgende Punkte fokussiert
-* Hervorgehend aus
-  * Task Description
-  * Requirements
-  * weiterführenden Überlegungen
-* kurz auf jeden Punkt eingehen
-  * Zeigen, was konkret gemacht
 
+* Haben uns auf folgende Punkte fokussiert
 </aside>
             <ul style="list-style-type: none;">
                 <li class="fragment highlight-current-red">🔒 Security
@@ -244,21 +262,18 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
                 <li class="fragment highlight-current-red">🖥️ Cross-Plattform
                     <aside class="notes" data-markdown>
 * Motivation: Produktions-Umgebung unklar
-* Cross-Plattform = flexibel
 * Web + Proxy = max. flexibilität
                     </aside>
                 </li>
                 <li class="fragment highlight-current-red">⏲️ Long-Term Maintainability
                     <aside class="notes" data-markdown>
-* Keine komplexen Abhängigkeiten (auch security)
-* Wartung mit minimalem Aufwand
+* Minimale Abhängigkeiten
   * u.a. Grund für Angular => Alles in einem "Paket"
                     </aside>
                  </li>
                 <li class="fragment highlight-current-red">🐳 Reproducibility
                     <aside class="notes" data-markdown>
 * Alles automatisieren => reproduzierbar
-* mit Docker
 * u.a.:
   * Development environment
   * Website
@@ -273,11 +288,8 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
             <aside class="notes" , data-markdown>
 <small>Raphael</small>
 
-* SEHR WICHTIG
-  * produktionsfähige und langfristig wartbare Applikation
-* "Klassisches" SE-Problem
-* Folglich:
-  * Viel Zeit darauf verwendet: **Qualität vor Quantität**
+* Design-Aspekte sind klassische SE-Aspekte
+* **Qualität vor Quantität**
 * Nächste Slides: Einige Erwähnenswerte Aufände
             </aside>
         </section>
@@ -325,10 +337,7 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
 * Prozess Massnahme
 * Sehr intensiv für alles genutzt
 * Mehr als ein Build pro Arbeitsstunde im Projekt!
-* Unterstützt
-  * Patching
-  * Open Source contributions
-  * Maintainance
+* Bessere Wartbarkeit und Konfidenz
             </aside>
         </section>
 
@@ -388,9 +397,7 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
 <small>Raphael</small>
 
 * Unterschiedliche Umgebung in Unit Tests und Browser
-  * Wer hat die Kontrolle
-  * Async und Sideffects sind schwierig
-*  TDD nur als Angular-Expert möglich
+* TDD nur als Angular-Expert möglich
                     </aside>
                 </li>
             </ul>
@@ -416,7 +423,6 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
 <small>Raphael</small>
 
 * Wichtigste 90% Requirements implementiert
-* 2 Optionale Requirements implementiert
 * Fehlenden Funktionen im Standard
   * Ein paar Requirements nicht ausprogrammiert, da nicht effizient möglich
                     </aside>
