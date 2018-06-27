@@ -54,7 +54,7 @@
             <aside class="notes" data-markdown>
 <small>Fabian</small>
 
-* Problem, welches gelöst werden soll
+* eigentliches Problem, welches gelöst werden soll
             </aside>
         </section>
 
@@ -67,6 +67,7 @@
 <small>Fabian</small>
 
 * Grosse Netzwerke, in denen Sicherheitsinfos anfallen
+* Devices, auf welchen die Infos anfallen
 * Devices, welche interessiert sind
 * Publisher und Subscriber
 * Bisher Peer to Peer
@@ -104,8 +105,17 @@
         </section>
         <section>
             <h3>🗃 Task Description</h3>
+            <aside class="notes" data-markdown>
+<small>Fabian</small>
+
+* Aufgabenstellung
+            </aside>
             <ul style="list-style-type: none;">
-                <li class="fragment highlight-current-red">✓ Understand the Standards (IETF, XEPs)</li>
+                <li class="fragment highlight-current-red">✓ Understand the Standards (IETF, XEPs)
+                    <aside class="notes" data-markdown>
+* Analysieren und Verstehen der Standards
+                    </aside>
+                </li>
                 <li>✓ Collect Requirements</li>
                 <li>✓ Architecture</li>
                 <li>✓ Technology Selection</li>
@@ -117,13 +127,6 @@
                         Description</a>
                 </small>
             </p>
-
-            <aside class="notes" data-markdown>
-<small>Fabian</small>
-
-* Basierend auf den gesammelten Requirements
-* 
-            </aside>
         </section>
         <section>
             <h3>📜 Understanding the Standards</h3>
@@ -134,7 +137,10 @@
             <aside class="notes" data-markdown>
 <small>Fabian</small>
 
-XMPP-Grid Draft, which is based on:
+* XMPP-Grid Draft: Basiert auf RFCs und XEPs
+* XEP: XMPP Extension Protocols
+
+----
 
 * RFC6120: XMPP
 * RFC7395: WebSockets
@@ -149,6 +155,11 @@ XMPP-Grid Draft, which is based on:
 
         <section>
             <h3>🗃 Task Description</h3>
+            <aside class="notes" data-markdown>
+<small>Fabian</small>
+
+* Zurück zur Aufgabenstellung
+            </aside>
             <ul style="list-style-type: none;">
                 <li>✓ Understand the Standards (IETF, XEPs)</li>
                 <li class="fragment highlight-current-red">✓ Collect Requirements
@@ -156,18 +167,24 @@ XMPP-Grid Draft, which is based on:
 * Gegen 40 Requirements
                     </aside>
                 </li>
-                <li class="fragment highlight-current-red">✓ Architecture</li>
-                <li class="fragment highlight-current-red">✓ Technology Selection</li>
+                <li class="fragment highlight-current-red">✓ Architecture
+                    <aside class="notes" data-markdown>
+* Aufbau Architektur
+                    </aside>
+                </li>
+                <li class="fragment highlight-current-red">✓ Technology Selection
+                    <aside class="notes" data-markdown>
+* Wahl beste Technologie
+* Kein direkter Kunde, darum Umfeld relativ frei
+                    </aside>
+                </li>
                 <li class="fragment highlight-current-red">✓ Implementation
                     <aside class="notes" data-markdown>
+* Hauptteil:  Implementation
 * Production Ready
                     </aside>
                 </li>
             </ul>
-
-            <aside class="notes" data-markdown>
-<small>Fabian</small>
-            </aside>
         </section>
 
         <section data-background-color="#3634d2">
@@ -175,6 +192,8 @@ XMPP-Grid Draft, which is based on:
 
             <aside class="notes" data-markdown>
 <small>Fabian</small>
+
+* Unsere Lösung für dieses Problem
             </aside>
         </section>
 
@@ -184,17 +203,19 @@ XMPP-Grid Draft, which is based on:
 
             <aside class="notes" data-markdown>
 <small>Fabian</small>
-* Alles beim User
-* Docker Container
-  * Reproduzierbarkeit und einfaches Setup
-* Openfire XMPP-Server und Angular Development Server
-* Proxy dazwischen
-  * wegen TLS und Security
+
+* Entwicklungsumgebung **ähnlich Prod**.
+* Alles beim **User**
+* **Docker** Container
+  * **Reproduzierbarkeit** und einfaches **Setup**
+* Openfire **XMPP-Server** und **Angular** Development Server
+* **Proxy** dazwischen
+  * **wegen** TLS und **Security**
 * Applikation läuft in Browser
 
 ---
 
-* Sicherheit: "Security Pattern - Integrating security and systems engineering" -  Protection reverse proxy / Integration reverse Proxy
+* Sicherheit: "Security Pattern - Integrating security and systems engineering" -  Protection reverse proxy / Integration reverse proxy
             </aside>
         </section>
         <section>
@@ -361,13 +382,17 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
             <h1>💭<br>Conclusion</h1>
             <aside class="notes" data-markdown>
 <small>Fabian</small>
+
+* Fazit
             </aside>
         </section>
 
         <section>
             <h3>🔧 Technical Conclusions</h3>
             <aside class="notes" data-markdown>
-                <small>Fabian</small>
+<small>Fabian</small>
+
+* Technisches Fazit
             </aside>
             <ul>
                 <li class="fragment highlight-current-red">XMPP PubSub is still a draft
@@ -406,7 +431,9 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
         <section>
             <h3>🎓 Personal Conclusions</h3>
             <aside class="notes" data-markdown>
-                <small>Fabian</small>
+<small>Fabian</small>
+
+* Persönliches Fazit
             </aside>
 
             <ul>
@@ -414,7 +441,8 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
                     <aside class="notes" data-markdown>
 <small>Fabian</small>
 
-* Motivierendes Problem, produktive Anwendung zu machen (SE-Problem)
+* Motivierendes Problem, produktive Anwendung zu machen
+  * Starker Fokus auf SE
 * Hatten nicht mit Angular Applikation gerechnet
                     </aside>
                 </li>
@@ -457,6 +485,11 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
 
             <aside class="notes" data-markdown>
 <small>Fabian</small>
+
+* Blick in die Zukunft
+* Applikation in Produktion bewähren
+* Stabile Basis, weitere Funktionen hinzufügen
+* Hoffen, unser Beitrag hilft standardisierung
             </aside>
         </section>
         <section data-background-color="#3634d2">
@@ -465,6 +498,9 @@ Frage: Falls bereits ausprobiert, nur kurze Demo
 
             <aside class="notes" data-markdown>
 <small>Fabian</small>
+
+* Danke für Interesse
+* Stehen jetzt gerne für Fragen zur Verfügung
             </aside>
         </section>
     </div>
